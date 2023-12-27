@@ -1,0 +1,7 @@
+{
+  "name": "wodbox_a",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
