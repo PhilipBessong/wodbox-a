@@ -74,10 +74,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "app:build:production"
+              "buildTarget": "wodbox-a:build:production"
             },
             "development": {
-              "buildTarget": "app:build:development"
+              "buildTarget": "wodbox-a:build:development"
             },
             "ci": {
               "progress": false
