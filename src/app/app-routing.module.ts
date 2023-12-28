@@ -26,7 +26,19 @@ const routes: Routes = [
   {
     path: 'ahome',
     loadChildren: () => import('./home/ahome/ahome.module').then( m => m.AhomePageModule)
+  },  {
+    path: 'forgot-password',
+    loadChildren: () => import('./users/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
+  {
+    path: 'adduser',
+    loadChildren: () => import('./admin/adduser/adduser.module').then( m => m.AdduserPageModule)
+  },
+  {
+    path: 'addwod',
+    loadChildren: () => import('./admin/addwod/addwod.module').then( m => m.AddwodPageModule)
   }
+
 ];
 
 @NgModule({

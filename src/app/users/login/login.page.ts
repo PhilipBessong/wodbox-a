@@ -22,9 +22,7 @@ export class LoginPage implements OnInit {
   async login() {
     try {
       await this.authService.login(this.email, this.password);
-      // Redirect to client homepage after successful login
-      this.navCtrl.navigateRoot('/chome');
-      
+      // No need to navigate here, handle navigation based on usertype in authService.login()
       // Display success message
       this.presentToast('Login successful');
     } catch (error) {

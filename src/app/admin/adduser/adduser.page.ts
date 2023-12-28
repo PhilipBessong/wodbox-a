@@ -3,14 +3,14 @@ import { FirebaseAuthService } from 'src/app/firebase/auth/firebase-auth.service
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.page.html',
-  styleUrls: ['./signup.page.scss'],
+  selector: 'app-adduser',
+  templateUrl: './adduser.page.html',
+  styleUrls: ['./adduser.page.scss'],
 })
-export class SignupPage implements OnInit {
+export class AdduserPage implements OnInit {
   email: string = '';
   password: string = '';
-  usertype: string = 'client'
+  usertype: string = '';
   constructor(
     private authService: FirebaseAuthService,
     private router: Router,
@@ -49,5 +49,6 @@ export class SignupPage implements OnInit {
     });
     toast.present();
   }
+
 
 }

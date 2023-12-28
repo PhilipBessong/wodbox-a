@@ -20,7 +20,7 @@
             </div>
             <pre></pre>
             <div class="row">
-              <h1 style="text-align: center; color: #b27600;">Sign Up</h1>
+              <h1 style="text-align: center; color: #b27600;">Add User</h1>
             </div>
             <pre></pre>
             <div>
@@ -47,7 +47,21 @@
               ></ion-input>
             </div>
             <pre></pre>
-            
+            <pre></pre>
+            <div style="margin-left: auto; margin-right: auto;">
+              <ion-select
+              type="text"
+              name="usertype"
+              style="font-size: x-large; text-align: center; margin-left: auto;
+              margin-right: auto; width: 90%;"
+              placeholder="Select a User Type"
+              [(ngModel)]="usertype"
+              required>
+                <ion-select-option value="admin">Admin</ion-select-option>
+                <ion-select-option value="client">Client</ion-select-option>
+              </ion-select>
+              <pre></pre>
+            </div>
             <pre></pre>
             <div style="text-align: center">
               <ion-button color="#b27600"
@@ -62,17 +76,13 @@
                   height: 70px;
                 "
                 type="submit"
-                [disabled]="!email || !password"
+                [disabled]="!email || !password || !usertype"
                 >Create Account</ion-button
               >
             </div>
           </div>
         </form>
         <br />
-            <div style="text-align: center; font-size: large;">
-              Already have an account?
-              <a href="/login" style="padding-left: 2%; color: #b27600;">Login</a>
-            </div>
       </ion-card>
     </ion-row>
   </ion-grid>
