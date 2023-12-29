@@ -3,7 +3,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { Timestamp } from '@firebase/firestore';
 
 export interface Workout {
@@ -109,6 +109,31 @@ export class WorkoutsService {
       ref.where('wodCat', '==', wodCat)
          .where('daDate', '==', daDate)
     ).valueChanges();
+  }
+
+   // Get workouts with specific conditions (Warm Up and today's date)
+  getSpecificWorkouts(): Observable<Workout[]> {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    return this.workoutCollection.valueChanges({ idField: 'id' }).pipe(
+      map((workouts: Workout[]) =>
+        workouts.filter(
+          (workout: Workout) =>
+            workout.wodCat === 'Warm Up' &&
+            this.isSameDate(today, new Date(workout.daDate))
+        )
+      )
+    );
+  }
+
+  // Helper function to check if two dates are the same
+  private isSameDate(date1: Date, date2: Date): boolean {
+    return (
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()
+    );
   }
 
   ///////////////wodstyle/////////////////

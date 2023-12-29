@@ -1,6 +1,6 @@
 <!-- Your HTML structure to display the fetched workouts -->
 <ion-content style="background-color: aqua;">
-  <ion-button (click)="loadup()">load up</ion-button>
+
   <ion-list>
     <ion-item *ngFor="let workout of workouts">
       <!-- Display the details of each workout -->
@@ -8,4 +8,19 @@
       <!-- Display other workout details as needed -->
     </ion-item>
   </ion-list>
+  <div *ngIf="specificWorkouts.length > 0; else noWorkouts">
+    <h2>Specific Workouts</h2>
+    <ul>
+      <li *ngFor="let workout of specificWorkouts">
+        <p><strong>ID:</strong> {{ workout.id }}</p>
+        <p><strong>Name:</strong> {{ workout.styleDescription }}</p>
+        <p><strong>Category:</strong> {{ workout.wodCat }}</p>
+        <!-- Display other workout details as needed -->
+      </li>
+    </ul>
+  </div>
+  
+  <ng-template #noWorkouts>
+    <p>No specific workouts found for today.</p>
+  </ng-template>
 </ion-content>
