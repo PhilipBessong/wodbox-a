@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'signup',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -26,7 +26,8 @@ const routes: Routes = [
   {
     path: 'ahome',
     loadChildren: () => import('./home/ahome/ahome.module').then( m => m.AhomePageModule)
-  },  {
+  },
+  {
     path: 'forgot-password',
     loadChildren: () => import('./users/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
@@ -37,7 +38,16 @@ const routes: Routes = [
   {
     path: 'addwod',
     loadChildren: () => import('./admin/addwod/addwod.module').then( m => m.AddwodPageModule)
+  },
+  {
+    path: 'wodinfo/:id',
+    loadChildren: () => import('./admin/wodinfo/wodinfo.module').then( m => m.WodinfoPageModule)
+  },  {
+    path: 'warmup',
+    loadChildren: () => import('./client/warmup/warmup.module').then( m => m.WarmupPageModule)
   }
+
+
 
 ];
 

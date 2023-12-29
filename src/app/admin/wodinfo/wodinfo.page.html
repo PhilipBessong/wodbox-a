@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Workout Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>WOD Category</ion-label>
+    <ion-input [(ngModel)]="workout.wodCat"></ion-input>
+  </ion-item>
+
+  <!-- Add other input fields for workout details -->
+
+  <ion-button expand="block" (click)="saveChanges()">Save Changes</ion-button>
+</ion-content>

@@ -3,7 +3,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Timestamp } from '@firebase/firestore';
 
 export interface Workout {
@@ -37,6 +37,20 @@ export interface Workout {
   r4move?: number;
   r4rest?: number;
   daDate: string;
+  styleName?: string;
+  styleDescription?: string;
+  exe?: Exercise;
+  exeR1M2?: Exercise;
+  exeR1M3?: Exercise;
+  exeR2M1?: Exercise;
+  exeR2M2?: Exercise;
+  exeR2M3?: Exercise;
+  exeR3M1?: Exercise;
+  exeR3M2?: Exercise;
+  exeR3M3?: Exercise;
+  exeR4M1?: Exercise;
+  exeR4M2?: Exercise;
+  exeR4M3?: Exercise;
 }
 export class Style {
   constructor(public styleName: string, public styleDescription: string) {}
@@ -75,18 +89,26 @@ export class WorkoutsService {
   }
 
   // Get a specific workout by ID
-  getWorkoutById(workoutId: string): Observable<Workout | undefined> {
-    return this.workoutCollection.doc<Workout>(workoutId).valueChanges();
+  getWorkoutById(id: string): Observable<Workout | undefined> {
+    return this.workoutCollection.doc<Workout>(id).valueChanges();
   }
 
   // Update a workout
-  updateWorkout(workoutId: string, updatedWorkout: Workout): Promise<void> {
-    return this.workoutCollection.doc(workoutId).update(updatedWorkout);
+  updateWorkout(id: string | undefined, updatedWorkout: Workout): Promise<void> {
+    return this.workoutCollection.doc(id).update(updatedWorkout);
   }
 
   // Delete a workout
-  deleteWorkout(workoutId: string): Promise<void> {
-    return this.workoutCollection.doc(workoutId).delete();
+  deleteWorkout(id: string| undefined): Promise<void> {
+    return this.workoutCollection.doc(id).delete();
+  }
+
+  // Fetch workouts based on category and date
+  getWorkoutsByCategoryAndDate(wodCat: string, daDate: string|undefined): Observable<Workout[]> {
+    return this.firestore.collection<Workout>('workouts', ref =>
+      ref.where('wodCat', '==', wodCat)
+         .where('daDate', '==', daDate)
+    ).valueChanges();
   }
 
   ///////////////wodstyle/////////////////
@@ -120,6 +142,11 @@ export class WorkoutsService {
   getAllWodStyles(): Style[] {
     return this.wodStyles;
   }
+  getStyleByName(styleName: string): Observable<Style | undefined> {
+    const style = this.wodStyles.find((s) => s.styleName === styleName);
+    return of(style);
+  }
+  
 
   //Moves
   private moves: Exercise[] = [
@@ -379,4 +406,9 @@ export class WorkoutsService {
   getAllMoves(): Exercise[] {
     return this.moves;
   }
+  getExebyname(exeName: string): Observable<Exercise | undefined> {
+    const exercise = this.moves.find((e) => e.exeName === exeName);
+    return of(exercise);
+  }
+  
 }

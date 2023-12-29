@@ -1,0 +1,11 @@
+<!-- Your HTML structure to display the fetched workouts -->
+<ion-content style="background-color: aqua;">
+  <ion-button (click)="loadup()">load up</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let workout of workouts">
+      <!-- Display the details of each workout -->
+      <ion-label>{{ workout.wodStyle }}</ion-label>
+      <!-- Display other workout details as needed -->
+    </ion-item>
+  </ion-list>
+</ion-content>
