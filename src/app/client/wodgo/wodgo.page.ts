@@ -1382,7 +1382,7 @@ export class WodgoPage implements OnInit {
     this.cdr4m3Rest = undefined;
   }
   redirectToHome() {
-    this.router.navigate(['/wodcat']); // Replace 'home' with the actual route name of your home page
+    this.router.navigate(['/chome']); // Replace 'home' with the actual route name of your home page
   }
 
   ngOnDestroy() {
