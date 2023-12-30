@@ -45,6 +45,10 @@ const routes: Routes = [
   },  {
     path: 'warmup',
     loadChildren: () => import('./client/warmup/warmup.module').then( m => m.WarmupPageModule)
+  },
+  {
+    path: 'wod',
+    loadChildren: () => import('./client/wod/wod.module').then( m => m.WodPageModule)
   }
 
 

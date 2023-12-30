@@ -7,26 +7,24 @@ import {
   WorkoutsService,
 } from 'src/app/firebase/workouts.service';
 @Component({
-  selector: 'app-warmup',
-  templateUrl: './warmup.page.html',
-  styleUrls: ['./warmup.page.scss'],
+  selector: 'app-wod',
+  templateUrl: './wod.page.html',
+  styleUrls: ['./wod.page.scss'],
 })
-export class WarmupPage implements OnInit {
+export class WodPage implements OnInit {
   specificWorkouts: Workout[]=[];
   wodStyle: Style[] = [];
   exercises: Exercise[] = [];
   videoUrl: SafeResourceUrl | undefined;
   videoHeight = '300px'; // Adjust the height as needed
   videoWidth = '400px';
+  constructor(private workoutsService: WorkoutsService) { }
 
-  constructor(private workoutsService: WorkoutsService) {}
-
-  ngOnInit(): void {
-    this.getSpecificWorkouts();
+  ngOnInit() {
+    this.getSpecificWOD();
   }
-
-  getSpecificWorkouts(): void {
-    this.workoutsService.getSpecificWorkouts().subscribe(
+  getSpecificWOD(): void {
+    this.workoutsService.getSpecificWOD().subscribe(
       (workouts: Workout[]) => {
         this.specificWorkouts = workouts;
         this.specificWorkouts.forEach((specificWorkouts) => {
@@ -142,6 +140,4 @@ export class WarmupPage implements OnInit {
       }
     );
   }
-  
-
 }

@@ -19,5 +19,9 @@ export class ChomePage implements OnInit {
      
      this.router.navigate(['/warmup']);
     }
+    toWOD() {
+     
+      this.router.navigate(['/wod']);
+     }
 
 }
