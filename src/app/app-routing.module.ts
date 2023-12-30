@@ -49,6 +49,14 @@ const routes: Routes = [
   {
     path: 'wod',
     loadChildren: () => import('./client/wod/wod.module').then( m => m.WodPageModule)
+  },
+  {
+    path: 'wodgo',
+    loadChildren: () => import('./client/wodgo/wodgo.module').then( m => m.WodgoPageModule)
+  },
+  {
+    path: 'wodon',
+    loadChildren: () => import('./client/wodon/wodon.module').then( m => m.WodonPageModule)
   }
 
 
