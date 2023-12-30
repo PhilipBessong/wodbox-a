@@ -103,14 +103,6 @@ export class WorkoutsService {
     return this.workoutCollection.doc(id).delete();
   }
 
-  // Fetch workouts based on category and date
-  getWorkoutsByCategoryAndDate(wodCat: string, daDate: string|undefined): Observable<Workout[]> {
-    return this.firestore.collection<Workout>('workouts', ref =>
-      ref.where('wodCat', '==', wodCat)
-         .where('daDate', '==', daDate)
-    ).valueChanges();
-  }
-
    // Get workouts with specific conditions (Warm Up and today's date)
   getSpecificWorkouts(): Observable<Workout[]> {
     const today = new Date();
