@@ -14,10 +14,9 @@ export class LoginPage implements OnInit {
     private authService: FirebaseAuthService,
     private navCtrl: NavController,
     private toastController: ToastController
-  ) { }
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async login() {
     try {
@@ -35,8 +34,13 @@ export class LoginPage implements OnInit {
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 2000 // Display duration in milliseconds
+      duration: 2000, // Display duration in milliseconds
     });
     toast.present();
+  }
+
+  tocreate() {
+    // Example of navigating programmatically with relative paths
+    this.navCtrl.navigateForward(['./signup']);
   }
 }
