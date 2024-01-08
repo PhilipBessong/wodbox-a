@@ -6,6 +6,7 @@ import {
   Exercise,
   WorkoutsService,
 } from 'src/app/firebase/workouts.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-warmup',
   templateUrl: './warmup.page.html',
@@ -19,7 +20,7 @@ export class WarmupPage implements OnInit {
   videoHeight = '300px'; // Adjust the height as needed
   videoWidth = '400px';
 
-  constructor(private workoutsService: WorkoutsService) {}
+  constructor(private workoutsService: WorkoutsService, private router: Router) {}
 
   ngOnInit(): void {
     this.getSpecificWorkouts();
@@ -141,6 +142,9 @@ export class WarmupPage implements OnInit {
         console.error('Error fetching specific workouts:', error);
       }
     );
+  }
+  backtoWarmUp(){
+    this.router.navigate(['/chome']);
   }
   
 

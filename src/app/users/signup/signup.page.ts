@@ -8,6 +8,8 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+  fName: string='';
+  lName: string='';
   email: string = '';
   password: string = '';
   usertype: string = 'client'

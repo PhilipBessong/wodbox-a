@@ -23,11 +23,35 @@
               <h1 style="text-align: center; color: #b27600;">Sign Up</h1>
             </div>
             <pre></pre>
+            <div class="row">
+              <div class="col">
+                <ion-input
+                type="text"
+                name="fName"
+                style="font-size: x-large; text-align: center; border: #b27600; border-style: solid;border-radius: 10px; width: 90%; height: 52px; margin-left: auto; margin-right: auto;"
+                placeholder="First Name"
+                [(ngModel)]="fName" type="text"
+                required
+              ></ion-input>
+              </div>
+              <pre></pre>
+              <div class="col">
+                <ion-input
+                type="text"
+                name="lName"
+                style="font-size: x-large; text-align: center; border: #b27600; border-style: solid;border-radius: 10px; width: 90%; height: 52px;margin-left: auto; margin-right: auto;"
+                placeholder="Last Name"
+                [(ngModel)]="lName" type="text"
+                required
+              ></ion-input>
+              </div>
+            </div>
+            <pre></pre>
             <div>
               <ion-input
                 type="email"
                 name="email"
-                style="font-size: x-large; text-align: center; margin-left: auto;
+                style="font-size: x-large; text-align: center; border: #b27600; border-style: solid;border-radius: 10px; width: 100%; height: 52px;font-size: x-large; text-align: center; margin-left: auto;
                 margin-right: auto; width: 90%;"
                 placeholder="Username"
                 [(ngModel)]="email"
@@ -39,7 +63,7 @@
               <ion-input
                 type="password"
                 name="password"
-                style="font-size: x-large; text-align: center; color: #b27600; margin-left: auto;
+                style="font-size: x-large; text-align: center; border: #b27600; border-style: solid;border-radius: 10px; width: 100%; height: 52px;font-size: x-large; text-align: center; color: #b27600; margin-left: auto;
                 margin-right: auto; width: 90%;"
                 placeholder="Password"
                 [(ngModel)]="password"
@@ -73,7 +97,9 @@
               Already have an account?
               <a href="/login" style="padding-left: 2%; color: #b27600;">Login</a>
             </div>
+            <pre></pre>
       </ion-card>
+      <pre></pre>
     </ion-row>
   </ion-grid>
 </ion-content>

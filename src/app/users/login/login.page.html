@@ -1,5 +1,5 @@
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" style="background-color: black;">
   
   <ion-grid style="height: 100%">
     <ion-row justify-content-center align-items-center style="height: 100%">
@@ -23,7 +23,7 @@
               <ion-input
                 type="email"
                 name="email"
-                style="font-size: x-large; text-align: center"
+                style="font-size: x-large; text-align: center; border: #b27600; border-style: solid;border-radius: 10px; width: 90%; height: 52px; margin-left: auto; margin-right:auto;"
                 placeholder="Username"
                 [(ngModel)]="email" type="email"
                 required
@@ -34,7 +34,7 @@
               <ion-input
                 type="password"
                 name="password"
-                style="font-size: x-large; text-align: center; color: #b27600;"
+                style="font-size: x-large; text-align: center; border: #b27600; border-style: solid;border-radius: 10px; height: 52px;width: 90%; margin-left: auto; margin-right: auto;"
                 placeholder="Password"
                 [(ngModel)]="password" type="password"
                 required
@@ -51,6 +51,7 @@
                   background-color:#b27600;
                   width: 90%;
                   height: 70px;
+                  font-weight: 500;
                 "
                 expand="full" (click)="login()"
                 >Login</button
@@ -59,7 +60,7 @@
             <br />
             <div style="text-align: center; font-size: large;">
               Dont have an accont?
-              <a (click)="tocreate()" style="padding-left: 2%; color: #b27600;">Create account</a>
+              <a href="./signup" style="padding-left: 2%; color: #b27600;">Create account</a>
             </div>
             <br>
             <div style="text-align: center; font-size: large;">

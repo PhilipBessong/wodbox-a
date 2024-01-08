@@ -1,11 +1,7 @@
 <ion-content [fullscreen]="true">
   <div class="daBack">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #b27600; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
+    <div class="col">
+      <br />
       <button
         (click)="logout()"
         style="
@@ -19,17 +15,21 @@
       >
         Logout <ion-icon name="person"></ion-icon>
       </button>
-    </ion-toolbar>
-    <div class="logocon">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
+      <div class="col">
+        <div class="logocon">
+          <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
+        </div>
+      </div>
     </div>
+
     <pre></pre>
     <div>
-      <h1 class="wodhead">
+      <h1 class="wodhead" style="color: aliceblue">
         Get <span style="color: #b27600">Your</span> Heart Rate
         <span style="color: #b27600">Racing</span>
       </h1>
     </div>
+
     <pre></pre>
     <pre></pre>
     <ion-card class="wodbod">
@@ -63,6 +63,7 @@
 
         <pre></pre>
       </ion-card>
+      <pre></pre>
     </ion-card>
     <pre></pre>
   </div>
