@@ -13,8 +13,8 @@ export interface Workout {
   rounds: number;
   mpr: number;
   r1m1: string;
-  r1m2: string;
-  r1m3: string;
+  r1m2?: string;
+  r1m3?: string;
   r1sets: number;
   r1move: number;
   r1rest: number;

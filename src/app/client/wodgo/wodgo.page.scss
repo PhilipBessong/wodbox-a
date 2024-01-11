@@ -1,25 +1,44 @@
 
-.daBack{
-
+  .red-content {
+    --ion-padding-start: 0;
+    --ion-padding-end: 0;
+    --ion-safe-area-top: 0;
+    --ion-safe-area-bottom: 0;
     border-style: solid;
     border-color: #00b250;
-    background: linear-gradient(
+    --ion-background-color: linear-gradient(
         to bottom,
         black 0%,
         black 50%,                                                                 
         black 50%,       
         #00b250 100%
     );
+  }
   
+  .blue-content {
+    --ion-padding-start: 0;
+    --ion-padding-end: 0;
+    --ion-safe-area-top: 0;
+    --ion-safe-area-bottom: 0;
+    border-style: solid;
+    border-color: #22B9E9;
+    --ion-background-color: linear-gradient(
+        to bottom,
+        black 0%,
+        black 50%,                                                                 
+        black 50%,       
+        #22B9E9 100%
+    );
+  }
   
-}
+
 .logocon{
     background-color:aliceblue;
     border-style: solid;
     width: 20%;
     padding-top: 5px;
     padding-bottom: 5px;
-    height: 55%;
+    height: 9%;
     border-radius: 20%;
     margin-left: auto;
     margin-right: auto;
@@ -27,9 +46,23 @@
     border-style: solid;
     border-width: 4px;
 }
+.logocona{
+    background-color:aliceblue;
+    border-style: solid;
+    width: 20%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 9%;
+    border-radius: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: #22B9E9;;
+    border-style: solid;
+    border-width: 4px;
+}
 #logo{
     width: 80%;
-    height: 50%;
+    height: 95%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 3%;
@@ -41,9 +74,31 @@
     font-size: larger;
 }
 .wodbod{
-    background-color: #00b250;
+    border-style: solid;
+    border-color: #00b250;
+    background: linear-gradient(
+        to top,
+        black 0%,
+        black 50%,                                                                 
+        black 50%,       
+        #00b250 100%
+    );
     border-radius: 80px;
+   height: 100%;
    
+}
+.wodbodb{
+    border-style: solid;
+    border-color: #22B9E9;
+    background: linear-gradient(
+        to top,
+        black 0%,
+        black 50%,                                                                 
+        black 50%,       
+        #22B9E9 100%
+    );
+    border-radius: 80px;
+   height: 100%;
    
 }
 .cardimg{
@@ -64,7 +119,7 @@ border-color: rgb(0, 0, 0);
 background-color: #000000;
 width:99%;
 border-style: solid;
-
+height: 700px;
 }
 .wodicon{
     margin-left: auto;
@@ -126,7 +181,7 @@ background-color: #000000;
   }
   .daBackb{
 
-    border-style: solid;
+    border-style: none;
     border-color: #22B9E9;
     background: linear-gradient(
         to bottom,

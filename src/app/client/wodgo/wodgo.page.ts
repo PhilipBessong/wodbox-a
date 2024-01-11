@@ -16,7 +16,7 @@ export class WodgoPage implements OnInit {
   specificWorkouts: Workout[] = [];
   exercises: Exercise[] = [];
   videoUrl: SafeResourceUrl | undefined;
-  videoHeight = '300px'; // Adjust the height as needed
+  videoHeight = '280px'; // Adjust the height as needed
   videoWidth = '400px';
   constructor(
     private router: Router,
@@ -25,6 +25,7 @@ export class WodgoPage implements OnInit {
 
   ngOnInit() {
     this.getSpecificWorkout();
+    this.getIonContentClass();
   }
   getSpecificWorkout(): void {
     this.workoutsService.getSpecificWorkouts().subscribe(
@@ -137,6 +138,126 @@ export class WodgoPage implements OnInit {
     );
   }
 
+  // Define cdr1m1Show
+  
+cdr1m1Showc: boolean = true;
+r1m2Showc: boolean = false;
+r1m3Showc: boolean = false;
+
+r2m1Showc: boolean = false;
+r2m2Showc: boolean = false;
+r2m3Showc: boolean = false;
+
+r3m1Showc: boolean = false;
+r3m2Showc: boolean = false;
+r3m3Showc: boolean = false;
+
+r4m1Showc: boolean = false;
+r4m2Showc: boolean = false;
+r4m3Showc: boolean = false;
+
+r1RestShowc: boolean = false;
+r1m2RestShowc: boolean = false;
+r1m3RestShowc: boolean = false;
+
+r2m1RestShowc: boolean = false;
+r2m2RestShowc: boolean = false;
+r2m3RestShowc: boolean = false;
+
+r3m1RestShowc: boolean = false;
+r3m2RestShowc: boolean = false;
+r3m3RestShowc: boolean = false;
+
+r4m1RestShowc: boolean = false;
+r4m2RestShowc: boolean = false;
+r4m3RestShowc: boolean = false;
+
+ionContentClass: string = ''; // Property to hold the class for ion-content
+lococon: string = '';
+// Logic to determine the class based on variables
+getIonContentClass(): void {
+  if (this.cdr1m1Showc) {
+    this.ionContentClass = 'red-content';
+    this.lococon = 'logocon';
+  } else if (this.r1RestShowc) {
+    this.ionContentClass = 'blue-content';
+    this.lococon = 'logocona';
+  } else if (this.r1m2Showc) {
+    this.ionContentClass = 'red-content';
+    this.lococon = 'logocon'; 
+  } else if (this.r1m2RestShowc){
+    this.ionContentClass = 'blue-content';
+    this.lococon = 'logocona';
+  } else if (this.r1m3Showc) {
+    this.ionContentClass = 'red-content';
+    this.lococon = 'logocon'; 
+  } else if (this.r1m3RestShowc){
+    this.ionContentClass = 'blue-content';
+    this.lococon = 'logocona';
+  } else if (this.r2m1Showc) {
+    this.ionContentClass = 'red-content';
+    this.lococon = 'logocon'; 
+  }else if (this.r2m1RestShowc){
+    this.ionContentClass = 'blue-content';
+    this.lococon = 'logocona';
+  } else if (this.r2m2Showc) {
+    this.ionContentClass = 'red-content';
+    this.lococon = 'logocon'; 
+  }else if (this.r2m2RestShowc){
+    this.ionContentClass = 'blue-content';
+    this.lococon = 'logocona';
+  }else if (this.r2m3Showc) {
+    this.ionContentClass = 'red-content';
+    this.lococon = 'logocon'; 
+  }else if (this.r2m3RestShowc){
+    this.ionContentClass = 'blue-content';
+    this.lococon = 'logocona';
+  }//r3
+   else if (this.r3m1Showc) {
+    this.ionContentClass = 'red-content';
+    this.lococon = 'logocon'; 
+  }else if (this.r3m1RestShowc){
+    this.ionContentClass = 'blue-content';
+    this.lococon = 'logocona';
+  } else if (this.r3m2Showc) {
+    this.ionContentClass = 'red-content';
+    this.lococon = 'logocon'; 
+  }else if (this.r3m2RestShowc){
+    this.ionContentClass = 'blue-content';
+    this.lococon = 'logocona';
+  }else if (this.r3m3Showc) {
+    this.ionContentClass = 'red-content';
+    this.lococon = 'logocon'; 
+  }else if (this.r3m3RestShowc){
+    this.ionContentClass = 'blue-content';
+    this.lococon = 'logocona';
+  }
+  //r4
+  else if (this.r4m1Showc) {
+    this.ionContentClass = 'red-content';
+    this.lococon = 'logocon'; 
+  }else if (this.r4m1RestShowc){
+    this.ionContentClass = 'blue-content';
+    this.lococon = 'logocona';
+  } else if (this.r4m2Showc) {
+    this.ionContentClass = 'red-content';
+    this.lococon = 'logocon'; 
+  }else if (this.r4m2RestShowc){
+    this.ionContentClass = 'blue-content';
+    this.lococon = 'logocona';
+  }else if (this.r4m3Showc) {
+    this.ionContentClass = 'red-content';
+    this.lococon = 'logocon'; 
+  }else if (this.r4m3RestShowc){
+    this.ionContentClass = 'blue-content';
+    this.lococon = 'logocona';
+  }
+}
+updateIonContentClass() {
+  // Method to update the ion-content class based on variables
+  this.getIonContentClass();
+  // Apply ion-content class or update a property bound to ngClass in the template
+}
   cd5Sec: number | undefined = undefined;
   buttonDisabled = false;
   cd5SecShow = true;
@@ -181,6 +302,9 @@ export class WodgoPage implements OnInit {
           this.clearr1m1Cd();
           this.cdr1m1Show = false;
           this.r1RestShow = true;
+          this.cdr1m1Showc = false;
+          this.r1RestShowc = true;
+          this.updateIonContentClass(); // Call a method to update the ion-content class
           this.startr1Rest(specificWorkouts);
         }
       }, 1000);
@@ -209,6 +333,9 @@ export class WodgoPage implements OnInit {
           this.cdr1Rest--;
         } else {
           clearInterval(this.cdir1Rest);
+          this.r1RestShowc = false;
+          this.r1m2Showc = true;
+        this.updateIonContentClass(); // Call a method to update the ion-content class
           this.clearcdr1rest();
           if (specificWorkouts.r1m2 !== "") {
             this.r1m2Show = true;
@@ -288,7 +415,9 @@ export class WodgoPage implements OnInit {
 
           this.r1m2Show = false;
           this.r1m2RestShow = true;
-
+          this.r1m2Showc = false;
+          this.r1m2RestShowc = true;
+          this.updateIonContentClass(); // Call a method to update the ion-content class
           this.startr1m2Rest(specificWorkouts);
         }
       }, 1000);
@@ -317,6 +446,9 @@ export class WodgoPage implements OnInit {
           this.cdr1m2Rest--;
         } else {
           clearInterval(this.cdir1m2Rest);
+          this.r1m2RestShowc = false;
+          this.r1m3Showc = true;
+        this.updateIonContentClass(); // Call a method to update the ion-content class
           this.clearcdr1m2rest();
           if (specificWorkouts.r1m3 !== "") {
             this.r1m3Show = true;
@@ -395,7 +527,9 @@ export class WodgoPage implements OnInit {
 
           this.r1m3Show = false;
           this.r1m3RestShow = true;
-
+          this.r1m3Showc = false;
+          this.r1m3RestShowc = true;
+          this.updateIonContentClass();
           this.startr1m3Rest(specificWorkouts);
         }
       }, 1000);
@@ -422,6 +556,9 @@ export class WodgoPage implements OnInit {
           this.cdr1m3Rest--;
         } else {
           clearInterval(this.cdir1m3Rest);
+          this.r1m3RestShowc = false;
+          this.r1m3Showc = true;
+        this.updateIonContentClass(); // Call a method to update the ion-content class
           this.clearcdr1m3rest();
 
           if (this.r1sets !== specificWorkouts.r1sets) {
@@ -499,7 +636,9 @@ export class WodgoPage implements OnInit {
 
           this.r2m1Show = false;
           this.r2RestShow = true;
-
+          this.r2m1Showc = false;
+          this.r2m1RestShowc = true;
+          this.updateIonContentClass();
           this.startr2Rest(specificWorkouts);
         }
       }, 1000);
@@ -527,6 +666,9 @@ export class WodgoPage implements OnInit {
           this.cdr2Rest--;
         } else {
           clearInterval(this.cdir2Rest); // Use cdir2Rest, not cdr2Rest
+          this.r2m1RestShowc = false;
+          this.r2m1Showc = true;
+        this.updateIonContentClass(); // Call a method to update the ion-content class
           this.clearcdr2rest();
           if (specificWorkouts.r2m2 !== '') {
             this.r2RestShow = false;
@@ -603,7 +745,9 @@ export class WodgoPage implements OnInit {
 
           this.r2m2Show = false;
           this.r2m2RestShow = true;
-
+          this.r2m2Showc = false;
+          this.r2m2RestShowc = true;
+          this.updateIonContentClass();
           this.startr2m2Rest(specificWorkouts);
         }
       }, 1000);
@@ -632,6 +776,9 @@ export class WodgoPage implements OnInit {
           this.cdr2m2Rest--;
         } else {
           clearInterval(this.cdir2m2Rest);
+          this.r2m2RestShowc = false;
+          this.r2m2Showc = true;
+        this.updateIonContentClass();
           this.clearcdr2m2rest();
           if (specificWorkouts.r2m3 !== '') {
             this.r2m3Show = true;
@@ -710,7 +857,9 @@ export class WodgoPage implements OnInit {
 
           this.r2m3Show = false;
           this.r2m3RestShow = true;
-
+          this.r2m3Showc = false;
+          this.r2m3RestShowc = true;
+          this.updateIonContentClass();
           this.startr2m3Rest(specificWorkouts);
         }
       }, 1000);
@@ -736,6 +885,9 @@ export class WodgoPage implements OnInit {
           this.cdr2m3Rest--;
         } else {
           clearInterval(this.cdir2m3Rest);
+          this.r2m3RestShowc = false;
+          this.r2m3Showc = true;
+        this.updateIonContentClass();
           this.clearcdr2m3rest();
           if (this.r2sets !== specificWorkouts.r2sets) {
             this.r2sets++;
@@ -812,7 +964,9 @@ export class WodgoPage implements OnInit {
 
           this.r3m1Show = false;
           this.r3RestShow = true;
-
+          this.r3m1Showc = false;
+          this.r3m1RestShowc = true;
+          this.updateIonContentClass();
           this.startr3Rest(specificWorkouts);
         }
       }, 1000);
@@ -841,6 +995,9 @@ export class WodgoPage implements OnInit {
           this.cdr3Rest--;
         } else {
           clearInterval(this.cdr3Rest);
+          this.r3m1RestShowc = false;
+          this.r3m1Showc = true;
+        this.updateIonContentClass();
           this.clearcdr3rest();
           if (specificWorkouts.r3m2 !== '') {
             this.r3RestShow = false;
@@ -917,7 +1074,9 @@ export class WodgoPage implements OnInit {
 
           this.r3m2Show = false;
           this.r3m2RestShow = true;
-
+          this.r3m2Showc = false;
+          this.r3m2RestShowc = true;
+          this.updateIonContentClass();
           this.startr3m2Rest(specificWorkouts);
         }
       }, 1000);
@@ -945,6 +1104,9 @@ export class WodgoPage implements OnInit {
           this.cdr3m2Rest--;
         } else {
           clearInterval(this.cdir3m2Rest);
+          this.r3m2RestShowc = false;
+          this.r3m2Showc = true;
+        this.updateIonContentClass();
           this.clearcdr3m2rest();
           if (specificWorkouts.r3m3 !== '') {
             this.r3m3Show = true;
@@ -1024,7 +1186,9 @@ export class WodgoPage implements OnInit {
 
           this.r3m3Show = false;
           this.r3m3RestShow = true;
-
+          this.r3m3Showc = false;
+          this.r3m3RestShowc = true;
+          this.updateIonContentClass();
           this.startr3m3Rest(specificWorkouts);
         }
       }, 1000);
@@ -1050,6 +1214,9 @@ export class WodgoPage implements OnInit {
           this.cdr3m3Rest--;
         } else {
           clearInterval(this.cdir3m3Rest);
+          this.r3m3RestShowc = false;
+          this.r3m3Showc = true;
+        this.updateIonContentClass();
           this.clearcdr3m3rest();
           if (this.r3sets !== specificWorkouts.r3sets) {
             this.r3sets++;
@@ -1127,7 +1294,9 @@ export class WodgoPage implements OnInit {
 
           this.r4m1Show = false;
           this.r4RestShow = true;
-
+          this.r4m1Showc = false;
+          this.r4m1RestShowc = true;
+          this.updateIonContentClass();
           this.startr4Rest(specificWorkouts);
         }
       }, 1000);
@@ -1156,6 +1325,9 @@ export class WodgoPage implements OnInit {
           this.cdr4Rest--;
         } else {
           clearInterval(this.cdr4Rest);
+          this.r4m1RestShowc = false;
+          this.r4m1Showc = true;
+        this.updateIonContentClass();
           this.clearcdr4rest();
           if (specificWorkouts.r4m2 !== '') {
             this.r4RestShow = false;
@@ -1226,7 +1398,9 @@ export class WodgoPage implements OnInit {
 
           this.r4m2Show = false;
           this.r4m2RestShow = true;
-
+          this.r4m2Showc = false;
+          this.r4m2RestShowc = true;
+          this.updateIonContentClass();
           this.startr4m2Rest(specificWorkouts);
         }
       }, 1000);
@@ -1254,6 +1428,9 @@ export class WodgoPage implements OnInit {
           this.cdr4m2Rest--;
         } else {
           clearInterval(this.cdir4m2Rest);
+          this.r4m2RestShowc = false;
+          this.r4m2Showc = true;
+        this.updateIonContentClass();
           this.clearcdr4m2rest();
           if (specificWorkouts.r4m3 !== '') {
             this.r4m3Show = true;
@@ -1325,11 +1502,14 @@ export class WodgoPage implements OnInit {
           this.cdr4m3Timer--;
         } else {
           clearInterval(this.cdr4m3Intval);
+        
           this.clearr4m3Cd();
 
           this.r4m3Show = false;
           this.r4m3RestShow = true;
-
+          this.r4m3Showc = false;
+          this.r4m3RestShowc = true;
+          this.updateIonContentClass();
           this.startr4m3Rest(specificWorkouts);
         }
       }, 1000);
@@ -1355,6 +1535,9 @@ export class WodgoPage implements OnInit {
           this.cdr4m3Rest--;
         } else {
           clearInterval(this.cdir4m3Rest);
+          this.r4m3RestShowc = false;
+          this.r4m3Showc = true;
+        this.updateIonContentClass();
           this.clearcdr4m3rest();
           if (this.r4sets !== specificWorkouts.r4sets) {
             this.r4sets++;

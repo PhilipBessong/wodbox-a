@@ -1,72 +1,115 @@
-
-<ion-content [fullscreen]="true" style="background-color: black;">
-  
+<ion-content [fullscreen]="true" style="background-color: black">
   <ion-grid style="height: 100%">
     <ion-row justify-content-center align-items-center style="height: 100%">
       <ion-card style="width: 100%">
-        
-          <div class="container">
-            <pre></pre>
-            <div class="row">
-              <div class="logocon">
-                <ion-img
-                src="assets/imgs/WODBOX ICON@2x.png"
-                id="logo"
-                ></ion-img>
-              </div>
-            </div>
-            <div class="row">
-              <h1 style="text-align: center; color: #b27600; font-size: xxx-large;">WODBOX</h1>
-            </div>
-            <pre></pre>
-            <div>
-              <ion-input
-                type="email"
-                name="email"
-                style="font-size: x-large; text-align: center; border: #b27600; border-style: solid;border-radius: 10px; width: 90%; height: 52px; margin-left: auto; margin-right:auto;"
-                placeholder="Username"
-                [(ngModel)]="email" type="email"
-                required
-              ></ion-input>
-            </div>
-            <pre></pre>
-            <div>
-              <ion-input
-                type="password"
-                name="password"
-                style="font-size: x-large; text-align: center; border: #b27600; border-style: solid;border-radius: 10px; height: 52px;width: 90%; margin-left: auto; margin-right: auto;"
-                placeholder="Password"
-                [(ngModel)]="password" type="password"
-                required
-              ></ion-input>
-            </div>
-            <pre></pre>
-            <div style="text-align: center">
-              <button
-                style="
-                  font-size: xxx-large;
-                  margin-left: auto;
-                  margin-right: auto;
-                  border-radius: 10px;
-                  background-color:#b27600;
-                  width: 90%;
-                  height: 70px;
-                  font-weight: 500;
-                "
-                expand="full" (click)="login()"
-                >Login</button
-              >
-            </div>
-            <br />
-            <div style="text-align: center; font-size: large;">
-              Dont have an accont?
-              <a href="./signup" style="padding-left: 2%; color: #b27600;">Create account</a>
-            </div>
-            <br>
-            <div style="text-align: center; font-size: large;">
-              Forgot your password?<a href="./forgot-password" style="padding-left: 2%; color: #b27600;">YES</a>
+        <div class="container">
+          <pre></pre>
+          <div class="row">
+            <div class="logocon">
+              <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
             </div>
           </div>
+          <div class="row">
+            <h1
+              style="text-align: center; color: #b27600; font-size: xxx-large"
+            >
+              WODBOX
+            </h1>
+          </div>
+          <pre></pre>
+          <div>
+            <ion-input
+              type="email"
+              name="email"
+              style="
+                font-size: x-large;
+                text-align: center;
+                border: #b27600;
+                border-style: solid;
+                border-radius: 10px;
+                width: 90%;
+                height: 52px;
+                margin-left: auto;
+                margin-right: auto;
+              "
+              placeholder="Username"
+              [(ngModel)]="email"
+              type="email"
+              required
+            ></ion-input>
+          </div>
+          <pre></pre>
+          <ion-row style="position: relative;">
+            <ion-input
+              type="{{ showPassword ? 'text' : 'password' }}"
+              name="password"
+              style="
+                font-size: x-large;
+                text-align: center;
+                border: #b27600;
+                border-style: solid;
+                border-radius: 10px;
+                height: 52px;
+                width: calc(90% - 40px); /* Adjust the width as needed */
+                margin-left: auto;
+                margin-right: auto;
+              "
+              placeholder="Password"
+              [(ngModel)]="password"
+              required
+            ></ion-input>
+          
+            <!-- Toggle button for showing/hiding password -->
+            <ion-icon
+              *ngIf="showPassword"
+              (click)="togglePasswordVisibility()"
+              name="eye-off"
+              style="color: #b27600; cursor: pointer; position: absolute; right: 20px; top: 10px; height: 35px;"
+            ></ion-icon>
+            <ion-icon
+              *ngIf="!showPassword"
+              (click)="togglePasswordVisibility()"
+              name="eye"
+              style="color: #b27600; cursor: pointer; position: absolute; right: 20px; top: 10px; height: 35px;"
+            ></ion-icon>
+          </ion-row>
+          
+          
+          <pre></pre>
+          <div style="text-align: center">
+            <button
+              style="
+                font-size: xxx-large;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 10px;
+                background-color: #b27600;
+                width: 90%;
+                height: 70px;
+                font-weight: 500;
+              "
+              expand="full"
+              (click)="login()"
+            >
+              Login
+            </button>
+          </div>
+          <br />
+          <div style="text-align: center; font-size: large">
+            Dont have an accont?
+            <a href="./signup" style="padding-left: 2%; color: #b27600"
+              >Create account</a
+            >
+          </div>
+          <br />
+          <div style="text-align: center; font-size: large">
+            Forgot your password?<a
+              href="./forgot-password"
+              style="padding-left: 2%; color: #b27600"
+              >YES</a
+            >
+          </div>
+        </div>
       </ion-card>
     </ion-row>
   </ion-grid>

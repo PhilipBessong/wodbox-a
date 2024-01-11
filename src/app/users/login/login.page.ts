@@ -38,6 +38,14 @@ export class LoginPage implements OnInit {
     });
     toast.present();
   }
+  // Add this property to toggle password visibility
+showPassword: boolean = false;
+
+// Function to toggle password visibility
+togglePasswordVisibility() {
+  this.showPassword = !this.showPassword;
+}
+
 
   tocreate() {
     // Example of navigating programmatically with relative paths
