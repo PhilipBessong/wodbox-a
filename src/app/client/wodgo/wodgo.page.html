@@ -1,6 +1,4 @@
-<ion-content
-  [fullscreen]="true" [ngClass]="ionContentClass"
->
+<ion-content [fullscreen]="true" [ngClass]="ionContentClass">
   <div class="logocon" [ngClass]="lococon">
     <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
   </div>
@@ -83,7 +81,7 @@
                 text-align: center;
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
-                font-size: xx-large;
+                font-size: x-large;
                 padding: 10%;
                 color: #00b250;
               "
@@ -92,21 +90,38 @@
           </ion-row>
           <ion-row *ngIf="cdr1m1Timer !== undefined">
             <!-- Display the 5-second timer -->
-            <ion-label
+            <div
               *ngIf="cdr1m1Show"
               style="
                 text-align: center;
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
-                font-size:7dvh;
+                font-size: 7dvh;
                 padding: 10%;
                 color: #00b250;
+                position: relative;
               "
-              >{{ cdr1m1Timer }}</ion-label
             >
+              <div
+                style="
+                  border-radius: 50%; /* Make it a circle */
+                  border-style: solid;
+                  border-color: #00b250;
+                  border-width: 6px;
+                  width: 120px; /* Adjust the width to make it twice as big as the timer */
+                  height: 120px; /* Set the height based on the width */
+                  background-color: transparent; /* Background color for the circle */
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: -1; /* Set z-index to ensure the circle is behind the text */
+                "
+              ></div>
+              {{ cdr1m1Timer }}
+            </div>
           </ion-row>
         </ion-row>
-        
       </ion-card>
     </ion-card>
   </div>
@@ -115,7 +130,7 @@
     <ion-card
       class="wodbodb"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #22b9e9"
+      style="background-color: #22b9e9; height: 770px"
     >
       <h1
         class="cardttl"
@@ -128,87 +143,166 @@
       >
         Rest
       </h1>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 760px">
         <ion-row class="ion-justify-content-center" *ngIf="workout.exe">
           <ion-img
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 62vh"
+            style="background-color: aliceblue; height: 65vh"
           ></ion-img>
         </ion-row>
-        <pre></pre>
+
         <ion-row
           *ngIf="workout.r1rest !== undefined"
           class="ion-justify-content-center"
-        >    
+        >
+          <pre></pre>
           <!-- Countdown timer -->
           <ion-label
             class="ion-justify-content-center"
             style="
-              height: 70px;
+              height: 90px;
               width: 330px;
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
-              font-size: xxx-large;
+              font-size: 60px;
               color: #22b9e9;
               text-align: center;
             "
-            >{{cdr1Rest}}s</ion-label > 
+            >{{cdr1Rest}}</ion-label
+          >
         </ion-row>
       </ion-card>
     </ion-card>
   </div>
   <!--r1m2Show-->
   <div class="daBack" *ngIf="r1m2Show">
-    <ion-card class="wodbod" *ngFor="let workout of specificWorkouts" style="background-color: #00b250">
-      <h2 class="cardttl" style="color: black; font-size: x-large; font-weight: 700; vertical-align: middle;">
+    <ion-card
+      class="wodbod"
+      *ngFor="let workout of specificWorkouts"
+      style="background-color: #00b250"
+    >
+      <h2
+        class="cardttl"
+        style="
+          color: black;
+          font-size: x-large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+      >
         Round 1
       </h2>
       <ion-card class="card" style="background-color: #070707">
-        <ion-card-subtitle style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: x-large; padding: 10%; color: aliceblue;">
+        <ion-card-subtitle
+          style="
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: x-large;
+            padding: 10%;
+            color: aliceblue;
+          "
+        >
           {{workout.r1m2}}
         </ion-card-subtitle>
         <ion-row class="ion-justify-content-center" *ngIf="workout.exeR1M2">
-          <video controls *ngIf="workout.exeR1M2.mobileUrl" autoplay loop style="border-radius: 20px" height="463px">
+          <video
+            controls
+            *ngIf="workout.exeR1M2.mobileUrl"
+            autoplay
+            loop
+            style="border-radius: 20px"
+            height="463px"
+          >
             <source [src]="workout.exeR1M2.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
             Your browser does not support the video tag.
           </video>
         </ion-row>
         <pre></pre>
-        <ion-row *ngIf="workout.r1move !== undefined" class="ion-justify-content-center">
+        <ion-row
+          *ngIf="workout.r1move !== undefined"
+          class="ion-justify-content-center"
+        >
           <!-- Countdown timer -->
-    
-          <button (click)="strt5Sec2Timer(workout)" *ngIf="srtbtn2Show" style="height: 70px; width: 330px; font-size: xx-large; border-radius: 20px; color: #070707; background-color: #00b250; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" id="srtbtnr1m1" color="#00b250">
+
+          <button
+            (click)="strt5Sec2Timer(workout)"
+            *ngIf="srtbtn2Show"
+            style="
+              height: 70px;
+              border-radius: 20px;
+              width: 330px;
+              font-size: xx-large;
+              border-radius: 20px;
+              color: #070707;
+              background-color: #00b250;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
             Start Timer
           </button>
-    
+
           <ion-row *ngIf="cd5Sec2 !== undefined">
             <!-- Display the 5-second timer -->
-            <ion-label *ngIf="cd5Sec2Show" style="text-align: center; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: xx-large; padding: 10%; color: #00b250;">
+            <ion-label
+              *ngIf="cd5Sec2Show"
+              style="
+                text-align: center;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                font-size: x-large;
+                padding: 10%;
+                color: #00b250;
+              "
+            >
               Get Ready in {{ cd5Sec2 }}
             </ion-label>
           </ion-row>
-    
+
           <ion-row *ngIf="cdr1m2Timer !== undefined">
             <!-- Display the 5-second timer -->
-            <ion-label *ngIf="cdr1m2Show" style="text-align: center; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: xxx-large; padding: 10%; color: #00b250;">
-              {{ cdr1m2Timer }}s
-            </ion-label>
+            <div
+              *ngIf="cdr1m2Show"
+              style="
+                  text-align: center;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 7dvh;
+      padding: 10%;
+      color: #00b250;
+      position: relative;
+              "
+            > <div
+            style="
+              border-radius: 50%; /* Make it a circle */
+              border-style: solid;
+              border-color: #00b250;
+              border-width: 6px;
+              width: 120px; /* Adjust the width to make it twice as big as the timer */
+              height: 120px; /* Set the height based on the width */
+              background-color: transparent; /* Background color for the circle */
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              z-index: -1; /* Set z-index to ensure the circle is behind the text */
+            "
+          ></div>
+              {{ cdr1m2Timer }}
+            </div>
           </ion-row>
         </ion-row>
-        <pre></pre>
       </ion-card>
     </ion-card>
-    
   </div>
   <!--r1m2RestShow-->
   <div class="daBackb" *ngIf="r1m2RestShow">
-   
-
     <ion-card
-      class="wodbod"
+      class="wodbodb"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #22b9e9"
+      style="background-color: #12b4e5; height: 770px"
     >
       <h1
         class="cardttl"
@@ -221,7 +315,7 @@
       >
         Rest
       </h1>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 770px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
@@ -245,7 +339,7 @@
               color: #22b9e9;
               text-align: center;
             "
-            >{{cdr1m2Rest}}s</ion-label
+            >{{cdr1m2Rest}}</ion-label
           >
         </ion-row>
       </ion-card>
@@ -253,25 +347,6 @@
   </div>
   <!--r1m3Show-->
   <div class="daBack" *ngIf="r1m3Show">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #00b250; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #00b250; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
-
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
@@ -307,7 +382,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="463px"
+            height="450px"
           >
             <source [src]="workout.exeR1M3.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -348,7 +423,7 @@
                 text-align: center;
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
-                font-size: xx-large;
+                font-size: x-large;
                 padding: 10%;
                 color: #00b250;
               "
@@ -358,17 +433,32 @@
 
           <ion-row *ngIf="cdr1m3Timer !== undefined">
             <!-- Display the 5-second timer -->
-            <ion-label
+            <div
               *ngIf="cdr1m3Show"
               style="
-                text-align: center;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                font-size: xxx-large;
-                padding: 10%;
-                color: #00b250;
+              text-align: center;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+              font-size: 6dvh;
+              padding: 10%;
+              color: #00b250;
+              position: relative;
               "
-              >{{ cdr1m3Timer }}s</ion-label
+              > <div
+              style="
+                border-radius: 50%; /* Make it a circle */
+                border-style: solid;
+                border-color: #00b250;
+                border-width: 7px;
+                width: 120px; /* Adjust the width to make it twice as big as the timer */
+                height: 120px; /* Set the height based on the width */
+                background-color: transparent; /* Background color for the circle */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              "
+            ></div>{{ cdr1m3Timer }}</div
             >
           </ion-row>
         </ion-row>
@@ -378,28 +468,10 @@
   </div>
   <!--r1m3Rest-->
   <div class="daBackb" *ngIf="r1m3RestShow">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #22b9e9; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #22b9e9; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon" style="border-color: #22b9e9">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
     <ion-card
-      class="wodbod"
+      class="wodbodb"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #22b9e9"
+      style="background-color: #22b9e9; height: 770px"
     >
       <h1
         class="cardttl"
@@ -412,7 +484,7 @@
       >
         Rest
       </h1>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 770px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
@@ -436,7 +508,7 @@
               color: #22b9e9;
               text-align: center;
             "
-            >{{cdr1m3Rest}}s</ion-label
+            >{{cdr1m3Rest}}</ion-label
           >
         </ion-row>
       </ion-card>
@@ -444,25 +516,6 @@
   </div>
   <!--r2m1Show-->
   <div class="daBack" *ngIf="r2m1Show">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #00b250; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #00b250; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
-
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
@@ -558,7 +611,7 @@
                 padding: 10%;
                 color: #00b250;
               "
-              >{{ cdr2m1Timer }}s</ion-label
+              >{{ cdr2m1Timer }}</ion-label
             >
           </ion-row>
         </ion-row>
@@ -568,28 +621,10 @@
   </div>
   <!--r2RestShow-->
   <div class="daBackb" *ngIf="r2RestShow">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #22b9e9; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #22b9e9; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon" style="border-color: #22b9e9">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
     <ion-card
-      class="wodbod"
+      class="wodbodb"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #22b9e9"
+      style="background-color: #22b9e9; height: 770px"
     >
       <h1
         class="cardttl"
@@ -602,7 +637,7 @@
       >
         Rest
       </h1>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 770px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
@@ -626,7 +661,7 @@
               color: #22b9e9;
               text-align: center;
             "
-            >{{cdr2Rest}}s</ion-label
+            >{{cdr2Rest}}</ion-label
           >
         </ion-row>
       </ion-card>
@@ -634,25 +669,6 @@
   </div>
   <!--r2m2Show-->
   <div class="daBack" *ngIf="r2m2Show">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #00b250; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #00b250; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
-
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
@@ -749,7 +765,7 @@
                 padding: 10%;
                 color: #00b250;
               "
-              >{{ cdr2m2Timer }}s</ion-label
+              >{{ cdr2m2Timer }}</ion-label
             >
           </ion-row>
         </ion-row>
@@ -759,28 +775,10 @@
   </div>
   <!--r2m2RestShow-->
   <div class="daBackb" *ngIf="r2m2RestShow">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #22b9e9; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #22b9e9; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon" style="border-color: #22b9e9">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
     <ion-card
-      class="wodbod"
+      class="wodbodb"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #22b9e9"
+      style="background-color: #22b9e9; height: 770px"
     >
       <h1
         class="cardttl"
@@ -793,7 +791,7 @@
       >
         Rest
       </h1>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 770px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
@@ -817,7 +815,7 @@
               color: #22b9e9;
               text-align: center;
             "
-            >{{cdr2m2Rest}}s</ion-label
+            >{{cdr2m2Rest}}</ion-label
           >
         </ion-row>
       </ion-card>
@@ -825,25 +823,6 @@
   </div>
   <!--r2m3Show-->
   <div class="daBack" *ngIf="r2m3Show">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #00b250; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #00b250; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
-
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
@@ -940,7 +919,7 @@
                 padding: 10%;
                 color: #00b250;
               "
-              >{{ cdr2m3Timer }}s</ion-label
+              >{{ cdr2m3Timer }}</ion-label
             >
           </ion-row>
         </ion-row>
@@ -950,28 +929,10 @@
   </div>
   <!--r2m3Rest-->
   <div class="daBackb" *ngIf="r2m3RestShow">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #22b9e9; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #22b9e9; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon" style="border-color: #22b9e9">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #22b9e9"
+      style="background-color: #22b9e9; height: 770px"
     >
       <h1
         class="cardttl"
@@ -984,7 +945,7 @@
       >
         Rest
       </h1>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 770px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
@@ -1008,7 +969,7 @@
               color: #22b9e9;
               text-align: center;
             "
-            >{{cdr2m3Rest}}s</ion-label
+            >{{cdr2m3Rest}}</ion-label
           >
         </ion-row>
       </ion-card>
@@ -1016,25 +977,6 @@
   </div>
   <!--r3m1Show-->
   <div class="daBack" *ngIf="r3m1Show">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #00b250; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #00b250; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
-
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
@@ -1130,7 +1072,7 @@
                 padding: 10%;
                 color: #00b250;
               "
-              >{{ cdr3m1Timer }}s</ion-label
+              >{{ cdr3m1Timer }}</ion-label
             >
           </ion-row>
         </ion-row>
@@ -1140,28 +1082,10 @@
   </div>
   <!--r3RestShow-->
   <div class="daBackb" *ngIf="r3RestShow">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #22b9e9; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #22b9e9; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon" style="border-color: #22b9e9">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
     <ion-card
-      class="wodbod"
+      class="wodbodb"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #22b9e9"
+      style="background-color: #22b9e9; height: 770px"
     >
       <h1
         class="cardttl"
@@ -1174,7 +1098,7 @@
       >
         Rest
       </h1>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 770px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
@@ -1198,7 +1122,7 @@
               color: #22b9e9;
               text-align: center;
             "
-            >{{cdr3Rest}}s</ion-label
+            >{{cdr3Rest}}</ion-label
           >
         </ion-row>
       </ion-card>
@@ -1206,25 +1130,6 @@
   </div>
   <!--r3m2Show-->
   <div class="daBack" *ngIf="r3m2Show">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #00b250; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #00b250; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
-
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
@@ -1321,7 +1226,7 @@
                 padding: 10%;
                 color: #00b250;
               "
-              >{{ cdr3m2Timer }}s</ion-label
+              >{{ cdr3m2Timer }}</ion-label
             >
           </ion-row>
         </ion-row>
@@ -1331,28 +1236,10 @@
   </div>
   <!--r3m2RestShow-->
   <div class="daBackb" *ngIf="r3m2RestShow">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #22b9e9; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #22b9e9; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon" style="border-color: #22b9e9">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
     <ion-card
-      class="wodbod"
+      class="wodbodb"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #22b9e9"
+      style="background-color: #22b9e9; height: 770px"
     >
       <h1
         class="cardttl"
@@ -1365,7 +1252,7 @@
       >
         Rest
       </h1>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 770px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
@@ -1389,7 +1276,7 @@
               color: #22b9e9;
               text-align: center;
             "
-            >{{cdr3m2Rest}}s</ion-label
+            >{{cdr3m2Rest}}</ion-label
           >
         </ion-row>
       </ion-card>
@@ -1397,25 +1284,6 @@
   </div>
   <!--r3m3Show-->
   <div class="daBack" *ngIf="r3m3Show">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #00b250; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #00b250; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
-
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
@@ -1512,7 +1380,7 @@
                 padding: 10%;
                 color: #00b250;
               "
-              >{{ cdr3m3Timer }}s</ion-label
+              >{{ cdr3m3Timer }}</ion-label
             >
           </ion-row>
         </ion-row>
@@ -1522,28 +1390,11 @@
   </div>
   <!--r3m3Rest-->
   <div class="daBackb" *ngIf="r3m3RestShow">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #22b9e9; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #22b9e9; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon" style="border-color: #22b9e9">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
+    >
     <ion-card
-      class="wodbod"
+      class="wodbodb"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #22b9e9"
+      style="background-color: #22b9e9; height: 770px"
     >
       <h1
         class="cardttl"
@@ -1556,7 +1407,7 @@
       >
         Rest
       </h1>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 770px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
@@ -1580,7 +1431,7 @@
               color: #22b9e9;
               text-align: center;
             "
-            >{{cdr3m3Rest}}s</ion-label
+            >{{cdr3m3Rest}}</ion-label
           >
         </ion-row>
       </ion-card>
@@ -1588,25 +1439,6 @@
   </div>
   <!--r4m1Show-->
   <div class="daBack" *ngIf="r4m1Show">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #00b250; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #00b250; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
-
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
@@ -1702,7 +1534,7 @@
                 padding: 10%;
                 color: #00b250;
               "
-              >{{ cdr4m1Timer }}s</ion-label
+              >{{ cdr4m1Timer }}</ion-label
             >
           </ion-row>
         </ion-row>
@@ -1712,28 +1544,10 @@
   </div>
   <!--r4RestShow-->
   <div class="daBackb" *ngIf="r4RestShow">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #22b9e9; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #22b9e9; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon" style="border-color: #22b9e9">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
     <ion-card
-      class="wodbod"
+      class="wodbodb"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #22b9e9"
+      style="background-color: #22b9e9; height: 770px"
     >
       <h1
         class="cardttl"
@@ -1746,7 +1560,7 @@
       >
         Rest
       </h1>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 770px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
@@ -1770,7 +1584,7 @@
               color: #22b9e9;
               text-align: center;
             "
-            >{{cdr4Rest}}s</ion-label
+            >{{cdr4Rest}}</ion-label
           >
         </ion-row>
       </ion-card>
@@ -1778,25 +1592,6 @@
   </div>
   <!--r4m2Show-->
   <div class="daBack" *ngIf="r4m2Show">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #00b250; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #00b250; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
-
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
@@ -1893,38 +1688,19 @@
                 padding: 10%;
                 color: #00b250;
               "
-              >{{ cdr4m2Timer }}s</ion-label
+              >{{ cdr4m2Timer }}</ion-label
             >
           </ion-row>
         </ion-row>
-        <pre></pre>
       </ion-card>
     </ion-card>
   </div>
   <!--r4m2RestShow-->
   <div class="daBackb" *ngIf="r4m2RestShow">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #22b9e9; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #22b9e9; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon" style="border-color: #22b9e9">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
     <ion-card
-      class="wodbod"
+      class="wodbodb"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #22b9e9"
+      style="background-color: #22b9e9; height: 770px"
     >
       <h1
         class="cardttl"
@@ -1937,7 +1713,7 @@
       >
         Rest
       </h1>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 770px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
@@ -1961,7 +1737,7 @@
               color: #22b9e9;
               text-align: center;
             "
-            >{{cdr4m2Rest}}s</ion-label
+            >{{cdr4m2Rest}}</ion-label
           >
         </ion-row>
       </ion-card>
@@ -1969,25 +1745,6 @@
   </div>
   <!--r4m3Show-->
   <div class="daBack" *ngIf="r4m3Show">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #00b250; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #00b250; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
-
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
@@ -2084,7 +1841,7 @@
                 padding: 10%;
                 color: #00b250;
               "
-              >{{ cdr4m3Timer }}s</ion-label
+              >{{ cdr4m3Timer }}</ion-label
             >
           </ion-row>
         </ion-row>
@@ -2094,28 +1851,10 @@
   </div>
   <!--r4m3Rest-->
   <div class="daBackb" *ngIf="r4m3RestShow">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #22b9e9; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #22b9e9; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon" style="border-color: #22b9e9">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
     <ion-card
-      class="wodbod"
+      class="wodbodb"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #22b9e9"
+      style="background-color: #22b9e9; height: 770px"
     >
       <h1
         class="cardttl"
@@ -2128,7 +1867,7 @@
       >
         Rest
       </h1>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 770px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
@@ -2152,7 +1891,7 @@
               color: #22b9e9;
               text-align: center;
             "
-            >{{cdr4m3Rest}}s</ion-label
+            >{{cdr4m3Rest}}</ion-label
           >
         </ion-row>
       </ion-card>
@@ -2160,28 +1899,10 @@
   </div>
   <!--donescrnShow-->
   <div class="daBackd" *ngIf="donescrnShow">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #b27600; border-radius: 10%; color: aliceblue"
-        slot="start"
-      >
-      </ion-menu-button>
-
-      <a href="/warmup" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #b27600; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon" style="border-color: #b27600">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
-    </div>
     <ion-card
-      class="wodbod"
+      class="wodbodc"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #b27600"
+      style="background-color: #b27600; height: 770px"
     >
       <h1
         class="cardttl"
@@ -2245,9 +1966,7 @@
           >
             HOME
           </button>
-          <br />
         </ion-row>
-        <pre></pre>
       </ion-card>
     </ion-card>
   </div>

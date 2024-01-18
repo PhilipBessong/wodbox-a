@@ -171,6 +171,7 @@ r3m3RestShowc: boolean = false;
 r4m1RestShowc: boolean = false;
 r4m2RestShowc: boolean = false;
 r4m3RestShowc: boolean = false;
+woddonec:boolean = false;
 
 ionContentClass: string = ''; // Property to hold the class for ion-content
 lococon: string = '';
@@ -251,6 +252,9 @@ getIonContentClass(): void {
   }else if (this.r4m3RestShowc){
     this.ionContentClass = 'blue-content';
     this.lococon = 'logocona';
+  }else if (this.woddonec){
+    this.ionContentClass = 'home-content';
+    this.lococon = 'logoconc';
   }
 }
 updateIonContentClass() {
@@ -340,6 +344,10 @@ updateIonContentClass() {
           if (specificWorkouts.r1m2 !== "") {
             this.r1m2Show = true;
             this.r1RestShow = false;
+            this.updateIonContentClass(); // Call a method to update the ion-content class
+            this.r1m2Showc = true;
+            this.r1RestShowc = false;
+            
           } else {
             if (this.r1sets !== specificWorkouts.r1sets) {
               this.r1sets++;
@@ -353,9 +361,16 @@ updateIonContentClass() {
               if (specificWorkouts.r2m1 !== '') {
                 this.r2m1Show = true;
                 this.r1RestShow = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
+            this.r2m1Showc = true;
+            this.r1RestShowc = false;
               } else {
                 this.donescrnShow = true;
                 this.r1RestShow = false;
+              this.woddonec= true;
+              this.r1RestShowc = false;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
+
               }
             }
           }
@@ -447,12 +462,15 @@ updateIonContentClass() {
         } else {
           clearInterval(this.cdir1m2Rest);
           this.r1m2RestShowc = false;
-          this.r1m3Showc = true;
+          
         this.updateIonContentClass(); // Call a method to update the ion-content class
           this.clearcdr1m2rest();
           if (specificWorkouts.r1m3 !== "") {
             this.r1m3Show = true;
             this.r1m2RestShow = false;
+            this.r1m3Showc = true;
+            this.updateIonContentClass(); // Call a method to update the ion-content class
+
           } else {
             console.log(this.r1sets);
             console.log(specificWorkouts.r1sets)
@@ -468,9 +486,15 @@ updateIonContentClass() {
               if (specificWorkouts.r2m1 !== '') {
                 this.r2m1Show = true;
                 this.r1m2RestShow = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.r2m1Showc = true;
+                this.r1m2RestShowc = false;
               } else {
                 this.donescrnShow = true;
+                this.r1m2RestShowc = false;
                 this.r1m2RestShow = false;
+                this.woddonec= true;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
               }
             }
           }
@@ -557,7 +581,7 @@ updateIonContentClass() {
         } else {
           clearInterval(this.cdir1m3Rest);
           this.r1m3RestShowc = false;
-          this.r1m3Showc = true;
+
         this.updateIonContentClass(); // Call a method to update the ion-content class
           this.clearcdr1m3rest();
 
@@ -575,9 +599,15 @@ updateIonContentClass() {
             if (specificWorkouts.r2m1 !== '') {
               this.r2m1Show = true;
               this.r1m3RestShow = false;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.r2m1Showc = true;
+              this.r1m3RestShowc = false;
             } else {
               this.donescrnShow = true;
+              this.r1m3RestShowc = false;
               this.r1m3RestShow = false;
+              this.woddonec= true;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
             }
           }
         }
@@ -667,12 +697,15 @@ updateIonContentClass() {
         } else {
           clearInterval(this.cdir2Rest); // Use cdir2Rest, not cdr2Rest
           this.r2m1RestShowc = false;
-          this.r2m1Showc = true;
+
         this.updateIonContentClass(); // Call a method to update the ion-content class
           this.clearcdr2rest();
           if (specificWorkouts.r2m2 !== '') {
             this.r2RestShow = false;
             this.r2m2Show = true;
+            this.updateIonContentClass(); // Call a method to update the ion-content class
+            this.r2m1Showc = true;
+            this.r2m1RestShowc = false;
           } else {
             if (this.r2sets !== specificWorkouts.r2sets) {
               this.r2sets++;
@@ -686,9 +719,15 @@ updateIonContentClass() {
               if (specificWorkouts.r3m1 !== '') {
                 this.r3m1Show = true;
                 this.r2RestShow = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.r3m1Showc = true;
+                this.r2m1RestShowc = false;
               } else {
                 this.donescrnShow = true;
                 this.r2RestShow = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.woddonec = true;
+                this.r2m1RestShowc = false;
               }
             }
           }
@@ -777,7 +816,7 @@ updateIonContentClass() {
         } else {
           clearInterval(this.cdir2m2Rest);
           this.r2m2RestShowc = false;
-          this.r2m2Showc = true;
+
         this.updateIonContentClass();
           this.clearcdr2m2rest();
           if (specificWorkouts.r2m3 !== '') {
@@ -798,9 +837,15 @@ updateIonContentClass() {
               if (specificWorkouts.r3m1 !== '') {
                 this.r3m1Show = true;
                 this.r2m2RestShow = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.r3m1Showc = true;
+                this.r2m2RestShowc = false;
               } else {
                 this.donescrnShow = true;
                 this.r2m2RestShow = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.woddonec = true;
+                this.r2m2RestShowc = false;
               }
             }
           }
@@ -886,7 +931,7 @@ updateIonContentClass() {
         } else {
           clearInterval(this.cdir2m3Rest);
           this.r2m3RestShowc = false;
-          this.r2m3Showc = true;
+
         this.updateIonContentClass();
           this.clearcdr2m3rest();
           if (this.r2sets !== specificWorkouts.r2sets) {
@@ -904,9 +949,15 @@ updateIonContentClass() {
             if (specificWorkouts.r3m1 !== '') {
               this.r3m1Show = true;
               this.r2m3RestShow = false;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.r3m1Showc = true;
+              this.r2m3RestShowc = false;
             } else {
               this.donescrnShow = true;
               this.r2m3RestShow = false;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.woddonec = true;
+              this.r2m3RestShowc = false;
             }
           }
         }
@@ -996,12 +1047,15 @@ updateIonContentClass() {
         } else {
           clearInterval(this.cdr3Rest);
           this.r3m1RestShowc = false;
-          this.r3m1Showc = true;
+
         this.updateIonContentClass();
           this.clearcdr3rest();
           if (specificWorkouts.r3m2 !== '') {
             this.r3RestShow = false;
             this.r3m2Show = true;
+            this.r3m2Showc = true;
+            this.r3m1RestShowc = false;
+            this.updateIonContentClass();
           } else {
             if (this.r3sets !== specificWorkouts.r3sets) {
               this.r3sets++;
@@ -1015,9 +1069,15 @@ updateIonContentClass() {
               if (specificWorkouts.r4m1 !== '') {
                 this.r4m1Show = true;
                 this.r3RestShow = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.r4m1Showc = true;
+                this.r3m1RestShowc = false;
               } else {
                 this.donescrnShow = true;
                 this.r3RestShow = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.woddonec = true;
+                this.r3m1RestShowc = false;
               }
             }
           }
@@ -1105,12 +1165,15 @@ updateIonContentClass() {
         } else {
           clearInterval(this.cdir3m2Rest);
           this.r3m2RestShowc = false;
-          this.r3m2Showc = true;
+
         this.updateIonContentClass();
           this.clearcdr3m2rest();
           if (specificWorkouts.r3m3 !== '') {
             this.r3m3Show = true;
             this.r3m2RestShow = false;
+            this.r3m3Showc = true;
+            this.r3m2RestShowc = false;
+            this.updateIonContentClass();
           } else {
             if (this.r3sets !== specificWorkouts.r3sets) {
               this.r3sets++;
@@ -1126,6 +1189,9 @@ updateIonContentClass() {
               if (specificWorkouts.r4m1 !== '') {
                 this.r4m1Show = true;
                 this.r3m2RestShow = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.r4m1Showc = true;
+                this.r3m2RestShowc = false;
               } else {
                 this.donescrnShow = true;
                 this.r3m2RestShow = false;
@@ -1215,7 +1281,7 @@ updateIonContentClass() {
         } else {
           clearInterval(this.cdir3m3Rest);
           this.r3m3RestShowc = false;
-          this.r3m3Showc = true;
+
         this.updateIonContentClass();
           this.clearcdr3m3rest();
           if (this.r3sets !== specificWorkouts.r3sets) {
@@ -1233,9 +1299,15 @@ updateIonContentClass() {
             if (specificWorkouts.r4m1 !== '') {
               this.r4m1Show = true;
               this.r3m3RestShow = false;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.r4m1Showc = true;
+              this.r3m3RestShowc = false;
             } else {
               this.donescrnShow = true;
               this.r3m3RestShow = false;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.woddonec = true;
+              this.r3m3RestShowc = false;
             }
           }
         }
@@ -1326,12 +1398,15 @@ updateIonContentClass() {
         } else {
           clearInterval(this.cdr4Rest);
           this.r4m1RestShowc = false;
-          this.r4m1Showc = true;
+
         this.updateIonContentClass();
           this.clearcdr4rest();
           if (specificWorkouts.r4m2 !== '') {
             this.r4RestShow = false;
             this.r4m2Show = true;
+            this.r4m2Showc = true;
+            this.r4m1RestShowc = false;
+            this.updateIonContentClass();
           } else {
             if (this.r4sets !== specificWorkouts.r4sets) {
               this.r4sets++;
@@ -1344,6 +1419,9 @@ updateIonContentClass() {
             } else {
               this.donescrnShow = true;
               this.r4RestShow = false;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.woddonec = true;
+              this.r4m1RestShowc = false;
             }
           }
         }
@@ -1429,7 +1507,7 @@ updateIonContentClass() {
         } else {
           clearInterval(this.cdir4m2Rest);
           this.r4m2RestShowc = false;
-          this.r4m2Showc = true;
+ 
         this.updateIonContentClass();
           this.clearcdr4m2rest();
           if (specificWorkouts.r4m3 !== '') {
@@ -1447,6 +1525,9 @@ updateIonContentClass() {
               this.buttonDisabled = false;
               this.cdr4m2Show = true;
             } else {
+              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.woddonec = true;
+              this.r4m2RestShowc = false;
               this.donescrnShow = true;
               this.r4m2RestShow = false;
             }
@@ -1536,7 +1617,7 @@ updateIonContentClass() {
         } else {
           clearInterval(this.cdir4m3Rest);
           this.r4m3RestShowc = false;
-          this.r4m3Showc = true;
+
         this.updateIonContentClass();
           this.clearcdr4m3rest();
           if (this.r4sets !== specificWorkouts.r4sets) {
@@ -1551,6 +1632,9 @@ updateIonContentClass() {
             this.buttonDisabled = false;
             this.cdr4m3Show = true;
           } else {
+            this.updateIonContentClass(); // Call a method to update the ion-content class
+            this.woddonec = true;
+            this.r4m3RestShowc = false;
             this.donescrnShow = true;
             this.r4m3RestShow = false;
           }

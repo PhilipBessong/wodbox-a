@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true" style="background-color: black">
+<ion-content [fullscreen]="true" style="--ion-background-color: black">
   <ion-grid style="height: 100%">
     <ion-row justify-content-center align-items-center style="height: 100%">
       <ion-card style="width: 100%">
@@ -13,7 +13,7 @@
             <h1
               style="text-align: center; color: #b27600; font-size: xxx-large"
             >
-              WODBOX
+              <b>W</b>OD<b>B</b>OX
             </h1>
           </div>
           <pre></pre>
@@ -22,15 +22,16 @@
               type="email"
               name="email"
               style="
-                font-size: x-large;
+                font-size: large;
                 text-align: center;
                 border: #b27600;
                 border-style: solid;
                 border-radius: 10px;
-                width: 90%;
+                width: 70%;
                 height: 52px;
                 margin-left: auto;
                 margin-right: auto;
+                background-color: transparent;
               "
               placeholder="Username"
               [(ngModel)]="email"
@@ -44,13 +45,13 @@
               type="{{ showPassword ? 'text' : 'password' }}"
               name="password"
               style="
-                font-size: x-large;
+                font-size: large;
                 text-align: center;
                 border: #b27600;
                 border-style: solid;
                 border-radius: 10px;
                 height: 52px;
-                width: calc(90% - 40px); /* Adjust the width as needed */
+                width: calc(90% - 60px); /* Adjust the width as needed */
                 margin-left: auto;
                 margin-right: auto;
               "
@@ -79,13 +80,13 @@
           <div style="text-align: center">
             <button
               style="
-                font-size: xxx-large;
+                font-size: xx-large;
                 margin-left: auto;
                 margin-right: auto;
                 border-radius: 10px;
                 background-color: #b27600;
-                width: 90%;
-                height: 70px;
+                width: 70%;
+                height: 52px;
                 font-weight: 500;
               "
               expand="full"
@@ -96,9 +97,9 @@
           </div>
           <br />
           <div style="text-align: center; font-size: large">
-            Dont have an accont?
+            Start my fitness journey
             <a href="./signup" style="padding-left: 2%; color: #b27600"
-              >Create account</a
+              >New account</a
             >
           </div>
           <br />
