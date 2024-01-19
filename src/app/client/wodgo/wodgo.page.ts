@@ -282,22 +282,26 @@ updateIonContentClass() {
     }, 1000); // Update the 5-second countdown every second
   }
 
-  // movment1 timer
-  r1RestShow = false;
-  cdr1m1Timer: number | undefined = undefined;
-  cdr1m1Show = true;
-  isPr1m1Timer: boolean = false;
-  remaincdr1m1: number | undefined = undefined;
-  cdr1m1Intval: any;
-  strtr1m1Timer(specificWorkouts: Workout) {
-    if (specificWorkouts.r1move) {
-      if (this.isPr1m1Timer) {
-        // Resume the countdown with the remaining time
-        this.cdr1m1Timer = this.remaincdr1m1;
-      } else if (this.cdr1m1Timer === undefined) {
-        this.cdr1m1Timer = specificWorkouts.r1move;
-      }
-      this.cdr1m1Intval = setInterval(() => {
+// movment1 timer
+r1RestShow = false;
+cdr1m1Timer: number | undefined = undefined;
+cdr1m1Show = true;
+isPr1m1Timer: boolean = false;
+remaincdr1m1: number | undefined = undefined;
+cdr1m1Intval: any;
+isPaused: boolean = false; // Added variable to track whether the timer is paused
+
+strtr1m1Timer(specificWorkouts: Workout) {
+  if (specificWorkouts.r1move) {
+    if (this.isPr1m1Timer) {
+      // Resume the countdown with the remaining time
+      this.cdr1m1Timer = this.remaincdr1m1;
+    } else if (this.cdr1m1Timer === undefined) {
+      this.cdr1m1Timer = specificWorkouts.r1move;
+    }
+
+    this.cdr1m1Intval = setInterval(() => {
+      if (!this.isPaused) { // Check if the timer is not paused
         if (this.cdr1m1Timer && this.cdr1m1Timer > 0) {
           this.remaincdr1m1 = this.cdr1m1Timer; // Store remaining time
           this.cdr1m1Timer--;
@@ -311,9 +315,17 @@ updateIonContentClass() {
           this.updateIonContentClass(); // Call a method to update the ion-content class
           this.startr1Rest(specificWorkouts);
         }
-      }, 1000);
-    }
+      }
+    }, 1000);
   }
+}
+
+togglePauseResume() {
+  this.isPaused = !this.isPaused;
+}
+
+// Add a pause and resume button in your template and call the toggle function
+
 
   clearr1m1Cd() {
     if (this.cdr1m1Intval) {
@@ -338,15 +350,20 @@ updateIonContentClass() {
         } else {
           clearInterval(this.cdir1Rest);
           this.r1RestShowc = false;
-          this.r1m2Showc = true;
+          
         this.updateIonContentClass(); // Call a method to update the ion-content class
           this.clearcdr1rest();
           if (specificWorkouts.r1m2 !== "") {
             this.r1m2Show = true;
             this.r1RestShow = false;
-            this.updateIonContentClass(); // Call a method to update the ion-content class
             this.r1m2Showc = true;
             this.r1RestShowc = false;
+            this.updateIonContentClass(); // Call a method to update the ion-content class
+            this.cdr1m2Show = true;
+            this.strtr1m2Timer(specificWorkouts);
+            this.buttonDisabled = true;
+            this.srtbtn2Show = false;
+            
             
           } else {
             if (this.r1sets !== specificWorkouts.r1sets) {
@@ -421,7 +438,8 @@ updateIonContentClass() {
         this.cdr1m2Timer = specificWorkouts.r1move;
       }
       this.cdr1m2Intval = setInterval(() => {
-        if (this.cdr1m2Timer && this.cdr1m2Timer > 0) {
+        if (!this.isPaused) {
+          if (this.cdr1m2Timer && this.cdr1m2Timer > 0) {
           this.remaincdr1m2 = this.cdr1m2Timer; // Store remaining time
           this.cdr1m2Timer--;
         } else {
@@ -434,7 +452,7 @@ updateIonContentClass() {
           this.r1m2RestShowc = true;
           this.updateIonContentClass(); // Call a method to update the ion-content class
           this.startr1m2Rest(specificWorkouts);
-        }
+        }}
       }, 1000);
     }
   }
@@ -470,6 +488,10 @@ updateIonContentClass() {
             this.r1m2RestShow = false;
             this.r1m3Showc = true;
             this.updateIonContentClass(); // Call a method to update the ion-content class
+            this.cdr1m3Show = true;
+            this.strtr1m3Timer(specificWorkouts);
+            this.buttonDisabled = true;
+            this.srtbtn3Show = false;
 
           } else {
             console.log(this.r1sets);
@@ -542,7 +564,7 @@ updateIonContentClass() {
         this.cdr1m3Timer = specificWorkouts.r1move;
       }
       this.cdr1m3Intval = setInterval(() => {
-        if (this.cdr1m3Timer && this.cdr1m3Timer > 0) {
+        if (!this.isPaused) { if (this.cdr1m3Timer && this.cdr1m3Timer > 0) {
           this.remaincdr1m3 = this.cdr1m3Timer; // Store remaining time
           this.cdr1m3Timer--;
         } else {
@@ -555,7 +577,7 @@ updateIonContentClass() {
           this.r1m3RestShowc = true;
           this.updateIonContentClass();
           this.startr1m3Rest(specificWorkouts);
-        }
+        }}
       }, 1000);
     }
   }
