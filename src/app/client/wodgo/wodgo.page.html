@@ -21,7 +21,10 @@
       >
         Round 1
       </h2>
-      <ion-card class="card" style="background-color: #070707">
+      <ion-card
+        class="card"
+        style="background-color: #070707; border-bottom-width: 1px"
+      >
         <ion-card-subtitle
           style="
             text-align: center;
@@ -92,7 +95,7 @@
                   sans-serif;
                 font-size: x-large;
                 padding: 10%;
-                color: black;
+                color: white;
               "
               >Get Ready in {{ cd5Sec }}</ion-label
             >
@@ -222,7 +225,10 @@
       >
         Round 1
       </h2>
-      <ion-card class="card" style="background-color: #070707">
+      <ion-card
+        class="card"
+        style="background-color: #070707; border-bottom-width: 1px"
+      >
         <ion-card-subtitle
           style="
             text-align: center;
@@ -416,7 +422,7 @@
       >
         Round 1
       </h2>
-      <ion-card class="card">
+      <ion-card class="card" style="border-bottom-width: 1px">
         <ion-card-subtitle
           style="
             text-align: center;
@@ -435,7 +441,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="450px"
+            height="430px"
           >
             <source [src]="workout.exeR1M3.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -520,7 +526,6 @@
             </div>
           </ion-row>
         </ion-row>
-        <pre></pre>
       </ion-card>
     </ion-card>
   </div>
@@ -609,7 +614,7 @@
       >
         Round 2
       </h2>
-      <ion-card class="card">
+      <ion-card class="card" style="border-bottom-width: 1px">
         <ion-card-subtitle
           style="
             text-align: center;
@@ -679,7 +684,7 @@
                   sans-serif;
                 font-size: x-large;
                 padding: 10%;
-                color: black;
+                color: white;
               "
               >Get Ready in {{ r2cd5Sec }}</ion-label
             >
@@ -722,7 +727,6 @@
             </div>
           </ion-row>
         </ion-row>
-        <pre></pre>
       </ion-card>
     </ion-card>
   </div>
@@ -755,39 +759,39 @@
           *ngIf="workout.r2rest !== undefined"
           class="ion-justify-content-center"
         >
-        <pre></pre>
-        <!-- Countdown timer -->
-        <div
-          class="ion-justify-content-center"
-          style="
-            text-align: center;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-              sans-serif;
-            font-size: 7dvh;
-            padding: 10%;
-            margin-top: 7px;
-            color: #22b9e9;
-            position: relative;
-          "
-        >
+          <pre></pre>
+          <!-- Countdown timer -->
           <div
+            class="ion-justify-content-center"
             style="
-              border-radius: 50%; /* Make it a circle */
-              border-style: solid;
-              border-color: #22b9e9;
-              border-width: 6px;
-              width: 120px; /* Adjust the width to make it twice as big as the timer */
-              height: 120px; /* Set the height based on the width */
-              background-color: white; /* Background color for the circle */
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              text-align: center;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-size: 7dvh;
+              padding: 10%;
+              margin-top: 7px;
+              color: #22b9e9;
+              position: relative;
             "
-          ></div>
-          {{cdr2Rest}}
-        </div>
+          >
+            <div
+              style="
+                border-radius: 50%; /* Make it a circle */
+                border-style: solid;
+                border-color: #22b9e9;
+                border-width: 6px;
+                width: 120px; /* Adjust the width to make it twice as big as the timer */
+                height: 120px; /* Set the height based on the width */
+                background-color: white; /* Background color for the circle */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              "
+            ></div>
+            {{cdr2Rest}}
+          </div>
         </ion-row>
       </ion-card>
     </ion-card>
@@ -810,7 +814,7 @@
       >
         Round 2
       </h2>
-      <ion-card class="card">
+      <ion-card class="card" style="border-bottom-width: 1px">
         <ion-card-subtitle
           style="
             text-align: center;
@@ -883,36 +887,38 @@
             <div
               *ngIf="cdr2m2Show"
               style="
-              text-align: center;
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-              font-size: 7dvh;
-              padding: 10%;
-              margin-top: 7px;
-              color: #00b250;
-              position: relative;
-              cursor: pointer; /* Add cursor pointer for better user interaction */
-            "
-            (click)="togglePauseResume()"
-              >  <div
-              style="
-                border-radius: 50%;
-                border-style: solid;
-                border-color: #00b250;
-                border-width: 6px;
-                width: 120px;
-                height: 120px;
-                background-color: white;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: -1;
+                text-align: center;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                font-size: 7dvh;
+                padding: 10%;
+                margin-top: 7px;
+                color: #00b250;
+                position: relative;
+                cursor: pointer; /* Add cursor pointer for better user interaction */
               "
-            ></div>{{ cdr2m2Timer }}</div
+              (click)="togglePauseResume()"
             >
+              <div
+                style="
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-color: #00b250;
+                  border-width: 6px;
+                  width: 120px;
+                  height: 120px;
+                  background-color: white;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: -1;
+                "
+              ></div>
+              {{ cdr2m2Timer }}
+            </div>
           </ion-row>
         </ion-row>
-        <pre></pre>
       </ion-card>
     </ion-card>
   </div>
@@ -945,39 +951,39 @@
           *ngIf="workout.r2rest !== undefined"
           class="ion-justify-content-center"
         >
-        <pre></pre>
-        <!-- Countdown timer -->
-        <div
-          class="ion-justify-content-center"
-          style="
-            text-align: center;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-              sans-serif;
-            font-size: 7dvh;
-            padding: 10%;
-            margin-top: 7px;
-            color: #22b9e9;
-            position: relative;
-          "
-        >
+          <pre></pre>
+          <!-- Countdown timer -->
           <div
+            class="ion-justify-content-center"
             style="
-              border-radius: 50%; /* Make it a circle */
-              border-style: solid;
-              border-color: #22b9e9;
-              border-width: 6px;
-              width: 120px; /* Adjust the width to make it twice as big as the timer */
-              height: 120px; /* Set the height based on the width */
-              background-color: white; /* Background color for the circle */
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              text-align: center;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-size: 7dvh;
+              padding: 10%;
+              margin-top: 7px;
+              color: #22b9e9;
+              position: relative;
             "
-          ></div>
-          {{cdr2m2Rest}}
-        </div>
+          >
+            <div
+              style="
+                border-radius: 50%; /* Make it a circle */
+                border-style: solid;
+                border-color: #22b9e9;
+                border-width: 6px;
+                width: 120px; /* Adjust the width to make it twice as big as the timer */
+                height: 120px; /* Set the height based on the width */
+                background-color: white; /* Background color for the circle */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              "
+            ></div>
+            {{cdr2m2Rest}}
+          </div>
         </ion-row>
       </ion-card>
     </ion-card>
@@ -1000,7 +1006,7 @@
       >
         Round 2
       </h2>
-      <ion-card class="card">
+      <ion-card class="card" style="border-bottom-width: 1px">
         <ion-card-subtitle
           style="
             text-align: center;
@@ -1073,36 +1079,38 @@
             <div
               *ngIf="cdr2m3Show"
               style="
-              text-align: center;
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-              font-size: 7dvh;
-              padding: 10%;
-              margin-top: 7px;
-              color: #00b250;
-              position: relative;
-              cursor: pointer; /* Add cursor pointer for better user interaction */
-            "
-            (click)="togglePauseResume()"
-              ><div
-              style="
-                border-radius: 50%;
-                border-style: solid;
-                border-color: #00b250;
-                border-width: 6px;
-                width: 120px;
-                height: 120px;
-                background-color: white;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: -1;
+                text-align: center;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                font-size: 7dvh;
+                padding: 10%;
+                margin-top: 7px;
+                color: #00b250;
+                position: relative;
+                cursor: pointer; /* Add cursor pointer for better user interaction */
               "
-            ></div>{{ cdr2m3Timer }}</div
+              (click)="togglePauseResume()"
             >
+              <div
+                style="
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-color: #00b250;
+                  border-width: 6px;
+                  width: 120px;
+                  height: 120px;
+                  background-color: white;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: -1;
+                "
+              ></div>
+              {{ cdr2m3Timer }}
+            </div>
           </ion-row>
         </ion-row>
-        <pre></pre>
       </ion-card>
     </ion-card>
   </div>
@@ -1167,8 +1175,9 @@
                 transform: translate(-50%, -50%);
                 z-index: -1; /* Set z-index to ensure the circle is behind the text */
               "
-            ></div>{{cdr2m3Rest}}</div
-          >
+            ></div>
+            {{cdr2m3Rest}}
+          </div>
         </ion-row>
       </ion-card>
     </ion-card>
@@ -1191,7 +1200,7 @@
       >
         Round 3
       </h2>
-      <ion-card class="card">
+      <ion-card class="card" style="border-bottom-width: 1px">
         <ion-card-subtitle
           style="
             text-align: center;
@@ -1261,7 +1270,7 @@
                   sans-serif;
                 font-size: xx-large;
                 padding: 10%;
-                color: #000000;
+                color: #ffffff;
               "
               >Get Ready in {{ r3cd5Sec }}</ion-label
             >
@@ -1270,41 +1279,40 @@
           <ion-row *ngIf="cdr3m1Timer !== undefined">
             <!-- Display the 5-second timer -->
             <div
-            *ngIf="cdr3m1Show"
-            style="
-            text-align: center;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-              sans-serif;
-            font-size: 7dvh;
-            padding: 10%;
-            margin-top: 7px;
-            color: #00b250;
-            position: relative;
-            cursor: pointer; /* Add cursor pointer for better user interaction */
-          "
-          (click)="togglePauseResume()"
-        >
-          <div
-            style="
-              border-radius: 50%;
-              border-style: solid;
-              border-color: #00b250;
-              border-width: 6px;
-              width: 120px;
-              height: 120px;
-              background-color: white;
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              z-index: -1;
-            "
-          ></div>
-          {{ cdr3m1Timer }}
-        </div>
+              *ngIf="cdr3m1Show"
+              style="
+                text-align: center;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                font-size: 7dvh;
+                padding: 10%;
+                margin-top: 7px;
+                color: #00b250;
+                position: relative;
+                cursor: pointer; /* Add cursor pointer for better user interaction */
+              "
+              (click)="togglePauseResume()"
+            >
+              <div
+                style="
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-color: #00b250;
+                  border-width: 6px;
+                  width: 120px;
+                  height: 120px;
+                  background-color: white;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: -1;
+                "
+              ></div>
+              {{ cdr3m1Timer }}
+            </div>
           </ion-row>
         </ion-row>
-        <pre></pre>
       </ion-card>
     </ion-card>
   </div>
@@ -1337,38 +1345,39 @@
           *ngIf="workout.r3rest !== undefined"
           class="ion-justify-content-center"
         >
-        <pre></pre>
-        <!-- Countdown timer -->
-        <div
-          class="ion-justify-content-center"
-          style="
-            text-align: center;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-              sans-serif;
-            font-size: 7dvh;
-            padding: 10%;
-            margin-top: 7px;
-            color: #22b9e9;
-            position: relative;
-          "
-        >
+          <pre></pre>
+          <!-- Countdown timer -->
           <div
+            class="ion-justify-content-center"
             style="
-              border-radius: 50%; /* Make it a circle */
-              border-style: solid;
-              border-color: #22b9e9;
-              border-width: 6px;
-              width: 120px; /* Adjust the width to make it twice as big as the timer */
-              height: 120px; /* Set the height based on the width */
-              background-color: white; /* Background color for the circle */
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              text-align: center;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-size: 7dvh;
+              padding: 10%;
+              margin-top: 7px;
+              color: #22b9e9;
+              position: relative;
             "
-          ></div>{{cdr3Rest}}</div
-        >
+          >
+            <div
+              style="
+                border-radius: 50%; /* Make it a circle */
+                border-style: solid;
+                border-color: #22b9e9;
+                border-width: 6px;
+                width: 120px; /* Adjust the width to make it twice as big as the timer */
+                height: 120px; /* Set the height based on the width */
+                background-color: white; /* Background color for the circle */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              "
+            ></div>
+            {{cdr3Rest}}
+          </div>
         </ion-row>
       </ion-card>
     </ion-card>
@@ -1391,7 +1400,7 @@
       >
         Round 3
       </h2>
-      <ion-card class="card">
+      <ion-card class="card" style="border-bottom-width: 1px">
         <ion-card-subtitle
           style="
             text-align: center;
@@ -1464,36 +1473,38 @@
             <div
               *ngIf="cdr3m2Show"
               style="
-              text-align: center;
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-              font-size: 7dvh;
-              padding: 10%;
-              margin-top: 7px;
-              color: #00b250;
-              position: relative;
-              cursor: pointer; /* Add cursor pointer for better user interaction */
-            "
-            (click)="togglePauseResume()"
-              ><div
-              style="
-                border-radius: 50%;
-                border-style: solid;
-                border-color: #00b250;
-                border-width: 6px;
-                width: 120px;
-                height: 120px;
-                background-color: white;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: -1;
+                text-align: center;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                font-size: 7dvh;
+                padding: 10%;
+                margin-top: 7px;
+                color: #00b250;
+                position: relative;
+                cursor: pointer; /* Add cursor pointer for better user interaction */
               "
-            ></div>{{ cdr3m2Timer }}</div
+              (click)="togglePauseResume()"
             >
+              <div
+                style="
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-color: #00b250;
+                  border-width: 6px;
+                  width: 120px;
+                  height: 120px;
+                  background-color: white;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: -1;
+                "
+              ></div>
+              {{ cdr3m2Timer }}
+            </div>
           </ion-row>
         </ion-row>
-        <pre></pre>
       </ion-card>
     </ion-card>
   </div>
@@ -1526,38 +1537,39 @@
           *ngIf="workout.r3rest !== undefined"
           class="ion-justify-content-center"
         >
-        <pre></pre>
-        <!-- Countdown timer -->
-        <div
-          class="ion-justify-content-center"
-          style="
-            text-align: center;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-              sans-serif;
-            font-size: 7dvh;
-            padding: 10%;
-            margin-top: 7px;
-            color: #22b9e9;
-            position: relative;
-          "
-        >
+          <pre></pre>
+          <!-- Countdown timer -->
           <div
+            class="ion-justify-content-center"
             style="
-              border-radius: 50%; /* Make it a circle */
-              border-style: solid;
-              border-color: #22b9e9;
-              border-width: 6px;
-              width: 120px; /* Adjust the width to make it twice as big as the timer */
-              height: 120px; /* Set the height based on the width */
-              background-color: white; /* Background color for the circle */
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              text-align: center;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-size: 7dvh;
+              padding: 10%;
+              margin-top: 7px;
+              color: #22b9e9;
+              position: relative;
             "
-          ></div>{{cdr3m2Rest}}</div
-        >
+          >
+            <div
+              style="
+                border-radius: 50%; /* Make it a circle */
+                border-style: solid;
+                border-color: #22b9e9;
+                border-width: 6px;
+                width: 120px; /* Adjust the width to make it twice as big as the timer */
+                height: 120px; /* Set the height based on the width */
+                background-color: white; /* Background color for the circle */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              "
+            ></div>
+            {{cdr3m2Rest}}
+          </div>
         </ion-row>
       </ion-card>
     </ion-card>
@@ -1580,7 +1592,7 @@
       >
         Round 3
       </h2>
-      <ion-card class="card">
+      <ion-card class="card" style="border-bottom-width: 1px">
         <ion-card-subtitle
           style="
             text-align: center;
@@ -1653,36 +1665,38 @@
             <div
               *ngIf="cdr3m3Show"
               style="
-              text-align: center;
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-              font-size: 7dvh;
-              padding: 10%;
-              margin-top: 7px;
-              color: #00b250;
-              position: relative;
-              cursor: pointer; /* Add cursor pointer for better user interaction */
-            "
-            (click)="togglePauseResume()"
-          > <div
-          style="
-            border-radius: 50%;
-            border-style: solid;
-            border-color: #00b250;
-            border-width: 6px;
-            width: 120px;
-            height: 120px;
-            background-color: white;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-          "
-        ></div>{{ cdr3m3Timer }}</div
+                text-align: center;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                font-size: 7dvh;
+                padding: 10%;
+                margin-top: 7px;
+                color: #00b250;
+                position: relative;
+                cursor: pointer; /* Add cursor pointer for better user interaction */
+              "
+              (click)="togglePauseResume()"
             >
+              <div
+                style="
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-color: #00b250;
+                  border-width: 6px;
+                  width: 120px;
+                  height: 120px;
+                  background-color: white;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: -1;
+                "
+              ></div>
+              {{ cdr3m3Timer }}
+            </div>
           </ion-row>
         </ion-row>
-        <pre></pre>
       </ion-card>
     </ion-card>
   </div>
@@ -1716,38 +1730,39 @@
           *ngIf="workout.r3rest !== undefined"
           class="ion-justify-content-center"
         >
-        <pre></pre>
-        <!-- Countdown timer -->
-        <div
-          class="ion-justify-content-center"
-          style="
-            text-align: center;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-              sans-serif;
-            font-size: 7dvh;
-            padding: 10%;
-            margin-top: 7px;
-            color: #22b9e9;
-            position: relative;
-          "
-        >
+          <pre></pre>
+          <!-- Countdown timer -->
           <div
+            class="ion-justify-content-center"
             style="
-              border-radius: 50%; /* Make it a circle */
-              border-style: solid;
-              border-color: #22b9e9;
-              border-width: 6px;
-              width: 120px; /* Adjust the width to make it twice as big as the timer */
-              height: 120px; /* Set the height based on the width */
-              background-color: white; /* Background color for the circle */
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              text-align: center;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-size: 7dvh;
+              padding: 10%;
+              margin-top: 7px;
+              color: #22b9e9;
+              position: relative;
             "
-          ></div>{{cdr3m3Rest}}</div
-        >
+          >
+            <div
+              style="
+                border-radius: 50%; /* Make it a circle */
+                border-style: solid;
+                border-color: #22b9e9;
+                border-width: 6px;
+                width: 120px; /* Adjust the width to make it twice as big as the timer */
+                height: 120px; /* Set the height based on the width */
+                background-color: white; /* Background color for the circle */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              "
+            ></div>
+            {{cdr3m3Rest}}
+          </div>
         </ion-row>
       </ion-card>
     </ion-card>
