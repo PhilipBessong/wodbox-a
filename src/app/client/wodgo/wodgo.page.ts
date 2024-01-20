@@ -516,7 +516,6 @@ export class WodgoPage implements OnInit {
                 this.r1m2RestShow = false;
                 this.r2m1Showc = true;
                 this.r1m2RestShowc = false;
-                this.strtr2m1Timer(specificWorkouts);
                 this.updateIonContentClass(); // Call a method to update the ion-content class
 
               } else {
@@ -895,9 +894,10 @@ export class WodgoPage implements OnInit {
               if (specificWorkouts.r3m1 !== '') {
                 this.r3m1Show = true;
                 this.r2m2RestShow = false;
-                this.updateIonContentClass(); // Call a method to update the ion-content class
+                 // Call a method to update the ion-content class
                 this.r3m1Showc = true;
                 this.r2m2RestShowc = false;
+                this.updateIonContentClass();
               } else {
                 this.donescrnShow = true;
                 this.r2m2RestShow = false;
@@ -1267,7 +1267,7 @@ export class WodgoPage implements OnInit {
               this.r3m2srtbtnShow = false;
               this.buttonDisabled = true;
               this.cdr3m1Show = true;
-              this.strtr3m3Timer(specificWorkouts);
+              this.strtr3m1Timer(specificWorkouts);
               this.updateIonContentClass();
 
             } else {
@@ -1280,8 +1280,8 @@ export class WodgoPage implements OnInit {
               } else {
                 this.donescrnShow = true;
                 this.r3m2RestShow = false;
-                this.updateIonContentClass(); // Call a method to update the ion-content class
                 this.woddonec = true;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
               }
             }
           }
