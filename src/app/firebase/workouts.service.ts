@@ -158,11 +158,7 @@ export class WorkoutsService {
     ),
     new Style(
       'INTERVAL',
-      'Alternates high-intensity exercise with rest (X number of rounds, Y amount of sec work and Z amount of rest)'
-    ),
-    new Style(
-      'FGB (Fight gone bad)',
-      '17-minute HIIT WOD 5 x exercises. Rotate stations, maximum reps per station. (3 rounds 5 min work. You have 1 minute rest after the first and second 5 min of work) total time 17 min'
+      'INTERVAL WOD alternates high-intensity exercises for (X) rounds, with (Y) seconds of work and (Z) seconds of rest, performed for a set number of rounds.'
     ),
     new Style(
       'AMRAP',

@@ -1445,7 +1445,7 @@ export class WodgoPage implements OnInit {
         this.cdr4m1Timer = specificWorkouts.r4move;
       }
       this.cdr4m1Intval = setInterval(() => {
-        if (this.cdr4m1Timer && this.cdr4m1Timer > 0) {
+        if (!this.isPaused){if (this.cdr4m1Timer && this.cdr4m1Timer > 0) {
           this.remaincdr4m1 = this.cdr4m1Timer; // Store remaining time
           this.cdr4m1Timer--;
         } else {
@@ -1458,7 +1458,7 @@ export class WodgoPage implements OnInit {
           this.r4m1RestShowc = true;
           this.updateIonContentClass();
           this.startr4Rest(specificWorkouts);
-        }
+        }}
       }, 1000);
     }
   }

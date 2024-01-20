@@ -1,29 +1,37 @@
 <ion-content [fullscreen]="true">
   <div class="daBack">
-    <ion-toolbar>
-      <ion-menu-button
-        style="background-color: #b27600; border-radius: 10%; color: aliceblue"
-        slot="start"
+    <div class="col">
+      <br />
+      <button
+        (click)="backtoWarmUp()"
+        style="
+          background-color: #b27600;
+          border-radius: 5px;
+          color: aliceblue;
+          margin-left: 75%;
+          width: 70px;
+          height: 25px;
+        "
       >
-      </ion-menu-button>
-
-      <a href="/chome" slot="end" style="text-decoration: none">
-        <ion-back-button
-          default-href="/wodbox/src/app/redwod"
-          style="color: #b27600; padding-right: 10%"
-          disabled="true"
-        ></ion-back-button>
-      </a>
-    </ion-toolbar>
-    <div class="logocon">
-      <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
+        <ion-icon name="chevron-back-outline"></ion-icon>Back
+      </button>
+      <div class="col">
+        <div class="logocon">
+          <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
+        </div>
+      </div>
     </div>
+
     <pre></pre>
     <div>
-      <h2 class="wodhead">WOD Description</h2>
+      <h1 class="wodhead" style="color: aliceblue">WOD Description</h1>
     </div>
     <pre></pre>
-    <ion-card class="wodbod" *ngFor="let workout of specificWorkouts" style="background-color: #b27600;" >
+    <ion-card
+      class="wodbod"
+      *ngFor="let workout of specificWorkouts"
+      style="background-color: #b27600"
+    >
       <h2
         class="cardttl"
         style="
@@ -35,31 +43,36 @@
       >
         {{workout.wodStyle}}
       </h2>
-      <ion-card class="card">
-     
+      <ion-card class="card" style="border-bottom-width:0px;">
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
         >
           {{workout.styleDescription}}
         </ion-card-subtitle>
-   
+
         <ion-card class="cardin">
-          <ion-label class="cardintxt"
-            >{{workout.rounds}}
-            Round(s)</ion-label
-          >
+          <ion-label class="cardintxt">{{workout.rounds}} Round(s)</ion-label>
         </ion-card>
         <pre></pre>
         <h2 class="cardttl"><u>WOD Movements:</u></h2>
         <ion-grid>
           <ion-row class="ion-justify-content-center">
-            <ion-card style="width: 100%; border-radius: 80px">
+            <ion-card
+              style="
+                width: 100%;
+                border-radius: 80px;
+                background-color: rgb(58, 56, 56);
+                border-color: #b27600;
+                border-style: solid;
+                border-bottom-width: 2px;
+              "
+            >
               <ion-card-header>
                 <ion-row class="ion-justify-content-center">
                   <ion-card-title
@@ -79,63 +92,98 @@
               <ion-card-content>
                 <ion-row class="ion-justify-content-center">
                   <ion-col class="ion-justify-content-center">
-                    <ion-card-subtitle style="font-size: medium; text-align: center;"
-                    >{{workout.r1sets}} sets</ion-card-subtitle
-                  >
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{workout.r1sets}} sets</ion-card-subtitle
+                    >
                   </ion-col>
                   <ion-col class="ion-justify-content-center">
-                    <ion-card-subtitle style="font-size: medium; text-align: center;"
-                    >{{workout.r1move}}sec Move</ion-card-subtitle
-                  >
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{workout.r1move}}sec Move</ion-card-subtitle
+                    >
                   </ion-col>
                   <ion-col class="ion-justify-content-center">
-                    <ion-card-subtitle style="font-size: medium; text-align: center;"
-                    >{{workout.r1rest}}sec Rest</ion-card-subtitle
-                  >
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{workout.r1rest}}sec Rest</ion-card-subtitle
+                    >
                   </ion-col>
                 </ion-row>
-                <br>
+                <br />
                 <ion-row style="padding-left: 0%; color: aliceblue">
                   <ion-label style="font-size: large">Exercise 1</ion-label>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exe" style="color: aliceblue" class="ion-justify-content-center">
-                  <ion-label style="font-size: large">{{ workout.exe.exeName }}</ion-label>
+                <ion-row
+                  *ngIf="workout.exe"
+                  style="color: aliceblue"
+                  class="ion-justify-content-center"
+                >
+                  <ion-label style="font-size: large"
+                    >{{ workout.exe.exeName }}</ion-label
+                  >
                 </ion-row>
                 <br />
-                <ion-row class="ion-justify-content-center" *ngIf="workout.exe" class="video-container" >
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="workout.exe"
+                  class="video-container"
+                >
                   <video
-                    controls *ngIf="workout.exe.videoUrl"
+                    controls
+                    *ngIf="workout.exe.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
-                   
                   >
                     <source [src]="workout.exe.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                
-                <br>
-                <ion-row *ngIf="workout.exeR1M2" style="padding-left: 0%; color: aliceblue">
+
+                <br />
+                <ion-row
+                  *ngIf="workout.exeR1M2"
+                  style="padding-left: 0%; color: aliceblue"
+                >
                   <ion-label style="font-size: large">Exercise 2</ion-label>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR1M2"
+                <ion-row
+                  *ngIf="workout.exeR1M2"
                   style="color: aliceblue"
                   class="ion-justify-content-center"
                 >
-                  <ion-label style="font-size: large">{{ workout.exeR1M2.exeName}}</ion-label>
+                  <ion-label style="font-size: large"
+                    >{{ workout.exeR1M2.exeName}}</ion-label
+                  >
                 </ion-row>
                 <br />
-                <ion-row class="ion-justify-content-center" *ngIf="workout.exeR1M2" class="video-container" >
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="workout.exeR1M2"
+                  class="video-container"
+                >
                   <video
-                    controls *ngIf="workout.exeR1M2.videoUrl"
+                    controls
+                    *ngIf="workout.exeR1M2.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
-                   
                   >
                     <source [src]="workout.exeR1M2.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
@@ -143,24 +191,34 @@
                   </video>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR1M3" style="padding-left: 0%; color: aliceblue">
+                <ion-row
+                  *ngIf="workout.exeR1M3"
+                  style="padding-left: 0%; color: aliceblue"
+                >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR1M3"
+                <ion-row
+                  *ngIf="workout.exeR1M3"
                   style="color: aliceblue"
                   class="ion-justify-content-center"
                 >
-                  <ion-label style="font-size: large">{{ workout.exeR1M3.exeName}}</ion-label>
+                  <ion-label style="font-size: large"
+                    >{{ workout.exeR1M3.exeName}}</ion-label
+                  >
                 </ion-row>
                 <br />
-                <ion-row class="ion-justify-content-center" *ngIf="workout.exeR1M3" class="video-container" >
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="workout.exeR1M3"
+                  class="video-container"
+                >
                   <video
-                    controls *ngIf="workout.exeR1M3.videoUrl"
+                    controls
+                    *ngIf="workout.exeR1M3.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
-                   
                   >
                     <source [src]="workout.exeR1M3.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
@@ -168,11 +226,19 @@
                   </video>
                 </ion-row>
                 <pre></pre>
-                
               </ion-card-content>
             </ion-card>
-            <br>
-            <ion-card style="width: 100%; border-radius: 80px" *ngIf="workout.exeR2M1">
+            <br />
+            <ion-card
+              style="
+                width: 100%;
+                border-radius: 80px;
+                background-color: rgb(58, 56, 56);
+                border-color: #b27600;
+                border-style: solid;
+              "
+              *ngIf="workout.exeR2M1"
+            >
               <ion-card-header>
                 <ion-row class="ion-justify-content-center">
                   <ion-card-title
@@ -192,65 +258,97 @@
               <ion-card-content>
                 <ion-row class="ion-justify-content-center">
                   <ion-col class="ion-justify-content-center">
-                    <ion-card-subtitle style="font-size: medium; text-align: center;"
-                    >{{workout.r2sets}} sets</ion-card-subtitle
-                  >
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{workout.r2sets}} sets</ion-card-subtitle
+                    >
                   </ion-col>
                   <ion-col class="ion-justify-content-center">
-                    <ion-card-subtitle style="font-size: medium; text-align: center;"
-                    >{{workout.r2move}}sec Move</ion-card-subtitle
-                  >
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{workout.r2move}}sec Move</ion-card-subtitle
+                    >
                   </ion-col>
                   <ion-col class="ion-justify-content-center">
-                    <ion-card-subtitle style="font-size: medium; text-align: center;"
-                    >{{workout.r2rest}}sec Rest</ion-card-subtitle
-                  >
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{workout.r2rest}}sec Rest</ion-card-subtitle
+                    >
                   </ion-col>
                 </ion-row>
-                <br>
+                <br />
                 <ion-row style="padding-left: 0%; color: aliceblue">
                   <ion-label style="font-size: large">Exercise 1</ion-label>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR2M1"
+                <ion-row
+                  *ngIf="workout.exeR2M1"
                   style="color: aliceblue"
                   class="ion-justify-content-center"
                 >
-                  <ion-label style="font-size: large">{{ workout.exeR2M1.exeName}}</ion-label>
+                  <ion-label style="font-size: large"
+                    >{{ workout.exeR2M1.exeName}}</ion-label
+                  >
                 </ion-row>
                 <br />
-                <ion-row class="ion-justify-content-center" *ngIf="workout.exeR2M1" class="video-container" >
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="workout.exeR2M1"
+                  class="video-container"
+                >
                   <video
-                    controls *ngIf="workout.exeR2M1.videoUrl"
+                    controls
+                    *ngIf="workout.exeR2M1.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
-                   
                   >
                     <source [src]="workout.exeR2M1.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
                     Your browser does not support the video tag.
                   </video>
-                </ion-row >
-                <br>
-                <ion-row *ngIf="workout.exeR2M2" style="padding-left: 0%; color: aliceblue">
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="workout.exeR2M2"
+                  style="padding-left: 0%; color: aliceblue"
+                >
                   <ion-label style="font-size: large">Exercise 2</ion-label>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR2M2"
+                <ion-row
+                  *ngIf="workout.exeR2M2"
                   style="color: aliceblue"
                   class="ion-justify-content-center"
                 >
-                  <ion-label style="font-size: large">{{ workout.exeR2M2.exeName}}</ion-label>
+                  <ion-label style="font-size: large"
+                    >{{ workout.exeR2M2.exeName}}</ion-label
+                  >
                 </ion-row>
                 <br />
-                <ion-row class="ion-justify-content-center" *ngIf="workout.exeR2M2" class="video-container" >
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="workout.exeR2M2"
+                  class="video-container"
+                >
                   <video
-                    controls *ngIf="workout.exeR2M2.videoUrl"
+                    controls
+                    *ngIf="workout.exeR2M2.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
-                   
                   >
                     <source [src]="workout.exeR2M2.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
@@ -258,35 +356,54 @@
                   </video>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR2M3" style="padding-left: 0%; color: aliceblue">
+                <ion-row
+                  *ngIf="workout.exeR2M3"
+                  style="padding-left: 0%; color: aliceblue"
+                >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR2M3"
+                <ion-row
+                  *ngIf="workout.exeR2M3"
                   style="color: aliceblue"
                   class="ion-justify-content-center"
                 >
-                  <ion-label style="font-size: large">{{ workout.exeR2M3.exeName}}</ion-label>
+                  <ion-label style="font-size: large"
+                    >{{ workout.exeR2M3.exeName}}</ion-label
+                  >
                 </ion-row>
                 <br />
-                <ion-row class="ion-justify-content-center" *ngIf="workout.exeR2M3" class="video-container" >
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="workout.exeR2M3"
+                  class="video-container"
+                >
                   <video
-                    controls *ngIf="workout.exeR2M3.videoUrl"
+                    controls
+                    *ngIf="workout.exeR2M3.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
-                   
                   >
                     <source [src]="workout.exeR2M3.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                <pre></pre>
               </ion-card-content>
+              <pre></pre>
             </ion-card>
-            <br>
-            <ion-card style="width: 100%; border-radius: 80px" *ngIf="workout.exeR3M1">
+            <br />
+            <ion-card
+              style="
+                width: 100%;
+                border-radius: 80px;
+                background-color: rgb(58, 56, 56);
+                border-color: #b27600;
+                border-style: solid;
+              "
+              *ngIf="workout.exeR3M1"
+            >
               <ion-card-header>
                 <ion-row class="ion-justify-content-center">
                   <ion-card-title
@@ -306,65 +423,97 @@
               <ion-card-content>
                 <ion-row class="ion-justify-content-center">
                   <ion-col class="ion-justify-content-center">
-                    <ion-card-subtitle style="font-size: medium; text-align: center;"
-                    >{{workout.r3sets}} sets</ion-card-subtitle
-                  >
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{workout.r3sets}} sets</ion-card-subtitle
+                    >
                   </ion-col>
                   <ion-col class="ion-justify-content-center">
-                    <ion-card-subtitle style="font-size: medium; text-align: center;"
-                    >{{workout.r3move}}sec Move</ion-card-subtitle
-                  >
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{workout.r3move}}sec Move</ion-card-subtitle
+                    >
                   </ion-col>
                   <ion-col class="ion-justify-content-center">
-                    <ion-card-subtitle style="font-size: medium; text-align: center;"
-                    >{{workout.r3rest}}sec Rest</ion-card-subtitle
-                  >
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{workout.r3rest}}sec Rest</ion-card-subtitle
+                    >
                   </ion-col>
                 </ion-row>
-                <br>
+                <br />
                 <ion-row style="padding-left: 0%; color: aliceblue">
                   <ion-label style="font-size: large">Exercise 1</ion-label>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR3M1"
+                <ion-row
+                  *ngIf="workout.exeR3M1"
                   style="color: aliceblue"
                   class="ion-justify-content-center"
                 >
-                  <ion-label style="font-size: large">{{ workout.exeR3M1.exeName}}</ion-label>
+                  <ion-label style="font-size: large"
+                    >{{ workout.exeR3M1.exeName}}</ion-label
+                  >
                 </ion-row>
                 <br />
-                <ion-row class="ion-justify-content-center" *ngIf="workout.exeR3M1" class="video-container" >
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="workout.exeR3M1"
+                  class="video-container"
+                >
                   <video
-                    controls *ngIf="workout.exeR3M1.videoUrl"
+                    controls
+                    *ngIf="workout.exeR3M1.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
-                   
                   >
                     <source [src]="workout.exeR3M1.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
                     Your browser does not support the video tag.
                   </video>
-                </ion-row >
-                <br>
-                <ion-row *ngIf="workout.exeR3M2" style="padding-left: 0%; color: aliceblue">
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="workout.exeR3M2"
+                  style="padding-left: 0%; color: aliceblue"
+                >
                   <ion-label style="font-size: large">Exercise 2</ion-label>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR3M2"
+                <ion-row
+                  *ngIf="workout.exeR3M2"
                   style="color: aliceblue"
                   class="ion-justify-content-center"
                 >
-                  <ion-label style="font-size: large">{{ workout.exeR3M2.exeName}}</ion-label>
+                  <ion-label style="font-size: large"
+                    >{{ workout.exeR3M2.exeName}}</ion-label
+                  >
                 </ion-row>
                 <br />
-                <ion-row class="ion-justify-content-center" *ngIf="workout.exeR3M2" class="video-container" >
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="workout.exeR3M2"
+                  class="video-container"
+                >
                   <video
-                    controls *ngIf="workout.exeR3M2.videoUrl"
+                    controls
+                    *ngIf="workout.exeR3M2.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
-                   
                   >
                     <source [src]="workout.exeR3M2.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
@@ -372,24 +521,34 @@
                   </video>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR3M3" style="padding-left: 0%; color: aliceblue">
+                <ion-row
+                  *ngIf="workout.exeR3M3"
+                  style="padding-left: 0%; color: aliceblue"
+                >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR3M3"
+                <ion-row
+                  *ngIf="workout.exeR3M3"
                   style="color: aliceblue"
                   class="ion-justify-content-center"
                 >
-                  <ion-label style="font-size: large">{{ workout.exeR3M3.exeName}}</ion-label>
+                  <ion-label style="font-size: large"
+                    >{{ workout.exeR3M3.exeName}}</ion-label
+                  >
                 </ion-row>
                 <br />
-                <ion-row class="ion-justify-content-center" *ngIf="workout.exeR3M3" class="video-container" >
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="workout.exeR3M3"
+                  class="video-container"
+                >
                   <video
-                    controls *ngIf="workout.exeR3M3.videoUrl"
+                    controls
+                    *ngIf="workout.exeR3M3.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
-                   
                   >
                     <source [src]="workout.exeR3M3.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
@@ -399,8 +558,17 @@
                 <pre></pre>
               </ion-card-content>
             </ion-card>
-            <br>
-            <ion-card style="width: 100%; border-radius: 80px" *ngIf="workout.exeR4M1">
+            <br />
+            <ion-card
+              style="
+                width: 100%;
+                border-radius: 80px;
+                background-color: rgb(58, 56, 56);
+                border-color: #b27600;
+                border-style: solid;
+              "
+              *ngIf="workout.exeR4M1"
+            >
               <ion-card-header>
                 <ion-row class="ion-justify-content-center">
                   <ion-card-title
@@ -420,65 +588,97 @@
               <ion-card-content>
                 <ion-row class="ion-justify-content-center">
                   <ion-col class="ion-justify-content-center">
-                    <ion-card-subtitle style="font-size: medium; text-align: center;"
-                    >{{workout.r4sets}} sets</ion-card-subtitle
-                  >
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{workout.r4sets}} sets</ion-card-subtitle
+                    >
                   </ion-col>
                   <ion-col class="ion-justify-content-center">
-                    <ion-card-subtitle style="font-size: medium; text-align: center;"
-                    >{{workout.r4move}}sec Move</ion-card-subtitle
-                  >
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{workout.r4move}}sec Move</ion-card-subtitle
+                    >
                   </ion-col>
                   <ion-col class="ion-justify-content-center">
-                    <ion-card-subtitle style="font-size: medium; text-align: center;"
-                    >{{workout.r4rest}}sec Rest</ion-card-subtitle
-                  >
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{workout.r4rest}}sec Rest</ion-card-subtitle
+                    >
                   </ion-col>
                 </ion-row>
-                <br>
+                <br />
                 <ion-row style="padding-left: 0%; color: aliceblue">
                   <ion-label style="font-size: large">Exercise 1</ion-label>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR4M1"
+                <ion-row
+                  *ngIf="workout.exeR4M1"
                   style="color: aliceblue"
                   class="ion-justify-content-center"
                 >
-                  <ion-label style="font-size: large">{{ workout.exeR4M1.exeName}}</ion-label>
+                  <ion-label style="font-size: large"
+                    >{{ workout.exeR4M1.exeName}}</ion-label
+                  >
                 </ion-row>
                 <br />
-                <ion-row class="ion-justify-content-center" *ngIf="workout.exeR4M1" class="video-container" >
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="workout.exeR4M1"
+                  class="video-container"
+                >
                   <video
-                    controls *ngIf="workout.exeR4M1.videoUrl"
+                    controls
+                    *ngIf="workout.exeR4M1.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
-                   
                   >
                     <source [src]="workout.exeR4M1.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
                     Your browser does not support the video tag.
                   </video>
-                </ion-row >
-                <br>
-                <ion-row *ngIf="workout.exeR4M2" style="padding-left: 0%; color: aliceblue">
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="workout.exeR4M2"
+                  style="padding-left: 0%; color: aliceblue"
+                >
                   <ion-label style="font-size: large">Exercise 2</ion-label>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR4M2"
+                <ion-row
+                  *ngIf="workout.exeR4M2"
                   style="color: aliceblue"
                   class="ion-justify-content-center"
                 >
-                  <ion-label style="font-size: large">{{ workout.exeR4M2.exeName}}</ion-label>
+                  <ion-label style="font-size: large"
+                    >{{ workout.exeR4M2.exeName}}</ion-label
+                  >
                 </ion-row>
                 <br />
-                <ion-row class="ion-justify-content-center" *ngIf="workout.exeR4M2" class="video-container" >
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="workout.exeR4M2"
+                  class="video-container"
+                >
                   <video
-                    controls *ngIf="workout.exeR4M2.videoUrl"
+                    controls
+                    *ngIf="workout.exeR4M2.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
-                   
                   >
                     <source [src]="workout.exeR4M2.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
@@ -486,24 +686,34 @@
                   </video>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR4M3" style="padding-left: 0%; color: aliceblue">
+                <ion-row
+                  *ngIf="workout.exeR4M3"
+                  style="padding-left: 0%; color: aliceblue"
+                >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
                 </ion-row>
                 <br />
-                <ion-row *ngIf="workout.exeR4M3"
+                <ion-row
+                  *ngIf="workout.exeR4M3"
                   style="color: aliceblue"
                   class="ion-justify-content-center"
                 >
-                  <ion-label style="font-size: large">{{ workout.exeR4M3.exeName}}</ion-label>
+                  <ion-label style="font-size: large"
+                    >{{ workout.exeR4M3.exeName}}</ion-label
+                  >
                 </ion-row>
                 <br />
-                <ion-row class="ion-justify-content-center" *ngIf="workout.exeR4M3" class="video-container" >
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="workout.exeR4M3"
+                  class="video-container"
+                >
                   <video
-                    controls *ngIf="workout.exeR4M3.videoUrl"
+                    controls
+                    *ngIf="workout.exeR4M3.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
-                   
                   >
                     <source [src]="workout.exeR4M3.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
@@ -517,9 +727,9 @@
         </ion-grid>
       </ion-card>
     </ion-card>
-   
+
     <div class="nextbtn">
-      <a href="/wodon" class="nextbtn">LET'S GO >>></a>
+      <a href="/wodgo" class="nextbtn">LET'S GO >>></a>
     </div>
   </div>
 </ion-content>
