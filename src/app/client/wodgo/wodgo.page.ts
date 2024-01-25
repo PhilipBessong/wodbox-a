@@ -369,22 +369,22 @@ export class WodgoPage implements OnInit {
               this.r1RestShow = false;
               this.cdr1m1Show = true;
               this.srtbtnShow = false;
+              this.srtbtn2Show = true;
               this.buttonDisabled = false;
-              this.srtbtn2Show = false;
-              this.buttonDisabled = false;
+
               this.cdr1m1Showc = true;
               this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.strtr1m1Timer(specificWorkouts);
             } else {
               if (specificWorkouts.r2m1 !== '') {
                 this.r2m1Show = true;
                 this.r1RestShow = false;
-                 // Call a method to update the ion-content class
+                // Call a method to update the ion-content class
                 this.r2m1Showc = true;
                 this.r1RestShowc = false;
                 this.updateIonContentClass();
                 this.srtbtn2Show = false;
                 this.cdr2m1Show = true;
-                this.strtr2m1Timer(specificWorkouts);
               } else {
                 this.donescrnShow = true;
                 this.r1RestShow = false;
@@ -509,7 +509,7 @@ export class WodgoPage implements OnInit {
               this.cdr1m1Show = true;
               this.cdr1m1Showc = true;
               this.updateIonContentClass(); // Call a method to update the ion-content class
-           this.strtr1m1Timer(specificWorkouts);
+              this.strtr1m1Timer(specificWorkouts);
             } else {
               if (specificWorkouts.r2m1 !== '') {
                 this.r2m1Show = true;
@@ -517,7 +517,6 @@ export class WodgoPage implements OnInit {
                 this.r2m1Showc = true;
                 this.r1m2RestShowc = false;
                 this.updateIonContentClass(); // Call a method to update the ion-content class
-
               } else {
                 this.donescrnShow = true;
                 this.r1m2RestShowc = false;
@@ -752,9 +751,9 @@ export class WodgoPage implements OnInit {
               this.r2sets++;
               this.r2RestShow = false;
               this.r2m1Show = true;
-              this.r2srtbtnShow = true;
+              this.r2srtbtnShow = false;
               this.buttonDisabled = false;
-              this.srtbtn2Show = true;
+
               this.buttonDisabled = false;
               this.r2m1Showc = true;
               this.updateIonContentClass();
@@ -766,13 +765,14 @@ export class WodgoPage implements OnInit {
                 this.r2RestShow = false;
                 this.updateIonContentClass(); // Call a method to update the ion-content class
                 this.r3m1Showc = true;
+                this.updateIonContentClass();
                 this.r2m1RestShowc = false;
               } else {
                 this.donescrnShow = true;
-                this.r2RestShow = false;
-                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.r2m2RestShow = false;
                 this.woddonec = true;
                 this.r2m1RestShowc = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
               }
             }
           }
@@ -894,7 +894,7 @@ export class WodgoPage implements OnInit {
               if (specificWorkouts.r3m1 !== '') {
                 this.r3m1Show = true;
                 this.r2m2RestShow = false;
-                 // Call a method to update the ion-content class
+                // Call a method to update the ion-content class
                 this.r3m1Showc = true;
                 this.r2m2RestShowc = false;
                 this.updateIonContentClass();
@@ -1151,9 +1151,9 @@ export class WodgoPage implements OnInit {
               } else {
                 this.donescrnShow = true;
                 this.r3RestShow = false;
-                this.updateIonContentClass(); // Call a method to update the ion-content class
                 this.woddonec = true;
                 this.r3m1RestShowc = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
               }
             }
           }
@@ -1262,21 +1262,20 @@ export class WodgoPage implements OnInit {
               this.r3m1Show = true;
               this.r3m2RestShowc = false;
               this.r3m1Showc = true;
-             
+
               this.r3srtbtnShow = false;
               this.r3m2srtbtnShow = false;
               this.buttonDisabled = true;
               this.cdr3m1Show = true;
               this.strtr3m1Timer(specificWorkouts);
               this.updateIonContentClass();
-
             } else {
               if (specificWorkouts.r4m1 !== '') {
                 this.r4m1Show = true;
                 this.r3m2RestShow = false;
-                this.updateIonContentClass(); // Call a method to update the ion-content class
                 this.r4m1Showc = true;
                 this.r3m2RestShowc = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
               } else {
                 this.donescrnShow = true;
                 this.r3m2RestShow = false;
@@ -1330,20 +1329,22 @@ export class WodgoPage implements OnInit {
         this.cdr3m3Timer = specificWorkouts.r3move;
       }
       this.cdr3m3Intval = setInterval(() => {
-        if (!this.isPaused) {if (this.cdr3m3Timer && this.cdr3m3Timer > 0) {
-          this.remaincdr3m3 = this.cdr3m3Timer; // Store remaining time
-          this.cdr3m3Timer--;
-        } else {
-          clearInterval(this.cdr3m3Intval);
-          this.clearr3m3Cd();
+        if (!this.isPaused) {
+          if (this.cdr3m3Timer && this.cdr3m3Timer > 0) {
+            this.remaincdr3m3 = this.cdr3m3Timer; // Store remaining time
+            this.cdr3m3Timer--;
+          } else {
+            clearInterval(this.cdr3m3Intval);
+            this.clearr3m3Cd();
 
-          this.r3m3Show = false;
-          this.r3m3RestShow = true;
-          this.r3m3Showc = false;
-          this.r3m3RestShowc = true;
-          this.updateIonContentClass();
-          this.startr3m3Rest(specificWorkouts);
-        }}
+            this.r3m3Show = false;
+            this.r3m3RestShow = true;
+            this.r3m3Showc = false;
+            this.r3m3RestShowc = true;
+            this.updateIonContentClass();
+            this.startr3m3Rest(specificWorkouts);
+          }
+        }
       }, 1000);
     }
   }
@@ -1387,9 +1388,9 @@ export class WodgoPage implements OnInit {
             if (specificWorkouts.r4m1 !== '') {
               this.r4m1Show = true;
               this.r3m3RestShow = false;
-              this.updateIonContentClass(); // Call a method to update the ion-content class
               this.r4m1Showc = true;
               this.r3m3RestShowc = false;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
             } else {
               this.donescrnShow = true;
               this.r3m3RestShow = false;
@@ -1415,7 +1416,7 @@ export class WodgoPage implements OnInit {
   r4srtbtnShow = true;
 
   r4strt5SecTimer(specificWorkouts: Workout) {
-    this.r4cd5Sec = 5;
+    this.r4cd5Sec = 10;
     this.r4srtbtnShow = false;
     this.r4cd5SecShow = true;
     const timerInterval = setInterval(() => {
@@ -1445,20 +1446,22 @@ export class WodgoPage implements OnInit {
         this.cdr4m1Timer = specificWorkouts.r4move;
       }
       this.cdr4m1Intval = setInterval(() => {
-        if (!this.isPaused){if (this.cdr4m1Timer && this.cdr4m1Timer > 0) {
-          this.remaincdr4m1 = this.cdr4m1Timer; // Store remaining time
-          this.cdr4m1Timer--;
-        } else {
-          clearInterval(this.cdr4m1Intval);
-          this.clearr4m1Cd();
+        if (!this.isPaused) {
+          if (this.cdr4m1Timer && this.cdr4m1Timer > 0) {
+            this.remaincdr4m1 = this.cdr4m1Timer; // Store remaining time
+            this.cdr4m1Timer--;
+          } else {
+            clearInterval(this.cdr4m1Intval);
+            this.clearr4m1Cd();
 
-          this.r4m1Show = false;
-          this.r4RestShow = true;
-          this.r4m1Showc = false;
-          this.r4m1RestShowc = true;
-          this.updateIonContentClass();
-          this.startr4Rest(specificWorkouts);
-        }}
+            this.r4m1Show = false;
+            this.r4RestShow = true;
+            this.r4m1Showc = false;
+            this.r4m1RestShowc = true;
+            this.updateIonContentClass();
+            this.startr4Rest(specificWorkouts);
+          }
+        }
       }, 1000);
     }
   }
@@ -1495,21 +1498,28 @@ export class WodgoPage implements OnInit {
             this.r4m2Showc = true;
             this.r4m1RestShowc = false;
             this.updateIonContentClass();
+            this.r4m2srtbtnShow = false;
+            this.cdr4m2Show = true;
+            this.strtr4m2Timer(specificWorkouts);
           } else {
             if (this.r4sets !== specificWorkouts.r4sets) {
               this.r4sets++;
               this.r4RestShow = false;
               this.r4m1Show = true;
-              this.r4srtbtnShow = true;
+              this.r4m1Showc = true;
+              this.cdr4m1Show = true;
+              this.r4srtbtnShow = false;
               this.buttonDisabled = false;
-              this.r4m2srtbtnShow = true;
               this.buttonDisabled = false;
+              this.updateIonContentClass();
+              this.strtr4m1Timer(specificWorkouts);
             } else {
               this.donescrnShow = true;
               this.r4RestShow = false;
-              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.r4m1RestShowc = false;
               this.woddonec = true;
               this.r4m1RestShowc = false;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
             }
           }
         }
@@ -1555,19 +1565,22 @@ export class WodgoPage implements OnInit {
         this.cdr4m2Timer = specificWorkouts.r4move;
       }
       this.cdr4m2Intval = setInterval(() => {
-        if (this.cdr4m2Timer && this.cdr4m2Timer > 0) {
-          this.remaincdr4m2 = this.cdr4m2Timer; // Store remaining time
-          this.cdr4m2Timer--;
-        } else {
-          clearInterval(this.cdr4m2Intval);
-          this.clearr4m2Cd();
+        if (!this.isPaused) {
+          if (this.cdr4m2Timer && this.cdr4m2Timer > 0) {
+            this.remaincdr4m2 = this.cdr4m2Timer; // Store remaining time
+            this.cdr4m2Timer--;
+          } else {
+            clearInterval(this.cdr4m2Intval);
+            this.clearr4m2Cd();
 
-          this.r4m2Show = false;
-          this.r4m2RestShow = true;
-          this.r4m2Showc = false;
-          this.r4m2RestShowc = true;
-          this.updateIonContentClass();
-          this.startr4m2Rest(specificWorkouts);
+            this.r4m2Show = false;
+            this.r4m2RestShow = true;
+            this.r4m2Showc = false;
+            this.r4m3srtbtn3Show = false;
+            this.r4m2RestShowc = true;
+            this.updateIonContentClass();
+            this.startr4m2Rest(specificWorkouts);
+          }
         }
       }, 1000);
     }
@@ -1601,23 +1614,32 @@ export class WodgoPage implements OnInit {
           if (specificWorkouts.r4m3 !== '') {
             this.r4m3Show = true;
             this.r4m2RestShow = false;
+            this.r4m3Showc = true;
+            this.r4m2RestShowc = false;
+            this.updateIonContentClass();
+            this.cdr4m3Show = true;
+            this.strtr4m3Timer(specificWorkouts);
           } else {
             if (this.r4sets !== specificWorkouts.r4sets) {
               this.r4sets++;
               this.r4m2RestShow = false;
               this.r4m1Show = true;
-
+              this.r4m1Showc = true;
               this.cdr4m1Show = true;
-              this.r4srtbtnShow = true;
-              this.r4m2srtbtnShow = true;
+              this.r4srtbtnShow = false;
+              this.r4m2srtbtnShow = false;
+
               this.buttonDisabled = false;
               this.cdr4m2Show = true;
+              this.cdr4m3Show = true;
+              this.updateIonContentClass();
+              this.strtr4m1Timer(specificWorkouts);
             } else {
-              this.updateIonContentClass(); // Call a method to update the ion-content class
               this.woddonec = true;
               this.r4m2RestShowc = false;
               this.donescrnShow = true;
               this.r4m2RestShow = false;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
             }
           }
         }
@@ -1666,20 +1688,22 @@ export class WodgoPage implements OnInit {
         this.cdr4m3Timer = specificWorkouts.r4move;
       }
       this.cdr4m3Intval = setInterval(() => {
-        if (this.cdr4m3Timer && this.cdr4m3Timer > 0) {
-          this.remaincdr4m3 = this.cdr4m3Timer; // Store remaining time
-          this.cdr4m3Timer--;
-        } else {
-          clearInterval(this.cdr4m3Intval);
+        if (!this.isPaused) {
+          if (this.cdr4m3Timer && this.cdr4m3Timer > 0) {
+            this.remaincdr4m3 = this.cdr4m3Timer; // Store remaining time
+            this.cdr4m3Timer--;
+          } else {
+            clearInterval(this.cdr4m3Intval);
 
-          this.clearr4m3Cd();
+            this.clearr4m3Cd();
 
-          this.r4m3Show = false;
-          this.r4m3RestShow = true;
-          this.r4m3Showc = false;
-          this.r4m3RestShowc = true;
-          this.updateIonContentClass();
-          this.startr4m3Rest(specificWorkouts);
+            this.r4m3Show = false;
+            this.r4m3RestShow = true;
+            this.r4m3Showc = false;
+            this.r4m3RestShowc = true;
+            this.updateIonContentClass();
+            this.startr4m3Rest(specificWorkouts);
+          }
         }
       }, 1000);
     }
@@ -1695,6 +1719,8 @@ export class WodgoPage implements OnInit {
   cdr4m3Rest: number | undefined = undefined;
   cdir4m3Rest: any;
   r4m3RestShow = false;
+  r4m3restfinbtn= false;
+  r4m3restlbl=true;
   startr4m3Rest(specificWorkouts: Workout) {
     if (specificWorkouts.r4rest) {
       this.cdr4m3Rest = specificWorkouts.r4rest;
@@ -1711,24 +1737,34 @@ export class WodgoPage implements OnInit {
           if (this.r4sets !== specificWorkouts.r4sets) {
             this.r4sets++;
             this.r4m1Show = true;
+            this.r4m1Showc = true;
+
             this.r4m3RestShow = false;
             this.cdr4m1Show = true;
-            this.cdr4m2Show = true;
-            this.r4m3srtbtn3Show = true;
-            this.r4m2srtbtnShow = true;
-            this.r4srtbtnShow = true;
+            this.cdr4m2Show = false;
+
+            this.r4srtbtnShow = false;
             this.buttonDisabled = false;
             this.cdr4m3Show = true;
+            this.updateIonContentClass();
+            this.strtr4m1Timer(specificWorkouts);
           } else {
-            this.updateIonContentClass(); // Call a method to update the ion-content class
-            this.woddonec = true;
-            this.r4m3RestShowc = false;
-            this.donescrnShow = true;
-            this.r4m3RestShow = false;
+            // Call a method to update the ion-content class
+            this.r4m3restlbl=false;
+            this.r4m3restfinbtn= true;
+            
           }
         }
       }, 1000);
     }
+  }
+ 
+  wedoner4m3(){
+    this.woddonec = true;
+            this.r4m3RestShowc = false;
+            this.donescrnShow = true;
+            this.r4m3RestShow = false;
+            this.updateIonContentClass();
   }
   clearcdr4m3rest() {
     if (this.cdir4m3Rest) {
@@ -1736,6 +1772,7 @@ export class WodgoPage implements OnInit {
     }
     this.cdr4m3Rest = undefined;
   }
+
   redirectToHome() {
     this.router.navigate(['/chome']); // Replace 'home' with the actual route name of your home page
   }

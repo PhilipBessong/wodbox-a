@@ -51,7 +51,7 @@
                 border-style: solid;
                 border-radius: 10px;
                 height: 52px;
-                width: calc(85% - 60px); /* Adjust the width as needed */
+                width: calc(85% - 58px); /* Adjust the width as needed */
                 margin-left: auto;
                 margin-right: auto;
               "
@@ -65,13 +65,13 @@
               *ngIf="showPassword"
               (click)="togglePasswordVisibility()"
               name="eye-off"
-              style="color: #b27600; cursor: pointer; position: absolute; right: 20px; top: 10px; height: 35px;"
+              style="color: #b27600; cursor: pointer; position: absolute; right: 10px; top: 10px; height: 35px;"
             ></ion-icon>
             <ion-icon
               *ngIf="!showPassword"
               (click)="togglePasswordVisibility()"
               name="eye"
-              style="color: #b27600; cursor: pointer; position: absolute; right: 20px; top: 10px; height: 35px;"
+              style="color: #b27600; cursor: pointer; position: absolute; right: 10px; top: 10px; height: 35px;"
             ></ion-icon>
           </ion-row>
           

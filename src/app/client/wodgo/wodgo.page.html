@@ -8,7 +8,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250"
+      style="background-color: #00b250; height: 100%"
     >
       <h2
         class="cardttl"
@@ -23,13 +23,17 @@
       </h2>
       <ion-card
         class="card"
-        style="background-color: #070707; border-bottom-width: 1px"
+        style="
+          background-color: #070707;
+          border-bottom-width: 1px;
+          height: 700px;
+        "
       >
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
@@ -43,7 +47,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="430px"
+            height="445px"
           >
             <source [src]="workout.exe.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -63,6 +67,7 @@
             *ngIf="srtbtnShow"
             style="
               height: 70px;
+              margin-top: 20px;
               width: 330px;
               font-size: xx-large;
               border-radius: 30px;
@@ -93,7 +98,7 @@
                 text-align: center;
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
-                font-size: x-large;
+                font-size: xx-large;
                 padding: 10%;
                 color: white;
               "
@@ -212,7 +217,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250"
+      style="background-color: #00b250; height: 100%"
     >
       <h2
         class="cardttl"
@@ -227,13 +232,17 @@
       </h2>
       <ion-card
         class="card"
-        style="background-color: #070707; border-bottom-width: 1px"
+        style="
+          background-color: #070707;
+          border-bottom-width: 1px;
+          height: 700px;
+        "
       >
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
@@ -247,7 +256,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="463px"
+            height="445px"
           >
             <source [src]="workout.exeR1M2.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -268,6 +277,7 @@
               height: 70px;
               border-radius: 20px;
               width: 330px;
+              margin-top: 20px;
               font-size: xx-large;
               border-radius: 20px;
               color: #070707;
@@ -289,7 +299,7 @@
                 text-align: center;
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
-                font-size: x-large;
+                font-size: xx-large;
                 padding: 10%;
                 color: #00b250;
               "
@@ -409,7 +419,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250"
+      style="background-color: #00b250; height: 100%"
     >
       <h2
         class="cardttl"
@@ -422,12 +432,12 @@
       >
         Round 1
       </h2>
-      <ion-card class="card" style="border-bottom-width: 1px">
+      <ion-card class="card" style="border-bottom-width: 1px; height: 700px">
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
@@ -441,7 +451,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="430px"
+            height="445px"
           >
             <source [src]="workout.exeR1M3.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -601,7 +611,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250"
+      style="background-color: #00b250; height: 100%"
     >
       <h2
         class="cardttl"
@@ -614,12 +624,12 @@
       >
         Round 2
       </h2>
-      <ion-card class="card" style="border-bottom-width: 1px">
+      <ion-card class="card" style="border-bottom-width: 1px; height: 700px">
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
@@ -633,7 +643,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="430px"
+            height="445px"
           >
             <source [src]="workout.exeR2M1.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -653,6 +663,7 @@
             style="
               height: 70px;
               width: 330px;
+              margin-top: 20px;
               font-size: xx-large;
               border-radius: 30px;
               color: black;
@@ -682,7 +693,7 @@
                 text-align: center;
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
-                font-size: x-large;
+                font-size: xx-large;
                 padding: 10%;
                 color: white;
               "
@@ -801,7 +812,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250"
+      style="background-color: #00b250; height: 100%"
     >
       <h2
         class="cardttl"
@@ -814,12 +825,12 @@
       >
         Round 2
       </h2>
-      <ion-card class="card" style="border-bottom-width: 1px">
+      <ion-card class="card" style="border-bottom-width: 1px; height: 700px">
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
@@ -833,7 +844,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="430px"
+            height="445px"
           >
             <source [src]="workout.exeR2M2.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -993,7 +1004,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250"
+      style="background-color: #00b250; height: 100%"
     >
       <h2
         class="cardttl"
@@ -1006,12 +1017,12 @@
       >
         Round 2
       </h2>
-      <ion-card class="card" style="border-bottom-width: 1px">
+      <ion-card class="card" style="border-bottom-width: 1px; height: 700px">
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
@@ -1025,7 +1036,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="430px"
+            height="445px"
           >
             <source [src]="workout.exeR2M3.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -1187,7 +1198,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250"
+      style="background-color: #00b250; height: 100%"
     >
       <h2
         class="cardttl"
@@ -1200,12 +1211,12 @@
       >
         Round 3
       </h2>
-      <ion-card class="card" style="border-bottom-width: 1px">
+      <ion-card class="card" style="border-bottom-width: 1px; height: 700px">
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
@@ -1219,7 +1230,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="430px"
+            height="445px"
           >
             <source [src]="workout.exeR3M1.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -1241,6 +1252,7 @@
               width: 330px;
               font-size: xx-large;
               border-radius: 30px;
+              margin-top: 20px;
               color: black;
               border: 2px solid #00b250;
               background: linear-gradient(
@@ -1387,7 +1399,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250"
+      style="background-color: #00b250; height: 100%"
     >
       <h2
         class="cardttl"
@@ -1400,12 +1412,12 @@
       >
         Round 3
       </h2>
-      <ion-card class="card" style="border-bottom-width: 1px">
+      <ion-card class="card" style="border-bottom-width: 1px; height: 700px">
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
@@ -1419,7 +1431,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="430px"
+            height="445px"
           >
             <source [src]="workout.exeR3M2.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -1579,7 +1591,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250"
+      style="background-color: #00b250; height: 100%"
     >
       <h2
         class="cardttl"
@@ -1592,12 +1604,12 @@
       >
         Round 3
       </h2>
-      <ion-card class="card" style="border-bottom-width: 1px">
+      <ion-card class="card" style="border-bottom-width: 1px; height: 700px">
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
@@ -1611,7 +1623,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="430px"
+            height="445px"
           >
             <source [src]="workout.exeR3M3.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -1702,7 +1714,6 @@
   </div>
   <!--r3m3Rest-->
   <div class="daBackb" *ngIf="r3m3RestShow">
-    >
     <ion-card
       class="wodbodb"
       *ngFor="let workout of specificWorkouts"
@@ -1772,7 +1783,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250"
+      style="background-color: #00b250; height: 100%"
     >
       <h2
         class="cardttl"
@@ -1785,12 +1796,12 @@
       >
         Round 4
       </h2>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 700px">
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
@@ -1804,7 +1815,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="463px"
+            height="445px"
           >
             <source [src]="workout.exeR4M1.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -1824,12 +1835,21 @@
             style="
               height: 70px;
               width: 330px;
+              margin-top: 20px;
               font-size: xx-large;
-              border-radius: 20px;
-              color: #070707;
-              background-color: #00b250;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #00b250;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #007b40
+              ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
             "
             id="srtbtnr1m1"
             color="#00b250"
@@ -1847,25 +1867,47 @@
                   sans-serif;
                 font-size: xx-large;
                 padding: 10%;
-                color: #00b250;
+                color: white;
               "
               >Get Ready in {{ r4cd5Sec }}</ion-label
             >
           </ion-row>
 
           <ion-row *ngIf="cdr4m1Timer !== undefined">
-            <!-- Display the 5-second timer -->
-            <ion-label
+            <!-- Display the timer -->
+            <div
+              *ngIf="cdr4m1Show"
               style="
                 text-align: center;
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
-                font-size: xxx-large;
+                font-size: 7dvh;
                 padding: 10%;
+                margin-top: 7px;
                 color: #00b250;
+                position: relative;
+                cursor: pointer; /* Add cursor pointer for better user interaction */
               "
-              >{{ cdr4m1Timer }}</ion-label
+              (click)="togglePauseResume()"
             >
+              <div
+                style="
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-color: #00b250;
+                  border-width: 6px;
+                  width: 120px;
+                  height: 120px;
+                  background-color: white;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: -1;
+                "
+              ></div>
+              {{ cdr4m1Timer }}
+            </div>
           </ion-row>
         </ion-row>
         <pre></pre>
@@ -1890,11 +1932,11 @@
       >
         Rest
       </h1>
-      <ion-card class="card" style="height: 770px">
+      <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 65vh"
+            style="background-color: aliceblue; height: 55vh"
           ></ion-img>
         </ion-row>
         <ion-row
@@ -1903,19 +1945,37 @@
         >
           <!-- Countdown timer -->
 
-          <ion-label
+          <div
             class="ion-justify-content-center"
             style="
-              height: 70px;
-              width: 330px;
+              text-align: center;
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
-              font-size: xxx-large;
+              font-size: 7dvh;
+              padding: 10%;
+              margin-top: 7px;
               color: #22b9e9;
-              text-align: center;
+              position: relative;
             "
-            >{{cdr4Rest}}</ion-label
           >
+            <div
+              style="
+                border-radius: 50%; /* Make it a circle */
+                border-style: solid;
+                border-color: #22b9e9;
+                border-width: 6px;
+                width: 120px; /* Adjust the width to make it twice as big as the timer */
+                height: 120px; /* Set the height based on the width */
+                background-color: white; /* Background color for the circle */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              "
+            ></div>
+            {{cdr4Rest}}
+          </div>
         </ion-row>
       </ion-card>
     </ion-card>
@@ -1925,7 +1985,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250"
+      style="background-color: #00b250; height: 100%"
     >
       <h2
         class="cardttl"
@@ -1938,12 +1998,12 @@
       >
         Round 4
       </h2>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 700px">
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
@@ -1957,7 +2017,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="463px"
+            height="445px"
           >
             <source [src]="workout.exeR4M2.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -2008,18 +2068,39 @@
 
           <ion-row *ngIf="cdr4m2Timer !== undefined">
             <!-- Display the 5-second timer -->
-            <ion-label
+            <div
               *ngIf="cdr4m2Show"
               style="
                 text-align: center;
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
-                font-size: xxx-large;
+                font-size: 7dvh;
                 padding: 10%;
+                margin-top: 7px;
                 color: #00b250;
+                position: relative;
+                cursor: pointer; /* Add cursor pointer for better user interaction */
               "
-              >{{ cdr4m2Timer }}</ion-label
+              (click)="togglePauseResume()"
             >
+              <div
+                style="
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-color: #00b250;
+                  border-width: 6px;
+                  width: 120px;
+                  height: 120px;
+                  background-color: white;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: -1;
+                "
+              ></div>
+              {{ cdr4m2Timer }}
+            </div>
           </ion-row>
         </ion-row>
       </ion-card>
@@ -2043,11 +2124,11 @@
       >
         Rest
       </h1>
-      <ion-card class="card" style="height: 770px">
+      <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 65vh"
+            style="background-color: aliceblue; height: 55vh"
           ></ion-img>
         </ion-row>
         <ion-row
@@ -2056,19 +2137,37 @@
         >
           <!-- Countdown timer -->
 
-          <ion-label
+          <div
             class="ion-justify-content-center"
             style="
-              height: 70px;
-              width: 330px;
+              text-align: center;
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
-              font-size: xxx-large;
+              font-size: 7dvh;
+              padding: 10%;
+              margin-top: 7px;
               color: #22b9e9;
-              text-align: center;
+              position: relative;
             "
-            >{{cdr4m2Rest}}</ion-label
           >
+            <div
+              style="
+                border-radius: 50%; /* Make it a circle */
+                border-style: solid;
+                border-color: #22b9e9;
+                border-width: 6px;
+                width: 120px; /* Adjust the width to make it twice as big as the timer */
+                height: 120px; /* Set the height based on the width */
+                background-color: white; /* Background color for the circle */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              "
+            ></div>
+            {{cdr4m2Rest}}
+          </div>
         </ion-row>
       </ion-card>
     </ion-card>
@@ -2078,7 +2177,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250"
+      style="background-color: #00b250; height: 100%"
     >
       <h2
         class="cardttl"
@@ -2091,12 +2190,12 @@
       >
         Round 4
       </h2>
-      <ion-card class="card">
+      <ion-card class="card" style="height: 700px">
         <ion-card-subtitle
           style="
             text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
+            font-size: larger;
             padding: 10%;
             color: aliceblue;
           "
@@ -2110,7 +2209,7 @@
             autoplay
             loop
             style="border-radius: 20px"
-            height="463px"
+            height="445px"
           >
             <source [src]="workout.exeR4M3.mobileUrl" type="video/mp4" />
             <!-- Add more <source> elements for different video formats if needed -->
@@ -2161,18 +2260,39 @@
 
           <ion-row *ngIf="cdr4m3Timer !== undefined">
             <!-- Display the 5-second timer -->
-            <ion-label
+            <div
               *ngIf="cdr4m3Show"
               style="
                 text-align: center;
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
-                font-size: xxx-large;
+                font-size: 7dvh;
                 padding: 10%;
+                margin-top: 7px;
                 color: #00b250;
+                position: relative;
+                cursor: pointer; /* Add cursor pointer for better user interaction */
               "
-              >{{ cdr4m3Timer }}</ion-label
+              (click)="togglePauseResume()"
             >
+              <div
+                style="
+                  border-radius: 50%;
+                  border-style: solid;
+                  border-color: #00b250;
+                  border-width: 6px;
+                  width: 120px;
+                  height: 120px;
+                  background-color: white;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: -1;
+                "
+              ></div>
+              {{ cdr4m3Timer }}
+            </div>
           </ion-row>
         </ion-row>
         <pre></pre>
@@ -2197,11 +2317,11 @@
       >
         Rest
       </h1>
-      <ion-card class="card" style="height: 770px">
+      <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center">
           <ion-img
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 65vh"
+            style="background-color: aliceblue; height: 55vh"
           ></ion-img>
         </ion-row>
         <ion-row
@@ -2210,19 +2330,68 @@
         >
           <!-- Countdown timer -->
 
-          <ion-label
+          <div
             class="ion-justify-content-center"
+            style="
+              text-align: center;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-size: 7dvh;
+              padding: 10%;
+              margin-top: 7px;
+              color: #22b9e9;
+              position: relative;
+            "
+           id="r4m3restlbl"
+           *ngIf="r4m3restlbl"
+          >
+            <div
+              style="
+                border-radius: 50%; /* Make it a circle */
+                border-style: solid;
+                border-color: #22b9e9;
+                border-width: 6px;
+                width: 120px; /* Adjust the width to make it twice as big as the timer */
+                height: 120px; /* Set the height based on the width */
+                background-color: white; /* Background color for the circle */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              "
+            ></div>
+            {{cdr4m3Rest}}
+          </div>
+          <div id="r4m3restfinbtn">
+            <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
             style="
               height: 70px;
               width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
-              font-size: xxx-large;
-              color: #22b9e9;
-              text-align: center;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
             "
-            >{{cdr4m3Rest}}</ion-label
+            id="srtbtnr1m1"
+            color="#00b250"
           >
+            Finish
+          </button>
+          </div>
         </ion-row>
       </ion-card>
     </ion-card>
