@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true">
+  <div class="daBack">
+    <div class="col">
+      <br />
+      <button
+        (click)="backtoWarmUp()"
+        style="
+          background-color: #b27600;
+          border-radius: 5px;
+          color: aliceblue;
+          margin-left: 75%;
+          width: 70px;
+          height: 25px;
+        "
+      >
+        <ion-icon name="chevron-back-outline"></ion-icon>Back
+      </button>
+      <div class="col">
+        <div class="logocon">
+          <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
+        </div>
+      </div>
+    </div>
+
+    <pre></pre>
+    <div>
+      <h1 class="wodhead" style="color: aliceblue">Choose a Style</h1>
+    </div>
+    <pre></pre>
+    <ion-grid>
+     <ion-row>
+      <ion-col>
+        <ion-card (click)="tointerval()" style="text-align: center; color: #b27600;">INTERVAL</ion-card>
+      </ion-col>
+      <ion-col><ion-card (click)="totabata()" style="text-align: center; color: #b27600;">TABATA</ion-card></ion-col>
+     </ion-row> 
+     <ion-row>
+      <ion-col><ion-card style="text-align: center;color: #b27600;">LADDER</ion-card></ion-col>
+      <ion-col><ion-card style="text-align: center;color: #b27600;">EMOM</ion-card></ion-col>
+     </ion-row> 
+     <ion-row>
+      <ion-col><ion-card style="text-align: center;color: #b27600;">AMRAP</ion-card></ion-col>
+     </ion-row> 
+    </ion-grid>
+   
+  </div>
+</ion-content>

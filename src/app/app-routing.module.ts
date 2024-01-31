@@ -57,6 +57,14 @@ const routes: Routes = [
   {
     path: 'wodon',
     loadChildren: () => import('./client/wodon/wodon.module').then( m => m.WodonPageModule)
+  },
+  {
+    path: 'wodstyle',
+    loadChildren: () => import('./admin/wodstyle/wodstyle.module').then( m => m.WodstylePageModule)
+  },
+  {
+    path: 'tabata',
+    loadChildren: () => import('./admin/tabata/tabata.module').then( m => m.TabataPageModule)
   }
 
 

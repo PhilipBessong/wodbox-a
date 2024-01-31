@@ -386,11 +386,8 @@ export class WodgoPage implements OnInit {
                 this.srtbtn2Show = false;
                 this.cdr2m1Show = true;
               } else {
-                this.donescrnShow = true;
-                this.r1RestShow = false;
-                this.woddonec = true;
-                this.r1RestShowc = false;
-                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.r4m3restlbl=false;
+                this.r4m3restfinbtn= true;
               }
             }
           }
@@ -518,11 +515,8 @@ export class WodgoPage implements OnInit {
                 this.r1m2RestShowc = false;
                 this.updateIonContentClass(); // Call a method to update the ion-content class
               } else {
-                this.donescrnShow = true;
-                this.r1m2RestShowc = false;
-                this.r1m2RestShow = false;
-                this.woddonec = true;
-                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.r4m3restlbl=false;
+                this.r4m3restfinbtn= true;
               }
             }
           }
@@ -637,11 +631,8 @@ export class WodgoPage implements OnInit {
               this.r1m3RestShowc = false;
               this.updateIonContentClass(); // Call a method to update the ion-content class
             } else {
-              this.donescrnShow = true;
-              this.r1m3RestShowc = false;
-              this.r1m3RestShow = false;
-              this.woddonec = true;
-              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.r4m3restlbl=false;
+              this.r4m3restfinbtn= true;
             }
           }
         }
@@ -768,11 +759,8 @@ export class WodgoPage implements OnInit {
                 this.updateIonContentClass();
                 this.r2m1RestShowc = false;
               } else {
-                this.donescrnShow = true;
-                this.r2m2RestShow = false;
-                this.woddonec = true;
-                this.r2m1RestShowc = false;
-                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.r4m3restlbl=false;
+                this.r4m3restfinbtn= true;
               }
             }
           }
@@ -899,11 +887,8 @@ export class WodgoPage implements OnInit {
                 this.r2m2RestShowc = false;
                 this.updateIonContentClass();
               } else {
-                this.donescrnShow = true;
-                this.r2m2RestShow = false;
-                this.updateIonContentClass(); // Call a method to update the ion-content class
-                this.woddonec = true;
-                this.r2m2RestShowc = false;
+                this.r4m3restlbl=false;
+              this.r4m3restfinbtn= true;
               }
             }
           }
@@ -1018,12 +1003,8 @@ export class WodgoPage implements OnInit {
               this.r2m3RestShowc = false;
               this.updateIonContentClass();
             } else {
-              this.donescrnShow = true;
-              this.r2m3RestShow = false;
-              // Call a method to update the ion-content class
-              this.woddonec = true;
-              this.r2m3RestShowc = false;
-              this.updateIonContentClass();
+              this.r4m3restlbl=false;
+              this.r4m3restfinbtn= true;
             }
           }
         }
@@ -1149,11 +1130,8 @@ export class WodgoPage implements OnInit {
                 this.r3m1RestShowc = false;
                 this.updateIonContentClass(); // Call a method to update the ion-content class
               } else {
-                this.donescrnShow = true;
-                this.r3RestShow = false;
-                this.woddonec = true;
-                this.r3m1RestShowc = false;
-                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.r4m3restlbl=false;
+                this.r4m3restfinbtn= true;
               }
             }
           }
@@ -1277,10 +1255,8 @@ export class WodgoPage implements OnInit {
                 this.r3m2RestShowc = false;
                 this.updateIonContentClass(); // Call a method to update the ion-content class
               } else {
-                this.donescrnShow = true;
-                this.r3m2RestShow = false;
-                this.woddonec = true;
-                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.r4m3restlbl=false;
+                this.r4m3restfinbtn= true;
               }
             }
           }
@@ -1392,11 +1368,8 @@ export class WodgoPage implements OnInit {
               this.r3m3RestShowc = false;
               this.updateIonContentClass(); // Call a method to update the ion-content class
             } else {
-              this.donescrnShow = true;
-              this.r3m3RestShow = false;
-              this.woddonec = true;
-              this.r3m3RestShowc = false;
-              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.r4m3restlbl=false;
+              this.r4m3restfinbtn= true;
             }
           }
         }
@@ -1514,12 +1487,8 @@ export class WodgoPage implements OnInit {
               this.updateIonContentClass();
               this.strtr4m1Timer(specificWorkouts);
             } else {
-              this.donescrnShow = true;
-              this.r4RestShow = false;
-              this.r4m1RestShowc = false;
-              this.woddonec = true;
-              this.r4m1RestShowc = false;
-              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.r4m3restlbl=false;
+              this.r4m3restfinbtn= true;
             }
           }
         }
@@ -1635,11 +1604,8 @@ export class WodgoPage implements OnInit {
               this.updateIonContentClass();
               this.strtr4m1Timer(specificWorkouts);
             } else {
-              this.woddonec = true;
-              this.r4m2RestShowc = false;
-              this.donescrnShow = true;
-              this.r4m2RestShow = false;
-              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.r4m3restlbl=false;
+              this.r4m3restfinbtn= true;
             }
           }
         }
@@ -1762,8 +1728,31 @@ export class WodgoPage implements OnInit {
   wedoner4m3(){
     this.woddonec = true;
             this.r4m3RestShowc = false;
+            this.r4m2RestShowc = false;
+            this.r4m1RestShowc = false;
+            this.r3m3RestShowc = false;
+            this.r3m2RestShowc = false;
+            this.r3m1RestShowc = false;
+            this.r2m3RestShowc = false;
+            this.r2m2RestShowc = false;
+            this.r2m1RestShowc = false;
+            this.r1m3RestShowc = false;
+            this.r1m2RestShowc = false;
+            this.r1RestShowc = false;
             this.donescrnShow = true;
+            this.woddonec =true;
             this.r4m3RestShow = false;
+            this.r4m2RestShow = false;
+            this.r4RestShow = false;
+            this.r3m3RestShow = false;
+            this.r3m2RestShow = false;
+            this.r3RestShow = false;
+            this.r2m3RestShow = false;
+            this.r2m2RestShow = false;
+            this.r2RestShow = false;
+            this.r1m3RestShow = false;
+            this.r1m2RestShow = false;
+            this.r1RestShow = false;
             this.updateIonContentClass();
   }
   clearcdr4m3rest() {

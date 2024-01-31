@@ -76,7 +76,7 @@
               background: linear-gradient(
                 45deg,
                 #ffffff,
-                #007b40
+                #ffffff
               ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
@@ -89,6 +89,8 @@
           >
             Start Timer
           </button>
+          
+          
 
           <ion-row *ngIf="cd5Sec !== undefined">
             <!-- Display the 5-second timer -->
@@ -160,15 +162,34 @@
           font-weight: 700;
           vertical-align: middle;
         "
+        *ngIf="r4m3restlbl"
       >
         Rest
+      </h1>
+      <h1
+        class="cardttl"
+        style="
+          color: black;
+          font-size: xxx-large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+        *ngIf="r4m3restfinbtn"
+      >
+        Finished
       </h1>
       <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center" *ngIf="workout.exe">
           <ion-img
+          *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
             style="background-color: aliceblue; height: 55vh"
           ></ion-img>
+          <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: aliceblue; height: 55vh"
+        ></ion-img>
         </ion-row>
 
         <ion-row
@@ -189,6 +210,7 @@
               color: #22b9e9;
               position: relative;
             "
+            *ngIf="r4m3restlbl"
           >
             <div
               style="
@@ -207,6 +229,35 @@
               "
             ></div>
             {{cdr1Rest}}
+          </div>
+          <div id="r4m3restfinbtn">
+            <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
           </div>
         </ion-row>
       </ion-card>
@@ -362,15 +413,34 @@
           font-weight: 700;
           vertical-align: middle;
         "
+         *ngIf="r4m3restlbl"
       >
         Rest
       </h1>
+      <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
       <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center" *ngIf="workout.exe">
           <ion-img
+          *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
             style="background-color: aliceblue; height: 55vh"
           ></ion-img>
+          <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: aliceblue; height: 55vh"
+        ></ion-img>
         </ion-row>
 
         <ion-row
@@ -391,6 +461,7 @@
               color: #22b9e9;
               position: relative;
             "
+            *ngIf="r4m3restlbl"
           >
             <div
               style="
@@ -409,6 +480,35 @@
               "
             ></div>
             {{cdr1m2Rest}}
+          </div>
+          <div id="r4m3restfinbtn">
+            <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
           </div>
         </ion-row>
       </ion-card>
@@ -554,15 +654,34 @@
           font-weight: 700;
           vertical-align: middle;
         "
+         *ngIf="r4m3restlbl"
       >
         Rest
       </h1>
+      <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
       <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center" *ngIf="workout.exe">
           <ion-img
+          *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
             style="background-color: aliceblue; height: 55vh"
           ></ion-img>
+          <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: aliceblue; height: 55vh"
+        ></ion-img>
         </ion-row>
 
         <ion-row
@@ -583,6 +702,7 @@
               color: #22b9e9;
               position: relative;
             "
+               *ngIf="r4m3restlbl"
           >
             <div
               style="
@@ -601,6 +721,35 @@
               "
             ></div>
             {{cdr1m3Rest}}
+          </div>
+          <div id="r4m3restfinbtn">
+            <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
           </div>
         </ion-row>
       </ion-card>
@@ -661,24 +810,24 @@
             (click)="r2strt5SecTimer(workout)"
             *ngIf="r2srtbtnShow"
             style="
-              height: 70px;
-              width: 330px;
-              margin-top: 20px;
-              font-size: xx-large;
-              border-radius: 30px;
-              color: black;
-              border: 2px solid #00b250;
-              background: linear-gradient(
-                45deg,
-                #ffffff,
-                #007b40
-              ); /* Gradient background for a more vibrant look */
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                sans-serif;
-              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
-            "
+            height: 70px;
+            margin-top: 20px;
+            width: 330px;
+            font-size: xx-large;
+            border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(
+              45deg,
+              #ffffff,
+              #ffffff
+            ); /* Gradient background for a more vibrant look */
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+            transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+          "
             id="srtbtnr1m1"
             color="#00b250"
           >
@@ -756,15 +905,34 @@
           font-weight: 700;
           vertical-align: middle;
         "
+            *ngIf="r4m3restlbl"
       >
         Rest
       </h1>
+      <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
       <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center">
           <ion-img
+          *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
             style="background-color: aliceblue; height: 55vh"
           ></ion-img>
+          <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: aliceblue; height: 55vh"
+        ></ion-img>
         </ion-row>
         <ion-row
           *ngIf="workout.r2rest !== undefined"
@@ -784,6 +952,7 @@
               color: #22b9e9;
               position: relative;
             "
+                  *ngIf="r4m3restlbl"
           >
             <div
               style="
@@ -802,6 +971,35 @@
               "
             ></div>
             {{cdr2Rest}}
+          </div>
+          <div id="r4m3restfinbtn">
+            <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
           </div>
         </ion-row>
       </ion-card>
@@ -948,15 +1146,34 @@
           font-weight: 700;
           vertical-align: middle;
         "
+            *ngIf="r4m3restlbl"
       >
         Rest
       </h1>
+      <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
       <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center">
           <ion-img
+          *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
             style="background-color: aliceblue; height: 55vh"
           ></ion-img>
+          <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: aliceblue; height: 55vh"
+        ></ion-img>
         </ion-row>
         <ion-row
           *ngIf="workout.r2rest !== undefined"
@@ -976,6 +1193,7 @@
               color: #22b9e9;
               position: relative;
             "
+                *ngIf="r4m3restlbl"
           >
             <div
               style="
@@ -994,6 +1212,35 @@
               "
             ></div>
             {{cdr2m2Rest}}
+          </div>
+          <div id="r4m3restfinbtn">
+            <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
           </div>
         </ion-row>
       </ion-card>
@@ -1140,15 +1387,34 @@
           font-weight: 700;
           vertical-align: middle;
         "
+        *ngIf="r4m3restlbl"
       >
         Rest
       </h1>
+      <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
       <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center">
           <ion-img
+          *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
             style="background-color: aliceblue; height: 55vh"
           ></ion-img>
+          <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: aliceblue; height: 55vh"
+        ></ion-img>
         </ion-row>
         <ion-row
           *ngIf="workout.r2rest !== undefined"
@@ -1170,6 +1436,7 @@
               color: #22b9e9;
               position: relative;
             "
+            *ngIf="r4m3restlbl"
           >
             <div
               style="
@@ -1188,6 +1455,35 @@
               "
             ></div>
             {{cdr2m3Rest}}
+          </div>
+          <div id="r4m3restfinbtn">
+            <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
           </div>
         </ion-row>
       </ion-card>
@@ -1248,24 +1544,24 @@
             (click)="r3strt5SecTimer(workout)"
             *ngIf="r3srtbtnShow"
             style="
-              height: 70px;
-              width: 330px;
-              font-size: xx-large;
-              border-radius: 30px;
-              margin-top: 20px;
-              color: black;
-              border: 2px solid #00b250;
-              background: linear-gradient(
-                45deg,
-                #ffffff,
-                #007b40
-              ); /* Gradient background for a more vibrant look */
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                sans-serif;
-              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
-            "
+            height: 70px;
+            margin-top: 20px;
+            width: 330px;
+            font-size: xx-large;
+            border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(
+              45deg,
+              #ffffff,
+              #ffffff
+            ); /* Gradient background for a more vibrant look */
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+            transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+          "
             id="srtbtnr1m1"
             color="#00b250"
           >
@@ -1343,15 +1639,34 @@
           font-weight: 700;
           vertical-align: middle;
         "
+        *ngIf="r4m3restlbl"
       >
         Rest
       </h1>
+      <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
       <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center">
           <ion-img
+          *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
             style="background-color: aliceblue; height: 55vh"
           ></ion-img>
+          <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: aliceblue; height: 55vh"
+        ></ion-img>
         </ion-row>
         <ion-row
           *ngIf="workout.r3rest !== undefined"
@@ -1371,6 +1686,7 @@
               color: #22b9e9;
               position: relative;
             "
+            *ngIf="r4m3restlbl"
           >
             <div
               style="
@@ -1389,6 +1705,35 @@
               "
             ></div>
             {{cdr3Rest}}
+          </div>
+          <div id="r4m3restfinbtn">
+            <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
           </div>
         </ion-row>
       </ion-card>
@@ -1535,15 +1880,34 @@
           font-weight: 700;
           vertical-align: middle;
         "
+        *ngIf="r4m3restlbl"
       >
         Rest
       </h1>
+      <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
       <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center">
           <ion-img
+          *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
             style="background-color: aliceblue; height: 55vh"
           ></ion-img>
+          <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: aliceblue; height: 55vh"
+        ></ion-img>
         </ion-row>
         <ion-row
           *ngIf="workout.r3rest !== undefined"
@@ -1563,6 +1927,7 @@
               color: #22b9e9;
               position: relative;
             "
+            *ngIf="r4m3restlbl"
           >
             <div
               style="
@@ -1581,6 +1946,35 @@
               "
             ></div>
             {{cdr3m2Rest}}
+          </div>
+          <div id="r4m3restfinbtn">
+            <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
           </div>
         </ion-row>
       </ion-card>
@@ -1727,15 +2121,34 @@
           font-weight: 700;
           vertical-align: middle;
         "
+          *ngIf="r4m3restlbl"
       >
         Rest
       </h1>
+      <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
       <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center">
           <ion-img
+          *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
             style="background-color: aliceblue; height: 55vh"
           ></ion-img>
+          <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: aliceblue; height: 55vh"
+        ></ion-img>
         </ion-row>
         <ion-row
           *ngIf="workout.r3rest !== undefined"
@@ -1755,6 +2168,7 @@
               color: #22b9e9;
               position: relative;
             "
+              *ngIf="r4m3restlbl"
           >
             <div
               style="
@@ -1773,6 +2187,35 @@
               "
             ></div>
             {{cdr3m3Rest}}
+          </div>
+          <div id="r4m3restfinbtn">
+            <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
           </div>
         </ion-row>
       </ion-card>
@@ -1834,8 +2277,8 @@
             *ngIf="r4srtbtnShow"
             style="
               height: 70px;
-              width: 330px;
               margin-top: 20px;
+              width: 330px;
               font-size: xx-large;
               border-radius: 30px;
               color: black;
@@ -1843,7 +2286,7 @@
               background: linear-gradient(
                 45deg,
                 #ffffff,
-                #007b40
+                #ffffff
               ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
@@ -1929,15 +2372,34 @@
           font-weight: 700;
           vertical-align: middle;
         "
+            *ngIf="r4m3restlbl"
       >
         Rest
       </h1>
+      <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
       <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center">
           <ion-img
+          *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
             style="background-color: aliceblue; height: 55vh"
           ></ion-img>
+          <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: aliceblue; height: 55vh"
+        ></ion-img>
         </ion-row>
         <ion-row
           *ngIf="workout.r4rest !== undefined"
@@ -1957,6 +2419,7 @@
               color: #22b9e9;
               position: relative;
             "
+                *ngIf="r4m3restlbl"
           >
             <div
               style="
@@ -1975,6 +2438,35 @@
               "
             ></div>
             {{cdr4Rest}}
+          </div>
+          <div id="r4m3restfinbtn">
+            <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
           </div>
         </ion-row>
       </ion-card>
@@ -2121,15 +2613,34 @@
           font-weight: 700;
           vertical-align: middle;
         "
+                 *ngIf="r4m3restlbl"
       >
         Rest
       </h1>
+      <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
       <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center">
           <ion-img
+          *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
             style="background-color: aliceblue; height: 55vh"
           ></ion-img>
+          <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: aliceblue; height: 55vh"
+        ></ion-img>
         </ion-row>
         <ion-row
           *ngIf="workout.r4rest !== undefined"
@@ -2149,6 +2660,7 @@
               color: #22b9e9;
               position: relative;
             "
+                     *ngIf="r4m3restlbl"
           >
             <div
               style="
@@ -2167,6 +2679,35 @@
               "
             ></div>
             {{cdr4m2Rest}}
+          </div>
+          <div id="r4m3restfinbtn">
+            <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
           </div>
         </ion-row>
       </ion-card>
@@ -2314,15 +2855,34 @@
           font-weight: 700;
           vertical-align: middle;
         "
+          *ngIf="r4m3restlbl"
       >
         Rest
       </h1>
+      <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
       <ion-card class="card" style="height: 670px">
         <ion-row class="ion-justify-content-center">
           <ion-img
+          *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
             style="background-color: aliceblue; height: 55vh"
           ></ion-img>
+          <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: aliceblue; height: 55vh"
+        ></ion-img>
         </ion-row>
         <ion-row
           *ngIf="workout.r4rest !== undefined"

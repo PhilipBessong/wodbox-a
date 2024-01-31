@@ -30,7 +30,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #b27600"
+      style="background-color: #b27600; "
     >
       <h2
         class="cardttl"
@@ -43,7 +43,7 @@
       >
         {{workout.wodStyle}}
       </h2>
-      <ion-card class="card" style="border-bottom-width:0px;">
+      <ion-card class="card" style="border-bottom-width:6px; padding-bottom: 0%; height: 100%;">
         <ion-card-subtitle
           style="
             text-align: center;
@@ -61,8 +61,8 @@
         </ion-card>
         <pre></pre>
         <h2 class="cardttl"><u>WOD Movements:</u></h2>
-        <ion-grid>
-          <ion-row class="ion-justify-content-center">
+        <ion-grid style="padding-bottom: 0%;">
+          <ion-row class="ion-justify-content-center" style="padding-bottom: 0%;">
             <ion-card
               style="
                 width: 100%;

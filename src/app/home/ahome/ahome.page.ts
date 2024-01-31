@@ -41,6 +41,6 @@ export class AhomePage implements OnInit {
     this.navCtrl.navigateForward(['/adduser']);
   }
   todaAddwod(){
-    this.navCtrl.navigateForward(['/addwod']);
+    this.navCtrl.navigateForward(['/wodstyle']);
   }
 }

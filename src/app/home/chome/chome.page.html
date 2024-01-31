@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <div class="daBack">
+  <div >
     <div class="col">
       <br />
       <button
@@ -22,7 +22,6 @@
       </div>
     </div>
 
-
     <div>
       <h1 class="wodhead" style="color: aliceblue">
         Get <span style="color: #b25900">Your</span> Heart Rate
@@ -30,13 +29,17 @@
       </h1>
     </div>
 
-
     <pre></pre>
     <ion-card class="wodbod">
       <pre></pre>
       <ion-card
         class="card"
-        style="color: aliceblue; text-decoration: none; text-align: center"
+        style="
+          color: aliceblue;
+          text-decoration: none;
+          text-align: center;
+          width: 85%;
+        "
         (click)="toWarmup()"
       >
         <div class="cardimg">
@@ -49,7 +52,12 @@
       <pre></pre>
       <ion-card
         class="card"
-        style="color: aliceblue; text-decoration: none; text-align: center"
+        style="
+          color: aliceblue;
+          text-decoration: none;
+          text-align: center;
+          width: 85%;
+        "
         (click)="toWOD()"
       >
         <div class="cardimg">
@@ -65,6 +73,5 @@
       </ion-card>
       <pre></pre>
     </ion-card>
-    <pre></pre>
   </div>
 </ion-content>
