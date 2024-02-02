@@ -52,6 +52,41 @@ export interface Workout {
   exeR4M2?: Exercise;
   exeR4M3?: Exercise;
 }
+export interface Tabata{
+  id: string;
+    wodCat: string;
+    wodStyle: string;
+    tabataNum: number;
+    mpt: number;
+    t1m1: string;
+    t1m2: string;
+    t2m1: string;
+    t2m2: string;
+    t3m1: string;
+    t3m2: string;
+    t4m1: string;
+    t4m2: string;
+    t5m1: string;
+    t5m2: string;
+    move: number;
+    rest: number;
+    sets: number;
+    daDate: string;
+    styleName?: string;
+  styleDescription?: string;
+  exe?: Exercise;
+  exet1m2?: Exercise;
+  exet2m1?: Exercise;
+  exet2m2?: Exercise;
+  exet3m1?: Exercise;
+  exet3m2?: Exercise;
+  exet4m1?: Exercise;
+  exet4m2?: Exercise;
+  exet5m1?: Exercise;
+  exet5m2?: Exercise;
+
+  
+}
 export class Style {
   constructor(public styleName: string, public styleDescription: string) {}
 }
@@ -70,10 +105,14 @@ export class Exercise {
 export class WorkoutsService {
   private workoutCollection: AngularFirestoreCollection<Workout>;
   private readonly collectionName = 'workouts';
-
+  private tabataCollection: AngularFirestoreCollection<Tabata>;
+  private readonly tcollectionName = 'tabatas';
   constructor(private readonly firestore: AngularFirestore) {
     this.workoutCollection = this.firestore.collection<Workout>(
       this.collectionName
+    );
+    this.tabataCollection = this.firestore.collection<Tabata>(
+      this.tcollectionName
     );
   }
 
@@ -86,6 +125,9 @@ export class WorkoutsService {
   // Get all workouts
   getAllWorkouts(): Observable<Workout[]> {
     return this.workoutCollection.valueChanges({ idField: 'id' });
+  }
+  getAllTabatas(): Observable<Tabata[]> {
+    return this.tabataCollection.valueChanges({ idField: 'id' });
   }
 
   // Get a specific workout by ID
@@ -101,6 +143,9 @@ export class WorkoutsService {
   // Delete a workout
   deleteWorkout(id: string| undefined): Promise<void> {
     return this.workoutCollection.doc(id).delete();
+  }
+  deleteTabata(id: string| undefined): Promise<void> {
+    return this.tabataCollection.doc(id).delete();
   }
 
    // Get workouts with specific conditions (Warm Up and today's date)
@@ -128,6 +173,34 @@ export class WorkoutsService {
           (workout: Workout) =>
             workout.wodCat === 'WOD' &&
             this.isSameDate(today, new Date(workout.daDate))
+        )
+      )
+    );
+  }
+  getSpecificTabata(): Observable<Tabata[]> {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    return this.tabataCollection.valueChanges({ idField: 'id' }).pipe(
+      map((tabatas: Tabata[]) =>
+      tabatas.filter(
+          (tabata: Tabata) =>
+          tabata.wodCat === 'WOD' &&
+            this.isSameDate(today, new Date(tabata.daDate))
+        )
+      )
+    );
+  }
+  getSpecificTabataWod(): Observable<Tabata[]> {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    return this.tabataCollection.valueChanges({ idField: 'id' }).pipe(
+      map((tabatas: Tabata[]) =>
+      tabatas.filter(
+          (tabata: Tabata) =>
+          tabata.wodCat === 'Warm Up' &&
+            this.isSameDate(today, new Date(tabata.daDate))
         )
       )
     );

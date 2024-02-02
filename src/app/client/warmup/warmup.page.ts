@@ -4,6 +4,7 @@ import {
   Workout,
   Style,
   Exercise,
+  Tabata,
   WorkoutsService,
 } from 'src/app/firebase/workouts.service';
 import { Router } from '@angular/router';
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class WarmupPage implements OnInit {
   specificWorkouts: Workout[]=[];
+  stabatas: Tabata[]=[];
   wodStyle: Style[] = [];
   exercises: Exercise[] = [];
   videoUrl: SafeResourceUrl | undefined;
@@ -24,6 +26,7 @@ export class WarmupPage implements OnInit {
 
   ngOnInit(): void {
     this.getSpecificWorkouts();
+    this.getSpecificTabataWod();
   }
 
   getSpecificWorkouts(): void {
@@ -136,6 +139,108 @@ export class WarmupPage implements OnInit {
                 specificWorkouts.exeR4M3 = exercises;
               });
           }
+        });
+      },
+      (error) => {
+        console.error('Error fetching specific workouts:', error);
+      }
+    );
+  }
+  getSpecificTabataWod(): void {
+    this.workoutsService.getSpecificTabataWod().subscribe(
+      (tabatas: Tabata[]) => {
+        this.stabatas = tabatas;
+        this.stabatas.forEach((stabatas) => {
+          this.workoutsService
+            .getStyleByName(stabatas.wodStyle)
+            .subscribe((style) => {
+              // Add style information to each workout
+              stabatas.styleName = style?.styleName;
+              stabatas.styleDescription = style?.styleDescription;
+            });
+            //begin showing workouts from r1 if they exit within the retrieved worout.
+
+          if (stabatas.t1m1) {
+            const exeName = stabatas.t1m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exe = exercises;
+              });
+          }
+          if (stabatas.t1m2) {
+            const exeName = stabatas.t1m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet1m2 = exercises;
+              });
+          }
+          if (stabatas.t2m1) {
+            const exeName = stabatas.t2m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet2m1 = exercises;
+              });
+          }
+          if (stabatas.t2m2) {
+            const exeName = stabatas.t2m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet2m2 = exercises;
+              });
+          }
+          if (stabatas.t3m1) {
+            const exeName = stabatas.t3m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet3m1 = exercises;
+              });
+          }
+          if (stabatas.t3m2) {
+            const exeName = stabatas.t3m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet3m2 = exercises;
+              });
+          }
+          if (stabatas.t4m1) {
+            const exeName = stabatas.t4m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet4m1 = exercises;
+              });
+          }
+          if (stabatas.t4m2) {
+            const exeName = stabatas.t4m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet4m2 = exercises;
+              });
+          }
+          if (stabatas.t5m1) {
+            const exeName = stabatas.t5m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet5m1 = exercises;
+              });
+          }
+          if (stabatas.t5m2) {
+            const exeName = stabatas.t5m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet5m2 = exercises;
+              });
+          }
+         
         });
       },
       (error) => {

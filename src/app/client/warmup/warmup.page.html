@@ -29,6 +29,7 @@
     <pre></pre>
     <ion-card
       class="wodbod"
+      
       *ngFor="let workout of specificWorkouts"
       style="background-color: #b27600; "
     >
@@ -723,6 +724,704 @@
                 <pre></pre>
               </ion-card-content>
             </ion-card>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ion-card>
+    <ion-card
+      class="wodbod"
+      
+      *ngFor="let tabata of stabatas"
+      style="background-color: #b27600; "
+    >
+      <h2
+        class="cardttl"
+        style="
+          color: black;
+          font-size: xx-large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+      >
+        {{tabata.wodStyle}}
+      </h2>
+      <ion-card class="card" style="border-bottom-width:6px; padding-bottom: 0%; height: 100%;">
+        <ion-card-subtitle
+          style="
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: larger;
+            padding: 10%;
+            color: aliceblue;
+          "
+        >
+          {{tabata.styleDescription}}
+        </ion-card-subtitle>
+
+        <ion-card class="cardin">
+          <ion-label class="cardintxt">{{tabata.tabataNum}} Number</ion-label>
+        </ion-card>
+        <pre></pre>
+        <h2 class="cardttl"><u>WOD Movements:</u></h2>
+        <ion-grid style="padding-bottom: 0%;">
+          <ion-row class="ion-justify-content-center" style="padding-bottom: 0%;">
+            <ion-card
+              style="
+                width: 100%;
+                border-radius: 80px;
+                background-color: rgb(58, 56, 56);
+                border-color: #b27600;
+                border-style: solid;
+                border-bottom-width: 2px;
+              "
+            >
+              <ion-card-header>
+                <ion-row class="ion-justify-content-center">
+                  <ion-card-title
+                    style="
+                      font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
+                        sans-serif;
+                      font-size: large;
+                      color: aliceblue;
+                      text-align: center;
+                    "
+                  >
+                    Tabata 1
+                  </ion-card-title>
+                </ion-row>
+              </ion-card-header>
+
+              <ion-card-content>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col class="ion-justify-content-center">
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{tabata.sets}} sets</ion-card-subtitle
+                    >
+                  </ion-col>
+                  <ion-col class="ion-justify-content-center">
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{tabata.move}}sec Move</ion-card-subtitle
+                    >
+                  </ion-col>
+                  <ion-col class="ion-justify-content-center">
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{tabata.rest}}sec Rest</ion-card-subtitle
+                    >
+                  </ion-col>
+                </ion-row>
+                <br />
+                <ion-row style="padding-left: 0%; color: aliceblue">
+                  <ion-label style="font-size: large">Exercise 1</ion-label>
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="tabata.exe"
+                  style="color: aliceblue"
+                  class="ion-justify-content-center"
+                >
+                  <ion-label style="font-size: large"
+                    >{{ tabata.exe.exeName }}</ion-label
+                  >
+                </ion-row>
+                <br />
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="tabata.exe"
+                  class="video-container"
+                >
+                  <video
+                    controls
+                    *ngIf="tabata.exe.videoUrl"
+                    autoplay
+                    loop
+                    style="border-radius: 20px"
+                  >
+                    <source [src]="tabata.exe.videoUrl" type="video/mp4" />
+                    <!-- Add more <source> elements for different video formats if needed -->
+                    Your browser does not support the video tag.
+                  </video>
+                </ion-row>
+
+                <br />
+                <ion-row
+                  *ngIf="tabata.exet1m2"
+                  style="padding-left: 0%; color: aliceblue"
+                >
+                  <ion-label style="font-size: large">Exercise 2</ion-label>
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="tabata.exet1m2"
+                  style="color: aliceblue"
+                  class="ion-justify-content-center"
+                >
+                  <ion-label style="font-size: large"
+                    >{{ tabata.exet1m2.exeName}}</ion-label
+                  >
+                </ion-row>
+                <br />
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="tabata.exet1m2"
+                  class="video-container"
+                >
+                  <video
+                    controls
+                    *ngIf="tabata.exet1m2.videoUrl"
+                    autoplay
+                    loop
+                    style="border-radius: 20px"
+                  >
+                    <source [src]="tabata.exet1m2.videoUrl" type="video/mp4" />
+                    <!-- Add more <source> elements for different video formats if needed -->
+                    Your browser does not support the video tag.
+                  </video>
+                </ion-row>
+
+                <pre></pre>
+              </ion-card-content>
+            </ion-card>
+            <br />
+            <ion-card
+              style="
+                width: 100%;
+                border-radius: 80px;
+                background-color: rgb(58, 56, 56);
+                border-color: #b27600;
+                border-style: solid;
+              "
+              *ngIf="tabata.exet2m1"
+            >
+              <ion-card-header>
+                <ion-row class="ion-justify-content-center">
+                  <ion-card-title
+                    style="
+                      font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
+                        sans-serif;
+                      font-size: large;
+                      color: aliceblue;
+                      text-align: center;
+                    "
+                  >
+                    Tabata 2
+                  </ion-card-title>
+                </ion-row>
+              </ion-card-header>
+
+              <ion-card-content>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col class="ion-justify-content-center">
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{tabata.sets}} sets</ion-card-subtitle
+                    >
+                  </ion-col>
+                  <ion-col class="ion-justify-content-center">
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{tabata.move}}sec Move</ion-card-subtitle
+                    >
+                  </ion-col>
+                  <ion-col class="ion-justify-content-center">
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{tabata.rest}}sec Rest</ion-card-subtitle
+                    >
+                  </ion-col>
+                </ion-row>
+                <br />
+                <ion-row style="padding-left: 0%; color: aliceblue">
+                  <ion-label style="font-size: large">Exercise 1</ion-label>
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="tabata.exet2m1"
+                  style="color: aliceblue"
+                  class="ion-justify-content-center"
+                >
+                  <ion-label style="font-size: large"
+                    >{{ tabata.exet2m1.exeName}}</ion-label
+                  >
+                </ion-row>
+                <br />
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="tabata.exet2m1"
+                  class="video-container"
+                >
+                  <video
+                    controls
+                    *ngIf="tabata.exet2m1.videoUrl"
+                    autoplay
+                    loop
+                    style="border-radius: 20px"
+                  >
+                    <source [src]="tabata.exet2m1.videoUrl" type="video/mp4" />
+                    <!-- Add more <source> elements for different video formats if needed -->
+                    Your browser does not support the video tag.
+                  </video>
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="tabata.exet2m2"
+                  style="padding-left: 0%; color: aliceblue"
+                >
+                  <ion-label style="font-size: large">Exercise 2</ion-label>
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="tabata.exet2m2"
+                  style="color: aliceblue"
+                  class="ion-justify-content-center"
+                >
+                  <ion-label style="font-size: large"
+                    >{{ tabata.exet2m2.exeName}}</ion-label
+                  >
+                </ion-row>
+                <br />
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="tabata.exet2m2"
+                  class="video-container"
+                >
+                  <video
+                    controls
+                    *ngIf="tabata.exet2m2.videoUrl"
+                    autoplay
+                    loop
+                    style="border-radius: 20px"
+                  >
+                    <source [src]="tabata.exet2m2.videoUrl" type="video/mp4" />
+                    <!-- Add more <source> elements for different video formats if needed -->
+                    Your browser does not support the video tag.
+                  </video>
+                </ion-row>
+                <br />
+               
+              </ion-card-content>
+              <pre></pre>
+            </ion-card>
+            <br />
+            <ion-card
+              style="
+                width: 100%;
+                border-radius: 80px;
+                background-color: rgb(58, 56, 56);
+                border-color: #b27600;
+                border-style: solid;
+              "
+              *ngIf="tabata.exet3m1"
+            >
+              <ion-card-header>
+                <ion-row class="ion-justify-content-center">
+                  <ion-card-title
+                    style="
+                      font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
+                        sans-serif;
+                      font-size: large;
+                      color: aliceblue;
+                      text-align: center;
+                    "
+                  >
+                    Tabata 3
+                  </ion-card-title>
+                </ion-row>
+              </ion-card-header>
+
+              <ion-card-content>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col class="ion-justify-content-center">
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{tabata.sets}} sets</ion-card-subtitle
+                    >
+                  </ion-col>
+                  <ion-col class="ion-justify-content-center">
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{tabata.move}}sec Move</ion-card-subtitle
+                    >
+                  </ion-col>
+                  <ion-col class="ion-justify-content-center">
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{tabata.rest}}sec Rest</ion-card-subtitle
+                    >
+                  </ion-col>
+                </ion-row>
+                <br />
+                <ion-row style="padding-left: 0%; color: aliceblue">
+                  <ion-label style="font-size: large">Exercise 1</ion-label>
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="tabata.exet3m1"
+                  style="color: aliceblue"
+                  class="ion-justify-content-center"
+                >
+                  <ion-label style="font-size: large"
+                    >{{ tabata.exet3m1.exeName}}</ion-label
+                  >
+                </ion-row>
+                <br />
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="tabata.exet3m1"
+                  class="video-container"
+                >
+                  <video
+                    controls
+                    *ngIf="tabata.exet3m1.videoUrl"
+                    autoplay
+                    loop
+                    style="border-radius: 20px"
+                  >
+                    <source [src]="tabata.exet3m1.videoUrl" type="video/mp4" />
+                    <!-- Add more <source> elements for different video formats if needed -->
+                    Your browser does not support the video tag.
+                  </video>
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="tabata.exet3m2"
+                  style="padding-left: 0%; color: aliceblue"
+                >
+                  <ion-label style="font-size: large">Exercise 2</ion-label>
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="tabata.exet3m2"
+                  style="color: aliceblue"
+                  class="ion-justify-content-center"
+                >
+                  <ion-label style="font-size: large"
+                    >{{ tabata.exet3m2.exeName}}</ion-label
+                  >
+                </ion-row>
+                <br />
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="tabata.exet3m2"
+                  class="video-container"
+                >
+                  <video
+                    controls
+                    *ngIf="tabata.exet3m2.videoUrl"
+                    autoplay
+                    loop
+                    style="border-radius: 20px"
+                  >
+                    <source [src]="tabata.exet3m2.videoUrl" type="video/mp4" />
+                    <!-- Add more <source> elements for different video formats if needed -->
+                    Your browser does not support the video tag.
+                  </video>
+                </ion-row>
+             
+                <pre></pre>
+              </ion-card-content>
+            </ion-card>
+            <br />
+            <ion-card
+              style="
+                width: 100%;
+                border-radius: 80px;
+                background-color: rgb(58, 56, 56);
+                border-color: #b27600;
+                border-style: solid;
+              "
+              *ngIf="tabata.exet4m1"
+            >
+              <ion-card-header>
+                <ion-row class="ion-justify-content-center">
+                  <ion-card-title
+                    style="
+                      font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
+                        sans-serif;
+                      font-size: large;
+                      color: aliceblue;
+                      text-align: center;
+                    "
+                  >
+                    Tabata 4
+                  </ion-card-title>
+                </ion-row>
+              </ion-card-header>
+
+              <ion-card-content>
+                <ion-row class="ion-justify-content-center">
+                  <ion-col class="ion-justify-content-center">
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{tabata.sets}} sets</ion-card-subtitle
+                    >
+                  </ion-col>
+                  <ion-col class="ion-justify-content-center">
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{tabata.move}}sec Move</ion-card-subtitle
+                    >
+                  </ion-col>
+                  <ion-col class="ion-justify-content-center">
+                    <ion-card-subtitle
+                      style="
+                        font-size: medium;
+                        text-align: center;
+                        color: aliceblue;
+                      "
+                      >{{tabata.rest}}sec Rest</ion-card-subtitle
+                    >
+                  </ion-col>
+                </ion-row>
+                <br />
+                <ion-row style="padding-left: 0%; color: aliceblue">
+                  <ion-label style="font-size: large">Exercise 1</ion-label>
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="tabata.exet4m1"
+                  style="color: aliceblue"
+                  class="ion-justify-content-center"
+                >
+                  <ion-label style="font-size: large"
+                    >{{ tabata.exet4m1.exeName}}</ion-label
+                  >
+                </ion-row>
+                <br />
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="tabata.exet4m1"
+                  class="video-container"
+                >
+                  <video
+                    controls
+                    *ngIf="tabata.exet4m1.videoUrl"
+                    autoplay
+                    loop
+                    style="border-radius: 20px"
+                  >
+                    <source [src]="tabata.exet4m1.videoUrl" type="video/mp4" />
+                    <!-- Add more <source> elements for different video formats if needed -->
+                    Your browser does not support the video tag.
+                  </video>
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="tabata.exet4m2"
+                  style="padding-left: 0%; color: aliceblue"
+                >
+                  <ion-label style="font-size: large">Exercise 2</ion-label>
+                </ion-row>
+                <br />
+                <ion-row
+                  *ngIf="tabata.exet4m2"
+                  style="color: aliceblue"
+                  class="ion-justify-content-center"
+                >
+                  <ion-label style="font-size: large"
+                    >{{ tabata.exet4m2.exeName}}</ion-label
+                  >
+                </ion-row>
+                <br />
+                <ion-row
+                  class="ion-justify-content-center"
+                  *ngIf="tabata.exet4m2"
+                  class="video-container"
+                >
+                  <video
+                    controls
+                    *ngIf="tabata.exet4m2.videoUrl"
+                    autoplay
+                    loop
+                    style="border-radius: 20px"
+                  >
+                    <source [src]="tabata.exet4m2.videoUrl" type="video/mp4" />
+                    <!-- Add more <source> elements for different video formats if needed -->
+                    Your browser does not support the video tag.
+                  </video>
+                </ion-row>
+               
+                <pre></pre>
+              </ion-card-content>
+            </ion-card>
+            <br>
+            <ion-card
+            style="
+              width: 100%;
+              border-radius: 80px;
+              background-color: rgb(58, 56, 56);
+              border-color: #b27600;
+              border-style: solid;
+            "
+            *ngIf="tabata.exet5m1"
+          >
+            <ion-card-header>
+              <ion-row class="ion-justify-content-center">
+                <ion-card-title
+                  style="
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
+                      sans-serif;
+                    font-size: large;
+                    color: aliceblue;
+                    text-align: center;
+                  "
+                >
+                  Tabata 5
+                </ion-card-title>
+              </ion-row>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-row class="ion-justify-content-center">
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle
+                    style="
+                      font-size: medium;
+                      text-align: center;
+                      color: aliceblue;
+                    "
+                    >{{tabata.sets}} sets</ion-card-subtitle
+                  >
+                </ion-col>
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle
+                    style="
+                      font-size: medium;
+                      text-align: center;
+                      color: aliceblue;
+                    "
+                    >{{tabata.move}}sec Move</ion-card-subtitle
+                  >
+                </ion-col>
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle
+                    style="
+                      font-size: medium;
+                      text-align: center;
+                      color: aliceblue;
+                    "
+                    >{{tabata.rest}}sec Rest</ion-card-subtitle
+                  >
+                </ion-col>
+              </ion-row>
+              <br />
+              <ion-row style="padding-left: 0%; color: aliceblue">
+                <ion-label style="font-size: large">Exercise 1</ion-label>
+              </ion-row>
+              <br />
+              <ion-row
+                *ngIf="tabata.exet5m1"
+                style="color: aliceblue"
+                class="ion-justify-content-center"
+              >
+                <ion-label style="font-size: large"
+                  >{{ tabata.exet5m1.exeName}}</ion-label
+                >
+              </ion-row>
+              <br />
+              <ion-row
+                class="ion-justify-content-center"
+                *ngIf="tabata.exet5m1"
+                class="video-container"
+              >
+                <video
+                  controls
+                  *ngIf="tabata.exet5m1.videoUrl"
+                  autoplay
+                  loop
+                  style="border-radius: 20px"
+                >
+                  <source [src]="tabata.exet5m1.videoUrl" type="video/mp4" />
+                  <!-- Add more <source> elements for different video formats if needed -->
+                  Your browser does not support the video tag.
+                </video>
+              </ion-row>
+              <br />
+              <ion-row
+                *ngIf="tabata.exet5m2"
+                style="padding-left: 0%; color: aliceblue"
+              >
+                <ion-label style="font-size: large">Exercise 2</ion-label>
+              </ion-row>
+              <br />
+              <ion-row
+                *ngIf="tabata.exet5m2"
+                style="color: aliceblue"
+                class="ion-justify-content-center"
+              >
+                <ion-label style="font-size: large"
+                  >{{ tabata.exet5m2.exeName}}</ion-label
+                >
+              </ion-row>
+              <br />
+              <ion-row
+                class="ion-justify-content-center"
+                *ngIf="tabata.exet5m2"
+                class="video-container"
+              >
+                <video
+                  controls
+                  *ngIf="tabata.exet5m2.videoUrl"
+                  autoplay
+                  loop
+                  style="border-radius: 20px"
+                >
+                  <source [src]="tabata.exet5m2.videoUrl" type="video/mp4" />
+                  <!-- Add more <source> elements for different video formats if needed -->
+                  Your browser does not support the video tag.
+                </video>
+              </ion-row>
+             
+              <pre></pre>
+            </ion-card-content>
+          </ion-card>
+          <pre></pre>
           </ion-row>
         </ion-grid>
       </ion-card>

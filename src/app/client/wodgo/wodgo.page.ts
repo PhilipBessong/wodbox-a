@@ -4,6 +4,7 @@ import { SafeResourceUrl } from '@angular/platform-browser';
 import {
   Workout,
   Style,
+  Tabata,
   Exercise,
   WorkoutsService,
 } from 'src/app/firebase/workouts.service';
@@ -14,6 +15,7 @@ import {
 })
 export class WodgoPage implements OnInit {
   specificWorkouts: Workout[] = [];
+  stabatas: Tabata[]=[];
   exercises: Exercise[] = [];
   videoUrl: SafeResourceUrl | undefined;
   videoHeight = '280px'; // Adjust the height as needed
@@ -25,6 +27,7 @@ export class WodgoPage implements OnInit {
 
   ngOnInit() {
     this.getSpecificWorkout();
+    this.getSpecificTabataWod();
     this.getIonContentClass();
   }
   getSpecificWorkout(): void {
@@ -130,6 +133,108 @@ export class WodgoPage implements OnInit {
                 specificWorkouts.exeR4M3 = exercises;
               });
           }
+        });
+      },
+      (error) => {
+        console.error('Error fetching specific workouts:', error);
+      }
+    );
+  }
+  getSpecificTabataWod(): void {
+    this.workoutsService.getSpecificTabataWod().subscribe(
+      (tabatas: Tabata[]) => {
+        this.stabatas = tabatas;
+        this.stabatas.forEach((stabatas) => {
+          this.workoutsService
+            .getStyleByName(stabatas.wodStyle)
+            .subscribe((style) => {
+              // Add style information to each workout
+              stabatas.styleName = style?.styleName;
+              stabatas.styleDescription = style?.styleDescription;
+            });
+            //begin showing workouts from r1 if they exit within the retrieved worout.
+
+          if (stabatas.t1m1) {
+            const exeName = stabatas.t1m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exe = exercises;
+              });
+          }
+          if (stabatas.t1m2) {
+            const exeName = stabatas.t1m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet1m2 = exercises;
+              });
+          }
+          if (stabatas.t2m1) {
+            const exeName = stabatas.t2m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet2m1 = exercises;
+              });
+          }
+          if (stabatas.t2m2) {
+            const exeName = stabatas.t2m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet2m2 = exercises;
+              });
+          }
+          if (stabatas.t3m1) {
+            const exeName = stabatas.t3m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet3m1 = exercises;
+              });
+          }
+          if (stabatas.t3m2) {
+            const exeName = stabatas.t3m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet3m2 = exercises;
+              });
+          }
+          if (stabatas.t4m1) {
+            const exeName = stabatas.t4m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet4m1 = exercises;
+              });
+          }
+          if (stabatas.t4m2) {
+            const exeName = stabatas.t4m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet4m2 = exercises;
+              });
+          }
+          if (stabatas.t5m1) {
+            const exeName = stabatas.t5m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet5m1 = exercises;
+              });
+          }
+          if (stabatas.t5m2) {
+            const exeName = stabatas.t5m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                stabatas.exet5m2 = exercises;
+              });
+          }
+         
         });
       },
       (error) => {
@@ -1755,6 +1860,347 @@ export class WodgoPage implements OnInit {
             this.r1RestShow = false;
             this.updateIonContentClass();
   }
+  strt5SecTimertab(stabatas: Tabata) {
+    this.buttonDisabled = true; // Disable the button
+    this.cd5Sec = 10;
+    this.srtbtnShow = false;
+    this.cd5SecShow = true;
+    const timerInterval = setInterval(() => {
+      if (this.cd5Sec !== undefined && this.cd5Sec > 0) {
+        this.cd5Sec--;
+      } else {
+        clearInterval(timerInterval);
+        this.strtr1m1Timertab(stabatas);
+        this.cd5SecShow = false;
+      }
+    }, 1000); // Update the 5-second countdown every second
+  }
+  strtr1m1Timertab(stabatas: Tabata) {
+    if (stabatas.move) {
+      if (this.isPr1m1Timer) {
+        // Resume the countdown with the remaining time
+        this.cdr1m1Timer = this.remaincdr1m1;
+      } else if (this.cdr1m1Timer === undefined) {
+        this.cdr1m1Timer = stabatas.move;
+      }
+
+      this.cdr1m1Intval = setInterval(() => {
+        if (!this.isPaused) {
+          // Check if the timer is not paused
+          if (this.cdr1m1Timer && this.cdr1m1Timer > 0) {
+            this.remaincdr1m1 = this.cdr1m1Timer; // Store remaining time
+            this.cdr1m1Timer--;
+          } else {
+            clearInterval(this.cdr1m1Intval);
+            this.clearr1m1Cd();
+            this.cdr1m1Show = false;
+            this.r1RestShow = true;
+            this.cdr1m1Showc = false;
+            this.r1RestShowc = true;
+            this.updateIonContentClass(); // Call a method to update the ion-content class
+            this.startr1Resttab(stabatas);
+          }
+        }
+      }, 1000);
+    }
+  }
+  startr1Resttab(stabatas: Tabata) {
+    if (stabatas.rest) {
+      this.cdr1Rest = stabatas.rest;
+
+      this.cdir1Rest = setInterval(() => {
+        if (this.cdr1Rest && this.cdr1Rest > 0) {
+          // Store remaining time
+          this.cdr1Rest--;
+        } else {
+          clearInterval(this.cdir1Rest);
+          this.r1RestShowc = false;
+
+          this.updateIonContentClass(); // Call a method to update the ion-content class
+          this.clearcdr1rest();
+          if (stabatas.t1m2 !== '') {
+            this.r1m2Show = true;
+            this.r1RestShow = false;
+            this.r1m2Showc = true;
+            this.r1RestShowc = false;
+            this.updateIonContentClass(); // Call a method to update the ion-content class
+            this.cdr1m2Show = true;
+            this.strtr1m2Timertab(stabatas);
+            this.buttonDisabled = true;
+            this.srtbtn2Show = false;
+          } else {
+            if (this.r1sets !== stabatas.sets) {
+              this.r1sets++;
+              this.r1RestShow = false;
+              this.cdr1m1Show = true;
+              this.srtbtnShow = false;
+              this.srtbtn2Show = true;
+              this.buttonDisabled = false;
+
+              this.cdr1m1Showc = true;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.strtr1m1Timertab(stabatas);
+            } else {
+              if (stabatas.t2m1 !== '') {
+                this.r2m1Show = true;
+                this.r1RestShow = false;
+                // Call a method to update the ion-content class
+                this.r2m1Showc = true;
+                this.r1RestShowc = false;
+                this.updateIonContentClass();
+                this.srtbtn2Show = false;
+                this.cdr2m1Show = true;
+              } else {
+                this.r4m3restlbl=false;
+                this.r4m3restfinbtn= true;
+              }
+            }
+          }
+        }
+      }, 1000);
+    }
+  }
+  strtr1m2Timertab(stabatas: Tabata) {
+    if (stabatas.move) {
+      if (this.isPr1m2Timer) {
+        // Resume the countdown with the remaining time
+        this.cdr1m2Timer = this.remaincdr1m2;
+      } else if (this.cdr1m2Timer === undefined) {
+        this.cdr1m2Timer = stabatas.move;
+      }
+      this.cdr1m2Intval = setInterval(() => {
+        if (!this.isPaused) {
+          if (this.cdr1m2Timer && this.cdr1m2Timer > 0) {
+            this.remaincdr1m2 = this.cdr1m2Timer; // Store remaining time
+            this.cdr1m2Timer--;
+          } else {
+            clearInterval(this.cdr1m2Intval);
+            this.clearr1m2Cd();
+
+            this.r1m2Show = false;
+            this.r1m2RestShow = true;
+            this.r1m2Showc = false;
+            this.r1m2RestShowc = true;
+            this.updateIonContentClass(); // Call a method to update the ion-content class
+            this.startr1m2Resttab(stabatas);
+          }
+        }
+      }, 1000);
+    }
+  }
+  startr1m2Resttab(stabatas: Tabata) {
+    if (stabatas.rest) {
+      this.cdr1m2Rest = stabatas.rest;
+      this.cdir1m2Rest = setInterval(() => {
+        if (this.cdr1m2Rest && this.cdr1m2Rest > 0) {
+          // Store remaining time
+          this.cdr1m2Rest--;
+        } else {
+          clearInterval(this.cdir1m2Rest);
+          this.r1m2RestShowc = false;
+
+          this.updateIonContentClass(); // Call a method to update the ion-content class
+          this.clearcdr1m2rest();
+       
+            if (this.r1sets !== stabatas.sets) {
+              this.r1sets++;
+              this.r1m2RestShow = false;
+              this.cdr1m1Show = true;
+              this.srtbtnShow = false;
+              this.srtbtn2Show = true;
+              this.buttonDisabled = false;
+              this.cdr1m1Show = true;
+              this.cdr1m1Showc = true;
+              this.updateIonContentClass(); // Call a method to update the ion-content class
+              this.strtr1m1Timertab(stabatas);
+            } else {
+              if (stabatas.t2m1 !== '') {
+                this.r2m1Show = true;
+                this.r1m2RestShow = false;
+                this.r2m1Showc = true;
+                this.r1m2RestShowc = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
+              } else {
+                this.r4m3restlbl=false;
+                this.r4m3restfinbtn= true;
+              }
+            }
+          }
+        
+      }, 1000);
+    }
+  }
+  r2strt5SecTimertab(stabatas: Tabata) {
+    this.r2cd5Sec = 10;
+    this.r2srtbtnShow = false;
+    this.r2cd5SecShow = true;
+
+    const timerInterval = setInterval(() => {
+      if (this.r2cd5Sec !== undefined && this.r2cd5Sec > 0) {
+        this.r2cd5Sec--;
+      } else {
+        clearInterval(timerInterval);
+        this.strtr2m1Timertab(stabatas);
+        this.r2cd5SecShow = false;
+      }
+    }, 1000); // Update the 5-second countdown every second
+  }
+  strtr2m1Timertab(stabatas: Tabata) {
+    if (stabatas.move) {
+      if (this.isPr2m1Timer) {
+        // Resume the countdown with the remaining time
+        this.cdr2m1Timer = this.remaincdr2m1;
+      } else if (this.cdr2m1Timer === undefined) {
+        this.cdr2m1Timer = stabatas.move;
+      }
+      this.cdr2m1Intval = setInterval(() => {
+        if (!this.isPaused) {
+          if (this.cdr2m1Timer && this.cdr2m1Timer > 0) {
+            this.remaincdr2m1 = this.cdr2m1Timer; // Store remaining time
+            this.cdr2m1Timer--;
+          } else {
+            clearInterval(this.cdr2m1Intval);
+            this.clearr2m1Cd();
+
+            this.r2m1Show = false;
+            this.r2RestShow = true;
+            this.r2m1Showc = false;
+            this.r2m1RestShowc = true;
+            this.updateIonContentClass();
+            this.startr2Resttab(stabatas);
+          }
+        }
+      }, 1000);
+    }
+  }
+  startr2Resttab(stabatas: Tabata) {
+    if (stabatas.rest) {
+      this.cdr2Rest = stabatas.rest;
+      this.cdir2Rest = setInterval(() => {
+        if (this.cdr2Rest && this.cdr2Rest > 0) {
+          // Store remaining time
+          this.cdr2Rest--;
+        } else {
+          clearInterval(this.cdir2Rest); // Use cdir2Rest, not cdr2Rest
+          this.r2m1RestShowc = false;
+
+          this.updateIonContentClass(); // Call a method to update the ion-content class
+          this.clearcdr2rest();
+          if (stabatas.t2m2 !== '') {
+            this.r2RestShow = false;
+            this.r2m2Show = true;
+            this.r2m2Showc = true;
+            this.r2m1RestShowc = false;
+            this.updateIonContentClass(); // Call a method to update the ion-content class
+            this.cdr2m2Show = true;
+           this.strtr2m2Timertab(stabatas);
+            this.buttonDisabled = true;
+            this.r2m2srtbtnShow = false;
+          } else {
+            if (this.r2sets !== stabatas.sets) {
+              this.r2sets++;
+              this.r2RestShow = false;
+              this.r2m1Show = true;
+              this.r2srtbtnShow = false;
+              this.buttonDisabled = false;
+
+              this.buttonDisabled = false;
+              this.r2m1Showc = true;
+              this.updateIonContentClass();
+              this.cdr2m1Show = true;
+              this.strtr2m1Timertab(stabatas);
+            } else {
+              if (stabatas.t3m1 !== '') {
+                this.r3m1Show = true;
+                this.r2RestShow = false;
+                this.updateIonContentClass(); // Call a method to update the ion-content class
+                this.r3m1Showc = true;
+                this.updateIonContentClass();
+                this.r2m1RestShowc = false;
+              } else {
+                this.r4m3restlbl=false;
+                this.r4m3restfinbtn= true;
+              }
+            }
+          }
+        }
+      }, 1000);
+    }
+  }
+  strtr2m2Timertab(stabatas: Tabata) {
+    if (stabatas.move) {
+      if (this.isPr2m2Timer) {
+        // Resume the countdown with the remaining time
+        this.cdr2m2Timer = this.remaincdr2m2;
+      } else if (this.cdr2m2Timer === undefined) {
+        this.cdr2m2Timer = stabatas.move;
+      }
+      this.cdr2m2Intval = setInterval(() => {
+        if (!this.isPaused) {
+          if (this.cdr2m2Timer && this.cdr2m2Timer > 0) {
+            this.remaincdr2m2 = this.cdr2m2Timer; // Store remaining time
+            this.cdr2m2Timer--;
+          } else {
+            clearInterval(this.cdr2m2Intval);
+            this.clearr2m2Cd();
+
+            this.r2m2Show = false;
+            this.r2m2RestShow = true;
+            this.r2m2Showc = false;
+            this.r2m2RestShowc = true;
+            this.updateIonContentClass();
+            this.startr2m2Resttab(stabatas);
+          }
+        }
+      }, 1000);
+    }
+  }
+  startr2m2Resttab(stabatas: Tabata) {
+    if (stabatas.rest) {
+      this.cdr2m2Rest = stabatas.rest;
+      this.cdir2m2Rest = setInterval(() => {
+        if (this.cdr2m2Rest && this.cdr2m2Rest > 0) {
+          // Store remaining time
+          this.cdr2m2Rest--;
+        } else {
+          clearInterval(this.cdir2m2Rest);
+          this.r2m2RestShowc = false;
+
+          this.updateIonContentClass();
+          this.clearcdr2m2rest();
+         
+            if (this.r2sets !== stabatas.sets) {
+              this.r2sets++;
+              this.r2m2RestShow = false;
+              this.r2m1Show = true;
+              this.r2m1Showc = true;
+              this.cdr2m1Show = true;
+              this.r2srtbtnShow = false;
+              this.r2m2srtbtnShow = true;
+              this.buttonDisabled = false;
+              this.cdr2m1Show = true;
+              this.updateIonContentClass();
+              this.cdr2m1Show = true;
+              this.strtr2m1Timertab(stabatas);
+            } else {
+              if (stabatas.t3m1 !== '') {
+                this.r3m1Show = true;
+                this.r2m2RestShow = false;
+                // Call a method to update the ion-content class
+                this.r3m1Showc = true;
+                this.r2m2RestShowc = false;
+                this.updateIonContentClass();
+              } else {
+                this.r4m3restlbl=false;
+              this.r4m3restfinbtn= true;
+              }
+            }
+          }
+        
+      }, 1000);
+    }
+  }
+  
   clearcdr4m3rest() {
     if (this.cdir4m3Rest) {
       clearInterval(this.cdir4m3Rest);
