@@ -38,7 +38,7 @@ export class AddwodPage implements OnInit {
   initForm(): void {
     this.workoutForm = this.formBuilder.group({
       wodCat: '',
-      wodStyle: '',
+      wodStyle: 'INTERVAL',
       rounds: 0,
       mpr: 0,
       r1m1: '',

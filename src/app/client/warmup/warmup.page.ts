@@ -224,22 +224,7 @@ export class WarmupPage implements OnInit {
                 stabatas.exet4m2 = exercises;
               });
           }
-          if (stabatas.t5m1) {
-            const exeName = stabatas.t5m1;
-            this.workoutsService
-              .getExebyname(exeName)
-              .subscribe((exercises) => {
-                stabatas.exet5m1 = exercises;
-              });
-          }
-          if (stabatas.t5m2) {
-            const exeName = stabatas.t5m2;
-            this.workoutsService
-              .getExebyname(exeName)
-              .subscribe((exercises) => {
-                stabatas.exet5m2 = exercises;
-              });
-          }
+          
          
         });
       },

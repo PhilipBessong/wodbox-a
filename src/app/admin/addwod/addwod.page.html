@@ -26,7 +26,7 @@
     <ion-row>
       <ion-col></ion-col>
       <ion-col style="text-align: center; color: #b27600; font-size: x-large"
-        >Add WOD</ion-col
+        >INTERVAL</ion-col
       >
       <ion-col></ion-col>
     </ion-row>
@@ -64,36 +64,7 @@
                 </div>
               </ion-row>
               <pre></pre>
-              <ion-row>
-                <ion-label
-                  style="font-size: x-large; text-align: center; width: 100%"
-                >
-                  WOD Style
-                </ion-label>
-              </ion-row>
-              <ion-row>
-                <div style="margin-left: auto; margin-right: auto">
-                  <ion-select
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      color: #b27600;
-                    "
-                    placeholder="Style"
-                    formControlName="wodStyle"
-                    id="wodStyle"
-                    type="text"
-                    name="styleId"
-                  >
-                    <ion-select-option
-                      *ngFor="let style of wodStyles"
-                      [value]="style.styleName"
-                      >{{style.styleName}}</ion-select-option
-                    >
-                  </ion-select>
-                </div>
-              </ion-row>
-
+             
               <ion-row>
                 <ion-col>
                   <ion-label style="font-size: x-large; text-align: center"

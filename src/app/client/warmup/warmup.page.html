@@ -27,11 +27,12 @@
       <h1 class="wodhead" style="color: aliceblue">WOD Description</h1>
     </div>
     <pre></pre>
+    <!--interval system-->
     <ion-card
       class="wodbod"
       
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #b27600; "
+      style="padding-bottom: 0%;background-color: #b27600; "
     >
       <h2
         class="cardttl"
@@ -44,7 +45,7 @@
       >
         {{workout.wodStyle}}
       </h2>
-      <ion-card class="card" style="border-bottom-width:6px; padding-bottom: 0%; height: 100%;">
+      <ion-card class="card" style="border-bottom-width:6px; padding-bottom: 0%; height: 100%;padding: 0%;">
         <ion-card-subtitle
           style="
             text-align: center;
@@ -52,6 +53,7 @@
             font-size: larger;
             padding: 10%;
             color: aliceblue;
+
           "
         >
           {{workout.styleDescription}}
@@ -122,22 +124,23 @@
                       >{{workout.r1rest}}sec Rest</ion-card-subtitle
                     >
                   </ion-col>
+                  
                 </ion-row>
-                <br />
-                <ion-row style="padding-left: 0%; color: aliceblue">
+            
+                <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
                   <ion-label style="font-size: large">Exercise 1</ion-label>
                 </ion-row>
-                <br />
+
                 <ion-row
                   *ngIf="workout.exe"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exe.exeName }}</ion-label
                   >
                 </ion-row>
-                <br />
+                
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="workout.exe"
@@ -156,28 +159,29 @@
                   </video>
                 </ion-row>
 
-                <br />
+                
                 <ion-row
                   *ngIf="workout.exeR1M2"
-                  style="padding-left: 0%; color: aliceblue"
+                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 2</ion-label>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="workout.exeR1M2"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exeR1M2.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+                
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR1M2"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -191,28 +195,29 @@
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                <br />
+               
                 <ion-row
                   *ngIf="workout.exeR1M3"
-                  style="padding-left: 0%; color: aliceblue"
+                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
                 </ion-row>
-                <br />
+               
                 <ion-row
                   *ngIf="workout.exeR1M3"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exeR1M3.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+              
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR1M3"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -229,13 +234,14 @@
                 <pre></pre>
               </ion-card-content>
             </ion-card>
-            <br />
+           
             <ion-card
               style="
                 width: 100%;
                 border-radius: 80px;
                 background-color: rgb(58, 56, 56);
                 border-color: #b27600;
+                padding-top: 5%;
                 border-style: solid;
               "
               *ngIf="workout.exeR2M1"
@@ -289,25 +295,26 @@
                     >
                   </ion-col>
                 </ion-row>
-                <br />
-                <ion-row style="padding-left: 0%; color: aliceblue">
+                
+                <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
                   <ion-label style="font-size: large">Exercise 1</ion-label>
                 </ion-row>
-                <br />
+               
                 <ion-row
                   *ngIf="workout.exeR2M1"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exeR2M1.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+             
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR2M1"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -321,28 +328,29 @@
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="workout.exeR2M2"
-                  style="padding-left: 0%; color: aliceblue"
+                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 2</ion-label>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="workout.exeR2M2"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exeR2M2.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+                
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR2M2"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -356,28 +364,29 @@
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="workout.exeR2M3"
-                  style="padding-left: 0%; color: aliceblue"
+                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
                 </ion-row>
-                <br />
+               
                 <ion-row
                   *ngIf="workout.exeR2M3"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exeR2M3.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+                
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR2M3"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -394,7 +403,7 @@
               </ion-card-content>
               <pre></pre>
             </ion-card>
-            <br />
+            
             <ion-card
               style="
                 width: 100%;
@@ -402,6 +411,7 @@
                 background-color: rgb(58, 56, 56);
                 border-color: #b27600;
                 border-style: solid;
+                padding-top: 5%;
               "
               *ngIf="workout.exeR3M1"
             >
@@ -454,25 +464,26 @@
                     >
                   </ion-col>
                 </ion-row>
-                <br />
-                <ion-row style="padding-left: 0%; color: aliceblue">
+              
+                <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
                   <ion-label style="font-size: large">Exercise 1</ion-label>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="workout.exeR3M1"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exeR3M1.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+               
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR3M1"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -486,28 +497,29 @@
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                <br />
+               
                 <ion-row
                   *ngIf="workout.exeR3M2"
-                  style="padding-left: 0%; color: aliceblue"
+                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 2</ion-label>
                 </ion-row>
-                <br />
+              
                 <ion-row
                   *ngIf="workout.exeR3M2"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exeR3M2.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+                
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR3M2"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -521,28 +533,29 @@
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="workout.exeR3M3"
-                  style="padding-left: 0%; color: aliceblue"
+                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="workout.exeR3M3"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exeR3M3.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+               
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR3M3"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -559,10 +572,11 @@
                 <pre></pre>
               </ion-card-content>
             </ion-card>
-            <br />
+           
             <ion-card
               style="
                 width: 100%;
+                padding-top: 5%;
                 border-radius: 80px;
                 background-color: rgb(58, 56, 56);
                 border-color: #b27600;
@@ -619,25 +633,26 @@
                     >
                   </ion-col>
                 </ion-row>
-                <br />
-                <ion-row style="padding-left: 0%; color: aliceblue">
+               
+                <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
                   <ion-label style="font-size: large">Exercise 1</ion-label>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="workout.exeR4M1"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exeR4M1.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+                
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR4M1"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -651,28 +666,29 @@
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                <br />
+              
                 <ion-row
                   *ngIf="workout.exeR4M2"
-                  style="padding-left: 0%; color: aliceblue"
+                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 2</ion-label>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="workout.exeR4M2"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exeR4M2.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+              
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR4M2"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -686,28 +702,29 @@
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="workout.exeR4M3"
-                  style="padding-left: 0%; color: aliceblue"
+                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="workout.exeR4M3"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exeR4M3.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+                
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR4M3"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -728,6 +745,7 @@
         </ion-grid>
       </ion-card>
     </ion-card>
+    <!--tabata system-->
     <ion-card
       class="wodbod"
       
@@ -824,25 +842,26 @@
                     >
                   </ion-col>
                 </ion-row>
-                <br />
-                <ion-row style="padding-left: 0%; color: aliceblue">
+                
+                <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
                   <ion-label style="font-size: large">Exercise 1</ion-label>
                 </ion-row>
-                <br />
+              
                 <ion-row
                   *ngIf="tabata.exe"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ tabata.exe.exeName }}</ion-label
                   >
                 </ion-row>
-                <br />
+                
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="tabata.exe"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -857,28 +876,29 @@
                   </video>
                 </ion-row>
 
-                <br />
+                
                 <ion-row
                   *ngIf="tabata.exet1m2"
-                  style="padding-left: 0%; color: aliceblue"
+                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 2</ion-label>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="tabata.exet1m2"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ tabata.exet1m2.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+            
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="tabata.exet1m2"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -896,9 +916,10 @@
                 <pre></pre>
               </ion-card-content>
             </ion-card>
-            <br />
+          
             <ion-card
               style="
+              padding-top: 5%;
                 width: 100%;
                 border-radius: 80px;
                 background-color: rgb(58, 56, 56);
@@ -956,25 +977,26 @@
                     >
                   </ion-col>
                 </ion-row>
-                <br />
-                <ion-row style="padding-left: 0%; color: aliceblue">
+                
+                <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
                   <ion-label style="font-size: large">Exercise 1</ion-label>
                 </ion-row>
-                <br />
+             
                 <ion-row
                   *ngIf="tabata.exet2m1"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ tabata.exet2m1.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+               
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="tabata.exet2m1"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -988,28 +1010,29 @@
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                <br />
+               
                 <ion-row
                   *ngIf="tabata.exet2m2"
-                  style="padding-left: 0%; color: aliceblue"
+                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 2</ion-label>
                 </ion-row>
-                <br />
+          
                 <ion-row
                   *ngIf="tabata.exet2m2"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ tabata.exet2m2.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+            
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="tabata.exet2m2"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -1023,14 +1046,13 @@
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                <br />
-               
               </ion-card-content>
               <pre></pre>
             </ion-card>
-            <br />
+       
             <ion-card
               style="
+              padding-top: 5%;
                 width: 100%;
                 border-radius: 80px;
                 background-color: rgb(58, 56, 56);
@@ -1088,25 +1110,26 @@
                     >
                   </ion-col>
                 </ion-row>
-                <br />
-                <ion-row style="padding-left: 0%; color: aliceblue">
+                
+                <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
                   <ion-label style="font-size: large">Exercise 1</ion-label>
                 </ion-row>
-                <br />
+              
                 <ion-row
                   *ngIf="tabata.exet3m1"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ tabata.exet3m1.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+              
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="tabata.exet3m1"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -1120,28 +1143,29 @@
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="tabata.exet3m2"
-                  style="padding-left: 0%; color: aliceblue"
+                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 2</ion-label>
                 </ion-row>
-                <br />
+              
                 <ion-row
                   *ngIf="tabata.exet3m2"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ tabata.exet3m2.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+               
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="tabata.exet3m2"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -1159,9 +1183,10 @@
                 <pre></pre>
               </ion-card-content>
             </ion-card>
-            <br />
+         
             <ion-card
               style="
+              padding-top: 5%;
                 width: 100%;
                 border-radius: 80px;
                 background-color: rgb(58, 56, 56);
@@ -1219,25 +1244,26 @@
                     >
                   </ion-col>
                 </ion-row>
-                <br />
-                <ion-row style="padding-left: 0%; color: aliceblue">
+                
+                <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
                   <ion-label style="font-size: large">Exercise 1</ion-label>
                 </ion-row>
-                <br />
+                
                 <ion-row
                   *ngIf="tabata.exet4m1"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ tabata.exet4m1.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+                
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="tabata.exet4m1"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -1251,28 +1277,29 @@
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
-                <br />
+              
                 <ion-row
                   *ngIf="tabata.exet4m2"
-                  style="padding-left: 0%; color: aliceblue"
+                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 2</ion-label>
                 </ion-row>
-                <br />
+               
                 <ion-row
                   *ngIf="tabata.exet4m2"
-                  style="color: aliceblue"
+                  style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
                   <ion-label style="font-size: large"
                     >{{ tabata.exet4m2.exeName}}</ion-label
                   >
                 </ion-row>
-                <br />
+               
                 <ion-row
                   class="ion-justify-content-center"
                   *ngIf="tabata.exet4m2"
                   class="video-container"
+                  style="padding-top: 5%;"
                 >
                   <video
                     controls
@@ -1290,137 +1317,6 @@
                 <pre></pre>
               </ion-card-content>
             </ion-card>
-            <br>
-            <ion-card
-            style="
-              width: 100%;
-              border-radius: 80px;
-              background-color: rgb(58, 56, 56);
-              border-color: #b27600;
-              border-style: solid;
-            "
-            *ngIf="tabata.exet5m1"
-          >
-            <ion-card-header>
-              <ion-row class="ion-justify-content-center">
-                <ion-card-title
-                  style="
-                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
-                      sans-serif;
-                    font-size: large;
-                    color: aliceblue;
-                    text-align: center;
-                  "
-                >
-                  Tabata 5
-                </ion-card-title>
-              </ion-row>
-            </ion-card-header>
-
-            <ion-card-content>
-              <ion-row class="ion-justify-content-center">
-                <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.sets}} sets</ion-card-subtitle
-                  >
-                </ion-col>
-                <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.move}}sec Move</ion-card-subtitle
-                  >
-                </ion-col>
-                <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.rest}}sec Rest</ion-card-subtitle
-                  >
-                </ion-col>
-              </ion-row>
-              <br />
-              <ion-row style="padding-left: 0%; color: aliceblue">
-                <ion-label style="font-size: large">Exercise 1</ion-label>
-              </ion-row>
-              <br />
-              <ion-row
-                *ngIf="tabata.exet5m1"
-                style="color: aliceblue"
-                class="ion-justify-content-center"
-              >
-                <ion-label style="font-size: large"
-                  >{{ tabata.exet5m1.exeName}}</ion-label
-                >
-              </ion-row>
-              <br />
-              <ion-row
-                class="ion-justify-content-center"
-                *ngIf="tabata.exet5m1"
-                class="video-container"
-              >
-                <video
-                  controls
-                  *ngIf="tabata.exet5m1.videoUrl"
-                  autoplay
-                  loop
-                  style="border-radius: 20px"
-                >
-                  <source [src]="tabata.exet5m1.videoUrl" type="video/mp4" />
-                  <!-- Add more <source> elements for different video formats if needed -->
-                  Your browser does not support the video tag.
-                </video>
-              </ion-row>
-              <br />
-              <ion-row
-                *ngIf="tabata.exet5m2"
-                style="padding-left: 0%; color: aliceblue"
-              >
-                <ion-label style="font-size: large">Exercise 2</ion-label>
-              </ion-row>
-              <br />
-              <ion-row
-                *ngIf="tabata.exet5m2"
-                style="color: aliceblue"
-                class="ion-justify-content-center"
-              >
-                <ion-label style="font-size: large"
-                  >{{ tabata.exet5m2.exeName}}</ion-label
-                >
-              </ion-row>
-              <br />
-              <ion-row
-                class="ion-justify-content-center"
-                *ngIf="tabata.exet5m2"
-                class="video-container"
-              >
-                <video
-                  controls
-                  *ngIf="tabata.exet5m2.videoUrl"
-                  autoplay
-                  loop
-                  style="border-radius: 20px"
-                >
-                  <source [src]="tabata.exet5m2.videoUrl" type="video/mp4" />
-                  <!-- Add more <source> elements for different video formats if needed -->
-                  Your browser does not support the video tag.
-                </video>
-              </ion-row>
-             
-              <pre></pre>
-            </ion-card-content>
-          </ion-card>
           <pre></pre>
           </ion-row>
         </ion-grid>
