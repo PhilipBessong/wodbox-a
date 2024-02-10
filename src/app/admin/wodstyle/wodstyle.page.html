@@ -8,12 +8,14 @@
           background-color: #b27600;
           border-radius: 5px;
           color: aliceblue;
-          margin-left: 75%;
-          width: 70px;
+          margin-left: 85%;
+          width: 50px;
           height: 25px;
+          display: flex;
+          align-items: center;
         "
       >
-        <ion-icon name="chevron-back-outline"></ion-icon>Back
+        <ion-icon name="chevron-back-outline" style="margin-right: 1px;"></ion-icon>Back
       </button>
       <div class="col">
         <div class="logocon">
@@ -30,16 +32,16 @@
     <ion-grid>
      <ion-row>
       <ion-col>
-        <ion-card (click)="tointerval()" style="text-align: center; color: #b27600;">INTERVAL</ion-card>
+        <ion-button (click)="tointerval()" style="text-align: center; color: #b27600;">INTERVAL</ion-button>
       </ion-col>
-      <ion-col><ion-card (click)="totabata()" style="text-align: center; color: #b27600;">TABATA</ion-card></ion-col>
+      <ion-col><ion-button (click)="totabata()" style="text-align: center; color: #b27600;">TABATA</ion-button></ion-col>
      </ion-row> 
      <ion-row>
-      <ion-col><ion-card style="text-align: center;color: #b27600;">LADDER</ion-card></ion-col>
-      <ion-col><ion-card style="text-align: center;color: #b27600;">EMOM</ion-card></ion-col>
+      <ion-col><ion-button style="text-align: center;color: #b27600;">LADDER</ion-button></ion-col>
+      <ion-col><ion-button style="text-align: center;color: #b27600;">EMOM</ion-button></ion-col>
      </ion-row> 
      <ion-row>
-      <ion-col><ion-card style="text-align: center;color: #b27600;">AMRAP</ion-card></ion-col>
+      <ion-col><ion-button style="text-align: center;color: #b27600;">AMRAP</ion-button></ion-col>
      </ion-row> 
     </ion-grid>
    
