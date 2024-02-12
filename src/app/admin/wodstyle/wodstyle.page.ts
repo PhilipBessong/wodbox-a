@@ -22,7 +22,7 @@ export class WodstylePage implements OnInit {
     this.router.navigate(['/tabata']);
   }
   toladder(){
-    this.router.navigate(['/ahome']);
+    this.router.navigate(['/ladder']);
   }
   toemom(){
     this.router.navigate(['/ahome']);

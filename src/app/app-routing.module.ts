@@ -65,6 +65,10 @@ const routes: Routes = [
   {
     path: 'tabata',
     loadChildren: () => import('./admin/tabata/tabata.module').then( m => m.TabataPageModule)
+  },
+  {
+    path: 'ladder',
+    loadChildren: () => import('./admin/ladder/ladder.module').then( m => m.LadderPageModule)
   }
 
 

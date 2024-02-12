@@ -1,0 +1,470 @@
+<ion-content [fullscreen]="true">
+  <div class="daBack">
+    <div class="col">
+      <br />
+       <button
+        (click)="towodstyle()"
+        style="
+          background-color: #b27600;
+          border-radius: 5px;
+          color: aliceblue;
+          margin-left: 85%;
+          width: 50px;
+          height: 25px;
+          display: flex;
+          align-items: center;
+        "
+      >
+        <ion-icon name="chevron-back-outline" style="margin-right: 1px;"></ion-icon>Back
+      </button>
+      <div class="col">
+        <div class="logocon">
+          <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
+        </div>
+      </div>
+    </div>
+
+    <pre></pre>
+    <div>
+      <h1 class="wodhead" style="color: aliceblue">Ladder</h1>
+    </div>
+    <pre></pre>
+    <ion-row>
+      <ion-card style="width: 100%; background-color: white;">
+        <div class="container">
+          <ion-grid>
+            <pre></pre>
+            <ion-row>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >WOD Category</ion-label
+              >
+            </ion-row>
+
+            <ion-row>
+              <div style="margin-left: auto; margin-right: auto">
+                <ion-select
+                  placeholder="Select Category"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  id="wodCat"
+                  type="text"
+                  name="wodCat"
+                  [(ngModel)]="ladderData.wodCat"
+                  required
+                >
+                  <ion-select-option value="Warm Up" style="text-align: center"
+                    >Warm Up</ion-select-option
+                  >
+                  <ion-select-option value="WOD">WOD</ion-select-option>
+                </ion-select>
+              </div>
+            </ion-row>
+            <pre></pre>
+            <ion-row style="text-align: center">
+              <ion-col>
+                <ion-label
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  >Ladder Number</ion-label
+                >
+              </ion-col>
+              <ion-col>
+                <ion-label
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  >MPL</ion-label
+                >
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <div style="margin-left: auto; margin-right: auto">
+                  <ion-input
+                    placeholder="0"
+                    style="font-size: x-large; text-align: center; width: 100%"
+                    type="number"
+                    name="laddernums"
+                    [(ngModel)]="numladder"
+                    [(ngModel)]="ladderData.ladderNum"
+                    max="3"
+                    min="1"
+                    required
+                  >
+                  </ion-input>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div style="margin-left: auto; margin-right: auto">
+                  <ion-input
+                    placeholder="0"
+                    style="font-size: x-large; text-align: center; width: 100%"
+                    type="number"
+                    [(ngModel)]="mpls"
+                    [(ngModel)]="ladderData.mpl"
+                    max="4"
+                    min="2"
+                    required
+                  >
+                  </ion-input>
+                </div>
+              </ion-col>
+            </ion-row>
+            <pre></pre>
+
+            <ion-row>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Ladder 1</ion-label
+              >
+            </ion-row>
+
+            <ion-row style="text-align: center">
+              <ion-col style="text-align: center">
+                <ion-select
+                  placeholder="M1"
+                  name="r1m1"
+                  [(ngModel)]="ladderData.l1m1"
+                  required
+                  id="r1m1"
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+                  id="r1m1"
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+              </ion-col>
+              <!--l1m2-->
+              <ion-col style="text-align: center">
+                <div *ngIf="mpls>1">
+                  <ion-select
+                    placeholder="M2"
+                    name="r1m2"
+                    id="r1m2"
+                    [(ngModel)]="ladderData.l1m2"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r1m2"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </div>
+              </ion-col>
+              <!--l1m3-->
+              <ion-col style="text-align: center">
+                <div *ngIf="mpls>2">
+                  <ion-select
+                    placeholder="M3"
+                    name="r1m2"
+                    id="r1m2"
+                    [(ngModel)]="ladderData.l1m3"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r1m2"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </div>
+              </ion-col>
+              <!--l1m4-->
+              <ion-col style="text-align: center">
+                <div *ngIf="mpls>3">
+                  <ion-select
+                    placeholder="M4"
+                    name="r1m2"
+                    id="r1m2"
+                    [(ngModel)]="ladderData.l1m4"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r1m2"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </div>
+              </ion-col>
+            </ion-row>
+            <!--l2-->
+            <pre></pre>
+            <div id="t2" *ngIf="numladder >1">
+              <ion-row>
+                <ion-label
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  >Ladder 2</ion-label
+                >
+              </ion-row>
+              <ion-row style="text-align: center">
+                <ion-col style="text-align: center">
+                  <ion-select
+                    placeholder="M1"
+                    [(ngModel)]="ladderData.l2m1"
+                    name="r2m1"
+                    id="r2m1"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r2m1"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+
+                <ion-col style="text-align: center">
+                  <ion-select
+                    *ngIf="mpls>1"
+                    [(ngModel)]="ladderData.l2m2"
+                    placeholder="M2"
+                    name="r2m2"
+                    id="r2m2"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r2m2"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+                <ion-col style="text-align: center">
+                  <ion-select
+                    *ngIf="mpls>2"
+                    [(ngModel)]="ladderData.l2m3"
+                    placeholder="M3"
+                    name="r2m2"
+                    id="r2m2"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r2m2"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+                <ion-col style="text-align: center">
+                  <ion-select
+                    *ngIf="mpls>3"
+                    [(ngModel)]="ladderData.l2m4"
+                    placeholder="M4"
+                    name="r2m2"
+                    id="r2m2"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r2m2"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+              </ion-row>
+              <ion-row> </ion-row>
+            </div>
+            <!--lm3-->
+            <pre></pre>
+            <div id="t3" *ngIf="numladder >2">
+              <ion-row>
+                <ion-label
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  >Ladder 3</ion-label
+                >
+              </ion-row>
+              <ion-row style="text-align: center">
+                <ion-col style="text-align: center">
+                  <ion-select
+                    [(ngModel)]="ladderData.l3m1"
+                    placeholder="M1"
+                    name="r3m1"
+                    id="r3m1"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r3m1"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+
+                <ion-col style="text-align: center">
+                  <ion-select
+                    *ngIf="mpls>1"
+                    [(ngModel)]="ladderData.l3m2"
+                    placeholder="M2"
+                    name="r3m2"
+                    id="r3m2"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r3m2"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+                <ion-col style="text-align: center">
+                  <ion-select
+                    *ngIf="mpls>2"
+                    [(ngModel)]="ladderData.l3m3"
+                    placeholder="M3"
+                    name="r3m2"
+                    id="r3m2"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r3m2"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+                <ion-col style="text-align: center">
+                  <ion-select
+                    *ngIf="mpls>3"
+                    [(ngModel)]="ladderData.l3m4"
+                    placeholder="M4"
+                    name="r3m2"
+                    id="r3m2"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r3m2"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+              </ion-row>
+              
+            </div>
+           
+            <pre></pre>
+            <ion-row>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Select a Date:</ion-label
+              >
+              <ion-input
+                style="font-size: x-large; text-align: center; color: #b27600"
+                type="datetime-local"
+                name="daDate"
+                id="daDate"
+                [(ngModel)]="ladderData.daDate"
+                id="daDate"
+              ></ion-input>
+            </ion-row>
+            <ion-row>
+              <div style="text-align: center;margin-left: auto;
+              margin-right: auto;">
+                <ion-button
+                  style="
+                    font-size: xxx-large;
+                    margin-left: auto;
+                    margin-right: auto;
+                    border-radius: 10%;
+                    background-color: aliceblue;
+                  "
+                  type="submit"
+                  (click)="submitForm()"
+                  >Add WOD</ion-button
+                >
+              </div>
+            </ion-row>
+            
+          
+          </ion-grid>
+        </div>
+      </ion-card>
+    </ion-row>
+  </div>
+</ion-content>

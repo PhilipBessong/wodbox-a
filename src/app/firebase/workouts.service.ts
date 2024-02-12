@@ -87,6 +87,43 @@ export interface Tabata{
 
   
 }
+export interface Ladder{
+    id: string;
+    wodCat: string;
+    wodStyle: string;
+    ladderNum: number;
+    mpl: number;
+    l1m1: string;
+    l1m2: string;
+    l1m3: string;
+    l1m4: string;
+    l2m1: string;
+    l2m2: string;
+    l2m3: string;
+    l2m4: string;
+    l3m1: string;
+    l3m2: string;
+    l3m3: string;
+    l3m4: string;
+    l1move: number;
+    l2move: number;
+    l3move: number;
+    daDate: string;
+    styleName?: string;
+  styleDescription?: string;
+  exe?: Exercise;
+  exel1m2?: Exercise;
+  exel1m3?: Exercise;
+  exel1m4?: Exercise;
+  exel2m1?: Exercise;
+  exel2m2?: Exercise;
+  exel2m3?: Exercise;
+  exel2m4?: Exercise;
+  exel3m1?: Exercise;
+  exel3m2?: Exercise;
+  exel3m3?: Exercise;
+  exel3m4?: Exercise; 
+}
 export class Style {
   constructor(public styleName: string, public styleDescription: string) {}
 }
@@ -107,6 +144,8 @@ export class WorkoutsService {
   private readonly collectionName = 'workouts';
   private tabataCollection: AngularFirestoreCollection<Tabata>;
   private readonly tcollectionName = 'tabatas';
+  private ladderCollection: AngularFirestoreCollection<Ladder>;
+  private readonly lcollectionName = 'ladders';
   constructor(private readonly firestore: AngularFirestore) {
     this.workoutCollection = this.firestore.collection<Workout>(
       this.collectionName
@@ -114,6 +153,8 @@ export class WorkoutsService {
     this.tabataCollection = this.firestore.collection<Tabata>(
       this.tcollectionName
     );
+    this.ladderCollection = this.firestore.collection<Ladder>(
+      this.lcollectionName);
   }
 
   // Create a new workout
