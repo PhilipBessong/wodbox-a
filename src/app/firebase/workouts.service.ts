@@ -88,7 +88,7 @@ export interface Tabata{
   
 }
 export interface Ladder{
-    id: string;
+    id?: string;
     wodCat: string;
     wodStyle: string;
     ladderNum: number;
@@ -170,6 +170,9 @@ export class WorkoutsService {
   getAllTabatas(): Observable<Tabata[]> {
     return this.tabataCollection.valueChanges({ idField: 'id' });
   }
+  getAllLadders(): Observable<Ladder[]> {
+    return this.ladderCollection.valueChanges({ idField: 'id' });
+  }
 
   // Get a specific workout by ID
   getWorkoutById(id: string): Observable<Workout | undefined> {
@@ -187,6 +190,9 @@ export class WorkoutsService {
   }
   deleteTabata(id: string| undefined): Promise<void> {
     return this.tabataCollection.doc(id).delete();
+  }
+  deleteLadder(id: string| undefined): Promise<void> {
+    return this.ladderCollection.doc(id).delete();
   }
 
    // Get workouts with specific conditions (Warm Up and today's date)
@@ -246,7 +252,34 @@ export class WorkoutsService {
       )
     );
   }
+  getSpecificLadderWarmup(): Observable<Ladder[]> {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
+    return this.ladderCollection.valueChanges({ idField: 'id' }).pipe(
+      map((ladders: Ladder[]) =>
+      ladders.filter(
+          (ladder: Ladder) =>
+          ladder.wodCat === 'Warm Up' &&
+            this.isSameDate(today, new Date(ladder.daDate))
+        )
+      )
+    );
+  }
+  getSpecificLadderWOD(): Observable<Ladder[]> {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    return this.ladderCollection.valueChanges({ idField: 'id' }).pipe(
+      map((ladder: Ladder[]) =>
+      ladder.filter(
+          (ladder: Ladder) =>
+          ladder.wodCat === 'WOD' &&
+            this.isSameDate(today, new Date(ladder.daDate))
+        )
+      )
+    );
+  }
   // Helper function to check if two dates are the same
   private isSameDate(date1: Date, date2: Date): boolean {
     return (

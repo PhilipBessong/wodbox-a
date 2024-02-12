@@ -24,6 +24,7 @@
     </ion-row>
     <pre></pre>
     <ion-row *ngIf="workouts.length > 0">
+      <ion-label style="text-align: center; color:#b27600; font-size: xx-large;">Interval</ion-label>
       <ion-card 
       *ngFor="let workout of workouts"
       style="margin-left: auto; margin-right: auto; width: 100%; background-color: #b27600; color: black; font-size: x-large;" >
@@ -45,6 +46,7 @@
     </ion-row>
     <pre></pre>
     <ion-row *ngIf="tabatas.length > 0">
+      <ion-label style="text-align: center; color:#b27600; font-size: xx-large;">Tabata</ion-label>
       <ion-card 
       *ngFor="let tabata of tabatas"
       style="margin-left: auto; margin-right: auto; width: 100%; background-color: #b27600; color: black; font-size: x-large;" >
@@ -61,6 +63,28 @@
 
         </ion-card-content>
         <button (click)="deleteTabata(tabata.id)" style="text-align: end;background-color: #b27600; color:black ; padding-left: 90%;"><ion-icon name="trash-outline" size="large" style="background-color: #b27600;"></ion-icon></button>
+      </ion-card>
+      
+    </ion-row>
+    <pre></pre>
+    <ion-row *ngIf="ladders.length > 0">
+      <ion-label style="text-align: center; color:#b27600; font-size: xx-large;">Ladder</ion-label>
+      <ion-card 
+      *ngFor="let ladder of ladders"
+      style="margin-left: auto; margin-right: auto; width: 100%; background-color: #b27600; color: black; font-size: x-large;" >
+        <ion-card-header >
+          <ion-card-title style="color: black;">{{ladder.id}}</ion-card-title>
+          <ion-card-subtitle style="color: black;font-size:medium;">{{ladder.daDate}}</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ion-label style="font-size:x-large;">{{ladder.wodCat}}</ion-label><br>
+          <ion-label style="font-size:large;">Style {{ladder.wodStyle}} </ion-label><br>
+          <ion-label style="font-size:large;">Number {{ladder.ladderNum}} </ion-label><br>
+          <ion-label style="font-size:large;">MPR {{ladder.mpl}} </ion-label><br>
+
+        </ion-card-content>
+        <button (click)="deleteLadder(ladder.id)" style="text-align: end;background-color: #b27600; color:black ; padding-left: 90%;"><ion-icon name="trash-outline" size="large" style="background-color: #b27600;"></ion-icon></button>
       </ion-card>
       
     </ion-row>

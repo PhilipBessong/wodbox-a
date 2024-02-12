@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NavController } from '@ionic/angular';
-import { Workout, WorkoutsService, Tabata } from 'src/app/firebase/workouts.service';
+import { Workout, WorkoutsService, Tabata, Ladder } from 'src/app/firebase/workouts.service';
 @Component({
   selector: 'app-ahome',
   templateUrl: './ahome.page.html',
@@ -10,6 +10,7 @@ import { Workout, WorkoutsService, Tabata } from 'src/app/firebase/workouts.serv
 export class AhomePage implements OnInit {
   workouts: Workout[]=[];
   tabatas: Tabata[]=[];
+  ladders: Ladder[]=[];
   constructor(
     private navCtrl: NavController,
     private workoutService: WorkoutsService
@@ -18,6 +19,7 @@ export class AhomePage implements OnInit {
   ngOnInit() {
     this.loadWorkouts();
     this.loadTabatas();
+    this.loadLadders();
   }
 
   loadWorkouts() {
@@ -28,6 +30,11 @@ export class AhomePage implements OnInit {
   loadTabatas() {
     this.workoutService.getAllTabatas().subscribe((tabatas) => {
       this.tabatas = tabatas;
+    });
+  }
+  loadLadders() {
+    this.workoutService.getAllLadders().subscribe((ladders) => {
+      this.ladders = ladders;
     });
   }
   navigateToView(id: string| undefined) {
@@ -47,7 +54,13 @@ export class AhomePage implements OnInit {
   deleteTabata(id: string| undefined) {
     this.workoutService.deleteTabata(id).then(() => {
       // Reload workouts after deletion
-      this.loadWorkouts();
+      this.loadTabatas();
+    });
+  }
+  deleteLadder(id: string| undefined) {
+    this.workoutService.deleteLadder(id).then(() => {
+      // Reload workouts after deletion
+      this.loadLadders();
     });
   }
   todaAdduser(){
