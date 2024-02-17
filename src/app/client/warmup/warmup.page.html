@@ -5,12 +5,14 @@
       <button
         (click)="backtoWarmUp()"
         style="
-          background-color: #b27600;
+       background-color: #b27600;
           border-radius: 5px;
           color: aliceblue;
-          margin-left: 75%;
-          width: 70px;
+          margin-left: 85%;
+          width: 50px;
           height: 25px;
+          display: flex;
+          align-items: center;
         "
       >
         <ion-icon name="chevron-back-outline"></ion-icon>Back
@@ -31,9 +33,7 @@
     <ion-card
       class="wodbod"
       
-      *ngFor="let workout of specificWorkouts"
-      style="padding-bottom: 0%;background-color: #b27600; "
-    >
+      *ngFor="let workout of specificWorkouts">
       <h2
         class="cardttl"
         style="
@@ -45,7 +45,7 @@
       >
         {{workout.wodStyle}}
       </h2>
-      <ion-card class="card" style="border-bottom-width:6px; padding-bottom: 0%; height: 100%;padding: 0%;">
+      <ion-card class="card" style="border-bottom-width:0px; padding-bottom: 0%; height: 100%;padding: 0%;">
         <ion-card-subtitle
           style="
             text-align: center;
@@ -64,8 +64,9 @@
         </ion-card>
         <pre></pre>
         <h2 class="cardttl"><u>WOD Movements:</u></h2>
-        <ion-grid style="padding-bottom: 0%;">
-          <ion-row class="ion-justify-content-center" style="padding-bottom: 0%;">
+      
+          <ion-row class="ion-justify-content-center" style="padding: 0%; margin-bottom: 0px;">
+           <!--r1-->
             <ion-card
               style="
                 width: 100%;
@@ -181,7 +182,7 @@
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR1M2"
                   class="video-container"
-                  style="padding-top: 5%;"
+               
                 >
                   <video
                     controls
@@ -196,45 +197,47 @@
                   </video>
                 </ion-row>
                
+                <!--3-->
                 <ion-row
-                  *ngIf="workout.exeR1M3"
-                  style="padding-top: 5%;padding-left: 0%; color: aliceblue"
-                >
-                  <ion-label style="font-size: large">Exercise 3</ion-label>
-                </ion-row>
-               
-                <ion-row
-                  *ngIf="workout.exeR1M3"
-                  style="padding-top: 5%;color: aliceblue"
-                  class="ion-justify-content-center"
-                >
-                  <ion-label style="font-size: large"
-                    >{{ workout.exeR1M3.exeName}}</ion-label
-                  >
-                </ion-row>
+                *ngIf="workout.exeR1M3"
+                style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+              >
+                <ion-label style="font-size: large">Exercise 2</ion-label>
+              </ion-row>
               
-                <ion-row
-                  class="ion-justify-content-center"
-                  *ngIf="workout.exeR1M3"
-                  class="video-container"
-                  style="padding-top: 5%;"
+              <ion-row
+                *ngIf="workout.exeR1M3"
+                style="padding-top: 5%;color: aliceblue"
+                class="ion-justify-content-center"
+              >
+                <ion-label style="font-size: large"
+                  >{{ workout.exeR1M3.exeName}}</ion-label
                 >
-                  <video
-                    controls
-                    *ngIf="workout.exeR1M3.videoUrl"
-                    autoplay
-                    loop
-                    style="border-radius: 20px"
-                  >
-                    <source [src]="workout.exeR1M3.videoUrl" type="video/mp4" />
-                    <!-- Add more <source> elements for different video formats if needed -->
-                    Your browser does not support the video tag.
-                  </video>
-                </ion-row>
-                <pre></pre>
+              </ion-row>
+              
+              <ion-row
+                class="ion-justify-content-center"
+                *ngIf="workout.exeR1M3"
+                class="video-container"
+             
+              >
+                <video
+                  controls
+                  *ngIf="workout.exeR1M3.videoUrl"
+                  autoplay
+                  loop
+                  style="border-radius: 20px"
+                >
+                  <source [src]="workout.exeR1M3.videoUrl" type="video/mp4" />
+                  <!-- Add more <source> elements for different video formats if needed -->
+                  Your browser does not support the video tag.
+                </video>
+                
+              </ion-row>
+              <br>
               </ion-card-content>
             </ion-card>
-           
+           <!--r2-->
             <ion-card
               style="
                 width: 100%;
@@ -314,7 +317,7 @@
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR2M1"
                   class="video-container"
-                  style="padding-top: 5%;"
+                  
                 >
                   <video
                     controls
@@ -350,7 +353,7 @@
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR2M2"
                   class="video-container"
-                  style="padding-top: 5%;"
+               
                 >
                   <video
                     controls
@@ -386,7 +389,7 @@
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR2M3"
                   class="video-container"
-                  style="padding-top: 5%;"
+             
                 >
                   <video
                     controls
@@ -403,7 +406,7 @@
               </ion-card-content>
               <pre></pre>
             </ion-card>
-            
+            <!--r3-->
             <ion-card
               style="
                 width: 100%;
@@ -483,7 +486,7 @@
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR3M1"
                   class="video-container"
-                  style="padding-top: 5%;"
+                 
                 >
                   <video
                     controls
@@ -519,7 +522,7 @@
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR3M2"
                   class="video-container"
-                  style="padding-top: 5%;"
+                  
                 >
                   <video
                     controls
@@ -555,7 +558,7 @@
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR3M3"
                   class="video-container"
-                  style="padding-top: 5%;"
+                 
                 >
                   <video
                     controls
@@ -572,7 +575,7 @@
                 <pre></pre>
               </ion-card-content>
             </ion-card>
-           
+           <!--r4-->
             <ion-card
               style="
                 width: 100%;
@@ -652,7 +655,7 @@
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR4M1"
                   class="video-container"
-                  style="padding-top: 5%;"
+                 
                 >
                   <video
                     controls
@@ -688,7 +691,7 @@
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR4M2"
                   class="video-container"
-                  style="padding-top: 5%;"
+                 
                 >
                   <video
                     controls
@@ -724,7 +727,7 @@
                   class="ion-justify-content-center"
                   *ngIf="workout.exeR4M3"
                   class="video-container"
-                  style="padding-top: 5%;"
+                 
                 >
                   <video
                     controls
@@ -742,7 +745,7 @@
               </ion-card-content>
             </ion-card>
           </ion-row>
-        </ion-grid>
+      
       </ion-card>
     </ion-card>
     <!--tabata system-->
@@ -1924,5 +1927,6 @@
     <div class="nextbtn">
       <a href="/wodgo" class="nextbtn">LET'S GO >>></a>
     </div>
+
   </div>
 </ion-content>

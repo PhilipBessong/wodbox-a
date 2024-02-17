@@ -40,7 +40,13 @@
     font-size: x-larger;
 }
 .wodbod{
-    background-color: #b27600;
+    background: linear-gradient(
+        to top,
+        black 0%,
+        black 50%,                                                                 
+        black 50%,       
+        #b27600 100%
+    );
     border-radius: 80px;
     padding-bottom: 0%;
     padding-top: 0%;
@@ -62,11 +68,12 @@
 .card{
     margin-left: auto;
     margin-right: auto;
-   border-radius: 80px;
-border-color: rgb(0, 0, 0);
+    margin-bottom: auto;
+   border-radius: 95px;
+border-color: rgb(167, 32, 32);
 background-color: #000000;
-width:99%;
-border-style: solid;
+width:100%;
+
 border-width: 1px;
 
 
@@ -109,6 +116,7 @@ background-color: #000000;
     font-style: italic;
     color: #0c0c0c;
     padding-right: 2%;
+    padding-bottom: 2%;
 
 }
 /* workout.page.scss */
