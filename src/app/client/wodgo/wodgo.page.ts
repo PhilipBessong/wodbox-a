@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import {
   Workout,
@@ -20,10 +21,27 @@ export class WodgoPage implements OnInit {
   videoUrl: SafeResourceUrl | undefined;
   videoHeight = '280px'; // Adjust the height as needed
   videoWidth = '400px';
+  audio: HTMLAudioElement;
   constructor(
     private router: Router,
-    private workoutsService: WorkoutsService
-  ) {}
+    private workoutsService: WorkoutsService,
+    private platform: Platform
+  ) {
+    this.audio = new Audio();
+    this.audio.src = this.getAudioFilePath();
+  }
+
+  getAudioFilePath() {
+    if (this.platform.is('android')) {
+      return '/android_asset/public/assets/go.mp3';
+    } else if (this.platform.is('ios')) {
+      return 'assets/go.mp3';
+    } else {
+      // For other platforms like Windows, adjust the path accordingly
+      return './assets/go.mp3'; // Adjust this path based on your project structure
+    }
+  }
+
 
   ngOnInit() {
     this.getSpecificWorkout();
@@ -242,6 +260,7 @@ export class WodgoPage implements OnInit {
       }
     );
   }
+ 
 
   // Define cdr1m1Show
 
@@ -367,6 +386,9 @@ export class WodgoPage implements OnInit {
     this.getIonContentClass();
     // Apply ion-content class or update a property bound to ngClass in the template
   }
+  playSound() {
+    this.audio.play();
+  }
   cd5Sec: number | undefined = undefined;
   buttonDisabled = false;
   cd5SecShow = true;
@@ -379,6 +401,9 @@ export class WodgoPage implements OnInit {
     const timerInterval = setInterval(() => {
       if (this.cd5Sec !== undefined && this.cd5Sec > 0) {
         this.cd5Sec--;
+      }
+      if (this.cd5Sec !== undefined && this.cd5Sec ==3) {
+        this.playSound();
       } else {
         clearInterval(timerInterval);
         this.strtr1m1Timer(specificWorkouts);
