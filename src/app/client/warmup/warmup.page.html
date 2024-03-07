@@ -5,7 +5,7 @@
       <button
         (click)="backtoWarmUp()"
         style="
-       background-color: #b27600;
+          background-color: #b27600;
           border-radius: 5px;
           color: aliceblue;
           margin-left: 85%;
@@ -15,7 +15,7 @@
           align-items: center;
         "
       >
-        <ion-icon name="chevron-back-outline"></ion-icon>Back
+        <ion-icon name="chevron-back-outline" style="margin-right: 1px;"></ion-icon>Back
       </button>
       <div class="col">
         <div class="logocon">
@@ -136,29 +136,28 @@
                   *ngIf="workout.exe"
                   style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
+                  (click)="openVideoModal(workout.exe.videoUrl)"
                 >
                   <ion-label style="font-size: large"
                     >{{ workout.exe.exeName }}</ion-label
                   >
                 </ion-row>
                 
-                <ion-row
-                  class="ion-justify-content-center"
-                  *ngIf="workout.exe"
-                  class="video-container"
-                >
+                <ion-row class="ion-justify-content-center video-container">
                   <video
                     controls
-                    *ngIf="workout.exe.videoUrl"
+                    *ngIf="workout.exe && workout.exe.videoUrl"
                     autoplay
                     loop
                     style="border-radius: 20px"
+                    (click)="openVideoModal(workout.exe.videoUrl)"
                   >
                     <source [src]="workout.exe.videoUrl" type="video/mp4" />
                     <!-- Add more <source> elements for different video formats if needed -->
                     Your browser does not support the video tag.
                   </video>
                 </ion-row>
+                
 
                 
                 <ion-row
@@ -170,6 +169,7 @@
                 
                 <ion-row
                   *ngIf="workout.exeR1M2"
+                  (click)="openr1m2(workout.exeR1M2.videoUrl)"
                   style="padding-top: 5%;color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -202,7 +202,7 @@
                 *ngIf="workout.exeR1M3"
                 style="padding-top: 5%;padding-left: 0%; color: aliceblue"
               >
-                <ion-label style="font-size: large">Exercise 2</ion-label>
+                <ion-label style="font-size: large">Exercise 3</ion-label>
               </ion-row>
               
               <ion-row

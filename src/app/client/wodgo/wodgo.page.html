@@ -19,7 +19,7 @@
           vertical-align: middle;
         "
       >
-        Round 1
+        ROUND 1
       </h2>
       <ion-card
         class="card"
@@ -44,9 +44,16 @@
       </ion-label></ion-row>
         
         <ion-row class="ion-justify-content-center" *ngIf="workout.exe">
-          <video
+           <ion-img
+            *ngIf="prepimg"
+            src="/assets/imgs/stopwatch.png"
+            style="background-color: white; height: 50vh"
+          ></ion-img>
+          <div *ngIf="wvid">
+            <video
             controls
-            *ngIf="workout.exe.mobileUrl"
+            *ngIf=" workout.exe.mobileUrl"
+            
             autoplay
             loop
             style="border-radius: 20px"
@@ -56,6 +63,8 @@
             <!-- Add more <source> elements for different video formats if needed -->
             Your browser does not support the video tag.
           </video>
+          </div>
+        
         </ion-row>
         <br />
         <ion-row
@@ -190,12 +199,12 @@
           <ion-img
             *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
         </ion-row>
 
@@ -253,7 +262,7 @@
                 background: linear-gradient(
                   45deg,
                   #ffffff,
-                  #ffffff
+                  #1b7d9b
                 ); /* Gradient background for a more vibrant look */
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
@@ -286,7 +295,7 @@
           vertical-align: middle;
         "
       >
-        Round 1
+      ROUND 1
       </h2>
       <ion-card
         class="card"
@@ -449,12 +458,12 @@
           <ion-img
             *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
         </ion-row>
 
@@ -512,7 +521,7 @@
                 background: linear-gradient(
                   45deg,
                   #ffffff,
-                  #ffffff
+                  #1b7d9b
                 ); /* Gradient background for a more vibrant look */
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
@@ -545,7 +554,7 @@
           vertical-align: middle;
         "
       >
-        Round 1
+      ROUND 1
       </h2>
       <ion-card
         class="card"
@@ -705,12 +714,12 @@
         <ion-img
           *ngIf="r4m3restlbl"
           src="/assets/imgs/breathing (1).png"
-          style="background-color: aliceblue; height: 56vh"
+          style="background-color: white; height: 56vh"
         ></ion-img>
         <ion-img
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
-          style="background-color: aliceblue; height: 56vh"
+          style="background-color: white; height: 56vh"
         ></ion-img>
       </ion-row>
 
@@ -768,7 +777,7 @@
               background: linear-gradient(
                 45deg,
                 #ffffff,
-                #ffffff
+                #1b7d9b
               ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
@@ -802,7 +811,7 @@
           vertical-align: middle;
         "
       >
-        Round 2
+      ROUND 2
       </h2>
       <ion-card
         class="card"
@@ -827,6 +836,12 @@
         {{workout.r2m1}}
       </ion-label></ion-row>
         <ion-row class="ion-justify-content-center" *ngIf="workout.exeR2M1">
+          <ion-img
+            *ngIf="prepimg"
+            src="/assets/imgs/stopwatch.png"
+            style="background-color: white; height: 50vh"
+          ></ion-img>
+          <div *ngIf="wvid">
           <video
             controls
             *ngIf="workout.exeR2M1.mobileUrl"
@@ -839,6 +854,7 @@
             <!-- Add more <source> elements for different video formats if needed -->
             Your browser does not support the video tag.
           </video>
+          </div>
         </ion-row>
         <br />
         <ion-row
@@ -973,12 +989,12 @@
         <ion-img
           *ngIf="r4m3restlbl"
           src="/assets/imgs/breathing (1).png"
-          style="background-color: aliceblue; height: 56vh"
+          style="background-color: white; height: 56vh"
         ></ion-img>
         <ion-img
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
-          style="background-color: aliceblue; height: 56vh"
+          style="background-color: white; height: 56vh"
         ></ion-img>
       </ion-row>
 
@@ -1036,7 +1052,7 @@
               background: linear-gradient(
                 45deg,
                 #ffffff,
-                #ffffff
+                #1b7d9b
               ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
@@ -1070,7 +1086,7 @@
           vertical-align: middle;
         "
       >
-        Round 2
+      ROUND 2
       </h2>
       <ion-card
         class="card"
@@ -1241,12 +1257,12 @@
           <ion-img
             *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
         </ion-row>
 
@@ -1304,7 +1320,7 @@
                 background: linear-gradient(
                   45deg,
                   #ffffff,
-                  #ffffff
+                  #1b7d9b
                 ); /* Gradient background for a more vibrant look */
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
@@ -1338,7 +1354,7 @@
           vertical-align: middle;
         "
       >
-        Round 2
+      ROUND 2
       </h2>
       <ion-card
         class="card"
@@ -1509,12 +1525,12 @@
           <ion-img
             *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
         </ion-row>
         <ion-row
@@ -1606,7 +1622,7 @@
           vertical-align: middle;
         "
       >
-        Round 3
+      ROUND 3
       </h2>
       <ion-card
         class="card"
@@ -1777,12 +1793,12 @@
         <ion-img
           *ngIf="r4m3restlbl"
           src="/assets/imgs/breathing (1).png"
-          style="background-color: aliceblue; height: 56vh"
+          style="background-color: white; height: 56vh"
         ></ion-img>
         <ion-img
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
-          style="background-color: aliceblue; height: 56vh"
+          style="background-color: white; height: 56vh"
         ></ion-img>
       </ion-row>
 
@@ -1840,7 +1856,7 @@
               background: linear-gradient(
                 45deg,
                 #ffffff,
-                #ffffff
+                #1b7d9b
               ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
@@ -1874,7 +1890,7 @@
           vertical-align: middle;
         "
       >
-        Round 3
+      ROUND 3
       </h2>
       <ion-card
         class="card"
@@ -2045,12 +2061,12 @@
           <ion-img
             *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
         </ion-row>
 
@@ -2108,7 +2124,7 @@
                 background: linear-gradient(
                   45deg,
                   #ffffff,
-                  #ffffff
+                  #1b7d9b
                 ); /* Gradient background for a more vibrant look */
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
@@ -2142,7 +2158,7 @@
           vertical-align: middle;
         "
       >
-        Round 3
+      ROUND 3
       </h2>
       <ion-card
         class="card"
@@ -2313,12 +2329,12 @@
           <ion-img
             *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: alicebwhitelue; height: 56vh"
           ></ion-img>
         </ion-row>
         <ion-row
@@ -2376,7 +2392,7 @@
                 background: linear-gradient(
                   45deg,
                   #ffffff,
-                  #ffffff
+                  #1b7d9b
                 ); /* Gradient background for a more vibrant look */
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
@@ -2399,7 +2415,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let workout of specificWorkouts"
-      style="background-color: #00b250; height: 100%"
+   
     >
       <h2
         class="cardttl"
@@ -2410,23 +2426,30 @@
           vertical-align: middle;
         "
       >
-        Round 4
+      ROUND 4
       </h2>
       <ion-card
         class="card"
-        style="--ion-background-color: white; height: 700px"
+        style="
+          --ion-background-color: white;
+          border-bottom-width: 1px;
+          height: 700px;
+          padding-bottom: 0%;
+          padding-top: 10%
+        "
+      ><ion-row class="ion-justify-content-center">
+        <ion-label
+        style="
+          text-align: center;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          font-size: x-large;
+          padding-bottom: 10%;
+          color: aliceblue;
+        "
       >
-        <ion-card-subtitle
-          style="
-            text-align: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: x-large;
-            padding: 10%;
-            color: aliceblue;
-          "
-        >
-          {{workout.r4m1}}
-        </ion-card-subtitle>
+        {{workout.r4m1}}
+      </ion-label></ion-row>
+        
         <ion-row class="ion-justify-content-center" *ngIf="workout.exeR4M1">
           <video
             controls
@@ -2449,6 +2472,7 @@
           <!-- Countdown timer -->
 
           <button
+         
             (click)="r4strt5SecTimer(workout)"
             *ngIf="r4srtbtnShow"
             style="
@@ -2476,7 +2500,7 @@
             Start Timer
           </button>
 
-          <ion-row *ngIf="r4cd5Sec !== undefined">
+          <ion-row *ngIf="r4cd5Sec !== undefined" style="height: 9px">
             <!-- Display the 5-second timer -->
             <ion-label
               *ngIf="r4cd5SecShow"
@@ -2487,13 +2511,14 @@
                 font-size: xx-large;
                 padding: 10%;
                 color: white;
+                height: 7px;
+                width: 170px;
               "
               >Get Ready in {{ r4cd5Sec }}</ion-label
             >
           </ion-row>
-
-          <ion-row *ngIf="cdr4m1Timer !== undefined">
-            <!-- Display the timer -->
+          <ion-row *ngIf="cdr4m1Timer !== undefined" style="height: 10px">
+            <!-- Display the 5-second timer -->
             <div
               *ngIf="cdr4m1Show"
               style="
@@ -2513,17 +2538,16 @@
             >
               <div
                 style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
                   border-radius: 50%;
                   border-style: solid;
                   border-color: #00b250;
                   border-width: 6px;
-                  width: 120px;
-                  height: 120px;
                   background-color: white;
-                  position: absolute;
-                  top: 50%;
-                  left: 50%;
-                  transform: translate(-50%, -50%);
                   z-index: -1;
                 "
               ></div>
@@ -2531,129 +2555,128 @@
             </div>
           </ion-row>
         </ion-row>
-        <pre></pre>
       </ion-card>
     </ion-card>
   </div>
   <!--r4RestShow-->
   <div class="daBackb" *ngIf="r4RestShow">
     <ion-card
-    class="wodbodb"
-    *ngFor="let workout of specificWorkouts"
-    style="background-color: #22b9e9;"
-  >
-    <h1
-      class="cardttl"
-      style="
-        color: black;
-        font-size: xxx-large;
-        font-weight: 700;
-        vertical-align: middle;
-      "
-      *ngIf="r4m3restlbl"
+      class="wodbodb"
+      *ngFor="let workout of specificWorkouts"
+      style="background-color: #22b9e9;"
     >
-      Rest
-    </h1>
-    <h1
-      class="cardttl"
-      style="
-        color: black;
-        font-size: xxx-large;
-        font-weight: 700;
-        vertical-align: middle;
-      "
-      *ngIf="r4m3restfinbtn"
-    >
-      Finished
-    </h1>
-    <ion-card
-      class="card"
-      style="height: 670px; --ion-background-color: white"
-    >
-      <ion-row class="ion-justify-content-center" *ngIf="workout.exe">
-        <ion-img
-          *ngIf="r4m3restlbl"
-          src="/assets/imgs/breathing (1).png"
-          style="background-color: aliceblue; height: 56vh"
-        ></ion-img>
-        <ion-img
-          *ngIf="r4m3restfinbtn"
-          src="/assets/imgs/flag.jpg"
-          style="background-color: aliceblue; height: 56vh"
-        ></ion-img>
-      </ion-row>
-
-      <ion-row
-        *ngIf="workout.r3rest !== undefined"
-        class="ion-justify-content-center"
-        style="padding-top: 0.5%;"
+      <h1
+        class="cardttl"
+        style="
+          color: black;
+          font-size: xxx-large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+        *ngIf="r4m3restlbl"
       >
-        
-        <!-- Countdown timer -->
-        <div
-          class="ion-justify-content-center"
-          style="
-            text-align: center;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-              sans-serif;
-            font-size: 7dvh;
-            padding: 10%;
-            margin-top: 7px;
-            color: #22b9e9;
-            position: relative;
-          "
-          *ngIf="r4m3restlbl"
-        >
-          <div
-            style="
-              border-radius: 50%; /* Make it a circle */
-              border-style: solid;
-              border-color: #22b9e9;
-              border-width: 6px;
-              width: 120px; /* Adjust the width to make it twice as big as the timer */
-              height: 120px; /* Set the height based on the width */
-              background-color: white; /* Background color for the circle */
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              z-index: -1; /* Set z-index to ensure the circle is behind the text */
-            "
-          ></div>
-          {{cdr4Rest}}
-        </div>
-        <div id="r4m3restfinbtn" style="padding-top: 7%">
-          <button
-            (click)="wedoner4m3()"
+        Rest
+      </h1>
+      <h1
+        class="cardttl"
+        style="
+          color: black;
+          font-size: xxx-large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+        *ngIf="r4m3restfinbtn"
+      >
+        Finished
+      </h1>
+      <ion-card
+        class="card"
+        style="height: 670px; --ion-background-color: white"
+      >
+        <ion-row class="ion-justify-content-center" *ngIf="workout.exe">
+          <ion-img
+            *ngIf="r4m3restlbl"
+            src="/assets/imgs/breathing (1).png"
+            style="background-color: white; height: 56vh"
+          ></ion-img>
+          <ion-img
             *ngIf="r4m3restfinbtn"
+            src="/assets/imgs/flag.jpg"
+            style="background-color: white; height: 56vh"
+          ></ion-img>
+        </ion-row>
+
+        <ion-row
+          *ngIf="workout.r3rest !== undefined"
+          class="ion-justify-content-center"
+          style="padding-top: 0.5%;"
+        >
+          
+          <!-- Countdown timer -->
+          <div
+            class="ion-justify-content-center"
             style="
-              height: 70px;
-              width: 330px;
-              margin-top: 20px;
-              font-size: xx-large;
-              border-radius: 30px;
-              color: black;
-              border: 2px solid #22b9e9;
-              background: linear-gradient(
-                45deg,
-                #ffffff,
-                #ffffff
-              ); /* Gradient background for a more vibrant look */
+              text-align: center;
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
-              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+              font-size: 7dvh;
+              padding: 10%;
+              margin-top: 7px;
+              color: #22b9e9;
+              position: relative;
             "
-            id="srtbtnr1m1"
-            color="#00b250"
+            *ngIf="r4m3restlbl"
           >
-            Finish
-          </button>
-        </div>
-      </ion-row>
+            <div
+              style="
+                border-radius: 50%; /* Make it a circle */
+                border-style: solid;
+                border-color: #22b9e9;
+                border-width: 6px;
+                width: 120px; /* Adjust the width to make it twice as big as the timer */
+                height: 120px; /* Set the height based on the width */
+                background-color: white; /* Background color for the circle */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1; /* Set z-index to ensure the circle is behind the text */
+              "
+            ></div>
+            {{cdr4Rest}}
+          </div>
+          <div id="r4m3restfinbtn" style="padding-top: 7%">
+            <button
+              (click)="wedoner4m3()"
+              *ngIf="r4m3restfinbtn"
+              style="
+                height: 70px;
+                width: 330px;
+                margin-top: 20px;
+                font-size: xx-large;
+                border-radius: 30px;
+                color: black;
+                border: 2px solid #22b9e9;
+                background: linear-gradient(
+                  45deg,
+                  #ffffff,
+                  #1b7d9b
+                ); /* Gradient background for a more vibrant look */
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                  0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+                transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+              "
+              id="srtbtnr1m1"
+              color="#00b250"
+            >
+              Finish
+            </button>
+          </div>
+        </ion-row>
+      </ion-card>
     </ion-card>
-  </ion-card>
   </div>
   <!--r4m2Show-->
   <div class="daBack" *ngIf="r4m2Show">
@@ -2671,7 +2694,7 @@
           vertical-align: middle;
         "
       >
-        Round 4
+      ROUND 4
       </h2>
       <ion-card
         class="card"
@@ -2842,12 +2865,12 @@
           <ion-img
             *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
         </ion-row>
 
@@ -2905,7 +2928,7 @@
                 background: linear-gradient(
                   45deg,
                   #ffffff,
-                  #ffffff
+                  #1b7d9b
                 ); /* Gradient background for a more vibrant look */
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
@@ -2939,7 +2962,7 @@
           vertical-align: middle;
         "
       >
-        Round 4
+      ROUND 4
       </h2>
       <ion-card
         class="card"
@@ -3110,12 +3133,12 @@
           <ion-img
             *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 56vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
         </ion-row>
         <ion-row
@@ -3173,7 +3196,7 @@
                 background: linear-gradient(
                   45deg,
                   #ffffff,
-                  #ffffff
+                  #1b7d9b
                 ); /* Gradient background for a more vibrant look */
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
@@ -3226,9 +3249,9 @@
           </video>
         </ion-row>
         <br />
-        <!-- <ion-row class="ion-justify-content-center"
+        <ion-row class="ion-justify-content-center"
         ><button
-        (click)="openModal()"
+        
            style="
              height: 70px;
              width: 330px;
@@ -3242,8 +3265,8 @@
            color="#00b250"
            >SHARE</button
          >
-      </ion-row>-->
-        <pre></pre>
+      </ion-row>
+       
         <ion-row class="ion-justify-content-center" style="padding-top: 7%"
           ><button
             (click)="redirectToHome()"
@@ -3266,7 +3289,7 @@
       </ion-card>
     </ion-card>
   </div>
-  <!--tabatas-->
+  <!--________tabatas______________________________________________________________-->
   <!--t1m1-->
   <div class="daBack" *ngIf="cdr1m1Show">
     <ion-card
@@ -3283,7 +3306,7 @@
           vertical-align: middle;
         "
       >
-        Tabata 1
+        TABATA 1
       </h2>
       <ion-card
         class="card"
@@ -3420,7 +3443,7 @@
     <ion-card
       class="wodbodb"
       *ngFor="let tabata of stabatas"
-      style="background-color: #22b9e9; height: 770px"
+      style="background-color: #22b9e9;"
     >
       <h1
         class="cardttl"
@@ -3448,26 +3471,27 @@
       </h1>
       <ion-card
         class="card"
-        style="--ion-background-color: white; height: 670px"
+        style="height: 670px; --ion-background-color: white"
       >
         <ion-row class="ion-justify-content-center" *ngIf="tabata.exe">
           <ion-img
             *ngIf="r4m3restlbl"
             src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 55vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 55vh"
+            style="background-color: white; height: 56vh"
           ></ion-img>
         </ion-row>
 
         <ion-row
           *ngIf="tabata.rest !== undefined"
           class="ion-justify-content-center"
+          style="padding-top: 0.5%;"
         >
-          <pre></pre>
+          
           <!-- Countdown timer -->
           <div
             class="ion-justify-content-center"
@@ -3539,7 +3563,7 @@
     <ion-card
       class="wodbod"
       *ngFor="let tabata of stabatas"
-      style="background-color: #00b250; height: 100%"
+   
     >
       <h2
         class="cardttl"
@@ -3550,7 +3574,7 @@
           vertical-align: middle;
         "
       >
-        Tabata 1
+        TABATA 1
       </h2>
       <ion-card
         class="card"
@@ -3561,8 +3585,7 @@
           padding-bottom: 0%;
           padding-top: 10%
         "
-      >
-      <ion-row class="ion-justify-content-center">
+      ><ion-row class="ion-justify-content-center">
         <ion-label
         style="
           text-align: center;
@@ -3574,6 +3597,7 @@
       >
         {{tabata.t1m2}}
       </ion-label></ion-row>
+        
         <ion-row class="ion-justify-content-center" *ngIf="tabata.exet1m2">
           <video
             controls
@@ -3593,7 +3617,9 @@
           *ngIf="tabata.move !== undefined"
           class="ion-justify-content-center"
         >
-          <ion-row *ngIf="cdr1m2Timer !== undefined">
+          <!-- Countdown timer -->
+
+          <ion-row *ngIf="cdr1m2Timer !== undefined" style="height: 10px">
             <!-- Display the 5-second timer -->
             <div
               *ngIf="cdr1m2Show"
@@ -3614,18 +3640,17 @@
             >
               <div
                 style="
-                  border-radius: 50%; /* Make it a circle */
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
                   border-style: solid;
                   border-color: #00b250;
                   border-width: 6px;
-                  width: 120px; /* Adjust the width to make it twice as big as the timer */
-                  height: 120px; /* Set the height based on the width */
-                  background-color: white; /* Background color for the circle */
-                  position: absolute;
-                  top: 50%;
-                  left: 50%;
-                  transform: translate(-50%, -50%);
-                  z-index: -1; /* Set z-index to ensure the circle is behind the text */
+                  background-color: white;
+                  z-index: -1;
                 "
               ></div>
               {{ cdr1m2Timer }}
@@ -3638,118 +3663,122 @@
   <!--t1m2RestShow-->
   <div class="daBackb" *ngIf="r1m2RestShow">
     <ion-card
-      class="wodbodb"
-      *ngFor="let tabata of stabatas"
-      style="background-color: #22b9e9; height: 770px"
+    class="wodbodb"
+    *ngFor="let tabata of stabatas"
+    style="background-color: #22b9e9;"
+  >
+    <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restlbl"
     >
-      <h1
-        class="cardttl"
-        style="
-          color: black;
-          font-size: xxx-large;
-          font-weight: 700;
-          vertical-align: middle;
-        "
-        *ngIf="r4m3restlbl"
+      Rest
+    </h1>
+    <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
+    <ion-card
+      class="card"
+      style="height: 670px; --ion-background-color: white"
+    >
+      <ion-row class="ion-justify-content-center" *ngIf="tabata.exe">
+        <ion-img
+          *ngIf="r4m3restlbl"
+          src="/assets/imgs/breathing (1).png"
+          style="background-color: white; height: 56vh"
+        ></ion-img>
+        <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: white; height: 56vh"
+        ></ion-img>
+      </ion-row>
+
+      <ion-row
+        *ngIf="tabata.rest !== undefined"
+        class="ion-justify-content-center"
+        style="padding-top: 0.5%;"
       >
-        Rest
-      </h1>
-      <h1
-        class="cardttl"
-        style="
-          --ion-background-color: white;
-          font-size: xxx-large;
-          font-weight: 700;
-          vertical-align: middle;
-        "
-        *ngIf="r4m3restfinbtn"
-      >
-        Finished
-      </h1>
-      <ion-card class="card" style="height: 670px">
-        <ion-row class="ion-justify-content-center" *ngIf="tabata.exe">
-          <ion-img
-            *ngIf="r4m3restlbl"
-            src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 55vh"
-          ></ion-img>
-          <ion-img
-            *ngIf="r4m3restfinbtn"
-            src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 55vh"
-          ></ion-img>
-        </ion-row>
-        <br />
-        <ion-row
-          *ngIf="tabata.rest !== undefined"
+        
+        <!-- Countdown timer -->
+        <div
           class="ion-justify-content-center"
+          style="
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            font-size: 7dvh;
+            padding: 10%;
+            margin-top: 7px;
+            color: #22b9e9;
+            position: relative;
+          "
+          *ngIf="r4m3restlbl"
         >
-          <pre></pre>
-          <!-- Countdown timer -->
           <div
-            class="ion-justify-content-center"
             style="
-              text-align: center;
+              border-radius: 50%; /* Make it a circle */
+              border-style: solid;
+              border-color: #22b9e9;
+              border-width: 6px;
+              width: 120px; /* Adjust the width to make it twice as big as the timer */
+              height: 120px; /* Set the height based on the width */
+              background-color: white; /* Background color for the circle */
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              z-index: -1; /* Set z-index to ensure the circle is behind the text */
+            "
+          ></div>
+          {{cdr1m2Rest}}
+        </div>
+        <div id="r4m3restfinbtn" style="padding-top: 7%">
+          <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
-              font-size: 7dvh;
-              padding: 10%;
-              margin-top: 7px;
-              color: #22b9e9;
-              position: relative;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
             "
-            *ngIf="r4m3restlbl"
+            id="srtbtnr1m1"
+            color="#00b250"
           >
-            <div
-              style="
-                border-radius: 50%; /* Make it a circle */
-                border-style: solid;
-                border-color: #22b9e9;
-                border-width: 6px;
-                width: 120px; /* Adjust the width to make it twice as big as the timer */
-                height: 120px; /* Set the height based on the width */
-                background-color: white; /* Background color for the circle */
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: -1; /* Set z-index to ensure the circle is behind the text */
-              "
-            ></div>
-            {{cdr1m2Rest}}
-          </div>
-          <div id="r4m3restfinbtn" style="padding-top: 7%">
-            <button
-              (click)="wedoner4m3()"
-              *ngIf="r4m3restfinbtn"
-              style="
-                height: 70px;
-                width: 330px;
-                margin-top: 20px;
-                font-size: xx-large;
-                border-radius: 30px;
-                color: black;
-                border: 2px solid #22b9e9;
-                background: linear-gradient(
-                  45deg,
-                  #ffffff,
-                  #ffffff,
-                ); /* Gradient background for a more vibrant look */
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                  0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-                transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
-              "
-              id="srtbtnr1m1"
-              color="#00b250"
-            >
-              Finish
-            </button>
-          </div>
-        </ion-row>
-      </ion-card>
+            Finish
+          </button>
+        </div>
+      </ion-row>
     </ion-card>
+  </ion-card>
   </div>
   <!--r2m1Show-->
   <div class="daBack" *ngIf="r2m1Show">
@@ -3767,7 +3796,7 @@
           vertical-align: middle;
         "
       >
-        Tabata 2
+        TABATA 2
       </h2>
       <ion-card
         class="card"
@@ -3813,7 +3842,7 @@
           <!-- Countdown timer -->
 
           <button
-           
+            
             (click)="r2strt5SecTimertab(tabata)"
             *ngIf="r2srtbtnShow"
             style="
@@ -3835,7 +3864,7 @@
                 0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
               transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
             "
-          
+            id="srtbtnr1m1"
             color="#00b250"
           >
             Start Timer
@@ -3904,7 +3933,7 @@
     <ion-card
     class="wodbodb"
     *ngFor="let tabata of stabatas"
-    style="background-color: #22b9e9; height: 770px"
+    style="background-color: #22b9e9;"
   >
     <h1
       class="cardttl"
@@ -3932,26 +3961,27 @@
     </h1>
     <ion-card
       class="card"
-      style="--ion-background-color: white; height: 670px"
+      style="height: 670px; --ion-background-color: white"
     >
       <ion-row class="ion-justify-content-center" *ngIf="tabata.exe">
         <ion-img
           *ngIf="r4m3restlbl"
           src="/assets/imgs/breathing (1).png"
-          style="background-color: aliceblue; height: 55vh"
+          style="background-color: white; height: 56vh"
         ></ion-img>
         <ion-img
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
-          style="background-color: aliceblue; height: 55vh"
+          style="background-color: white; height: 56vh"
         ></ion-img>
       </ion-row>
 
       <ion-row
         *ngIf="tabata.rest !== undefined"
         class="ion-justify-content-center"
+        style="padding-top: 0.5%;"
       >
-        <pre></pre>
+        
         <!-- Countdown timer -->
         <div
           class="ion-justify-content-center"
@@ -4000,7 +4030,7 @@
               background: linear-gradient(
                 45deg,
                 #ffffff,
-                #ffffff,
+                #1b7d9b
               ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
@@ -4023,7 +4053,7 @@
     <ion-card
     class="wodbod"
     *ngFor="let tabata of stabatas"
-    style="background-color: #00b250; height: 100%"
+ 
   >
     <h2
       class="cardttl"
@@ -4034,7 +4064,7 @@
         vertical-align: middle;
       "
     >
-      Tabata 2
+      TABATA 2
     </h2>
     <ion-card
       class="card"
@@ -4045,8 +4075,7 @@
         padding-bottom: 0%;
         padding-top: 10%
       "
-    >
-    <ion-row class="ion-justify-content-center">
+    ><ion-row class="ion-justify-content-center">
       <ion-label
       style="
         text-align: center;
@@ -4058,6 +4087,7 @@
     >
       {{tabata.t2m2}}
     </ion-label></ion-row>
+      
       <ion-row class="ion-justify-content-center" *ngIf="tabata.exet2m2">
         <video
           controls
@@ -4077,7 +4107,9 @@
         *ngIf="tabata.move !== undefined"
         class="ion-justify-content-center"
       >
-        <ion-row *ngIf="cdr2m2Timer !== undefined">
+        <!-- Countdown timer -->
+
+        <ion-row *ngIf="cdr2m2Timer !== undefined" style="height: 10px">
           <!-- Display the 5-second timer -->
           <div
             *ngIf="cdr2m2Show"
@@ -4098,18 +4130,17 @@
           >
             <div
               style="
-                border-radius: 50%; /* Make it a circle */
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
                 border-style: solid;
                 border-color: #00b250;
                 border-width: 6px;
-                width: 120px; /* Adjust the width to make it twice as big as the timer */
-                height: 120px; /* Set the height based on the width */
-                background-color: white; /* Background color for the circle */
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: -1; /* Set z-index to ensure the circle is behind the text */
+                background-color: white;
+                z-index: -1;
               "
             ></div>
             {{ cdr2m2Timer }}
@@ -4122,273 +4153,9 @@
   <!--r2m2RestShow-->
   <div class="daBackb" *ngIf="r2m2RestShow">
     <ion-card
-      class="wodbodb"
-      *ngFor="let tabata of stabatas"
-      style="background-color: #22b9e9; height: 770px"
-    >
-      <h1
-        class="cardttl"
-        style="
-          color: black;
-          font-size: xxx-large;
-          font-weight: 700;
-          vertical-align: middle;
-        "
-        *ngIf="r4m3restlbl"
-      >
-        Rest
-      </h1>
-      <h1
-        class="cardttl"
-        style="
-          color: black;
-          font-size: xxx-large;
-          font-weight: 700;
-          vertical-align: middle;
-        "
-        *ngIf="r4m3restfinbtn"
-      >
-        Finished
-      </h1>
-      <ion-card
-        class="card"
-        style="--ion-background-color: white; height: 670px"
-      >
-        <ion-row class="ion-justify-content-center">
-          <ion-img
-            *ngIf="r4m3restlbl"
-            src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 55vh"
-          ></ion-img>
-          <ion-img
-            *ngIf="r4m3restfinbtn"
-            src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 55vh"
-          ></ion-img>
-        </ion-row>
-        <ion-row
-          *ngIf="tabata.rest!== undefined"
-          class="ion-justify-content-center"
-        >
-          <br />
-          <!-- Countdown timer -->
-          <div
-            class="ion-justify-content-center"
-            style="
-              text-align: center;
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                sans-serif;
-              font-size: 7dvh;
-              padding: 10%;
-              margin-top: 7px;
-              color: #22b9e9;
-              position: relative;
-            "
-            *ngIf="r4m3restlbl"
-          >
-            <div
-              style="
-                border-radius: 50%; /* Make it a circle */
-                border-style: solid;
-                border-color: #22b9e9;
-                border-width: 6px;
-                width: 120px; /* Adjust the width to make it twice as big as the timer */
-                height: 120px; /* Set the height based on the width */
-                background-color: white; /* Background color for the circle */
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: -1; /* Set z-index to ensure the circle is behind the text */
-              "
-            ></div>
-            {{cdr2m2Rest}}
-          </div>
-          <div id="r4m3restfinbtn" style="padding-top: 7%">
-            <button
-              (click)="wedoner4m3()"
-              *ngIf="r4m3restfinbtn"
-              style="
-                height: 70px;
-                width: 330px;
-                margin-top: 20px;
-                font-size: xx-large;
-                border-radius: 30px;
-                color: black;
-                border: 2px solid #22b9e9;
-                background: linear-gradient(
-                  45deg,
-                  #ffffff,
-                  #1b7d9b
-                ); /* Gradient background for a more vibrant look */
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                  0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-                transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
-              "
-              id="srtbtnr1m1"
-              color="#00b250"
-            >
-              Finish
-            </button>
-          </div>
-        </ion-row>
-      </ion-card>
-    </ion-card>
-  </div>
-  <!--r3m1Show-->
-  <div class="daBack" *ngIf="r3m1Show">
-    <ion-card
-      class="wodbod"
-      *ngFor="let tabata of stabatas"
-      style="background-color: #00b250; height: 100%"
-    >
-      <h2
-        class="cardttl"
-        style="
-          color: black;
-          font-size: x-large;
-          font-weight: 700;
-          vertical-align: middle;
-        "
-      >
-        Tabata 3
-      </h2>
-      <ion-card
-        class="card"
-        style="
-          --ion-background-color: white;
-          border-bottom-width: 1px;
-          height: 700px;
-          padding-bottom: 0%;
-          padding-top: 10%
-        "
-      ><ion-row class="ion-justify-content-center">
-        <ion-label
-        style="
-          text-align: center;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          font-size: x-large;
-          padding-bottom: 10%;
-          color: aliceblue;
-        "
-      >
-        {{tabata.t3m1}}
-      </ion-label></ion-row>
-        <ion-row class="ion-justify-content-center" *ngIf="tabata.exet3m1">
-          <video
-            controls
-            *ngIf="tabata.exet3m1.mobileUrl"
-            autoplay
-            loop
-            style="border-radius: 20px"
-            height="445px"
-          >
-            <source [src]="tabata.exet3m1.mobileUrl" type="video/mp4" />
-            <!-- Add more <source> elements for different video formats if needed -->
-            Your browser does not support the video tag.
-          </video>
-        </ion-row>
-        <br />
-        <ion-row
-          *ngIf="tabata.move !== undefined"
-          class="ion-justify-content-center"
-        >
-          <!-- Countdown timer -->
-
-          <button
-            (click)="r3strt5SecTimertab(tabata)"
-            *ngIf="r3srtbtnShow"
-            style="
-              height: 70px;
-              margin-top: 20px;
-              width: 330px;
-              font-size: xx-large;
-              border-radius: 30px;
-              color: black;
-              border: 2px solid #00b250;
-              background: linear-gradient(
-                45deg,
-                #ffffff,
-                #ffffff
-              ); /* Gradient background for a more vibrant look */
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                sans-serif;
-              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
-            "
-            id="srtbtnr1m1"
-            color="#00b250"
-          >
-            Start Timer
-          </button>
-
-          <ion-row *ngIf="r3cd5Sec !== undefined" style="height: 9px">
-            <!-- Display the 5-second timer -->
-            <ion-label
-              *ngIf="r3cd5SecShow"
-              style="
-                text-align: center;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                font-size: xx-large;
-                padding: 10%;
-                color: white;
-                height: 7px;
-                width: 170px;
-              "
-              >Get Ready in {{ r3cd5Sec }}</ion-label
-            >
-          </ion-row>
-          <ion-row *ngIf="cdr3m1Timer !== undefined" style="height: 10px">
-            <!-- Display the 5-second timer -->
-            <div
-              *ngIf="cdr3m1Show"
-              style="
-                padding-top: 21px;
-                position: relative;
-                width: 120px; /* Fixed width */
-                height: 120px; /* Fixed height */
-                margin: 0 auto; /* Center horizontally */
-                text-align: center;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                font-size: 7vh; /* Use 'vh' units for relative sizing */
-                color: #00b250;
-                cursor: pointer; /* Add cursor pointer for better user interaction */
-              "
-              (click)="togglePauseResume()"
-            >
-              <div
-                style="
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  width: 100%;
-                  height: 100%;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-color: #00b250;
-                  border-width: 6px;
-                  background-color: white;
-                  z-index: -1;
-                "
-              ></div>
-              {{ cdr3m1Timer }}
-            </div>
-          </ion-row>
-        </ion-row>
-      </ion-card>
-    </ion-card>
-  </div>
-  <!--r3RestShow-->
-  <div class="daBackb" *ngIf="r3RestShow">
-    <ion-card
     class="wodbodb"
     *ngFor="let tabata of stabatas"
-    style="background-color: #22b9e9; height: 770px"
+    style="background-color: #22b9e9;"
   >
     <h1
       class="cardttl"
@@ -4416,26 +4183,295 @@
     </h1>
     <ion-card
       class="card"
-      style="--ion-background-color: white; height: 670px"
+      style="height: 670px; --ion-background-color: white"
     >
       <ion-row class="ion-justify-content-center" *ngIf="tabata.exe">
         <ion-img
           *ngIf="r4m3restlbl"
           src="/assets/imgs/breathing (1).png"
-          style="background-color: aliceblue; height: 55vh"
+          style="background-color: white; height: 56vh"
         ></ion-img>
         <ion-img
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
-          style="background-color: aliceblue; height: 55vh"
+          style="background-color: white; height: 56vh"
         ></ion-img>
       </ion-row>
 
       <ion-row
         *ngIf="tabata.rest !== undefined"
         class="ion-justify-content-center"
+        style="padding-top: 0.5%;"
       >
-        <pre></pre>
+        
+        <!-- Countdown timer -->
+        <div
+          class="ion-justify-content-center"
+          style="
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            font-size: 7dvh;
+            padding: 10%;
+            margin-top: 7px;
+            color: #22b9e9;
+            position: relative;
+          "
+          *ngIf="r4m3restlbl"
+        >
+          <div
+            style="
+              border-radius: 50%; /* Make it a circle */
+              border-style: solid;
+              border-color: #22b9e9;
+              border-width: 6px;
+              width: 120px; /* Adjust the width to make it twice as big as the timer */
+              height: 120px; /* Set the height based on the width */
+              background-color: white; /* Background color for the circle */
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              z-index: -1; /* Set z-index to ensure the circle is behind the text */
+            "
+          ></div>
+          {{cdr2m2Rest}}
+        </div>
+        <div id="r4m3restfinbtn" style="padding-top: 7%">
+          <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
+        </div>
+      </ion-row>
+    </ion-card>
+  </ion-card>
+  </div>
+  <!--r3m1Show-->
+  <div class="daBack" *ngIf="r3m1Show">
+    <ion-card
+    class="wodbod"
+    *ngFor="let tabata of stabatas"
+ 
+  >
+    <h2
+      class="cardttl"
+      style="
+        color: black;
+        font-size: x-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+    >
+      TABATA 3
+    </h2>
+    <ion-card
+      class="card"
+      style="
+        --ion-background-color: white;
+        border-bottom-width: 1px;
+        height: 700px;
+        padding-bottom: 0%;
+        padding-top: 10%
+      "
+    ><ion-row class="ion-justify-content-center">
+      <ion-label
+      style="
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: x-large;
+        padding-bottom: 10%;
+        color: aliceblue;
+      "
+    >
+      {{tabata.t3m1}}
+    </ion-label></ion-row>
+      
+      <ion-row class="ion-justify-content-center" *ngIf="tabata.exet3m1">
+        <video
+          controls
+          *ngIf="tabata.exet3m1.mobileUrl"
+          autoplay
+          loop
+          style="border-radius: 20px"
+          height="445px"
+        >
+          <source [src]="tabata.exet3m1.mobileUrl" type="video/mp4" />
+          <!-- Add more <source> elements for different video formats if needed -->
+          Your browser does not support the video tag.
+        </video>
+      </ion-row>
+      <br />
+      <ion-row
+        *ngIf="tabata.move !== undefined"
+        class="ion-justify-content-center"
+      >
+        <!-- Countdown timer -->
+
+        <button
+         
+          (click)="r3strt5SecTimertab(tabata)"
+          *ngIf="r3srtbtnShow"
+          style="
+            height: 70px;
+            margin-top: 20px;
+            width: 330px;
+            font-size: xx-large;
+            border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(
+              45deg,
+              #ffffff,
+              #ffffff
+            ); /* Gradient background for a more vibrant look */
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+            transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+          "
+          id="srtbtnr1m1"
+          color="#00b250"
+        >
+          Start Timer
+        </button>
+
+        <ion-row *ngIf="r3cd5Sec !== undefined" style="height: 9px">
+          <!-- Display the 5-second timer -->
+          <ion-label
+            *ngIf="r3cd5SecShow"
+            style="
+              text-align: center;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-size: xx-large;
+              padding: 10%;
+              color: white;
+              height: 7px;
+              width: 170px;
+            "
+            >Get Ready in {{ r3cd5Sec }}</ion-label
+          >
+        </ion-row>
+        <ion-row *ngIf="cdr3m1Timer !== undefined" style="height: 10px">
+          <!-- Display the 5-second timer -->
+          <div
+            *ngIf="cdr3m1Show"
+            style="
+              padding-top: 21px;
+              position: relative;
+              width: 120px; /* Fixed width */
+              height: 120px; /* Fixed height */
+              margin: 0 auto; /* Center horizontally */
+              text-align: center;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-size: 7vh; /* Use 'vh' units for relative sizing */
+              color: #00b250;
+              cursor: pointer; /* Add cursor pointer for better user interaction */
+            "
+            (click)="togglePauseResume()"
+          >
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                border-style: solid;
+                border-color: #00b250;
+                border-width: 6px;
+                background-color: white;
+                z-index: -1;
+              "
+            ></div>
+            {{ cdr3m1Timer }}
+          </div>
+        </ion-row>
+      </ion-row>
+    </ion-card>
+  </ion-card>
+  </div>
+  <!--r3RestShow-->
+  <div class="daBackb" *ngIf="r3RestShow">
+    <ion-card
+    class="wodbodb"
+    *ngFor="let tabata of stabatas"
+    style="background-color: #22b9e9;"
+  >
+    <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restlbl"
+    >
+      Rest
+    </h1>
+    <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
+    <ion-card
+      class="card"
+      style="height: 670px; --ion-background-color: white"
+    >
+      <ion-row class="ion-justify-content-center" *ngIf="tabata.exe">
+        <ion-img
+          *ngIf="r4m3restlbl"
+          src="/assets/imgs/breathing (1).png"
+          style="background-color: white; height: 56vh"
+        ></ion-img>
+        <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: white; height: 56vh"
+        ></ion-img>
+      </ion-row>
+
+      <ion-row
+        *ngIf="tabata.rest !== undefined"
+        class="ion-justify-content-center"
+        style="padding-top: 0.5%;"
+      >
+        
         <!-- Countdown timer -->
         <div
           class="ion-justify-content-center"
@@ -4484,7 +4520,7 @@
               background: linear-gradient(
                 45deg,
                 #ffffff,
-                #ffffff,
+                #1b7d9b
               ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
@@ -4507,7 +4543,7 @@
     <ion-card
     class="wodbod"
     *ngFor="let tabata of stabatas"
-    style="background-color: #00b250; height: 100%"
+ 
   >
     <h2
       class="cardttl"
@@ -4518,7 +4554,7 @@
         vertical-align: middle;
       "
     >
-      Tabata 3
+      TABATA 3
     </h2>
     <ion-card
       class="card"
@@ -4529,8 +4565,7 @@
         padding-bottom: 0%;
         padding-top: 10%
       "
-    >
-    <ion-row class="ion-justify-content-center">
+    ><ion-row class="ion-justify-content-center">
       <ion-label
       style="
         text-align: center;
@@ -4542,6 +4577,7 @@
     >
       {{tabata.t3m2}}
     </ion-label></ion-row>
+      
       <ion-row class="ion-justify-content-center" *ngIf="tabata.exet3m2">
         <video
           controls
@@ -4561,7 +4597,9 @@
         *ngIf="tabata.move !== undefined"
         class="ion-justify-content-center"
       >
-        <ion-row *ngIf="cdr3m2Timer !== undefined">
+        <!-- Countdown timer -->
+
+        <ion-row *ngIf="cdr3m2Timer !== undefined" style="height: 10px">
           <!-- Display the 5-second timer -->
           <div
             *ngIf="cdr3m2Show"
@@ -4582,18 +4620,17 @@
           >
             <div
               style="
-                border-radius: 50%; /* Make it a circle */
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
                 border-style: solid;
                 border-color: #00b250;
                 border-width: 6px;
-                width: 120px; /* Adjust the width to make it twice as big as the timer */
-                height: 120px; /* Set the height based on the width */
-                background-color: white; /* Background color for the circle */
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: -1; /* Set z-index to ensure the circle is behind the text */
+                background-color: white;
+                z-index: -1;
               "
             ></div>
             {{ cdr3m2Timer }}
@@ -4606,271 +4643,9 @@
   <!--r3m2RestShow-->
   <div class="daBackb" *ngIf="r3m2RestShow">
     <ion-card
-      class="wodbodb"
-      *ngFor="let tabata of stabatas"
-      style="background-color: #22b9e9; height: 770px"
-    >
-      <h1
-        class="cardttl"
-        style="
-          color: black;
-          font-size: xxx-large;
-          font-weight: 700;
-          vertical-align: middle;
-        "
-        *ngIf="r4m3restlbl"
-      >
-        Rest
-      </h1>
-      <h1
-        class="cardttl"
-        style="
-          --ion-background-color: white;
-          font-size: xxx-large;
-          font-weight: 700;
-          vertical-align: middle;
-        "
-        *ngIf="r4m3restfinbtn"
-      >
-        Finished
-      </h1>
-      <ion-card class="card" style="height: 670px">
-        <ion-row class="ion-justify-content-center" *ngIf="tabata.exe">
-          <ion-img
-            *ngIf="r4m3restlbl"
-            src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 55vh"
-          ></ion-img>
-          <ion-img
-            *ngIf="r4m3restfinbtn"
-            src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 55vh"
-          ></ion-img>
-        </ion-row>
-        <br />
-        <ion-row
-          *ngIf="tabata.rest !== undefined"
-          class="ion-justify-content-center"
-        >
-          <pre></pre>
-          <!-- Countdown timer -->
-          <div
-            class="ion-justify-content-center"
-            style="
-              text-align: center;
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                sans-serif;
-              font-size: 7dvh;
-              padding: 10%;
-              margin-top: 7px;
-              color: #22b9e9;
-              position: relative;
-            "
-            *ngIf="r4m3restlbl"
-          >
-            <div
-              style="
-                border-radius: 50%; /* Make it a circle */
-                border-style: solid;
-                border-color: #22b9e9;
-                border-width: 6px;
-                width: 120px; /* Adjust the width to make it twice as big as the timer */
-                height: 120px; /* Set the height based on the width */
-                background-color: white; /* Background color for the circle */
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: -1; /* Set z-index to ensure the circle is behind the text */
-              "
-            ></div>
-            {{cdr3m2Rest}}
-          </div>
-          <div id="r4m3restfinbtn" style="padding-top: 7%">
-            <button
-              (click)="wedoner4m3()"
-              *ngIf="r4m3restfinbtn"
-              style="
-                height: 70px;
-                width: 330px;
-                margin-top: 20px;
-                font-size: xx-large;
-                border-radius: 30px;
-                color: black;
-                border: 2px solid #22b9e9;
-                background: linear-gradient(
-                  45deg,
-                  #ffffff,
-                  #ffffff,
-                ); /* Gradient background for a more vibrant look */
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                  0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-                transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
-              "
-              id="srtbtnr1m1"
-              color="#00b250"
-            >
-              Finish
-            </button>
-          </div>
-        </ion-row>
-      </ion-card>
-    </ion-card>
-  </div>
-  <!--r4m1Show-->
-  <div class="daBack" *ngIf="r4m1Show">
-    <ion-card
-      class="wodbod"
-      *ngFor="let tabata of stabatas"
-      style="background-color: #00b250; height: 100%"
-    >
-      <h2
-        class="cardttl"
-        style="
-          color: black;
-          font-size: x-large;
-          font-weight: 700;
-          vertical-align: middle;
-        "
-      >
-        Tabata 4
-      </h2>
-      <ion-card
-        class="card"
-        style="
-          --ion-background-color: white;
-          border-bottom-width: 1px;
-          height: 700px;
-          padding-bottom: 0%;
-          padding-top: 10%
-        "
-      ><ion-row class="ion-justify-content-center">
-        <ion-label
-        style="
-          text-align: center;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          font-size: x-large;
-          padding-bottom: 10%;
-          color: aliceblue;
-        "
-      >
-        {{tabata.t4m1}}
-      </ion-label></ion-row>
-        <ion-row class="ion-justify-content-center" *ngIf="tabata.exet4m1">
-          <video
-            controls
-            *ngIf="tabata.exet4m1.mobileUrl"
-            autoplay
-            loop
-            style="border-radius: 20px"
-            height="445px"
-          >
-            <source [src]="tabata.exet4m1.mobileUrl" type="video/mp4" />
-            <!-- Add more <source> elements for different video formats if needed -->
-            Your browser does not support the video tag.
-          </video>
-        </ion-row>
-        <br />
-        <ion-row
-          *ngIf="tabata.move !== undefined"
-          class="ion-justify-content-center"
-        >
-          <!-- Countdown timer -->
-
-          <button
-            (click)="r4strt5SecTimertab(tabata)"
-            *ngIf="r4srtbtnShow"
-            style="
-              height: 70px;
-              margin-top: 20px;
-              width: 330px;
-              font-size: xx-large;
-              border-radius: 30px;
-              color: black;
-              border: 2px solid #00b250;
-              background: linear-gradient(
-                45deg,
-                #ffffff,
-                #ffffff
-              ); /* Gradient background for a more vibrant look */
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                sans-serif;
-              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
-            "
-            id="srtbtnr1m1"
-            color="#00b250"
-          >
-            Start Timer
-          </button>
-
-          <ion-row *ngIf="r4cd5Sec !== undefined" style="height: 9px">
-            <!-- Display the 5-second timer -->
-            <ion-label
-              *ngIf="r4cd5SecShow"
-              style="
-                text-align: center;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                font-size: xx-large;
-                padding: 10%;
-                color: white;
-                height: 7px;
-                width: 170px;
-              "
-              >Get Ready in {{ r4cd5Sec }}</ion-label
-            >
-          </ion-row>
-          <ion-row *ngIf="cdr4m1Timer !== undefined" style="height: 10px">
-            <!-- Display the 5-second timer -->
-            <div
-              *ngIf="cdr4m1Show"
-              style="
-                padding-top: 21px;
-                position: relative;
-                width: 120px; /* Fixed width */
-                height: 120px; /* Fixed height */
-                margin: 0 auto; /* Center horizontally */
-                text-align: center;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                font-size: 7vh; /* Use 'vh' units for relative sizing */
-                color: #00b250;
-                cursor: pointer; /* Add cursor pointer for better user interaction */
-              "
-              (click)="togglePauseResume()"
-            >
-              <div
-                style="
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  width: 100%;
-                  height: 100%;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-color: #00b250;
-                  border-width: 6px;
-                  background-color: white;
-                  z-index: -1;
-                "
-              ></div>
-              {{ cdr4m1Timer }}
-            </div>
-          </ion-row>
-        </ion-row>
-      </ion-card>
-    </ion-card>
-  </div>
-  <!--r4RestShow-->
-  <div class="daBackb" *ngIf="r4RestShow">
-    <ion-card
     class="wodbodb"
     *ngFor="let tabata of stabatas"
-    style="background-color: #22b9e9; height: 770px"
+    style="background-color: #22b9e9;"
   >
     <h1
       class="cardttl"
@@ -4898,26 +4673,295 @@
     </h1>
     <ion-card
       class="card"
-      style="--ion-background-color: white; height: 670px"
+      style="height: 670px; --ion-background-color: white"
     >
       <ion-row class="ion-justify-content-center" *ngIf="tabata.exe">
         <ion-img
           *ngIf="r4m3restlbl"
           src="/assets/imgs/breathing (1).png"
-          style="background-color: aliceblue; height: 55vh"
+          style="background-color: white; height: 56vh"
         ></ion-img>
         <ion-img
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
-          style="background-color: aliceblue; height: 55vh"
+          style="background-color: white; height: 56vh"
         ></ion-img>
       </ion-row>
 
       <ion-row
         *ngIf="tabata.rest !== undefined"
         class="ion-justify-content-center"
+        style="padding-top: 0.5%;"
       >
-        <pre></pre>
+        
+        <!-- Countdown timer -->
+        <div
+          class="ion-justify-content-center"
+          style="
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            font-size: 7dvh;
+            padding: 10%;
+            margin-top: 7px;
+            color: #22b9e9;
+            position: relative;
+          "
+          *ngIf="r4m3restlbl"
+        >
+          <div
+            style="
+              border-radius: 50%; /* Make it a circle */
+              border-style: solid;
+              border-color: #22b9e9;
+              border-width: 6px;
+              width: 120px; /* Adjust the width to make it twice as big as the timer */
+              height: 120px; /* Set the height based on the width */
+              background-color: white; /* Background color for the circle */
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              z-index: -1; /* Set z-index to ensure the circle is behind the text */
+            "
+          ></div>
+          {{cdr3m2Rest}}
+        </div>
+        <div id="r4m3restfinbtn" style="padding-top: 7%">
+          <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            Finish
+          </button>
+        </div>
+      </ion-row>
+    </ion-card>
+  </ion-card>
+  </div>
+  <!--r4m1Show-->
+  <div class="daBack" *ngIf="r4m1Show">
+    <ion-card
+    class="wodbod"
+    *ngFor="let tabata of stabatas"
+ 
+  >
+    <h2
+      class="cardttl"
+      style="
+        color: black;
+        font-size: x-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+    >
+      TABATA 4
+    </h2>
+    <ion-card
+      class="card"
+      style="
+        --ion-background-color: white;
+        border-bottom-width: 1px;
+        height: 700px;
+        padding-bottom: 0%;
+        padding-top: 10%
+      "
+    ><ion-row class="ion-justify-content-center">
+      <ion-label
+      style="
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: x-large;
+        padding-bottom: 10%;
+        color: aliceblue;
+      "
+    >
+      {{tabata.t4m1}}
+    </ion-label></ion-row>
+      
+      <ion-row class="ion-justify-content-center" *ngIf="tabata.exet4m1">
+        <video
+          controls
+          *ngIf="tabata.exet4m1.mobileUrl"
+          autoplay
+          loop
+          style="border-radius: 20px"
+          height="445px"
+        >
+          <source [src]="tabata.exet4m1.mobileUrl" type="video/mp4" />
+          <!-- Add more <source> elements for different video formats if needed -->
+          Your browser does not support the video tag.
+        </video>
+      </ion-row>
+      <br />
+      <ion-row
+        *ngIf="tabata.move !== undefined"
+        class="ion-justify-content-center"
+      >
+        <!-- Countdown timer -->
+
+        <button
+         
+          (click)="r4strt5SecTimertab(tabata)"
+          *ngIf="r4srtbtnShow"
+          style="
+            height: 70px;
+            margin-top: 20px;
+            width: 330px;
+            font-size: xx-large;
+            border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(
+              45deg,
+              #ffffff,
+              #ffffff
+            ); /* Gradient background for a more vibrant look */
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+            transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+          "
+          id="srtbtnr1m1"
+          color="#00b250"
+        >
+          Start Timer
+        </button>
+
+        <ion-row *ngIf="r4cd5Sec !== undefined" style="height: 9px">
+          <!-- Display the 5-second timer -->
+          <ion-label
+            *ngIf="r4cd5SecShow"
+            style="
+              text-align: center;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-size: xx-large;
+              padding: 10%;
+              color: white;
+              height: 7px;
+              width: 170px;
+            "
+            >Get Ready in {{ r4cd5Sec }}</ion-label
+          >
+        </ion-row>
+        <ion-row *ngIf="cdr4m1Timer !== undefined" style="height: 10px">
+          <!-- Display the 5-second timer -->
+          <div
+            *ngIf="cdr4m1Show"
+            style="
+              padding-top: 21px;
+              position: relative;
+              width: 120px; /* Fixed width */
+              height: 120px; /* Fixed height */
+              margin: 0 auto; /* Center horizontally */
+              text-align: center;
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-size: 7vh; /* Use 'vh' units for relative sizing */
+              color: #00b250;
+              cursor: pointer; /* Add cursor pointer for better user interaction */
+            "
+            (click)="togglePauseResume()"
+          >
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                border-style: solid;
+                border-color: #00b250;
+                border-width: 6px;
+                background-color: white;
+                z-index: -1;
+              "
+            ></div>
+            {{ cdr4m1Timer }}
+          </div>
+        </ion-row>
+      </ion-row>
+    </ion-card>
+  </ion-card>
+  </div>
+  <!--r4RestShow-->
+  <div class="daBackb" *ngIf="r4RestShow">
+    <ion-card
+    class="wodbodb"
+    *ngFor="let tabata of stabatas"
+    style="background-color: #22b9e9;"
+  >
+    <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restlbl"
+    >
+      Rest
+    </h1>
+    <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
+    <ion-card
+      class="card"
+      style="height: 670px; --ion-background-color: white"
+    >
+      <ion-row class="ion-justify-content-center" *ngIf="tabata.exe">
+        <ion-img
+          *ngIf="r4m3restlbl"
+          src="/assets/imgs/breathing (1).png"
+          style="background-color: white; height: 56vh"
+        ></ion-img>
+        <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: white; height: 56vh"
+        ></ion-img>
+      </ion-row>
+
+      <ion-row
+        *ngIf="tabata.rest !== undefined"
+        class="ion-justify-content-center"
+        style="padding-top: 0.5%;"
+      >
+        
         <!-- Countdown timer -->
         <div
           class="ion-justify-content-center"
@@ -4966,7 +5010,7 @@
               background: linear-gradient(
                 45deg,
                 #ffffff,
-                #ffffff,
+                #1b7d9b
               ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
@@ -5000,7 +5044,7 @@
         vertical-align: middle;
       "
     >
-      Tabata 4
+    TABATA 4
     </h2>
     <ion-card
       class="card"
@@ -5088,117 +5132,121 @@
   <!--r4m2RestShow-->
   <div class="daBackb" *ngIf="r4m2RestShow">
     <ion-card
-      class="wodbodb"
-      *ngFor="let tabata of stabatas"
-      style="background-color: #22b9e9; height: 770px"
+    class="wodbodb"
+    *ngFor="let tabata of stabatas"
+    style="background-color: #22b9e9;"
+  >
+    <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restlbl"
     >
-      <h1
-        class="cardttl"
-        style="
-          color: black;
-          font-size: xxx-large;
-          font-weight: 700;
-          vertical-align: middle;
-        "
-        *ngIf="r4m3restlbl"
+      Rest
+    </h1>
+    <h1
+      class="cardttl"
+      style="
+        color: black;
+        font-size: xxx-large;
+        font-weight: 700;
+        vertical-align: middle;
+      "
+      *ngIf="r4m3restfinbtn"
+    >
+      Finished
+    </h1>
+    <ion-card
+      class="card"
+      style="height: 670px; --ion-background-color: white"
+    >
+      <ion-row class="ion-justify-content-center" *ngIf="tabata.exe">
+        <ion-img
+          *ngIf="r4m3restlbl"
+          src="/assets/imgs/breathing (1).png"
+          style="background-color: white; height: 56vh"
+        ></ion-img>
+        <ion-img
+          *ngIf="r4m3restfinbtn"
+          src="/assets/imgs/flag.jpg"
+          style="background-color: white; height: 56vh"
+        ></ion-img>
+      </ion-row>
+
+      <ion-row
+        *ngIf="tabata.rest !== undefined"
+        class="ion-justify-content-center"
+        style="padding-top: 0.5%;"
       >
-        Rest
-      </h1>
-      <h1
-        class="cardttl"
-        style="
-          --ion-background-color: white;
-          font-size: xxx-large;
-          font-weight: 700;
-          vertical-align: middle;
-        "
-        *ngIf="r4m3restfinbtn"
-      >
-        Finished
-      </h1>
-      <ion-card class="card" style="height: 670px">
-        <ion-row class="ion-justify-content-center" *ngIf="tabata.exe">
-          <ion-img
-            *ngIf="r4m3restlbl"
-            src="/assets/imgs/breathing (1).png"
-            style="background-color: aliceblue; height: 55vh"
-          ></ion-img>
-          <ion-img
-            *ngIf="r4m3restfinbtn"
-            src="/assets/imgs/flag.jpg"
-            style="background-color: aliceblue; height: 55vh"
-          ></ion-img>
-        </ion-row>
-        <br />
-        <ion-row
-          *ngIf="tabata.rest !== undefined"
+        
+        <!-- Countdown timer -->
+        <div
           class="ion-justify-content-center"
+          style="
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            font-size: 7dvh;
+            padding: 10%;
+            margin-top: 7px;
+            color: #22b9e9;
+            position: relative;
+          "
+          *ngIf="r4m3restlbl"
         >
-          <pre></pre>
-          <!-- Countdown timer -->
           <div
-            class="ion-justify-content-center"
             style="
-              text-align: center;
+              border-radius: 50%; /* Make it a circle */
+              border-style: solid;
+              border-color: #22b9e9;
+              border-width: 6px;
+              width: 120px; /* Adjust the width to make it twice as big as the timer */
+              height: 120px; /* Set the height based on the width */
+              background-color: white; /* Background color for the circle */
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              z-index: -1; /* Set z-index to ensure the circle is behind the text */
+            "
+          ></div>
+          {{cdr4m2Rest}}
+        </div>
+        <div id="r4m3restfinbtn" style="padding-top: 7%">
+          <button
+            (click)="wedoner4m3()"
+            *ngIf="r4m3restfinbtn"
+            style="
+              height: 70px;
+              width: 330px;
+              margin-top: 20px;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #22b9e9;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #1b7d9b
+              ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
-              font-size: 7dvh;
-              padding: 10%;
-              margin-top: 7px;
-              color: #22b9e9;
-              position: relative;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
             "
-            *ngIf="r4m3restlbl"
+            id="srtbtnr1m1"
+            color="#00b250"
           >
-            <div
-              style="
-                border-radius: 50%; /* Make it a circle */
-                border-style: solid;
-                border-color: #22b9e9;
-                border-width: 6px;
-                width: 120px; /* Adjust the width to make it twice as big as the timer */
-                height: 120px; /* Set the height based on the width */
-                background-color: white; /* Background color for the circle */
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: -1; /* Set z-index to ensure the circle is behind the text */
-              "
-            ></div>
-            {{cdr4m2Rest}}
-          </div>
-          <div id="r4m3restfinbtn" style="padding-top: 7%">
-            <button
-              (click)="wedoner4m3()"
-              *ngIf="r4m3restfinbtn"
-              style="
-                height: 70px;
-                width: 330px;
-                margin-top: 20px;
-                font-size: xx-large;
-                border-radius: 30px;
-                color: black;
-                border: 2px solid #22b9e9;
-                background: linear-gradient(
-                  45deg,
-                  #ffffff,
-                  #ffffff,
-                ); /* Gradient background for a more vibrant look */
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                  0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-                transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
-              "
-              id="srtbtnr1m1"
-              color="#00b250"
-            >
-              Finish
-            </button>
-          </div>
-        </ion-row>
-      </ion-card>
+            Finish
+          </button>
+        </div>
+      </ion-row>
     </ion-card>
+  </ion-card>
   </div>
 </ion-content>

@@ -393,6 +393,8 @@ export class WodgoPage implements OnInit {
   buttonDisabled = false;
   cd5SecShow = true;
   srtbtnShow = true;
+  prepimg: boolean = true;
+  wvid: boolean =false;
   strt5SecTimer(specificWorkouts: Workout) {
     this.buttonDisabled = true; // Disable the button
     this.cd5Sec = 10;
@@ -402,12 +404,14 @@ export class WodgoPage implements OnInit {
       if (this.cd5Sec !== undefined && this.cd5Sec > 0) {
         this.cd5Sec--;
       }
-      if (this.cd5Sec !== undefined && this.cd5Sec ==3) {
+      if (this.cd5Sec !== undefined && this.cd5Sec) {
         this.playSound();
       } else {
         clearInterval(timerInterval);
         this.strtr1m1Timer(specificWorkouts);
         this.cd5SecShow = false;
+        this.prepimg = false;
+        this.wvid=true;
       }
     }, 1000); // Update the 5-second countdown every second
   }
@@ -431,6 +435,7 @@ export class WodgoPage implements OnInit {
       }
 
       this.cdr1m1Intval = setInterval(() => {
+      
         if (!this.isPaused) {
           // Check if the timer is not paused
           if (this.cdr1m1Timer && this.cdr1m1Timer > 0) {
@@ -758,6 +763,7 @@ export class WodgoPage implements OnInit {
               this.r2m1Show = true;
               this.r1m3RestShow = false;
               this.r2m1Showc = true;
+              this.prepimg = true;
               this.r1m3RestShowc = false;
               this.updateIonContentClass(); // Call a method to update the ion-content class
             } else {
@@ -792,6 +798,8 @@ export class WodgoPage implements OnInit {
         clearInterval(timerInterval);
         this.strtr2m1Timer(specificWorkouts);
         this.r2cd5SecShow = false;
+        this.prepimg = false;
+        this.wvid=true;
       }
     }, 1000); // Update the 5-second countdown every second
   }

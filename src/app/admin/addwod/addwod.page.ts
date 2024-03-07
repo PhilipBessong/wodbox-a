@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,ReactiveFormsModule } from '@angular/forms';
-
+import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { Timestamp } from '@firebase/firestore';
@@ -26,6 +26,7 @@ export class AddwodPage implements OnInit {
     private workoutsService: WorkoutsService,
     private formBuilder: FormBuilder,
     private navCtrl: NavController,
+    private router: Router,
     private toastCtrl: ToastController
   ) {}
 
@@ -105,5 +106,8 @@ export class AddwodPage implements OnInit {
       });
       toast.present();
     }
+  }
+  backtoWarmUp(){
+    this.router.navigate(['/ahome']);
   }
 }

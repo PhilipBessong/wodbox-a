@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SafeResourceUrl } from '@angular/platform-browser';
 import { ModalController } from '@ionic/angular';
-import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
-import { VideoModalComponent } from 'src/app/video-modal/video-modal.component';
-import { R1m2Component } from 'src/app/vidmods/r1m2/r1m2.component';
 import {
   Workout,
   Style,
@@ -11,29 +9,28 @@ import {
   Ladder,
   WorkoutsService,
 } from 'src/app/firebase/workouts.service';
-import { Router } from '@angular/router';
 @Component({
-  selector: 'app-warmup',
-  templateUrl: './warmup.page.html',
-  styleUrls: ['./warmup.page.scss'],
+  selector: 'app-r1m2',
+  templateUrl: './r1m2.component.html',
+  styleUrls: ['./r1m2.component.scss'],
 })
-export class WarmupPage implements OnInit {
+export class R1m2Component  implements OnInit {
+
+  
   specificWorkouts: Workout[]=[];
   stabatas: Tabata[]=[];
   sladders: Ladder[]=[];
-  wodStyle: Style[] = [];
   exercises: Exercise[] = [];
   videoUrl: SafeResourceUrl | undefined;
-  videoHeight = '300px'; // Adjust the height as needed
-  videoWidth = '400px';
 
-  constructor(    private sanitizer: DomSanitizer // Inject DomSanitizer for sanitizing video URLs
-,  private modalController: ModalController,private workoutsService: WorkoutsService, private router: Router) {}
 
-  ngOnInit(): void {
+  constructor(private modalController: ModalController,private workoutsService: WorkoutsService) { }
+
+  ngOnInit() {
     this.getSpecificWorkouts();
     this.getSpecificTabataWod();
     this.getSpecificLadderWarmup();
+    console.log(this.specificWorkouts)
   }
 
   getSpecificWorkouts(): void {
@@ -357,32 +354,8 @@ export class WarmupPage implements OnInit {
       }
     );
   }
-  backtoWarmUp(){
-    this.router.navigate(['/chome']);
+  dismissModal() {
+    this.modalController.dismiss();
   }
-  async openVideoModal(videoUrl: string) {
-    // Sanitize the video URL
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
-    const modal = await this.modalController.create({
-      component: VideoModalComponent, // Create a separate component for the modal content
-      componentProps: {
-        videoUrl: videoUrl // Pass the video URL to the modal component
-      }
-    });
-    return await modal.present();
-  }
-  async openr1m2(videoUrl: string) {
-    // Sanitize the video URL
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
-    const modal = await this.modalController.create({
-      component: R1m2Component, // Create a separate component for the modal content
-      componentProps: {
-        videoUrl: videoUrl // Pass the video URL to the modal component
-      }
-    });
-    return await modal.present();
-  }
-  
-  
 
 }

@@ -1,0 +1,36 @@
+<!-- video-modal.component.html -->
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="daBack">
+  <ion-grid *ngFor="let workout of specificWorkouts">
+
+    <ion-row class="ion-justify-content-center" *ngIf="workout.exeR1M2">
+      <pre></pre>
+      <ion-row>
+        <div style="padding-top: 14%;padding-bottom: 14%;">
+          <ion-label  style="font-size: x-large; color: azure;padding: 25px;border-color:#b27600 ;border-style: solid;border-radius: 20px;">{{workout.r1m2}}</ion-label>
+        </div>
+      </ion-row>
+      <pre></pre>
+      <video
+        controls
+        *ngIf="workout.exeR1M2.mobileUrl"
+        autoplay
+        loop
+        style="border-radius: 20px; height: 100;"
+
+      >
+        <source [src]="workout.exeR1M2.mobileUrl" type="video/mp4" />
+        <!-- Add more <source> elements for different video formats if needed -->
+        Your browser does not support the video tag.
+      </video>
+    </ion-row>
+  </ion-grid>
+</ion-content>
