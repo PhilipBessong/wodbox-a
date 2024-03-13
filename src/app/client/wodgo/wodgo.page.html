@@ -3331,6 +3331,16 @@
       </ion-label></ion-row>
         
         <ion-row class="ion-justify-content-center" *ngIf="tabata.exe">
+          <div *ngIf="t1prepimg" style="position: relative; background-color: white; height: 445px;">
+            <ion-img src="/assets/imgs/stopwatch.png" style="padding-top:11%"></ion-img>
+            <div class="countdown-wrapper" *ngIf="cd5Sec !== undefined">
+              <ion-row class="countdown-row">
+                <!-- Display the 5-second timer -->
+                <ion-label *ngIf="cd5SecShow">{{ cd5Sec }}</ion-label>
+              </ion-row>
+            </div>
+          </div>
+        <div *ngIf="t1wvid">
           <video
             controls
             *ngIf="tabata.exe.mobileUrl"
@@ -3343,6 +3353,7 @@
             <!-- Add more <source> elements for different video formats if needed -->
             Your browser does not support the video tag.
           </video>
+          </div>
         </ion-row>
         <br />
         <ion-row
@@ -3380,23 +3391,6 @@
             Start Timer
           </button>
 
-          <ion-row *ngIf="cd5Sec !== undefined" style="height: 9px">
-            <!-- Display the 5-second timer -->
-            <ion-label
-              *ngIf="cd5SecShow"
-              style="
-                text-align: center;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                font-size: xx-large;
-                padding: 10%;
-                color: white;
-                height: 7px;
-                width: 170px;
-              "
-              >Get Ready in {{ cd5Sec }}</ion-label
-            >
-          </ion-row>
           <ion-row *ngIf="cdr1m1Timer !== undefined" style="height: 10px">
             <!-- Display the 5-second timer -->
             <div
@@ -3489,9 +3483,9 @@
         <ion-row
           *ngIf="tabata.rest !== undefined"
           class="ion-justify-content-center"
-          style="padding-top: 0.5%;"
+          style="padding-top: 1.7%;"
         >
-          
+         
           <!-- Countdown timer -->
           <div
             class="ion-justify-content-center"
@@ -3619,7 +3613,7 @@
         >
           <!-- Countdown timer -->
 
-          <ion-row *ngIf="cdr1m2Timer !== undefined" style="height: 10px">
+          <ion-row *ngIf="cdr1m2Timer !== undefined" style="height: 10px;padding-top: 1.2%;">
             <!-- Display the 5-second timer -->
             <div
               *ngIf="cdr1m2Show"
@@ -3711,7 +3705,7 @@
       <ion-row
         *ngIf="tabata.rest !== undefined"
         class="ion-justify-content-center"
-        style="padding-top: 0.5%;"
+        style="padding-top: 1.7%;"
       >
         
         <!-- Countdown timer -->
@@ -3821,6 +3815,16 @@
       </ion-label></ion-row>
         
         <ion-row class="ion-justify-content-center" *ngIf="tabata.exet2m1">
+          <div *ngIf="t2prepimg" style="position: relative; background-color: white; height: 445px;">
+            <ion-img src="/assets/imgs/stopwatch.png" style="padding-top:11%"></ion-img>
+            <div class="countdown-wrapper" *ngIf="r2cd5Sec !== undefined">
+              <ion-row class="countdown-row">
+                <!-- Display the 5-second timer -->
+                <ion-label *ngIf="r2cd5SecShow">{{ r2cd5Sec }}</ion-label>
+              </ion-row>
+            </div>
+          </div>
+        <div *ngIf="t2wvid">
           <video
             controls
             *ngIf="tabata.exet2m1.mobileUrl"
@@ -3833,6 +3837,7 @@
             <!-- Add more <source> elements for different video formats if needed -->
             Your browser does not support the video tag.
           </video>
+          </div>
         </ion-row>
         <br />
         <ion-row
@@ -3870,23 +3875,7 @@
             Start Timer
           </button>
 
-          <ion-row *ngIf="r2cd5Sec !== undefined" style="height: 9px">
-            <!-- Display the 5-second timer -->
-            <ion-label
-              *ngIf="r2cd5SecShow"
-              style="
-                text-align: center;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                font-size: xx-large;
-                padding: 10%;
-                color: white;
-                height: 7px;
-                width: 170px;
-              "
-              >Get Ready in {{ r2cd5Sec }}</ion-label
-            >
-          </ion-row>
+         
           <ion-row *ngIf="cdr2m1Timer !== undefined" style="height: 10px">
             <!-- Display the 5-second timer -->
             <div
@@ -3979,7 +3968,7 @@
       <ion-row
         *ngIf="tabata.rest !== undefined"
         class="ion-justify-content-center"
-        style="padding-top: 0.5%;"
+        style="padding-top: 1.7%;"
       >
         
         <!-- Countdown timer -->
@@ -4109,7 +4098,7 @@
       >
         <!-- Countdown timer -->
 
-        <ion-row *ngIf="cdr2m2Timer !== undefined" style="height: 10px">
+        <ion-row *ngIf="cdr2m2Timer !== undefined" style="height: 10px;padding-top: 1.2%;">
           <!-- Display the 5-second timer -->
           <div
             *ngIf="cdr2m2Show"
@@ -4201,7 +4190,7 @@
       <ion-row
         *ngIf="tabata.rest !== undefined"
         class="ion-justify-content-center"
-        style="padding-top: 0.5%;"
+        style="padding-top: 1.7%;"
       >
         
         <!-- Countdown timer -->
@@ -4311,6 +4300,16 @@
     </ion-label></ion-row>
       
       <ion-row class="ion-justify-content-center" *ngIf="tabata.exet3m1">
+        <div *ngIf="t3prepimg" style="position: relative; background-color: white; height: 445px;">
+          <ion-img src="/assets/imgs/stopwatch.png" style="padding-top:11%"></ion-img>
+          <div class="countdown-wrapper" *ngIf="r3cd5Sec !== undefined">
+            <ion-row class="countdown-row">
+              <!-- Display the 5-second timer -->
+              <ion-label *ngIf="r3cd5SecShow">{{ r3cd5Sec }}</ion-label>
+            </ion-row>
+          </div>
+        </div>
+      <div *ngIf="t3wvid">
         <video
           controls
           *ngIf="tabata.exet3m1.mobileUrl"
@@ -4323,6 +4322,7 @@
           <!-- Add more <source> elements for different video formats if needed -->
           Your browser does not support the video tag.
         </video>
+        </div>
       </ion-row>
       <br />
       <ion-row
@@ -4360,24 +4360,8 @@
           Start Timer
         </button>
 
-        <ion-row *ngIf="r3cd5Sec !== undefined" style="height: 9px">
-          <!-- Display the 5-second timer -->
-          <ion-label
-            *ngIf="r3cd5SecShow"
-            style="
-              text-align: center;
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                sans-serif;
-              font-size: xx-large;
-              padding: 10%;
-              color: white;
-              height: 7px;
-              width: 170px;
-            "
-            >Get Ready in {{ r3cd5Sec }}</ion-label
-          >
-        </ion-row>
-        <ion-row *ngIf="cdr3m1Timer !== undefined" style="height: 10px">
+        
+        <ion-row *ngIf="cdr3m1Timer !== undefined" style="height: 10px;">
           <!-- Display the 5-second timer -->
           <div
             *ngIf="cdr3m1Show"
@@ -4469,7 +4453,7 @@
       <ion-row
         *ngIf="tabata.rest !== undefined"
         class="ion-justify-content-center"
-        style="padding-top: 0.5%;"
+        style="padding-top: 1.7%;"
       >
         
         <!-- Countdown timer -->
@@ -4599,7 +4583,7 @@
       >
         <!-- Countdown timer -->
 
-        <ion-row *ngIf="cdr3m2Timer !== undefined" style="height: 10px">
+        <ion-row *ngIf="cdr3m2Timer !== undefined" style="height: 10px;padding-top: 1.2%;">
           <!-- Display the 5-second timer -->
           <div
             *ngIf="cdr3m2Show"
@@ -4691,7 +4675,7 @@
       <ion-row
         *ngIf="tabata.rest !== undefined"
         class="ion-justify-content-center"
-        style="padding-top: 0.5%;"
+        style="padding-top: 1.7%;"
       >
         
         <!-- Countdown timer -->
@@ -4801,6 +4785,16 @@
     </ion-label></ion-row>
       
       <ion-row class="ion-justify-content-center" *ngIf="tabata.exet4m1">
+        <div *ngIf="t4prepimg" style="position: relative; background-color: white; height: 445px;">
+          <ion-img src="/assets/imgs/stopwatch.png" style="padding-top:11%"></ion-img>
+          <div class="countdown-wrapper" *ngIf="r4cd5Sec !== undefined">
+            <ion-row class="countdown-row">
+              <!-- Display the 5-second timer -->
+              <ion-label *ngIf="r4cd5SecShow">{{ r4cd5Sec }}</ion-label>
+            </ion-row>
+          </div>
+        </div>
+      <div *ngIf="t4wvid">
         <video
           controls
           *ngIf="tabata.exet4m1.mobileUrl"
@@ -4813,6 +4807,7 @@
           <!-- Add more <source> elements for different video formats if needed -->
           Your browser does not support the video tag.
         </video>
+        </div>
       </ion-row>
       <br />
       <ion-row
@@ -4850,23 +4845,7 @@
           Start Timer
         </button>
 
-        <ion-row *ngIf="r4cd5Sec !== undefined" style="height: 9px">
-          <!-- Display the 5-second timer -->
-          <ion-label
-            *ngIf="r4cd5SecShow"
-            style="
-              text-align: center;
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                sans-serif;
-              font-size: xx-large;
-              padding: 10%;
-              color: white;
-              height: 7px;
-              width: 170px;
-            "
-            >Get Ready in {{ r4cd5Sec }}</ion-label
-          >
-        </ion-row>
+       
         <ion-row *ngIf="cdr4m1Timer !== undefined" style="height: 10px">
           <!-- Display the 5-second timer -->
           <div
@@ -4959,7 +4938,7 @@
       <ion-row
         *ngIf="tabata.rest !== undefined"
         class="ion-justify-content-center"
-        style="padding-top: 0.5%;"
+        style="padding-top: 1.7%;"
       >
         
         <!-- Countdown timer -->
@@ -5087,7 +5066,7 @@
         *ngIf="tabata.move !== undefined"
         class="ion-justify-content-center"
       >
-        <ion-row *ngIf="cdr4m2Timer !== undefined">
+        <ion-row *ngIf="cdr4m2Timer !== undefined" style="height: 10px;padding-top: 1.2%;">
           <!-- Display the 5-second timer -->
           <div
             *ngIf="cdr4m2Show"
@@ -5180,7 +5159,7 @@
       <ion-row
         *ngIf="tabata.rest !== undefined"
         class="ion-justify-content-center"
-        style="padding-top: 0.5%;"
+        style="padding-top: 1.7%;"
       >
         
         <!-- Countdown timer -->

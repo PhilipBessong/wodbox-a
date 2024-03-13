@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseAuthService } from 'src/app/firebase/auth/firebase-auth.service';
 import { NavController, ToastController } from '@ionic/angular';
+// Import Ionicons module
+import { eye, person, trashOutline } from 'ionicons/icons';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -52,3 +55,4 @@ togglePasswordVisibility() {
     this.navCtrl.navigateForward(['./signup']);
   }
 }
+

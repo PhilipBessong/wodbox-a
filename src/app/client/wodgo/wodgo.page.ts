@@ -213,7 +213,7 @@ export class WodgoPage implements OnInit {
               });
           }
           if (stabatas.t3m2) {
-            const exeName = stabatas.t3m1;
+            const exeName = stabatas.t3m2;
             this.workoutsService
               .getExebyname(exeName)
               .subscribe((exercises) => {
@@ -1894,6 +1894,14 @@ export class WodgoPage implements OnInit {
             this.updateIonContentClass();
   }
   //Tabata funtions
+  t1prepimg: boolean = true;
+  t1wvid: boolean =false;
+  t2prepimg: boolean = true;
+  t2wvid: boolean =false;
+  t3prepimg: boolean = true;
+  t3wvid: boolean =false;
+  t4prepimg: boolean = true;
+  t4wvid: boolean =false;
   strt5SecTimertab(stabatas: Tabata) {
     this.buttonDisabled = true; // Disable the button
     this.cd5Sec = 10;
@@ -1906,6 +1914,8 @@ export class WodgoPage implements OnInit {
         clearInterval(timerInterval);
         this.strtr1m1Timertab(stabatas);
         this.cd5SecShow = false;
+        this.t1prepimg = false;
+        this.t1wvid=true;
       }
     }, 1000); // Update the 5-second countdown every second
   }
@@ -2076,6 +2086,8 @@ export class WodgoPage implements OnInit {
         clearInterval(timerInterval);
         this.strtr2m1Timertab(stabatas);
         this.r2cd5SecShow = false;
+        this.t2prepimg = false;
+        this.t2wvid=true;
       }
     }, 1000); // Update the 5-second countdown every second
   }
@@ -2246,6 +2258,8 @@ export class WodgoPage implements OnInit {
         clearInterval(timerInterval);
         this.strtr3m1Timertab(stabatas);
         this.r3cd5SecShow = false;
+        this.t3prepimg = false;
+        this.t3wvid=true;
       }
     }, 1000); // Update the 5-second countdown every second
   }
@@ -2417,6 +2431,8 @@ export class WodgoPage implements OnInit {
         clearInterval(timerInterval);
         this.strtr4m1Timertab(stabatas);
         this.r4cd5SecShow = false;
+        this.t4prepimg = false;
+        this.t4wvid=true;
       }
     }, 1000); // Update the 5-second countdown every second
   }

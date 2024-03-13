@@ -30,7 +30,7 @@
     </div>
     <pre></pre>
     <ion-row>
-      <ion-card style="width: 100%; background-color: white;">
+      <ion-card style="width: 100%; --ion-background-color: white;">
         <div class="container">
           <ion-grid>
             <pre></pre>
@@ -117,7 +117,7 @@
               >
             </ion-row>
 
-            <ion-row style="text-align: center">
+            <ion-row style="text-align: center" class="ion-justify-content-center">
               <ion-col style="text-align: center">
                 <ion-select
                   placeholder="M1"
@@ -352,7 +352,7 @@
               >
               <ion-input
                 style="font-size: x-large; text-align: center; color: #b27600"
-                type="datetime-local"
+                type="Date"
                 name="daDate"
                 id="daDate"
                 [(ngModel)]="tabataData.daDate"

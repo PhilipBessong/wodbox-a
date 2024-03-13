@@ -265,4 +265,34 @@ background-color: #000000;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
+
+  
+  .countdown-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 335px; /* Doubled width */
+    height: 335px; /* Doubled height */
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 20px solid black; /* Doubled border size */
+    margin-top: 10%;
+  }
+  
+  .countdown-row {
+    position: relative; /* Ensure the countdown row stays within the countdown wrapper */
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 10vh;
+    color: black;
+    
+  }
+  
+  
+  
+  
   

@@ -1,6 +1,6 @@
 
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" style="--ion-background-color: black">
 
 
 
@@ -8,13 +8,16 @@
     <ion-row>
       <div class="logocon">
         <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
+        
       </div>
+    
     </ion-row>
+
     <pre></pre>
-    <ion-row>
-      <ion-col></ion-col>
-      <ion-col style="text-align: center; "><ion-button shape="round" (click)="todaAdduser()" ><ion-icon name="person"></ion-icon>Add User</ion-button></ion-col>
-      <ion-col style="text-align: center;"><ion-button shape="round" (click)="todaAddwod()" ><ion-icon name="add-outline"></ion-icon>WOD</ion-button></ion-col>
+    <ion-row class="ion-justify-content-center">
+      <ion-col style="text-align: center;">  <ion-button shape="round">logout</ion-button></ion-col>
+      <ion-col style="text-align: center; "><ion-button shape="round" (click)="todaAdduser()" >Add User</ion-button></ion-col>
+      <ion-col style="text-align: center;"><ion-button shape="round" (click)="todaAddwod()" >WOD</ion-button></ion-col>
     </ion-row>
     <pre></pre>
     <ion-row >

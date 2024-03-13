@@ -69,4 +69,7 @@ export class AhomePage implements OnInit {
   todaAddwod(){
     this.navCtrl.navigateForward(['/wodstyle']);
   }
+  logout(){
+    this.navCtrl.navigateForward(['/login']);
+  }
 }

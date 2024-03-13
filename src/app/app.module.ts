@@ -10,6 +10,7 @@ import { VideoModalComponent } from './video-modal/video-modal.component'; // Im
 import { R1m2Component } from './vidmods/r1m2/r1m2.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [AppComponent,VideoModalComponent,R1m2Component ],
   imports: [
