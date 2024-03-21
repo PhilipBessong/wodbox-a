@@ -1,6 +1,6 @@
 
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" style="--ion-background-color: black">
   <ion-grid style="height: 100%">
     <ion-row justify-content-center align-items-center style="height: 100%">
       <ion-card style="width: 100%">
@@ -16,19 +16,31 @@
               </div>
             </div>
             <div class="row">
-              <h1 style="text-align: center; color: #b27600; font-size: xxx-large;">WODBOX</h1>
-            </div>
+              <h1
+              style="text-align: center; color: #b27600; font-size: xxx-large"
+            >
+              <b style="font-size:xxx-large ;color: #b25900;">W</b>OD<b style="font-size:xxx-large ; color: #b25900;">B</b>OX
+            </h1>            </div>
             <pre></pre>
             <div class="row">
-              <h1 style="text-align: center; color: #b27600;">Add User</h1>
+              <h1 style="text-align: center; color: #b27600; font-weight: 600;">Add User</h1>
             </div>
             <pre></pre>
             <div>
               <ion-input
                 type="email"
                 name="email"
-                style="font-size: x-large; text-align: center; margin-left: auto;
-                margin-right: auto; width: 90%;"
+                style="font-size: large;
+                text-align: center;
+                border: #b27600;
+                border-style: solid;
+                border-radius: 10px;
+                width: 70%;
+                height: 52px;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: transparent;
+                "
                 placeholder="Username"
                 [(ngModel)]="email"
                 required
@@ -39,8 +51,16 @@
               <ion-input
                 type="password"
                 name="password"
-                style="font-size: x-large; text-align: center; color: #b27600; margin-left: auto;
-                margin-right: auto; width: 90%;"
+                style="font-size: large;
+                text-align: center;
+                border: #b27600;
+                border-style: solid;
+                border-radius: 10px;
+                width: 70%;
+                height: 52px;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: transparent;"
                 placeholder="Password"
                 [(ngModel)]="password"
                 required
@@ -48,20 +68,31 @@
             </div>
             <pre></pre>
             <pre></pre>
-            <div style="margin-left: auto; margin-right: auto;">
+            <ion-row class="ion-justify-content-center">
+            
+              
               <ion-select
               type="text"
               name="usertype"
-              style="font-size: x-large; text-align: center; margin-left: auto;
-              margin-right: auto; width: 90%;"
-              placeholder="Select a User Type"
+              style=" text-align: center;
+              border: #b27600;
+              border-style: solid;
+              border-radius: 10px;
+              width: 70%;
+              font-size: x-large;
+              height: 52px;
+              padding-left: 7%;
+              margin-left: auto;
+              margin-right: auto;
+              background-color: transparent;"
+              placeholder="Select User Type"
               [(ngModel)]="usertype"
               required>
                 <ion-select-option value="admin">Admin</ion-select-option>
                 <ion-select-option value="client">Client</ion-select-option>
               </ion-select>
               <pre></pre>
-            </div>
+            </ion-row>
             <pre></pre>
             <div style="text-align: center">
               <ion-button color="#b27600"

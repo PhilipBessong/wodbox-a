@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Workout, WorkoutsService, Tabata, Ladder } from 'src/app/firebase/workouts.service';
 @Component({
@@ -12,8 +12,9 @@ export class AhomePage implements OnInit {
   tabatas: Tabata[]=[];
   ladders: Ladder[]=[];
   constructor(
-    private navCtrl: NavController,
-    private workoutService: WorkoutsService
+    private workoutService: WorkoutsService,
+    private router: Router,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -37,11 +38,17 @@ export class AhomePage implements OnInit {
       this.ladders = ladders;
     });
   }
-  navigateToView(id: string| undefined) {
+  onCardClick(id: string | undefined) {
     if (id) {
-      this.navCtrl.navigateForward(['/wodinfo', id]);
-      // 'workout-detail' is the route for the detailed view of a workout
-      // Pass the workout ID as a parameter to fetch details in the detail view
+      this.workoutService.getWorkoutById(id).subscribe((workout: Workout | undefined) => {
+        if (workout) {
+          this.router.navigate(['/wodinfo', id]); // Assuming 'wodinfo' is the route for viewing a workout
+        } else {
+          console.error('Workout not found'); // Handle error if workout is not found
+        }
+      });
+    } else {
+      console.error('Workout ID is undefined');
     }
   }
 

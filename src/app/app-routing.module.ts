@@ -42,7 +42,8 @@ const routes: Routes = [
   {
     path: 'wodinfo/:id',
     loadChildren: () => import('./admin/wodinfo/wodinfo.module').then( m => m.WodinfoPageModule)
-  },  {
+  },
+  {
     path: 'warmup',
     loadChildren: () => import('./client/warmup/warmup.module').then( m => m.WarmupPageModule)
   },

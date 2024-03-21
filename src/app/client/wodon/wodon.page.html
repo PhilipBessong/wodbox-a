@@ -3213,7 +3213,7 @@
           vertical-align: middle;
         "
       >
-        Well Done
+        WELL DONE!
       </h1>
       <ion-card
         class="card"
@@ -3233,9 +3233,9 @@
           </video>
         </ion-row>
         <br />
-        <!-- <ion-row class="ion-justify-content-center"
+        <ion-row class="ion-justify-content-center"
         ><button
-        (click)="openModal()"
+        
            style="
              height: 70px;
              width: 330px;
@@ -3247,10 +3247,10 @@
            "
            id="srtbtnr1m1"
            color="#00b250"
-           >SHARE</button
+           >MOTIVATE FRIENDS</button
          >
-      </ion-row>-->
-        <pre></pre>
+      </ion-row>
+       
         <ion-row class="ion-justify-content-center" style="padding-top: 7%"
           ><button
             (click)="redirectToHome()"
@@ -3274,6 +3274,7 @@
     </ion-card>
   </div>
   <!--_______________________tabatas______________________________-->
+  <!--t1m1-->
   <!--t1m1-->
   <div class="daBack" *ngIf="cdr1m1Show">
     <ion-card
@@ -3347,33 +3348,28 @@
           <!-- Countdown timer -->
 
           <button
-            [disabled]="buttonDisabled"
-            (click)="strt5SecTimertab(tabata)"
-            *ngIf="srtbtnShow"
-            style="
-              height: 70px;
-              margin-top: 20px;
-              width: 330px;
-              font-size: xx-large;
-              border-radius: 30px;
-              color: black;
-              border: 2px solid #00b250;
-              background: linear-gradient(
-                45deg,
-                #ffffff,
-                #ffffff
-              ); /* Gradient background for a more vibrant look */
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                sans-serif;
-              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
-            "
-            id="srtbtnr1m1"
-            color="#00b250"
-          >
-            Start Timer
-          </button>
+          [disabled]="buttonDisabled"
+          (click)="strt5SecTimertab(tabata)"
+          *ngIf="srtbtnShow"
+          style="
+            height: 70px;
+            margin-top: 20px;
+            width: 330px;
+            font-size: xx-large;
+            border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(45deg, #ffffff, #00b250);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+          "
+          id="srtbtnr1m1"
+          color="#00b250"
+        >
+          {{ buttonText }} <!-- Bind buttonText variable for dynamic text -->
+        </button>
+        
 
           <ion-row *ngIf="cdr1m1Timer !== undefined" style="height: 10px">
             <!-- Display the 5-second timer -->
@@ -3461,6 +3457,7 @@
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
             style="background-color: white; height: 56vh"
+            class="flagimg"
           ></ion-img>
         </ion-row>
 
@@ -3597,7 +3594,7 @@
         >
           <!-- Countdown timer -->
 
-          <ion-row *ngIf="cdr1m2Timer !== undefined" style="height: 10px;padding-top: 1.2%;">
+          <ion-row *ngIf="cdr1m2Timer !== undefined" style="height: 10px;padding-top: 1.1%;">
             <!-- Display the 5-second timer -->
             <div
               *ngIf="cdr1m2Show"
@@ -3683,6 +3680,7 @@
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
           style="background-color: white; height: 56vh"
+          class="flagimg"
         ></ion-img>
       </ion-row>
 
@@ -3845,7 +3843,7 @@
               background: linear-gradient(
                 45deg,
                 #ffffff,
-                #ffffff
+                #00b250
               ); /* Gradient background for a more vibrant look */
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
@@ -3856,7 +3854,7 @@
             id="srtbtnr1m1"
             color="#00b250"
           >
-            Start Timer
+            {{buttonText}}
           </button>
 
          
@@ -3946,6 +3944,7 @@
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
           style="background-color: white; height: 56vh"
+          class="flagimg"
         ></ion-img>
       </ion-row>
 
@@ -4082,7 +4081,7 @@
       >
         <!-- Countdown timer -->
 
-        <ion-row *ngIf="cdr2m2Timer !== undefined" style="height: 10px;padding-top: 1.2%;">
+        <ion-row *ngIf="cdr2m2Timer !== undefined" style="height: 10px;padding-top: 1.1%;">
           <!-- Display the 5-second timer -->
           <div
             *ngIf="cdr2m2Show"
@@ -4168,6 +4167,7 @@
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
           style="background-color: white; height: 56vh"
+          class="flagimg"
         ></ion-img>
       </ion-row>
 
@@ -4330,7 +4330,7 @@
             background: linear-gradient(
               45deg,
               #ffffff,
-              #ffffff
+              #00b250
             ); /* Gradient background for a more vibrant look */
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
               sans-serif;
@@ -4341,7 +4341,7 @@
           id="srtbtnr1m1"
           color="#00b250"
         >
-          Start Timer
+          {{buttonText}}
         </button>
 
         
@@ -4431,6 +4431,7 @@
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
           style="background-color: white; height: 56vh"
+          class="flagimg"
         ></ion-img>
       </ion-row>
 
@@ -4567,7 +4568,7 @@
       >
         <!-- Countdown timer -->
 
-        <ion-row *ngIf="cdr3m2Timer !== undefined" style="height: 10px;padding-top: 1.2%;">
+        <ion-row *ngIf="cdr3m2Timer !== undefined" style="height: 10px;padding-top: 1.1%;">
           <!-- Display the 5-second timer -->
           <div
             *ngIf="cdr3m2Show"
@@ -4653,6 +4654,7 @@
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
           style="background-color: white; height: 56vh"
+          class="flagimg"
         ></ion-img>
       </ion-row>
 
@@ -4815,7 +4817,7 @@
             background: linear-gradient(
               45deg,
               #ffffff,
-              #ffffff
+              #00b250
             ); /* Gradient background for a more vibrant look */
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
               sans-serif;
@@ -4826,7 +4828,7 @@
           id="srtbtnr1m1"
           color="#00b250"
         >
-          Start Timer
+          {{buttonText}}
         </button>
 
        
@@ -4916,6 +4918,7 @@
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
           style="background-color: white; height: 56vh"
+          class="flagimg"
         ></ion-img>
       </ion-row>
 
@@ -5050,7 +5053,7 @@
         *ngIf="tabata.move !== undefined"
         class="ion-justify-content-center"
       >
-        <ion-row *ngIf="cdr4m2Timer !== undefined" style="height: 10px;padding-top: 1.2%;">
+        <ion-row *ngIf="cdr4m2Timer !== undefined" style="height: 10px;padding-top: 1.1%;">
           <!-- Display the 5-second timer -->
           <div
             *ngIf="cdr4m2Show"
@@ -5137,6 +5140,7 @@
           *ngIf="r4m3restfinbtn"
           src="/assets/imgs/flag.jpg"
           style="background-color: white; height: 56vh"
+          class="flagimg"
         ></ion-img>
       </ion-row>
 

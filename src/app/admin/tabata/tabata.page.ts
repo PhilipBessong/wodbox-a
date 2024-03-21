@@ -42,7 +42,7 @@ export class TabataPage implements OnInit {
     t4m2: '',
     t5m1: '',
     t5m2: '',
-    move:5,
+    move:3,
     rest:3,
     sets: 8,
     daDate: new Date().toISOString().substring(0, 10), // Initialize with today's date

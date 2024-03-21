@@ -1902,10 +1902,13 @@ export class WodgoPage implements OnInit {
   t3wvid: boolean =false;
   t4prepimg: boolean = true;
   t4wvid: boolean =false;
+
+  buttonText: string = 'Start Timer'; // Variable to control button text
   strt5SecTimertab(stabatas: Tabata) {
     this.buttonDisabled = true; // Disable the button
     this.cd5Sec = 10;
-    this.srtbtnShow = false;
+    this.buttonText = 'GET READY!!!';
+    this.srtbtnShow = true;
     this.cd5SecShow = true;
     const timerInterval = setInterval(() => {
       if (this.cd5Sec !== undefined && this.cd5Sec > 0) {
@@ -1916,6 +1919,8 @@ export class WodgoPage implements OnInit {
         this.cd5SecShow = false;
         this.t1prepimg = false;
         this.t1wvid=true;
+        this.srtbtnShow = false;
+        this.buttonText = 'Start Timer';
       }
     }, 1000); // Update the 5-second countdown every second
   }
@@ -2076,9 +2081,9 @@ export class WodgoPage implements OnInit {
   }
   r2strt5SecTimertab(stabatas: Tabata) {
     this.r2cd5Sec = 10;
-    this.r2srtbtnShow = false;
+    this.r2srtbtnShow = true;
     this.r2cd5SecShow = true;
-
+this.buttonText = 'GET READY!!!'
     const timerInterval = setInterval(() => {
       if (this.r2cd5Sec !== undefined && this.r2cd5Sec > 0) {
         this.r2cd5Sec--;
@@ -2086,8 +2091,10 @@ export class WodgoPage implements OnInit {
         clearInterval(timerInterval);
         this.strtr2m1Timertab(stabatas);
         this.r2cd5SecShow = false;
+        this.r2srtbtnShow = false;
         this.t2prepimg = false;
         this.t2wvid=true;
+        this.buttonText = 'Start Timer';
       }
     }, 1000); // Update the 5-second countdown every second
   }
@@ -2248,9 +2255,9 @@ export class WodgoPage implements OnInit {
   }
   r3strt5SecTimertab(stabatas: Tabata) {
     this.r3cd5Sec = 10;
-    this.r3srtbtnShow = false;
+    this.r3srtbtnShow = true;
     this.r3cd5SecShow = true;
-
+this.buttonText = 'GET READY!!!'
     const timerInterval = setInterval(() => {
       if (this.r3cd5Sec !== undefined && this.r3cd5Sec > 0) {
         this.r3cd5Sec--;
@@ -2259,7 +2266,9 @@ export class WodgoPage implements OnInit {
         this.strtr3m1Timertab(stabatas);
         this.r3cd5SecShow = false;
         this.t3prepimg = false;
+        this.r3srtbtnShow = false;
         this.t3wvid=true;
+        this.buttonText = 'Start Timer';
       }
     }, 1000); // Update the 5-second countdown every second
   }
@@ -2421,8 +2430,9 @@ export class WodgoPage implements OnInit {
   }
   r4strt5SecTimertab(stabatas: Tabata) {
     this.r4cd5Sec = 10;
-    this.r4srtbtnShow = false;
+    this.r4srtbtnShow = true;
     this.r4cd5SecShow = true;
+    this.buttonText = 'GET READY!!!'
 
     const timerInterval = setInterval(() => {
       if (this.r4cd5Sec !== undefined && this.r4cd5Sec > 0) {
@@ -2431,8 +2441,10 @@ export class WodgoPage implements OnInit {
         clearInterval(timerInterval);
         this.strtr4m1Timertab(stabatas);
         this.r4cd5SecShow = false;
+        this.r4srtbtnShow = false;
         this.t4prepimg = false;
         this.t4wvid=true;
+        this.buttonText = 'Start Timer';
       }
     }, 1000); // Update the 5-second countdown every second
   }
