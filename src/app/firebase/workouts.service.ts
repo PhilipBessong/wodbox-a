@@ -178,10 +178,19 @@ export class WorkoutsService {
   getWorkoutById(id: string): Observable<Workout | undefined> {
     return this.workoutCollection.doc<Workout>(id).valueChanges();
   }
+    // Get a specific tabata by ID
+    getTabataById(id: string): Observable<Tabata | undefined> {
+      return this.tabataCollection.doc<Tabata>(id).valueChanges();
+    }
 
   // Update a workout
   updateWorkout(id: string | undefined, updatedWorkout: Workout): Promise<void> {
     return this.workoutCollection.doc(id).update(updatedWorkout);
+  }
+
+   // Update a tabata
+   updateTabata(id: string , updatedTabata: Tabata): Promise<void> {
+    return this.tabataCollection.doc(id).update(updatedTabata);
   }
 
   // Delete a workout

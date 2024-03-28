@@ -108,6 +108,6 @@ export class AddwodPage implements OnInit {
     }
   }
   backtoWarmUp(){
-    this.router.navigate(['/ahome']);
+    this.router.navigate(['/wodstyle']);
   }
 }
