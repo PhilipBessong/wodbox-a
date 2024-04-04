@@ -14,6 +14,8 @@ export class WodinfoPage implements OnInit {
   moves: Exercise[] = [];
   numtabat: number = 0;
   mpts: number = 0;
+tabataId: string='';
+
 
   workout: Workout = {
     wodCat: '',
@@ -62,7 +64,6 @@ export class WodinfoPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.mpts = this.tabataData.mpt
     this.loadMoves();
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -74,10 +75,12 @@ export class WodinfoPage implements OnInit {
       this.workoutService.getTabataById(id).subscribe((tabata) => {
         if (tabata) {
           this.tabataData = tabata;
+          this.mpts = tabata.mpt; // Load mpt after tabataData is set
         }
       });
     }
   }
+  
   loadMoves() {
     this.moves = this.workoutService.getAllMoves();
   }
@@ -95,8 +98,8 @@ export class WodinfoPage implements OnInit {
         // Handle error, show error message, etc.
       });
   }
-  savetabata() {
-    this.workoutService.updateTabata(this.tabataData.id, this.tabataData)
+  savetabata(id:string, updatedTabata:Partial<Tabata>): void {
+    this.workoutService.updateTabata(id, updatedTabata) // Use the provided id and updatedTabata
       .then(() => {
         this.navCtrl.navigateBack('/ahome'); // Navigate back after saving changes
       })
@@ -105,6 +108,7 @@ export class WodinfoPage implements OnInit {
         // Handle error, show error message, etc.
       });
   }
+  
   submitForm() {
     if (!this.tabataData.wodCat || !this.tabataData.daDate) {
       // Handle form validation or display an error message

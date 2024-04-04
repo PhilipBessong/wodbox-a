@@ -38,11 +38,11 @@ export class AhomePage implements OnInit {
     const tabataDateObj = new Date(tabataDate);
 
     if (tabataDateObj.toDateString() === today.toDateString()) {
-      return '#FFA500'; // Orange for today
+      return '#00b250'; // green for today
     } else if (tabataDateObj < today) {
       return '#808080'; // Grey for past dates
     } else {
-      return '#22B9E9'; // Blue for future dates
+      return '#FFA500';  // Orange for future dates
     }
   }
   intervalCard(intervalDate: string): string {

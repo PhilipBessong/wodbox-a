@@ -49,6 +49,8 @@ export class AdduserPage implements OnInit {
     });
     toast.present();
   }
-
+  backtoWarmUp(){
+    this.router.navigate(['/ahome']);
+  }
 
 }

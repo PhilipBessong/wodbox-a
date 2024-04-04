@@ -15,10 +15,11 @@
     </ion-row>
 
     <pre></pre>
-    <ion-row class="ion-justify-content-center">
-      <ion-col style="text-align: center;">  <ion-button shape="round" (click)="logout()">logout</ion-button></ion-col>
-      <ion-col style="text-align: center; "><ion-button shape="round" (click)="todaAdduser()" >Add User</ion-button></ion-col>
-      <ion-col style="text-align: center;"><ion-button shape="round" (click)="todaAddwod()" >WOD</ion-button></ion-col>
+    <ion-row class="ion-align-items-center" >
+      <ion-col size-md="6" style="text-align: left;width: 100%;"><ion-button shape="round" (click)="logout()">logout</ion-button></ion-col>
+      <ion-col size-md="6" style="text-align: right;width: 100%;"><ion-button shape="round" (click)="todaAdduser()">User</ion-button></ion-col>
+      <ion-col size-md="6" style="text-align: right;width: 100%;"><ion-button shape="round" (click)="todaAddwod()">
+      WOD</ion-button></ion-col>
     </ion-row>
     <pre></pre>
     <ion-row >
@@ -51,6 +52,7 @@
       
     </ion-row>
     <pre></pre>
+    <!--tabata-->
     <ion-row *ngIf="tabatas.length > 0">
       <ion-label style="text-align: center; color:#b27600; font-size: xx-large;">TABATA</ion-label>
       <ion-card 
@@ -70,11 +72,12 @@
           <ion-label style="font-size:large;">MPR {{tabata.mpt}} </ion-label><br>
 
         </ion-card-content>
-        <button (click)="deleteTabata(tabata.id)" style="text-align: end;background-color: #b27600; color:black ; padding-left: 90%;"><ion-icon name="trash-outline" size="large" style="background-color: #b27600;"></ion-icon></button>
+        <button class="dltbtn" (click)="deleteTabata(tabata.id)" style="text-align: end;background-color: #b27600; color:black ; "><ion-icon name="trash-outline" size="large" style="background-color: #b27600;border-radius: 10px;"></ion-icon></button>
       </ion-card>
       
     </ion-row>
     <pre></pre>
+     <!--ladder-->
     <ion-row *ngIf="ladders.length > 0">
       <ion-label style="text-align: center; color:#b27600; font-size: xx-large;">LADDER</ion-label>
       <ion-card 

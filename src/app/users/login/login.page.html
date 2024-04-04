@@ -17,7 +17,7 @@
             </h1>
           </div>
           <pre></pre>
-          <div>
+          <ion-row>
             <ion-input
               type="email"
               name="email"
@@ -38,7 +38,7 @@
               type="email"
               required
             ></ion-input>
-          </div>
+          </ion-row>
           <pre></pre>
           <ion-row style="position: relative;">
             <ion-input
@@ -58,8 +58,7 @@
               placeholder="Password"
               [(ngModel)]="password"
               required
-            ></ion-input>
-          
+            ></ion-input>         
             <!-- Toggle button for showing/hiding password -->
             <ion-icon
               *ngIf="showPassword"

@@ -128,7 +128,7 @@
             </ion-row>
 
             <ion-row style="text-align: center" class="ion-justify-content-center">
-              <ion-col style="text-align: center">
+              <ion-col style="text-align: center; width: 50%;">
                 <ion-select
                 [disabled]="isDisabled"
                   placeholder="M1"
@@ -153,7 +153,7 @@
                 </ion-select>
               </ion-col>
               <!--tm2-->
-              <ion-col style="text-align: center">
+              <ion-col style="text-align: center; width: 50%;">
                 <div>
                   <ion-select
                   [disabled]="isDisabled"
@@ -189,7 +189,7 @@
                 >
               </ion-row>
               <ion-row style="text-align: center">
-                <ion-col style="text-align: center">
+                <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                   [disabled]="isDisabled"
                     placeholder="M1"
@@ -213,7 +213,7 @@
                   </ion-select>
                 </ion-col>
 
-                <ion-col style="text-align: center">
+                <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                   [disabled]="isDisabled"
                    
@@ -250,7 +250,7 @@
                 >
               </ion-row>
               <ion-row style="text-align: center">
-                <ion-col style="text-align: center">
+                <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                   [disabled]="isDisabled"
                     [(ngModel)]="tabataData.t3m1"
@@ -274,7 +274,7 @@
                   </ion-select>
                 </ion-col>
 
-                <ion-col style="text-align: center">
+                <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                   [disabled]="isDisabled"
                     
@@ -311,7 +311,7 @@
                 >
               </ion-row>
               <ion-row style="text-align: center">
-                <ion-col style="text-align: center">
+                <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                   [disabled]="isDisabled"
                     placeholder="M1"
@@ -335,7 +335,7 @@
                   </ion-select>
                 </ion-col>
 
-                <ion-col style="text-align: center">
+                <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                   [disabled]="isDisabled"
                     
@@ -391,7 +391,7 @@
                     background-color: aliceblue;
                   "
                   type="submit"
-                  (click)="savetabata()"
+                  (click)="savetabata(tabataData.id,tabataData)"
                   >Save WOD</ion-button
                 >
               </div>

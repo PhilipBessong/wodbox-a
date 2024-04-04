@@ -6,7 +6,25 @@
       <ion-card style="width: 100%">
         <form (ngSubmit)="signUp()" #userForm="ngForm">
           <div class="container">
-            <pre></pre>
+         
+            <div class="col">
+              <button
+                (click)="backtoWarmUp()"
+                style="
+                  background-color: #b27600;
+                  border-radius: 5px;
+                  color: aliceblue;
+                  margin-left: 85%;
+                  width: 50px;
+                  height: 25px;
+                  display: flex;
+                  align-items: center;
+                "
+              >
+                <ion-icon name="chevron-back-outline" style="margin-right: 1px;"></ion-icon>Back
+              </button>
+         
+            </div>
             <div class="row">
               <div class="logocon">
                 <ion-img
