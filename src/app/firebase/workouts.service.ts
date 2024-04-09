@@ -146,7 +146,7 @@ export class WorkoutsService {
   private readonly tcollectionName = 'tabatas';
   private ladderCollection: AngularFirestoreCollection<Ladder>;
   private readonly lcollectionName = 'ladders';
-  constructor(private readonly firestore: AngularFirestore) {
+  constructor(private  firestore: AngularFirestore) {
     this.workoutCollection = this.firestore.collection<Workout>(
       this.collectionName
     );
@@ -189,43 +189,10 @@ export class WorkoutsService {
   }
 
    // Update a tabata
-   updateTabata(id: string , updatedTabata: Partial<Tabata>): Promise<void> {
-    const tabataRef = this.tabataCollection.doc(id);    
-  
-    // Create an object with only the fields you want to update
-    const dataToUpdate: Partial<Tabata> = {
-      wodCat: updatedTabata?.wodCat,
-      wodStyle: updatedTabata?.wodStyle,
-      tabataNum: updatedTabata?.tabataNum,
-      mpt: updatedTabata?.mpt,
-      t1m1: updatedTabata?.t1m1,
-      t1m2: updatedTabata?.t1m2,
-      t2m1: updatedTabata?.t2m1,
-      t2m2: updatedTabata?.t2m2,
-      t3m1: updatedTabata?.t3m1,
-      t3m2: updatedTabata?.t3m2,
-      t4m1: updatedTabata?.t4m1,
-      t4m2: updatedTabata?.t4m2,
-      move: updatedTabata?.move,
-      rest: updatedTabata?.rest,
-      sets: updatedTabata?.sets,
-      daDate: updatedTabata?.daDate,
-      styleName: updatedTabata?.styleName,
-      styleDescription: updatedTabata?.styleDescription,
-      exe: updatedTabata?.exe,
-      exet1m2: updatedTabata?.exet1m2,
-      exet2m1: updatedTabata?.exet2m1,
-      exet2m2: updatedTabata?.exet2m2,
-      exet3m1: updatedTabata?.exet3m1,
-      exet3m2: updatedTabata?.exet3m2,
-      exet4m1: updatedTabata?.exet4m1,
-      exet4m2: updatedTabata?.exet4m2,
-    };
-    
-  
-    return tabataRef.update(dataToUpdate);
+   updateTabata(id: string, updatedTabata: Partial<Tabata>): Promise<void> {
+    const tabataRef = this.tabataCollection.doc(id); // Ensure tabataId is not empty
+    return tabataRef.update(updatedTabata);
   }
-  
   
   
 

@@ -271,8 +271,8 @@ background-color: #000000;
   
   .countdown-wrapper {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 49%; /* Adjusted top value */
+    left: 49%; /* Adjusted left value */
     transform: translate(-50%, -50%);
     width: 200px; /* Doubled width */
     height: 200px; /* Doubled height */
@@ -281,9 +281,9 @@ background-color: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
-     /* Doubled border size */
+    /* Doubled border size */
     margin-top: 10%;
-  }
+  }  
   
   .countdown-row {
     position: relative; /* Ensure the countdown row stays within the countdown wrapper */

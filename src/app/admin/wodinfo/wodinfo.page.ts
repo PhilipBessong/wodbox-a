@@ -98,16 +98,23 @@ tabataId: string='';
         // Handle error, show error message, etc.
       });
   }
-  savetabata(id:string, updatedTabata:Partial<Tabata>): void {
-    this.workoutService.updateTabata(id, updatedTabata) // Use the provided id and updatedTabata
-      .then(() => {
-        this.navCtrl.navigateBack('/ahome'); // Navigate back after saving changes
-      })
-      .catch((error) => {
-        console.error('Error updating workout:', error);
-        // Handle error, show error message, etc.
-      });
+  savetabata(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id !== null) { // Check if id is not null before using it
+      this.workoutService.updateTabata(id, this.tabataData)
+        .then(() => {
+          this.navCtrl.navigateBack('/ahome'); // Navigate back after saving changes
+        })
+        .catch((error) => {
+          console.error('Error updating tabata:', error);
+          // Handle error, show error message, etc.
+        });
+    } else {
+      console.error('Error: Tabata ID is null');
+      // Handle the case where the ID is null, show error message, etc.
+    }
   }
+
   
   submitForm() {
     if (!this.tabataData.wodCat || !this.tabataData.daDate) {
