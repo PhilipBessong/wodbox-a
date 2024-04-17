@@ -1,7 +1,5 @@
-
-<ion-content [fullscreen]="true"  >
-  <div class="daBack" 
-  >
+<ion-content [fullscreen]="true">
+  <div class="daBackf">
     <div class="col">
       <br />
       <button
@@ -17,7 +15,11 @@
           align-items: center;
         "
       >
-        <ion-icon name="chevron-back-outline" style="margin-right: 1px;"></ion-icon>Back
+        <ion-icon
+          name="chevron-back-outline"
+          style="margin-right: 1px"
+        ></ion-icon
+        >Back
       </button>
       <div class="col">
         <div class="logocon">
@@ -25,47 +27,67 @@
         </div>
       </div>
     </div>
-    
+
     <pre></pre>
     <div>
       <h1 class="wodhead" style="color: aliceblue">INTERVAL</h1>
     </div>
     <pre></pre>
     <ion-row>
-      <ion-card style="width: 100%;" >
+      <ion-card style="width: 100%; --ion-background-color: white">
         <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
           <div class="container">
             <ion-grid>
               <pre></pre>
               <ion-row>
-                <ion-col style="padding-top: 13px; text-align: center;">
-                  <ion-label style="font-size: x-large;">WOD Category</ion-label>
-                </ion-col>
-                <ion-col style="padding-left: 0px; text-align: center;">
+                <ion-label
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    margin-left: auto;
+                    margin-right: auto;
+                  "
+                  >WOD Category</ion-label
+                >
+              </ion-row>
+              <ion-row style="padding-left: 0px; text-align: center">
+                <div style="margin-left: auto; margin-right: auto">
                   <ion-select
                     placeholder="Select Category"
-                    style="font-size: x-large; text-align: center; border-color: #b27600; border-style: solid; border-radius: 10px;"
+                    style="font-size: x-large; text-align: center"
                     formControlName="wodCat"
                     id="wodCat"
                     name="wodCat"
                   >
-                    <ion-select-option value="Warm Up">Warm Up</ion-select-option>
+                    <ion-select-option value="Warm Up"
+                      >Warm Up</ion-select-option
+                    >
                     <ion-select-option value="WOD">WOD</ion-select-option>
                   </ion-select>
-                </ion-col>
-                <ion-col style="padding-top: 13px;  text-align: center;">
-                  <ion-label style="font-size: x-large; text-align: center">Rounds</ion-label
+                </div>
+              </ion-row>
+              <pre></pre>
+              <ion-row>
+                <ion-label
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    margin-left: auto;
+                    margin-right: auto;
+                  "
+                  >Rounds</ion-label
                 >
-                </ion-col>
-                <ion-col style="padding-left: 0px;">
-                  <ion-input
+              </ion-row>
+              <ion-row>
+                <ion-input
                   type="number"
                   id="rounds"
                   name="rounds"
                   style="
                     font-size: x-large;
                     text-align: center;
-                    border-color: #b27600; border-style: solid; 
+                    border-color: #b27600;
+                    border-style: solid;
                     border-radius: 10px;
                   "
                   placeholder="Select Rounds"
@@ -76,12 +98,21 @@
                   min="1"
                 >
                 </ion-input>
-                </ion-col>
-                <ion-col style="padding-top: 13px; text-align: center;">
-                  <ion-label style="font-size: x-large; text-align: center">MPR</ion-label>
-                </ion-col>
-                <ion-col style="padding-left: 0px;">
-                  <ion-input
+              </ion-row>
+              <pre></pre>
+              <ion-row>
+                <ion-label
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    margin-left: auto;
+                    margin-right: auto;
+                  "
+                  >MPR</ion-label
+                >
+              </ion-row>
+              <ion-row>
+                <ion-input
                   type="number"
                   name="mpr"
                   id="mpr"
@@ -89,7 +120,8 @@
                     font-size: x-large;
                     padding-left: 0px;
                     text-align: center;
-                    border-color: #b27600; border-style: solid; 
+                    border-color: #b27600;
+                    border-style: solid;
                     border-radius: 10px;
                   "
                   placeholder="Select MPR"
@@ -99,7 +131,6 @@
                   max="3"
                   min="1"
                 ></ion-input>
-                </ion-col>
               </ion-row>
               <pre></pre>
               <ion-row *ngIf="selectedNumber > 0">
@@ -107,8 +138,8 @@
                   style="font-size: x-large; text-align: center; width: 100%"
                   >Round 1</ion-label
                 >
-                <ion-row style="width: 100%;" >
-                  <ion-col *ngIf="mprs > 0" style="padding-left: 15%;" >
+                <ion-row style="width: 100%">
+                  <ion-col *ngIf="mprs > 0" style="padding-left: 15%; width: 30%;">
                     <ion-select
                       placeholder="M1"
                       name="r1m1"
@@ -129,7 +160,7 @@
                       >
                     </ion-select>
                   </ion-col>
-                  <ion-col *ngIf="mprs > 1">
+                  <ion-col *ngIf="mprs > 1" style="width: 30%;">
                     <ion-select
                       style="
                         font-size: x-large;
@@ -149,7 +180,7 @@
                       >
                     </ion-select>
                   </ion-col>
-                  <ion-col *ngIf="mprs > 2">
+                  <ion-col *ngIf="mprs > 2" style="width: 30%;">
                     <ion-select
                       style="
                         font-size: x-large;
@@ -171,9 +202,16 @@
                   </ion-col>
                 </ion-row>
                 <pre></pre>
-                <ion-row style="width: 100%;">
-                  <ion-col style=" text-align: center;">
-                    <ion-label  style="font-size: x-large; text-align: center; width: 100%">Sets</ion-label>
+                <ion-row style="width: 100%">
+                  <ion-col style="text-align: center">
+                    <ion-label
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      >Sets</ion-label
+                    >
                     <ion-input
                       type="number"
                       name="r1sets"
@@ -191,24 +229,37 @@
                     </ion-input>
                   </ion-col>
 
-                  <ion-col style=" text-align: center;">
-                    <ion-label  style="font-size: x-large; text-align: center; width: 100%">Move</ion-label>
+                  <ion-col style="text-align: center">
+                    <ion-label
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      >Move</ion-label
+                    >
                     <ion-input
                       type="number"
                       name="r1move"
                       id="r1move"
                       style="
-                          font-size: x-large;
+                        font-size: x-large;
                         text-align: center;
                         color: #b27600;
                       "
                       min="1"
-                      
                       formControlName="r1move"
                     />
                   </ion-col>
-                  <ion-col style=" text-align: center;">
-                    <ion-label  style="font-size: x-large; text-align: center; width: 100%">Rest</ion-label>
+                  <ion-col style="text-align: center">
+                    <ion-label
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      >Rest</ion-label
+                    >
                     <ion-input
                       type="number"
                       name="r1rest"
@@ -219,7 +270,6 @@
                         color: #b27600;
                       "
                       min="1"
-                   
                       formControlName="r1rest"
                     />
                   </ion-col>
@@ -232,8 +282,8 @@
                   style="font-size: x-large; text-align: center; width: 100%"
                   >Round 2</ion-label
                 >
-                <ion-row style="width: 100%;">
-                  <ion-col *ngIf="mprs>0" style="padding-left: 15%;">
+                <ion-row style="width: 100%">
+                  <ion-col *ngIf="mprs>0" style="padding-left: 15%; width: 30%;">
                     <ion-select
                       placeholder="M1"
                       name="r2m1"
@@ -253,7 +303,7 @@
                       >
                     </ion-select>
                   </ion-col>
-                  <ion-col *ngIf="mprs > 1">
+                  <ion-col *ngIf="mprs > 1" style="width: 30%;">
                     <ion-select
                       style="
                         font-size: x-large;
@@ -273,7 +323,7 @@
                       ></ion-select
                     >
                   </ion-col>
-                  <ion-col *ngIf="mprs > 2">
+                  <ion-col *ngIf="mprs > 2" style="width: 30%;">
                     <ion-select
                       style="
                         font-size: x-large;
@@ -295,9 +345,16 @@
                   </ion-col>
                 </ion-row>
                 <pre></pre>
-                <ion-row style="width: 100%;">
-                  <ion-col style="text-align: center;">
-                    <ion-label style="font-size: x-large; text-align: center; width: 100%">Sets</ion-label>
+                <ion-row style="width: 100%">
+                  <ion-col style="text-align: center">
+                    <ion-label
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      >Sets</ion-label
+                    >
                     <ion-input
                       type="number"
                       name="r2sets"
@@ -315,8 +372,15 @@
                     </ion-input>
                   </ion-col>
 
-                  <ion-col style="text-align: center;">
-                    <ion-label style="font-size: x-large; text-align: center; width: 100%">Move</ion-label>
+                  <ion-col style="text-align: center">
+                    <ion-label
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      >Move</ion-label
+                    >
                     <ion-input
                       formControlName="r2move"
                       type="number"
@@ -328,11 +392,17 @@
                         color: #b27600;
                       "
                       min="1"
-                  
                     />
                   </ion-col>
-                  <ion-col style="text-align: center;">
-                    <ion-label style="font-size: x-large; text-align: center; width: 100%">Rest</ion-label>
+                  <ion-col style="text-align: center">
+                    <ion-label
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      >Rest</ion-label
+                    >
                     <ion-input
                       formControlName="r2rest"
                       type="number"
@@ -344,7 +414,6 @@
                         color: #b27600;
                       "
                       min="1"
-                    
                     />
                   </ion-col>
                 </ion-row>
@@ -356,8 +425,8 @@
                   style="font-size: x-large; text-align: center; width: 100%"
                   >Round 3</ion-label
                 >
-                <ion-row style="width: 100%;">
-                  <ion-col *ngIf="mprs > 0" style="padding-left: 15%;">
+                <ion-row style="width: 100%">
+                  <ion-col *ngIf="mprs > 0" style="padding-left: 15%; width: 30%;">
                     <ion-select
                       placeholder="M1"
                       name="r3m1"
@@ -377,7 +446,7 @@
                       >
                     </ion-select>
                   </ion-col>
-                  <ion-col *ngIf="mprs > 1">
+                  <ion-col *ngIf="mprs > 1" style="width: 30%;">
                     <ion-select
                       style="
                         font-size: x-large;
@@ -397,7 +466,7 @@
                       ></ion-select
                     >
                   </ion-col>
-                  <ion-col *ngIf="mprs > 2">
+                  <ion-col *ngIf="mprs > 2" style="width: 30%;">
                     <ion-select
                       style="
                         font-size: x-large;
@@ -419,9 +488,16 @@
                   </ion-col>
                 </ion-row>
                 <pre></pre>
-                <ion-row style="width: 100%;">
-                  <ion-col style="text-align: center;">
-                    <ion-label style="font-size: x-large; text-align: center; width: 100%">Sets</ion-label>
+                <ion-row style="width: 100%">
+                  <ion-col style="text-align: center">
+                    <ion-label
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      >Sets</ion-label
+                    >
                     <ion-input
                       type="number"
                       name="r3sets"
@@ -432,15 +508,22 @@
                         text-align: center;
                         color: #b27600;
                       "
-                       max="8"
-                       min="1"
+                      max="8"
+                      min="1"
                       formControlName="r3sets"
                     >
                     </ion-input>
                   </ion-col>
 
-                  <ion-col style="text-align: center;">
-                    <ion-label style="font-size: x-large; text-align: center; width: 100%">Move</ion-label>
+                  <ion-col style="text-align: center">
+                    <ion-label
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      >Move</ion-label
+                    >
                     <ion-input
                       formControlName="r3move"
                       type="number"
@@ -452,11 +535,17 @@
                         color: #b27600;
                       "
                       min="1"
-                    
                     />
                   </ion-col>
-                  <ion-col style="text-align: center;">
-                    <ion-label style="font-size: x-large; text-align: center; width: 100%">Rest</ion-label>
+                  <ion-col style="text-align: center">
+                    <ion-label
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      >Rest</ion-label
+                    >
                     <ion-input
                       formControlName="r3rest"
                       type="number"
@@ -468,7 +557,6 @@
                         color: #b27600;
                       "
                       min="1"
-                    
                     />
                   </ion-col>
                 </ion-row>
@@ -480,8 +568,8 @@
                   style="font-size: x-large; text-align: center; width: 100%"
                   >Round 4</ion-label
                 >
-                <ion-row style="width: 100%;">
-                  <ion-col *ngIf="mprs>0" style="padding-left: 15%;">
+                <ion-row style="width: 100%">
+                  <ion-col *ngIf="mprs>0" style="padding-left: 15%; width: 30%;">
                     <ion-select
                       placeholder="M1"
                       name="r4m1"
@@ -502,7 +590,7 @@
                       >
                     </ion-select>
                   </ion-col>
-                  <ion-col *ngIf="mprs > 1">
+                  <ion-col *ngIf="mprs > 1" style="width: 30%;">
                     <ion-select
                       style="
                         font-size: x-large;
@@ -523,7 +611,7 @@
                       ></ion-select
                     >
                   </ion-col>
-                  <ion-col *ngIf="mprs > 2">
+                  <ion-col *ngIf="mprs > 2" style="width: 30%;">
                     <ion-select
                       style="
                         font-size: x-large;
@@ -546,9 +634,16 @@
                   </ion-col>
                 </ion-row>
                 <pre></pre>
-                <ion-row style="width: 100%;">
-                  <ion-col style="text-align: center;">
-                    <ion-label style="font-size: x-large; text-align: center; width: 100%">Sets</ion-label>
+                <ion-row style="width: 100%">
+                  <ion-col style="text-align: center">
+                    <ion-label
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      >Sets</ion-label
+                    >
                     <ion-input
                       type="number"
                       name="r4sets"
@@ -559,16 +654,23 @@
                         text-align: center;
                         color: #b27600;
                       "
-                       max="8"
-                       min="1"
+                      max="8"
+                      min="1"
                       formControlName="r4sets"
                       id="r4sets"
                     >
                     </ion-input>
                   </ion-col>
 
-                  <ion-col style="text-align: center;">
-                    <ion-label style="font-size: x-large; text-align: center; width: 100%">Move</ion-label>
+                  <ion-col style="text-align: center">
+                    <ion-label
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      >Move</ion-label
+                    >
                     <ion-input
                       formControlName="r4move"
                       id="r4move"
@@ -581,11 +683,17 @@
                         color: #b27600;
                       "
                       min="1"
-               
                     />
                   </ion-col>
-                  <ion-col style="text-align: center;">
-                    <ion-label style="font-size: x-large; text-align: center; width: 100%">Rest</ion-label>
+                  <ion-col style="text-align: center">
+                    <ion-label
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      >Rest</ion-label
+                    >
                     <ion-input
                       formControlName="r4rest"
                       id="r4rest"
@@ -599,7 +707,6 @@
                       "
                       placeholder="rest sec"
                       min="1"
-                   
                     />
                   </ion-col>
                 </ion-row>
@@ -612,7 +719,7 @@
                 >
                 <ion-input
                   style="font-size: x-large; text-align: center; color: #b27600"
-                  type="datetime-local"
+                  type="Date"
                   name="daDate"
                   id="daDate"
                   formControlName="daDate"

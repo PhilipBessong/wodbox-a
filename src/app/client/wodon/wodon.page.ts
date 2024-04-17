@@ -357,19 +357,30 @@ export class WodonPage implements OnInit {
    buttonDisabled = false;
    cd5SecShow = true;
    srtbtnShow = true;
+   prepimg: boolean = true;
+   wvid: boolean =false;
    strt5SecTimer(specificWorkouts: Workout) {
      this.buttonDisabled = true; // Disable the button
      this.cd5Sec = 10;
-     this.srtbtnShow = false;
+     this.buttonText = 'GET READY!!!';
+     this.srtbtnShow = true;
      this.cd5SecShow = true;
      const timerInterval = setInterval(() => {
        if (this.cd5Sec !== undefined && this.cd5Sec > 0) {
          this.cd5Sec--;
-       } else {
+       }else {
          clearInterval(timerInterval);
          this.strtr1m1Timer(specificWorkouts);
          this.cd5SecShow = false;
+         this.prepimg = false;
+         this.wvid=true;
+         this.srtbtnShow = false;
+         this.buttonText = 'Start Timer';
+         this.buttonDisabled = false;
        }
+       if (this.cd5Sec !== undefined && this.cd5Sec) {
+        
+       } 
      }, 1000); // Update the 5-second countdown every second
    }
  
@@ -392,6 +403,7 @@ export class WodonPage implements OnInit {
        }
  
        this.cdr1m1Intval = setInterval(() => {
+       
          if (!this.isPaused) {
            // Check if the timer is not paused
            if (this.cdr1m1Timer && this.cdr1m1Timer > 0) {
@@ -475,6 +487,8 @@ export class WodonPage implements OnInit {
                  this.r1RestShowc = false;
                  this.updateIonContentClass();
                  this.srtbtn2Show = false;
+                 this.prepimg = true;
+                 this.wvid = false;
                  this.cdr2m1Show = true;
                } else {
                  this.r4m3restlbl=false;
@@ -603,6 +617,9 @@ export class WodonPage implements OnInit {
                  this.r2m1Show = true;
                  this.r1m2RestShow = false;
                  this.r2m1Showc = true;
+                 this.prepimg = true;
+                 this.wvid = false;
+                 this.buttonDisabled = false;
                  this.r1m2RestShowc = false;
                  this.updateIonContentClass(); // Call a method to update the ion-content class
                } else {
@@ -719,6 +736,9 @@ export class WodonPage implements OnInit {
                this.r2m1Show = true;
                this.r1m3RestShow = false;
                this.r2m1Showc = true;
+               this.prepimg = true;
+               this.wvid = false;
+               this.buttonDisabled = false;
                this.r1m3RestShowc = false;
                this.updateIonContentClass(); // Call a method to update the ion-content class
              } else {
@@ -743,9 +763,9 @@ export class WodonPage implements OnInit {
    r2srtbtnShow = true;
    r2strt5SecTimer(specificWorkouts: Workout) {
      this.r2cd5Sec = 10;
-     this.r2srtbtnShow = false;
+     this.r2srtbtnShow = true;
      this.r2cd5SecShow = true;
- 
+     this.buttonText = 'GET READY!!!'
      const timerInterval = setInterval(() => {
        if (this.r2cd5Sec !== undefined && this.r2cd5Sec > 0) {
          this.r2cd5Sec--;
@@ -753,6 +773,10 @@ export class WodonPage implements OnInit {
          clearInterval(timerInterval);
          this.strtr2m1Timer(specificWorkouts);
          this.r2cd5SecShow = false;
+         this.prepimg = false;
+         this.wvid=true;
+         this.r2srtbtnShow = false;
+         this.buttonText = 'Start Timer';
        }
      }, 1000); // Update the 5-second countdown every second
    }
@@ -849,6 +873,9 @@ export class WodonPage implements OnInit {
                  this.r3m1Showc = true;
                  this.updateIonContentClass();
                  this.r2m1RestShowc = false;
+                 this.prepimg = true;
+               this.wvid = false;
+               this.buttonDisabled = false;
                } else {
                  this.r4m3restlbl=false;
                  this.r4m3restfinbtn= true;
@@ -965,6 +992,8 @@ export class WodonPage implements OnInit {
                this.r2srtbtnShow = false;
                this.r2m2srtbtnShow = true;
                this.buttonDisabled = false;
+              
+              
                this.cdr2m1Show = true;
                this.updateIonContentClass();
                this.cdr2m1Show = true;
@@ -976,6 +1005,9 @@ export class WodonPage implements OnInit {
                  // Call a method to update the ion-content class
                  this.r3m1Showc = true;
                  this.r2m2RestShowc = false;
+                 this.prepimg = true;
+                 this.wvid = false;
+                 this.buttonDisabled = false;
                  this.updateIonContentClass();
                } else {
                  this.r4m3restlbl=false;
@@ -1092,6 +1124,9 @@ export class WodonPage implements OnInit {
                // Call a method to update the ion-content class
                this.r3m1Showc = true;
                this.r2m3RestShowc = false;
+               this.prepimg = true;
+               this.wvid = false;
+               this.buttonDisabled = false;
                this.updateIonContentClass();
              } else {
                this.r4m3restlbl=false;
@@ -1115,8 +1150,9 @@ export class WodonPage implements OnInit {
    r3srtbtnShow = true;
    r3strt5SecTimer(specificWorkouts: Workout) {
      this.r3cd5Sec = 10;
-     this.r3srtbtnShow = false;
+     this.r3srtbtnShow = true;
      this.r3cd5SecShow = true;
+     this.buttonText = 'GET READY!!!';
      const timerInterval = setInterval(() => {
        if (this.r3cd5Sec !== undefined && this.r3cd5Sec > 0) {
          this.r3cd5Sec--;
@@ -1124,6 +1160,10 @@ export class WodonPage implements OnInit {
          clearInterval(timerInterval);
          this.strtr3m1Timer(specificWorkouts);
          this.r3cd5SecShow = false;
+         this.prepimg = false;
+         this.wvid=true;
+         this.r3srtbtnShow = false;
+         this.buttonText = 'Start Timer';
        }
      }, 1000); // Update the 5-second countdown every second
    }
@@ -1219,6 +1259,9 @@ export class WodonPage implements OnInit {
                  this.r3RestShow = false;
                  this.r4m1Showc = true;
                  this.r3m1RestShowc = false;
+                 this.prepimg = true;
+                 this.wvid = false;
+                 this.buttonDisabled = false;
                  this.updateIonContentClass(); // Call a method to update the ion-content class
                } else {
                  this.r4m3restlbl=false;
@@ -1344,6 +1387,9 @@ export class WodonPage implements OnInit {
                  this.r3m2RestShow = false;
                  this.r4m1Showc = true;
                  this.r3m2RestShowc = false;
+                 this.prepimg = true;
+                 this.wvid = false;
+                 this.buttonDisabled = false;
                  this.updateIonContentClass(); // Call a method to update the ion-content class
                } else {
                  this.r4m3restlbl=false;
@@ -1457,6 +1503,9 @@ export class WodonPage implements OnInit {
                this.r3m3RestShow = false;
                this.r4m1Showc = true;
                this.r3m3RestShowc = false;
+               this.prepimg = true;
+               this.wvid = false;
+               this.buttonDisabled = false;
                this.updateIonContentClass(); // Call a method to update the ion-content class
              } else {
                this.r4m3restlbl=false;
@@ -1481,8 +1530,9 @@ export class WodonPage implements OnInit {
  
    r4strt5SecTimer(specificWorkouts: Workout) {
      this.r4cd5Sec = 10;
-     this.r4srtbtnShow = false;
+     this.r4srtbtnShow = true;
      this.r4cd5SecShow = true;
+     this.buttonText = 'GET READY!!!';
      const timerInterval = setInterval(() => {
        if (this.r4cd5Sec !== undefined && this.r4cd5Sec > 0) {
          this.r4cd5Sec--;
@@ -1490,6 +1540,10 @@ export class WodonPage implements OnInit {
          clearInterval(timerInterval);
          this.strtr4m1Timer(specificWorkouts);
          this.r4cd5SecShow = false;
+         this.prepimg = false;
+         this.wvid=true;
+         this.r4srtbtnShow = false;
+         this.buttonText = 'Start Timer';
        }
      }, 1000); // Update the 5-second countdown every second
    }
@@ -1574,7 +1628,7 @@ export class WodonPage implements OnInit {
                this.cdr4m1Show = true;
                this.r4srtbtnShow = false;
                this.buttonDisabled = false;
-               this.buttonDisabled = false;
+ 
                this.updateIonContentClass();
                this.strtr4m1Timer(specificWorkouts);
              } else {

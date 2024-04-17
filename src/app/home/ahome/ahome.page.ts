@@ -50,11 +50,11 @@ export class AhomePage implements OnInit {
     const intervalDateObj = new Date(intervalDate);
 
     if (intervalDateObj.toDateString() === today.toDateString()) {
-      return '#FFA500'; // Orange for today
+      return '#00b250'; // green for today
     } else if (intervalDateObj < today) {
       return '#808080'; // Grey for past dates
     } else {
-      return '#22B9E9'; // Blue for future dates
+      return '#FFA500';  // Orange for future dates
     }
   }
   loadLadders() {
@@ -95,12 +95,19 @@ export class AhomePage implements OnInit {
       this.loadWorkouts();
     });
   }
-  deleteTabata(id: string| undefined) {
-    this.workoutService.deleteTabata(id).then(() => {
-      // Reload workouts after deletion
-      this.loadTabatas();
-    });
+  deleteTabata(id: string | undefined) {
+    // Show confirmation dialog
+    if (confirm("Are you sure you want to delete this Tabata?")) {
+      // If user confirms deletion, proceed with deletion
+      this.workoutService.deleteTabata(id).then(() => {
+        // Reload workouts after deletion
+        this.loadTabatas();
+      });
+    }else{
+      window.location.href = '/ahome';
+    }
   }
+  
   deleteLadder(id: string| undefined) {
     this.workoutService.deleteLadder(id).then(() => {
       // Reload workouts after deletion

@@ -17,9 +17,8 @@
 <br>
     <ion-row class="ion-align-items-center" >
       <ion-col size-md="6" style="text-align: center;"><ion-button shape="round" (click)="logout()">logout</ion-button></ion-col>
-      <ion-col size-md="6" style="text-align: center;"><ion-button shape="round" (click)="todaAdduser()">User</ion-button></ion-col>
-      <ion-col size-md="6" style="text-align: center;"><ion-button shape="round" (click)="todaAddwod()">
-      WOD</ion-button></ion-col>
+      <ion-col size-md="6" style="text-align: center;"><ion-button shape="round" (click)="todaAdduser()">+User</ion-button></ion-col>
+      <ion-col size-md="6" style="text-align: center;"><ion-button shape="round" (click)="todaAddwod()">+WOD</ion-button></ion-col>
     </ion-row>
     <pre></pre>
     <ion-row >
@@ -47,7 +46,7 @@
           <ion-label style="font-size:large;">MPR {{workout.mpr}} </ion-label><br>
 
         </ion-card-content>
-        <button (click)="deleteWorkout(workout.id)" style="text-align: end;background-color: #b27600; color:black ; padding-left: 90%;"><ion-icon name="trash-outline" size="large" style="background-color: #b27600;"></ion-icon></button>
+        <button class="dltbtn" (click)="deleteWorkout(workout.id)" style="text-align: end;background-color: #b27600; color:black ; "><ion-icon name="trash-outline" size="large" style="background-color: #b27600;border-radius: 10px;"></ion-icon></button>
       </ion-card>
       
     </ion-row>

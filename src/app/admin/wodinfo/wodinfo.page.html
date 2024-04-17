@@ -33,11 +33,704 @@
     <pre></pre>
     <div style="text-align: right;">
       <ion-button
+      [disabled]="isDateInPast"
       (click)="toggleEdit()" style="width: 30%; padding-right: 2%;--background: #b27600;color: aliceblue; --border-radius: 10px;">Edit</ion-button>
     </div>
     <pre></pre>
   <ion-row>
-      <ion-card style="width: 100%; --ion-background-color: white;">
+    <ion-card style="width: 100%; --ion-background-color: white;" *ngIf="isIntrvalPresent">
+      <div class="container">
+        <ion-grid>
+          <pre></pre>
+          <ion-row>
+            <ion-label
+              style="font-size: x-large; text-align: center; width: 100%"
+              >WOD Category</ion-label
+            >
+          </ion-row>
+          <ion-row>
+            <div style="margin-left: auto; margin-right: auto">
+              <ion-select
+                placeholder="Select Category"
+                style="font-size: x-large; text-align: center; width: 100%"
+                id="wodCat"
+                type="text"
+                name="wodCat"
+                [(ngModel)]="workout.wodCat"
+                [disabled]="isDisabled"
+                required
+              >
+                <ion-select-option value="Warm Up" style="text-align: center"
+                  >Warm Up</ion-select-option
+                >
+                <ion-select-option value="WOD">WOD</ion-select-option>
+              </ion-select>
+            </div>
+          </ion-row>
+          <pre></pre>
+          <ion-row style="text-align: center">
+            <ion-col>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Rounds</ion-label
+              >
+            </ion-col>
+            <ion-col>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >MPR</ion-label
+              >
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div style="margin-left: auto; margin-right: auto">
+                <ion-input
+                [disabled]="isDisabled"
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  name="rounds"
+                  [(ngModel)]="rounds"
+                  [(ngModel)]="workout.rounds"
+                  max="4"
+                  min="1"
+                  required
+                >
+                </ion-input>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="margin-left: auto; margin-right: auto">
+                <ion-input
+                [disabled]="isDisabled"
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [(ngModel)]="mprs"
+                  [(ngModel)]="workout.mpr"
+                  max="3"
+                  min="1"
+                  required
+                >
+                </ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <pre></pre>
+
+          <ion-row>
+            <ion-label
+              style="font-size: x-large; text-align: center; width: 100%"
+              >Round 1</ion-label
+            >
+          </ion-row>
+          <ion-row style="text-align: center" class="ion-justify-content-center">
+            <ion-col style="text-align: center; width: 30%;">
+              <ion-select
+              [disabled]="isDisabled"
+                placeholder="M1"
+                name="r1m1"
+                [(ngModel)]="workout.r1m1"
+                required
+                id="r1m1"
+                style="
+                  font-size: x-large;
+                  text-align: center;
+                  width: 100%;
+                  color: #b27600;
+                  padding-left: 30%;
+                "
+                id="r1m1"
+              >
+                <ion-select-option
+                  *ngFor="let move of moves"
+                  [value]="move.exeName"
+                  >{{move.exeName}}</ion-select-option
+                >
+              </ion-select>
+            </ion-col>
+            <!--tm2-->
+            <ion-col style="text-align: center; width: 30%;">
+              <div>
+                <ion-select
+                [disabled]="isDisabled"
+                *ngIf="mprs>1"
+                  placeholder="M2"
+                  name="r1m2"
+                  id="r1m2"
+                  [(ngModel)]="workout.r1m2"
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+                  id="r1m2"
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+              </div>
+            </ion-col>
+            <ion-col style="text-align: center; width: 30%;">
+              <div>
+                <ion-select
+                [disabled]="isDisabled"
+                *ngIf="mprs>2"
+                  placeholder="M3"
+                  name="r1m3"
+                  id="r1m3"
+                  [(ngModel)]="workout.r1m3"
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+                  id="r1m3"
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+              </div>
+            </ion-col>
+          </ion-row>
+          <br>
+          <ion-row style="width: 100%;">
+            <ion-col style="text-align: center;">
+              <ion-label style="
+              font-size: x-large;
+              text-align: center;">Sets</ion-label></ion-col>
+            <ion-col style="text-align: center;"><ion-label  style="
+              font-size: x-large;
+              text-align: center;">Move</ion-label></ion-col>
+            <ion-col style="text-align: center;"><ion-label  style="
+              font-size: x-large;
+              text-align: center;">Rest</ion-label></ion-col>
+          </ion-row>
+          <ion-row style="width: 100%;">
+            <ion-col>
+              <div  style="margin-left: auto; margin-right: auto">
+                <ion-input 
+                [disabled]="isDisabled"
+                placeholder="0"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                [(ngModel)]="workout.r1sets"
+        
+                min="0"></ion-input>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div  style="margin-left: auto; margin-right: auto">
+                <ion-input 
+                [disabled]="isDisabled"
+                placeholder="0"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                [(ngModel)]="workout.r1move"
+        
+                min="0"></ion-input>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div  style="margin-left: auto; margin-right: auto">
+                <ion-input 
+                [disabled]="isDisabled"
+                placeholder="0"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                [(ngModel)]="workout.r1rest"
+        
+                min="0"></ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <pre></pre>
+          <div *ngIf="rounds>1">
+            <ion-row>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Round 2</ion-label
+              >
+            </ion-row>
+            <ion-row style="text-align: center" class="ion-justify-content-center">
+              <ion-col style="text-align: center; width: 30%;">
+                <ion-select
+                [disabled]="isDisabled"
+                  placeholder="M1"
+                  name="r2m1"
+                  [(ngModel)]="workout.r2m1"
+                  required
+                  id="r2m1"
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+                  id="r2m1"
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+              </ion-col>
+              <!--tm2-->
+              <ion-col style="text-align: center; width: 30%;">
+                <div>
+                  <ion-select
+                  [disabled]="isDisabled"
+                  *ngIf="mprs>1"
+                    placeholder="M2"
+                    name="r2m2"
+                    id="r2m2"
+                    [(ngModel)]="workout.r2m2"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r1m2"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </div>
+              </ion-col>
+              <ion-col style="text-align: center; width: 30%;">
+                <div>
+                  <ion-select
+                  [disabled]="isDisabled"
+                  *ngIf="mprs>2"
+                    placeholder="M3"
+                    name="r2m3"
+                    id="r2m3"
+                    [(ngModel)]="workout.r2m3"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r1m3"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </div>
+              </ion-col>
+            </ion-row>
+            <br>
+            <ion-row style="width: 100%;">
+              <ion-col style="text-align: center;">
+                <ion-label style="
+                font-size: x-large;
+                text-align: center;">Sets</ion-label></ion-col>
+              <ion-col style="text-align: center;"><ion-label  style="
+                font-size: x-large;
+                text-align: center;">Move</ion-label></ion-col>
+              <ion-col style="text-align: center;"><ion-label  style="
+                font-size: x-large;
+                text-align: center;">Rest</ion-label></ion-col>
+            </ion-row>
+            <ion-row style="width: 100%;">
+              <ion-col>
+                <div  style="margin-left: auto; margin-right: auto">
+                  <ion-input 
+                  [disabled]="isDisabled"
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [(ngModel)]="workout.r2sets"
+          
+                  min="0"></ion-input>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div  style="margin-left: auto; margin-right: auto">
+                  <ion-input 
+                  [disabled]="isDisabled"
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [(ngModel)]="workout.r2move"
+          
+                  min="0"></ion-input>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div  style="margin-left: auto; margin-right: auto">
+                  <ion-input 
+                  [disabled]="isDisabled"
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [(ngModel)]="workout.r2rest"
+          
+                  min="0"></ion-input>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+          <pre></pre>
+          <div *ngIf="rounds>2">
+            <ion-row>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Round 3</ion-label
+              >
+            </ion-row>
+            <ion-row style="text-align: center" class="ion-justify-content-center">
+              <ion-col style="text-align: center; width: 30%;">
+                <ion-select
+                [disabled]="isDisabled"
+                  placeholder="M1"
+                  name="r3m1"
+                  [(ngModel)]="workout.r3m1"
+                  required
+                  id="r3m1"
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+                  id="r3m1"
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+              </ion-col>
+              <!--tm2-->
+              <ion-col style="text-align: center; width: 30%;">
+                <div>
+                  <ion-select
+                  [disabled]="isDisabled"
+                  *ngIf="mprs>1"
+                    placeholder="M2"
+                    name="r3m2"
+                    id="r3m2"
+                    [(ngModel)]="workout.r3m2"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r1m2"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </div>
+              </ion-col>
+              <ion-col style="text-align: center; width: 30%;">
+                <div>
+                  <ion-select
+                  [disabled]="isDisabled"
+                  *ngIf="mprs>2"
+                    placeholder="M3"
+                    name="r3m3"
+                    id="r3m3"
+                    [(ngModel)]="workout.r3m3"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                   
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </div>
+              </ion-col>
+            </ion-row>
+            <br>
+            <ion-row style="width: 100%;">
+              <ion-col style="text-align: center;">
+                <ion-label style="
+                font-size: x-large;
+                text-align: center;">Sets</ion-label></ion-col>
+              <ion-col style="text-align: center;"><ion-label  style="
+                font-size: x-large;
+                text-align: center;">Move</ion-label></ion-col>
+              <ion-col style="text-align: center;"><ion-label  style="
+                font-size: x-large;
+                text-align: center;">Rest</ion-label></ion-col>
+            </ion-row>
+            <ion-row style="width: 100%;">
+              <ion-col>
+                <div  style="margin-left: auto; margin-right: auto">
+                  <ion-input 
+                  [disabled]="isDisabled"
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [(ngModel)]="workout.r3sets"
+          
+                  min="0"></ion-input>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div  style="margin-left: auto; margin-right: auto">
+                  <ion-input 
+                  [disabled]="isDisabled"
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [(ngModel)]="workout.r3move"
+          
+                  min="0"></ion-input>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div  style="margin-left: auto; margin-right: auto">
+                  <ion-input 
+                  [disabled]="isDisabled"
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [(ngModel)]="workout.r3rest"
+          
+                  min="0"></ion-input>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+          <pre></pre>
+          <div *ngIf="rounds>3">
+            <ion-row>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Round 4</ion-label
+              >
+            </ion-row>
+            <ion-row style="text-align: center" class="ion-justify-content-center">
+              <ion-col style="text-align: center; width: 30%;">
+                <ion-select
+                [disabled]="isDisabled"
+                  placeholder="M1"
+                  name="r4m1"
+                  [(ngModel)]="workout.r4m1"
+                  required
+                  id="r4m1"
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+            
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+              </ion-col>
+              <!--tm2-->
+              <ion-col style="text-align: center; width: 30%;">
+                <div>
+                  <ion-select
+                  [disabled]="isDisabled"
+                  *ngIf="mprs>1"
+                    placeholder="M2"
+                    name="r4m2"
+                    id="r4m2"
+                    [(ngModel)]="workout.r4m2"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                    id="r1m2"
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </div>
+              </ion-col>
+              <ion-col style="text-align: center; width: 30%;">
+                <div>
+                  <ion-select
+                  [disabled]="isDisabled"
+                  *ngIf="mprs>2"
+                    placeholder="M3"
+                    name="r4m3"
+                    id="r4m3"
+                    [(ngModel)]="workout.r4m3"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                  
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                </div>
+              </ion-col>
+            </ion-row>
+            <br>
+            <ion-row style="width: 100%;">
+              <ion-col style="text-align: center;">
+                <ion-label style="
+                font-size: x-large;
+                text-align: center;">Sets</ion-label></ion-col>
+              <ion-col style="text-align: center;"><ion-label  style="
+                font-size: x-large;
+                text-align: center;">Move</ion-label></ion-col>
+              <ion-col style="text-align: center;"><ion-label  style="
+                font-size: x-large;
+                text-align: center;">Rest</ion-label></ion-col>
+            </ion-row>
+            <ion-row style="width: 100%;">
+              <ion-col>
+                <div  style="margin-left: auto; margin-right: auto">
+                  <ion-input 
+                  [disabled]="isDisabled"
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [(ngModel)]="workout.r4sets"
+          
+                  min="0"></ion-input>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div  style="margin-left: auto; margin-right: auto">
+                  <ion-input 
+                  [disabled]="isDisabled"
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [(ngModel)]="workout.r4move"
+          
+                  min="0"></ion-input>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div  style="margin-left: auto; margin-right: auto">
+                  <ion-input 
+                  [disabled]="isDisabled"
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [(ngModel)]="workout.r4rest"
+          
+                  min="0"></ion-input>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+          <pre></pre>
+          <pre></pre>
+          <ion-row>
+            <ion-label
+              style="font-size: x-large; text-align: center; width: 100%"
+              >Select a Date:</ion-label
+            >
+            <ion-input
+            [disabled]="isDisabled"
+              style="font-size: x-large; text-align: center; color: #b27600"
+              type="Date"
+              name="daDate"
+              id="daDate"
+              [(ngModel)]="workout.daDate"
+              id="daDate"
+            ></ion-input>
+          </ion-row>
+          <ion-row>
+            <div style="text-align: center;margin-left: auto;
+            margin-right: auto;">
+              <ion-button
+              [disabled]="isDisabled"
+                style="
+                  font-size: xxx-large;
+                  margin-left: auto;
+                  margin-right: auto;
+                  border-radius: 10%;
+                  background-color: aliceblue;
+                "
+                type="submit"
+                (click)="saveinterval()"
+                >Save WOD</ion-button
+              >
+            </div>
+            <div style="text-align: center;margin-left: auto;
+            margin-right: auto;">
+              <ion-button
+              [disabled]="isDisabled"
+                style="
+                  font-size: xxx-large;
+                  margin-left: auto;
+                  margin-right: auto;
+                  border-radius: 10%;
+                  --ion-background-color: black;
+                  color: brown;
+                "
+                type="submit"
+                (click)="cancel()"
+                >CANCEL</ion-button
+              >
+            </div>
+          </ion-row>
+          
+        </ion-grid>
+      </div>
+
+
+    </ion-card>
+      <ion-card style="width: 100%; --ion-background-color: white;" *ngIf="isTabataPresent" >
         <div class="container">
           <ion-grid>
             <pre></pre>
@@ -92,7 +785,7 @@
                     style="font-size: x-large; text-align: center; width: 100%"
                     type="number"
                     name="tabatanums"
-                  
+                    [(ngModel)]="numtabat"
                     [(ngModel)]="tabataData.tabataNum"
                     max="4"
                     min="1"
@@ -157,6 +850,7 @@
                 <div>
                   <ion-select
                   [disabled]="isDisabled"
+                  *ngIf="mpts>1"
                     placeholder="M2"
                     name="r1m2"
                     id="r1m2"
@@ -181,7 +875,7 @@
             </ion-row>
             <!--tm2-->
             <pre></pre>
-            <div id="t2" >
+            <div id="t2" *ngIf="numtabat>1">
               <ion-row>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
@@ -216,7 +910,7 @@
                 <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                   [disabled]="isDisabled"
-                   
+                  *ngIf="mpts>1"
                     [(ngModel)]="tabataData.t2m2"
                     placeholder="M2"
                     name="r2m2"
@@ -242,7 +936,7 @@
             </div>
             <!--tm3-->
             <pre></pre>
-            <div id="t3" >
+            <div id="t3"  *ngIf="numtabat>2">
               <ion-row>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
@@ -277,7 +971,7 @@
                 <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                   [disabled]="isDisabled"
-                    
+                  *ngIf="mpts>1"
                     [(ngModel)]="tabataData.t3m2"
                     placeholder="M2"
                     name="r3m2"
@@ -303,7 +997,7 @@
             </div>
             <!--tm4-->
             <pre></pre>
-            <div id="t4" >
+            <div id="t4"  *ngIf="numtabat>3">
               <ion-row>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
@@ -338,7 +1032,7 @@
                 <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                   [disabled]="isDisabled"
-                    
+                  *ngIf="mpts>1"
                     [(ngModel)]="tabataData.t4m2"
                     placeholder="M2"
                     name="r4m2"

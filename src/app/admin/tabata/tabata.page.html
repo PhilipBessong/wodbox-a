@@ -118,7 +118,7 @@
             </ion-row>
 
             <ion-row style="text-align: center" class="ion-justify-content-center">
-              <ion-col style="text-align: center; width: 50%;">
+              <ion-col *ngIf="mpts > 0" style="text-align: center; width: 50%;">
                 <ion-select
                   placeholder="M1"
                   name="r1m1"
@@ -177,7 +177,7 @@
                 >
               </ion-row>
               <ion-row style="text-align: center">
-                <ion-col style="text-align: center;; width: 50%;">
+                <ion-col  *ngIf="mpts > 0" style="text-align: center;; width: 50%;">
                   <ion-select
                     placeholder="M1"
                     [(ngModel)]="tabataData.t2m1"
@@ -238,6 +238,7 @@
               <ion-row style="text-align: center">
                 <ion-col style="text-align: center;width: 50%;">
                   <ion-select
+                  *ngIf="mpts > 0"
                     [(ngModel)]="tabataData.t3m1"
                     placeholder="M1"
                     name="r3m1"
@@ -297,6 +298,7 @@
               <ion-row style="text-align: center">
                 <ion-col style="text-align: center; width: 50%;">
                   <ion-select
+                  *ngIf="mpts > 0"
                     placeholder="M1"
                     [(ngModel)]="tabataData.t4m1"
                     name="r4m1"

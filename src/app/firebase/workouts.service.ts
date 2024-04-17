@@ -184,8 +184,9 @@ export class WorkoutsService {
     }
 
   // Update a workout
-  updateWorkout(id: string | undefined, updatedWorkout: Workout): Promise<void> {
-    return this.workoutCollection.doc(id).update(updatedWorkout);
+  updateWorkout(id: string | undefined, updatedWorkout: Partial <Workout>): Promise<void> {
+    const intervalRef = this.workoutCollection.doc(id);
+    return intervalRef.update(updatedWorkout);
   }
 
    // Update a tabata

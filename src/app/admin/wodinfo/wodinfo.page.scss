@@ -1,5 +1,14 @@
 
-.daBack{
+ion-content{
+    --ion-background-color: linear-gradient(
+        to bottom,
+        black 0%,
+        black 50%,                                                                 
+        black 50%,       
+        #b27600 100%
+    );
+}
+.daBackf{
 
     
     background: linear-gradient(
