@@ -33,6 +33,7 @@
     <pre></pre>
     <div style="text-align: right;">
       <ion-button
+      *ngIf="!showButtons"
       [disabled]="isDateInPast"
       (click)="toggleEdit()" style="width: 30%; padding-right: 2%;--background: #b27600;color: aliceblue; --border-radius: 10px;">Edit</ion-button>
     </div>
@@ -689,21 +690,22 @@
               id="daDate"
             ></ion-input>
           </ion-row>
-          <ion-row>
+          <ion-row *ngIf="showButtons">
             <div style="text-align: center;margin-left: auto;
             margin-right: auto;">
               <ion-button
               [disabled]="isDisabled"
-                style="
-                  font-size: xxx-large;
-                  margin-left: auto;
-                  margin-right: auto;
-                  border-radius: 10%;
-                  background-color: aliceblue;
-                "
+                
+              style="
+              font-size: xxx-large;
+              margin-left: auto;
+              margin-right: auto;
+              border-radius: 10%;
+              --ion-background-color: #b27600;
+            "                
                 type="submit"
                 (click)="saveinterval()"
-                >Save WOD</ion-button
+                >Save</ion-button
               >
             </div>
             <div style="text-align: center;margin-left: auto;
@@ -711,7 +713,7 @@
               <ion-button
               [disabled]="isDisabled"
                 style="
-                  font-size: xxx-large;
+                  font-size: xx-large;
                   margin-left: auto;
                   margin-right: auto;
                   border-radius: 10%;
@@ -1072,7 +1074,8 @@
                 id="daDate"
               ></ion-input>
             </ion-row>
-            <ion-row>
+            <ion-row *ngIf="showButtons">
+              
               <div style="text-align: center;margin-left: auto;
               margin-right: auto;">
                 <ion-button
@@ -1082,11 +1085,11 @@
                     margin-left: auto;
                     margin-right: auto;
                     border-radius: 10%;
-                    background-color: aliceblue;
+                    --ion-background-color: #b27600;
                   "
                   type="submit"
                   (click)="savetabata()"
-                  >Save WOD</ion-button
+                  >Save</ion-button
                 >
               </div>
               <div style="text-align: center;margin-left: auto;
@@ -1094,7 +1097,7 @@
                 <ion-button
                 [disabled]="isDisabled"
                   style="
-                    font-size: xxx-large;
+                    font-size: xx-large;
                     margin-left: auto;
                     margin-right: auto;
                     border-radius: 10%;

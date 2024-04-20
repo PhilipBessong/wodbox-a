@@ -21,6 +21,7 @@ export class WodinfoPage implements OnInit {
   mpts: number = 0;
   rounds: number = 0;
   mprs: number = 0;
+  showButtons: boolean = false;
     // Define isDateInPast property
     isDateInPast: boolean = false;
     isTabataPresent: boolean = false;
@@ -61,6 +62,7 @@ export class WodinfoPage implements OnInit {
   isDisabled: boolean = true;
   toggleEdit() {
     this.isDisabled = !this.isDisabled;
+    this.showButtons= true;
   }
   tabataData: Tabata = {
     id: '',
