@@ -712,6 +712,13 @@
                 </ion-row>
               </ion-row>
               <pre></pre>
+              <div *ngIf="showErrorCard" class="error-card">
+                <div class="error-message">
+                  A Wod with the same date and category already exists.
+                </div>
+                <button (click)="hideErrorCard()" class="close-btn">Close</button>
+              </div>
+              
               <ion-row>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"

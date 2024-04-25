@@ -361,6 +361,13 @@
                 id="daDate"
               ></ion-input>
             </ion-row>
+            <div *ngIf="showErrorCard" class="error-card">
+              <div class="error-message">
+                A Wod with the same date and category already exists.
+              </div>
+              <button (click)="hideErrorCard()" class="close-btn">Close</button>
+            </div>
+            
             <ion-row>
               <div style="text-align: center;margin-left: auto;
               margin-right: auto;">
@@ -373,6 +380,7 @@
                     background-color: aliceblue;
                   "
                   type="submit"
+                  [disabled]="!tabataData.wodCat || !tabataData.daDate || !tabataData.t1m1"
                   (click)="submitForm()"
                   >Add WOD</ion-button
                 >

@@ -6,6 +6,7 @@ import {
   Workout,
   Style,
   Tabata,
+  Ladder,
   Exercise,
   WorkoutsService,
 } from 'src/app/firebase/workouts.service';
@@ -17,6 +18,7 @@ import {
 export class WodgoPage implements OnInit {
   specificWorkouts: Workout[] = [];
   stabatas: Tabata[]=[];
+  sladders: Ladder[]=[];
   exercises: Exercise[] = [];
   videoUrl: SafeResourceUrl | undefined;
   videoHeight = '280px'; // Adjust the height as needed
@@ -47,6 +49,7 @@ export class WodgoPage implements OnInit {
     this.getSpecificWorkout();
     this.getSpecificTabataWod();
     this.getIonContentClass();
+    this.getSLadderWU();
   }
   getSpecificWorkout(): void {
     this.workoutsService.getSpecificWorkouts().subscribe(
@@ -260,7 +263,123 @@ export class WodgoPage implements OnInit {
       }
     );
   }
- 
+
+  getSLadderWU(): void {
+    this.workoutsService.getSpecificLadderWarmup().subscribe(
+      (ladders: Ladder[]) => {
+        this.sladders = ladders;
+        this.sladders.forEach((sladders) => {
+          this.workoutsService
+            .getStyleByName(sladders.wodStyle)
+            .subscribe((style) => {
+              // Add style information to each workout
+              sladders.styleName = style?.styleName;
+              sladders.styleDescription = style?.styleDescription;
+            });
+            //begin showing workouts from r1 if they exit within the retrieved worout.
+
+          if (sladders.l1m1) {
+            const exeName = sladders.l1m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exe = exercises;
+              });
+          }
+          if (sladders.l1m2) {
+            const exeName = sladders.l1m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel1m2 = exercises;
+              });
+          }
+          if (sladders.l1m3) {
+            const exeName = sladders.l1m3;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel1m3 = exercises;
+              });
+          }   if (sladders.l1m4) {
+            const exeName = sladders.l1m4;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel1m4 = exercises;
+              });
+          }
+          if (sladders.l2m1) {
+            const exeName = sladders.l2m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel2m1 = exercises;
+              });
+          }
+          if (sladders.l2m2) {
+            const exeName = sladders.l2m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel2m2 = exercises;
+              });
+          }
+          if (sladders.l2m3) {
+            const exeName = sladders.l2m3;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel2m3 = exercises;
+              });
+          }   if (sladders.l2m4) {
+            const exeName = sladders.l2m4;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel2m4 = exercises;
+              });
+          }
+          if (sladders.l3m1) {
+            const exeName = sladders.l3m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel3m1 = exercises;
+              });
+          }
+          if (sladders.l3m2) {
+            const exeName = sladders.l3m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel3m2 = exercises;
+              });
+          }
+          if (sladders.l3m3) {
+            const exeName = sladders.l3m3;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel3m3 = exercises;
+              });
+          }   if (sladders.l3m4) {
+            const exeName = sladders.l3m4;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel3m4 = exercises;
+              });
+          }
+
+         
+        });
+      },
+      (error) => {
+        console.error('Error fetching specific workouts:', error);
+      }
+    );
+  }
 
   // Define cdr1m1Show
 
@@ -419,6 +538,177 @@ export class WodgoPage implements OnInit {
       } 
     }, 1000); // Update the 5-second countdown every second
   }
+  //ladder timers___________________________________________________________________________________
+  l2btn = false;
+  l3btn = false;
+  lTimer: number = 0;
+  l2Timer: number = 0;
+  l3Timer: number = 0;
+  lstrt5SecTimer(sladders: Ladder) {
+    this.buttonDisabled = true; // Disable the button
+    this.cd5Sec = 10;
+    this.buttonText = 'GET READY!!!';
+    this.srtbtnShow = true;
+    this.cd5SecShow = true;
+    const timerInterval = setInterval(() => {
+      if (this.cd5Sec !== undefined && this.cd5Sec > 0) {
+        this.cd5Sec--;
+      }else {
+        clearInterval(timerInterval);
+        this.strtl1m1Timer(sladders);
+        this.cd5SecShow = false;
+        this.prepimg = false;
+        this.wvid=true;
+        this.srtbtnShow = false;
+        this.buttonText = 'Start Timer';
+        this.buttonDisabled = false;
+      }
+      if (this.cd5Sec !== undefined && this.cd5Sec) {
+        this.playSound();
+      } 
+    }, 1000); // Update the 5-second countdown every second
+  }
+ 
+  strtl1m1Timer(sladders: Ladder) {
+    this.lTimer = sladders.l1move * 60;
+
+    if (sladders.l1move) {
+      if (this.isPr1m1Timer) {
+        // Resume the countdown with the remaining time
+        this.cdr1m1Timer = this.remaincdr1m1;
+      } else if (this.cdr1m1Timer === undefined) {
+        this.cdr1m1Timer = this.lTimer;
+      }
+
+      this.cdr1m1Intval = setInterval(() => {
+      
+        if (!this.isPaused) {
+          // Check if the timer is not paused
+          if (this.cdr1m1Timer && this.cdr1m1Timer > 0) {
+            this.remaincdr1m1 = this.cdr1m1Timer; // Store remaining time
+            this.cdr1m1Timer--;
+          } else {
+            clearInterval(this.cdr1m1Intval);
+            this.clearr1m1Cd();
+            this.cdr1m1Show = false;
+            this.r1RestShow = true;
+            this.cdr1m1Showc = false;
+            this.r1RestShowc = true;
+            this.updateIonContentClass(); // Call a method to update the ion-content class
+            if(sladders.l2m1!==''){
+              this.l2btn = true;
+            }else{
+
+            }
+            
+          }
+        }
+      }, 1000);
+    }
+  }
+  l2strt5SecTimer(sladders: Ladder) {
+    this.r2cd5Sec = 10;
+    this.r2srtbtnShow = true;
+    this.r2cd5SecShow = true;
+    this.buttonText = 'GET READY!!!'
+    const timerInterval = setInterval(() => {
+      if (this.r2cd5Sec !== undefined && this.r2cd5Sec > 0) {
+        this.r2cd5Sec--;
+      } else {
+        clearInterval(timerInterval);
+        this.strtl2m1Timer(sladders);
+        this.r2cd5SecShow = false;
+        this.prepimg = false;
+        this.wvid=true;
+        this.r2srtbtnShow = false;
+        this.buttonText = 'Start Timer';
+      }
+    }, 1000); // Update the 5-second countdown every second
+  }
+  strtl2m1Timer(sladders: Ladder) {
+    if (sladders.l2move) {
+      this.l2Timer = sladders.l2move * 60;
+      if (this.isPr2m1Timer) {
+        // Resume the countdown with the remaining time
+        this.cdr2m1Timer = this.remaincdr2m1;
+      } else if (this.cdr2m1Timer === undefined) {
+        this.cdr2m1Timer = this.l2Timer;
+      }
+      this.cdr2m1Intval = setInterval(() => {
+        if (!this.isPaused) {
+          if (this.cdr2m1Timer && this.cdr2m1Timer > 0) {
+            this.remaincdr2m1 = this.cdr2m1Timer; // Store remaining time
+            this.cdr2m1Timer--;
+          } else {
+            clearInterval(this.cdr2m1Intval);
+            this.clearr2m1Cd();
+
+            this.r2m1Show = false;
+            this.r2RestShow = true;
+            this.r2m1Showc = false;
+            this.r2m1RestShowc = true;
+            this.updateIonContentClass();
+            if(sladders.l2m1!==''){
+              this.l3btn = true;
+            }else{
+
+            }
+          }
+        }
+      }, 1000);
+    }
+  }
+  l3strt5SecTimer(sladders: Ladder) {
+    this.r3cd5Sec = 10;
+    this.r3srtbtnShow = true;
+    this.r3cd5SecShow = true;
+    this.buttonText = 'GET READY!!!';
+    const timerInterval = setInterval(() => {
+      if (this.r3cd5Sec !== undefined && this.r3cd5Sec > 0) {
+        this.r3cd5Sec--;
+      } else {
+        clearInterval(timerInterval);
+        this.strtl3m1Timer(sladders);
+        this.r3cd5SecShow = false;
+        this.prepimg = false;
+        this.wvid=true;
+        this.r3srtbtnShow = false;
+        this.buttonText = 'Start Timer';
+      }
+    }, 1000); // Update the 5-second countdown every second
+  }
+  strtl3m1Timer(sladders: Ladder) {
+    if (sladders.l3move) {
+      this.l3Timer = sladders.l3move * 60;
+      if (this.isPr3m1Timer) {
+        // Resume the countdown with the remaining time
+        this.cdr3m1Timer = this.remaincdr3m1;
+      } else if (this.cdr3m1Timer === undefined) {
+        this.cdr3m1Timer = this.l3Timer;
+      }
+      this.cdr3m1Intval = setInterval(() => {
+        if (!this.isPaused) {
+          if (this.cdr3m1Timer && this.cdr3m1Timer > 0) {
+            this.remaincdr3m1 = this.cdr3m1Timer; // Store remaining time
+            this.cdr3m1Timer--;
+          } else {
+            clearInterval(this.cdr3m1Intval);
+            this.clearr3m1Cd();
+
+            this.r3m1Show = false;
+            this.r3RestShow = true;
+            this.r3m1Showc = false;
+            this.r3m1RestShowc = true;
+            this.updateIonContentClass();
+            this.donescrnShow = true;
+            this.woddonec= true;
+          }
+        }
+      }, 1000);
+    }
+  }
+  
+ 
 
   // movment1 timer
   r1RestShow = false;

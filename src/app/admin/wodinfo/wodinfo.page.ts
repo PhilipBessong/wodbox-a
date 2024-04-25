@@ -8,6 +8,7 @@ import {
   WorkoutsService,
   Style,
   Exercise,
+  Ladder,
 } from 'src/app/firebase/workouts.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Component({
@@ -21,12 +22,14 @@ export class WodinfoPage implements OnInit {
   mpts: number = 0;
   rounds: number = 0;
   mprs: number = 0;
+  numladder: number = 0;
+  mpls: number = 0;
   showButtons: boolean = false;
     // Define isDateInPast property
-    isDateInPast: boolean = false;
+    //isDateInPast: boolean = false;
     isTabataPresent: boolean = false;
     isIntrvalPresent: boolean = false;
-
+    isLadderPresent: boolean = false;
   workout: Workout = {
     id: '',
     wodCat: '',
@@ -85,6 +88,29 @@ export class WodinfoPage implements OnInit {
     sets: 0,
     daDate: '',
   };
+  ladderData: Ladder= {
+    id:'',
+    wodCat: '',
+    wodStyle: '',
+   ladderNum: 0,
+    mpl: 0,
+    l1m1: '',
+    l1m2: '',
+    l1m3: '',
+    l1m4: '',
+    l2m1: '',
+    l2m2: '',
+    l2m3: '',
+    l2m4: '',
+    l3m1: '',
+    l3m2: '',
+    l3m3: '',
+    l3m4: '',
+    l1move: 0,
+    l2move: 0,
+    l3move: 0,
+    daDate: ''
+  };
   constructor(
     private route: ActivatedRoute,
     private navCtrl: NavController,
@@ -105,12 +131,10 @@ export class WodinfoPage implements OnInit {
           this.isIntrvalPresent = true;
           const currentDate = new Date();
           const intDate = new Date(workout.daDate);
-          if (intDate < currentDate) {
+         // if (intDate !> currentDate) {
        
-            this.isDateInPast = true;
-          } else {
-            this.isDateInPast = false;
-          }
+       //     this.isDateInPast = true;
+        //  } else {this.isDateInPast = false;}
         }
       });
       this.workoutService.getTabataById(id).subscribe((tabata) => {
@@ -121,14 +145,31 @@ export class WodinfoPage implements OnInit {
           this.isTabataPresent = true; // Set to true if tabata data is present
           const currentDate = new Date();
           const tabataDate = new Date(tabata.daDate);
-          if (tabataDate < currentDate) {
+         // if (tabataDate  !> currentDate) {
           
-            this.isDateInPast = true;
-          } else {
-            this.isDateInPast = false;
-          }
+         //   this.isDateInPast = true;
+          //} else {
+          //  this.isDateInPast = false;
+          //}
         }
       });
+      this.workoutService.getLadderById(id).subscribe((ladder) => {
+        if (ladder) {
+          this.ladderData = ladder;
+          this.mpls = ladder.mpl; // Load mpt after tabataData is set
+          this.numladder = ladder.ladderNum;
+          this.isLadderPresent = true; // Set to true if tabata data is present
+          const currentDate = new Date();
+          const ladderDate = new Date(ladder.daDate);
+         // if (tabataDate  !> currentDate) {
+          
+         //   this.isDateInPast = true;
+          //} else {
+          //  this.isDateInPast = false;
+          //}
+        }
+      });
+      
     }
   }
 
@@ -148,8 +189,9 @@ export class WodinfoPage implements OnInit {
       this.workoutService
         .updateWorkout(id, this.workout)
         .then(() => {
-          this.navCtrl.navigateBack('/ahome'); // Navigate back after saving changes
-        })
+          this.showButtons= false;
+          this.isDisabled = !this.isDisabled;
+          this.router.navigate(['/ahome']);        })
         .catch((error) => {
           console.error('Error updating tabata:', error);
           // Handle error, show error message, etc.
@@ -166,7 +208,10 @@ export class WodinfoPage implements OnInit {
       this.workoutService
         .updateTabata(id, this.tabataData)
         .then(() => {
-          this.navCtrl.navigateBack('/ahome'); // Navigate back after saving changes
+          this.showButtons= false;
+          this.isDisabled = !this.isDisabled;
+          this.router.navigate(['/ahome']); // Navigate back after saving changes
+          
         })
         .catch((error) => {
           console.error('Error updating tabata:', error);
@@ -177,8 +222,33 @@ export class WodinfoPage implements OnInit {
       // Handle the case where the ID is null, show error message, etc.
     }
   }
+  saveladder(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id !== null) {
+      // Check if id is not null before using it
+      this.workoutService
+        .updateLadder(id, this.ladderData)
+        .then(() => {
+          this.showButtons= false;
+          this.isDisabled = !this.isDisabled;
+          this.router.navigate(['/ahome']); // Navigate back after saving changes
+          
+        })
+        .catch((error) => {
+          console.error('Error updating Ladder:', error);
+          // Handle error, show error message, etc.
+        });
+    } else {
+      console.error('Error: Ladder ID is null');
+      // Handle the case where the ID is null, show error message, etc.
+    }
+  }
+  
 
   cancel() {
+   
     this.router.navigate(['/ahome']);
+    this.showButtons= false;
+    this.isDisabled = !this.isDisabled;
   }
 }

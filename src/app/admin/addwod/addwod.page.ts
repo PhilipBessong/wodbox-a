@@ -11,6 +11,7 @@ import {
   Exercise
 } from 'src/app/firebase/workouts.service';
 import { NavController, ToastController } from '@ionic/angular';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Component({
   selector: 'app-addwod',
   templateUrl: './addwod.page.html',
@@ -26,6 +27,7 @@ export class AddwodPage implements OnInit {
     private workoutsService: WorkoutsService,
     private formBuilder: FormBuilder,
     private navCtrl: NavController,
+    private firestore: AngularFirestore,
     private router: Router,
     private toastCtrl: ToastController
   ) {}
@@ -77,36 +79,52 @@ export class AddwodPage implements OnInit {
   loadMoves(){
     this.moves = this.workoutsService.getAllMoves();
   }
-
+  showErrorCard = false;
   async onSubmit(): Promise<void> {
     const newWorkout: Workout = this.workoutForm.value;
     const dateInput = newWorkout.daDate;
-
+  
     try {
-      // Assuming 'workoutsService.createWorkout' adds the workout to Firestore
-      await this.workoutsService.createWorkout(newWorkout);
-      // Show success message using ToastController
-      const toast = await this.toastCtrl.create({
-        message: 'Workout created successfully!',
-        duration: 2000, // Duration in milliseconds
-        position: 'top', // Position of the toast
-      });
-      toast.present();
-
-      // Navigate to '/ahome'
-      this.navCtrl.navigateForward('/ahome');
+      // Check if there is a document with the same date and wodCat
+      const querySnapshot = await this.firestore.collection('tabatas', ref => ref
+        .where('daDate', '==', dateInput)
+        .where('wodCat', '==', newWorkout.wodCat))
+        .get()
+        .toPromise();
+  
+      if (querySnapshot && querySnapshot.size > 0) {
+        // If a document with the same date and wodCat already exists
+        this.showErrorCard = true;
+      } else {
+        // If no such document exists, create the workout
+        await this.workoutsService.createWorkout(newWorkout);
+        // Show success message using ToastController
+        const toast = await this.toastCtrl.create({
+          message: 'Workout created successfully!',
+          duration: 2000, // Duration in milliseconds
+          position: 'top', // Position of the toast
+        });
+        toast.present();
+  
+        // Navigate to '/ahome'
+        this.navCtrl.navigateForward('/ahome');
+      }
     } catch (error) {
       console.error('Error creating workout:', error);
       // Show error message using ToastController
-      const toast = await this.toastCtrl.create({
-        message: 'Failed to create workout. Please try again.',
-        duration: 2000,
-        position: 'top',
-        color: 'danger', // Optional: Setting the toast color to red for error
-      });
-      toast.present();
+      this.showErrorCard = true;
     }
   }
+  
+
+  
+  
+  
+  hideErrorCard() {
+    this.showErrorCard = false;
+  }
+   
+  
   backtoWarmUp(){
     this.router.navigate(['/wodstyle']);
   }

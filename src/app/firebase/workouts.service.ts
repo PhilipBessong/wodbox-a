@@ -182,6 +182,10 @@ export class WorkoutsService {
     getTabataById(id: string): Observable<Tabata | undefined> {
       return this.tabataCollection.doc<Tabata>(id).valueChanges();
     }
+    // Get a specific tabata by ID
+    getLadderById(id: string): Observable<Ladder | undefined> {
+      return this.ladderCollection.doc<Ladder>(id).valueChanges();
+    } 
 
   // Update a workout
   updateWorkout(id: string | undefined, updatedWorkout: Partial <Workout>): Promise<void> {
@@ -193,6 +197,11 @@ export class WorkoutsService {
    updateTabata(id: string, updatedTabata: Partial<Tabata>): Promise<void> {
     const tabataRef = this.tabataCollection.doc(id); // Ensure tabataId is not empty
     return tabataRef.update(updatedTabata);
+  }
+   // Update a ladder
+   updateLadder(id: string, updatedLadder: Partial<Ladder>): Promise<void> {
+    const ladderRef = this.ladderCollection.doc(id); // Ensure tabataId is not empty
+    return ladderRef.update(updatedLadder);
   }
   
   

@@ -57,6 +57,18 @@ export class AhomePage implements OnInit {
       return '#FFA500';  // Orange for future dates
     }
   }
+ ladderCard(ladderDate: string): string {
+    const today = new Date();
+    const ladderDateObj = new Date(ladderDate);
+
+    if (ladderDateObj.toDateString() === today.toDateString()) {
+      return '#00b250'; // green for today
+    } else if (ladderDateObj < today) {
+      return '#808080'; // Grey for past dates
+    } else {
+      return '#FFA500';  // Orange for future dates
+    }
+  }
   loadLadders() {
     this.workoutService.getAllLadders().subscribe((ladders) => {
       this.ladders = ladders;
@@ -88,7 +100,19 @@ export class AhomePage implements OnInit {
       console.error('Workout ID is undefined');
     }
   }
-
+ladderClick(id: string | undefined) {
+    if (id) {
+      this.workoutService.getLadderById(id).subscribe((ladder: Ladder | undefined) => {
+        if (ladder) {
+          this.router.navigate(['/wodinfo', id]); // Assuming 'wodinfo' is the route for viewing a workout
+        } else {
+          console.error('Workout not found'); // Handle error if workout is not found
+        }
+      });
+    } else {
+      console.error('Workout ID is undefined');
+    }
+  }
   deleteWorkout(id: string| undefined) {
     this.workoutService.deleteWorkout(id).then(() => {
       // Reload workouts after deletion

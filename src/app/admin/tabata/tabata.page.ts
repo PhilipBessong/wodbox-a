@@ -54,21 +54,48 @@ export class TabataPage implements OnInit {
   loadMoves() {
     this.moves = this.workoutsService.getAllMoves();
   }
+  showErrorCard = false;
   submitForm() {
-    if (!this.tabataData.wodCat || !this.tabataData.daDate) {
+    if (!this.tabataData.wodCat || !this.tabataData.daDate || !this.tabataData.t1m1) {
       // Handle form validation or display an error message
+      // For now, I'm displaying a simple alert message
+      alert('Please fill in all the required fields.');
       return;
+    
     }
-
-    this.firestore.collection('tabatas').add(this.tabataData)
-      .then(() => {
-        console.log('User data submitted successfully!');
-        // Optionally, reset the form
-        this.router.navigate(['/ahome']);
+  
+    // Check if there is a document with the same date and wodCat
+    this.firestore.collection('tabatas', ref => ref.where('daDate', '==', this.tabataData.daDate)
+                                                      .where('wodCat', '==', this.tabataData.wodCat))
+      .get()
+      .toPromise()
+      .then((querySnapshot) => {
+        if (querySnapshot && querySnapshot.size > 0) {
+          // If a document with the same date and wodCat already exists
+          this.showErrorCard = true;
+        } else {
+          // If no such document exists, submit the form
+          this.firestore.collection('tabatas').add(this.tabataData)
+            .then(() => {
+              console.log('User data submitted successfully!');
+              // Optionally, reset the form
+              this.router.navigate(['/ahome']);
+            })
+            .catch(error => {
+              console.error('Error submitting user data:', error);
+              // Handle error appropriately
+            });
+        }
       })
       .catch(error => {
-        console.error('Error submitting user data:', error);
+        console.error('Error checking for existing document:', error);
         // Handle error appropriately
       });
+  
   }
+  hideErrorCard() {
+    this.showErrorCard = false;
+  }
+  
+  
 }

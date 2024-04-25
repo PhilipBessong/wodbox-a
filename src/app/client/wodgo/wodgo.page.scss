@@ -297,7 +297,26 @@ background-color: #000000;
     width: 100%;
     margin-top: 10%;
   }
-  
+  .ladderLBL{
+   
+    color: white;
+    text-align: center;
+    font-size: xx-large;
+    padding: 10px;
+  }
+  .ladderLBLcon{
+    background-color:#00b250;
+    border-radius: 20px;
+    width: 90%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20%;
+    margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   
   
   

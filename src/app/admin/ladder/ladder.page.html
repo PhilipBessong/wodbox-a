@@ -123,8 +123,8 @@
               style="font-size: x-large; text-align: center; width: 100%"
               type="number"  [(ngModel)]="ladderData.l1move"></ion-input>
             </ion-row>
-            <ion-row style="text-align: center">
-              <ion-col style="text-align: center">
+            <ion-row class="ion-justify-content-center" style="text-align: center">
+              <ion-col *ngIf="mpls > 0" style="text-align: center; width: 50%;">
                 <ion-select
                   placeholder="M1"
                   
@@ -148,7 +148,7 @@
                 </ion-select>
               </ion-col>
               <!--l1m2-->
-              <ion-col style="text-align: center">
+              <ion-col style="text-align: center; width: 50%;">
                 <div *ngIf="mpls>1">
                   <ion-select
                     placeholder="M2"
@@ -172,7 +172,7 @@
                 </div>
               </ion-col>
               <!--l1m3-->
-              <ion-col style="text-align: center">
+              <ion-col style="text-align: center; width: 50%;">
                 <div *ngIf="mpls>2">
                   <ion-select
                     placeholder="M3"
@@ -196,7 +196,7 @@
                 </div>
               </ion-col>
               <!--l1m4-->
-              <ion-col style="text-align: center">
+              <ion-col style="text-align: center; width: 50%;">
                 <div *ngIf="mpls>3">
                   <ion-select
                     placeholder="M4"
@@ -236,8 +236,8 @@
                 style="font-size: x-large; text-align: center; width: 100%"
                 type="number"  [(ngModel)]="ladderData.l2move"></ion-input>
               </ion-row>
-              <ion-row style="text-align: center">
-                <ion-col style="text-align: center">
+              <ion-row class="ion-justify-content-center" style="text-align: center">
+                <ion-col *ngIf="mpls>0" style="text-align: center; width: 50%;">
                   <ion-select
                     placeholder="M1"
                     [(ngModel)]="ladderData.l2m1"
@@ -259,7 +259,7 @@
                   </ion-select>
                 </ion-col>
 
-                <ion-col style="text-align: center">
+                <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                     *ngIf="mpls>1"
                     [(ngModel)]="ladderData.l2m2"
@@ -281,7 +281,7 @@
                     >
                   </ion-select>
                 </ion-col>
-                <ion-col style="text-align: center">
+                <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                     *ngIf="mpls>2"
                     [(ngModel)]="ladderData.l2m3"
@@ -304,7 +304,7 @@
                     >
                   </ion-select>
                 </ion-col>
-                <ion-col style="text-align: center">
+                <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                     *ngIf="mpls>3"
                     [(ngModel)]="ladderData.l2m4"
@@ -346,8 +346,8 @@
                 style="font-size: x-large; text-align: center; width: 100%"
                 type="number"  [(ngModel)]="ladderData.l3move"></ion-input>
               </ion-row>
-              <ion-row style="text-align: center">
-                <ion-col style="text-align: center">
+              <ion-row class="ion-justify-content-center" style="text-align: center">
+                <ion-col   *ngIf="mpls>0" style="text-align: center; width: 50%;">
                   <ion-select
                     [(ngModel)]="ladderData.l3m1"
                     placeholder="M1"
@@ -369,7 +369,7 @@
                   </ion-select>
                 </ion-col>
 
-                <ion-col style="text-align: center">
+                <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                     *ngIf="mpls>1"
                     [(ngModel)]="ladderData.l3m2"
@@ -391,7 +391,7 @@
                     >
                   </ion-select>
                 </ion-col>
-                <ion-col style="text-align: center">
+                <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                     *ngIf="mpls>2"
                     [(ngModel)]="ladderData.l3m3"
@@ -413,7 +413,7 @@
                     >
                   </ion-select>
                 </ion-col>
-                <ion-col style="text-align: center">
+                <ion-col style="text-align: center; width: 50%;">
                   <ion-select
                     *ngIf="mpls>3"
                     [(ngModel)]="ladderData.l3m4"
@@ -447,13 +447,19 @@
               >
               <ion-input
                 style="font-size: x-large; text-align: center; color: #b27600"
-                type="datetime-local"
+                type="datetime"
                 name="daDate"
                 id="daDate"
                 [(ngModel)]="ladderData.daDate"
           
               ></ion-input>
             </ion-row>
+            <div *ngIf="showErrorCard" class="error-card">
+              <div class="error-message">
+                A Wod with the same date and category already exists.
+              </div>
+              <button (click)="hideErrorCard()" class="close-btn">Close</button>
+            </div>
             <ion-row>
               <div style="text-align: center;margin-left: auto;
               margin-right: auto;">
