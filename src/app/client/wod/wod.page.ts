@@ -5,7 +5,9 @@ import {
   Workout,
   Style,
   Tabata,
+  Ladder,
   Exercise,
+  Emom,
   WorkoutsService,
 } from 'src/app/firebase/workouts.service';
 @Component({
@@ -16,6 +18,8 @@ import {
 export class WodPage implements OnInit {
   specificWorkouts: Workout[]=[];
   stabatas: Tabata[]=[];
+  sladders: Ladder[]=[];
+  semoms: Emom[]=[];
   wodStyle: Style[] = [];
   exercises: Exercise[] = [];
   videoUrl: SafeResourceUrl | undefined;
@@ -26,6 +30,7 @@ export class WodPage implements OnInit {
   ngOnInit() {
     this.getSpecificWOD();
     this.getSpecificTabata();
+    this.getSpecificLadderWOD();
   }
   getSpecificWOD(): void {
     this.workoutsService.getSpecificWOD().subscribe(
@@ -224,6 +229,240 @@ export class WodPage implements OnInit {
           }
           
          
+        });
+      },
+      (error) => {
+        console.error('Error fetching specific workouts:', error);
+      }
+    );
+  }
+  getSpecificLadderWOD(): void {
+    this.workoutsService.getSpecificLadderWOD().subscribe(
+      (ladders: Ladder[]) => {
+        this.sladders = ladders;
+        this.sladders.forEach((sladders) => {
+          this.workoutsService
+            .getStyleByName(sladders.wodStyle)
+            .subscribe((style) => {
+              // Add style information to each workout
+              sladders.styleName = style?.styleName;
+              sladders.styleDescription = style?.styleDescription;
+            });
+            //begin showing workouts from r1 if they exit within the retrieved worout.
+
+          if (sladders.l1m1) {
+            const exeName = sladders.l1m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exe = exercises;
+              });
+          }
+          if (sladders.l1m2) {
+            const exeName = sladders.l1m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel1m2 = exercises;
+              });
+          }
+          if (sladders.l1m3) {
+            const exeName = sladders.l1m3;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel1m3 = exercises;
+              });
+          }
+          if (sladders.l1m4) {
+            const exeName = sladders.l1m4;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel1m4 = exercises;
+              });
+          }
+          if (sladders.l2m1) {
+            const exeName = sladders.l2m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel2m1 = exercises;
+              });
+          }
+          if (sladders.l2m2) {
+            const exeName = sladders.l2m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel2m2 = exercises;
+              });
+          }
+          if (sladders.l2m3) {
+            const exeName = sladders.l2m3;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel2m3 = exercises;
+              });
+          }
+          if (sladders.l2m4) {
+            const exeName = sladders.l2m4;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel2m4 = exercises;
+              });
+          }
+          if (sladders.l3m1) {
+            const exeName = sladders.l3m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel3m1 = exercises;
+              });
+          }
+          if (sladders.l3m2) {
+            const exeName = sladders.l3m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel3m2 = exercises;
+              });
+          }
+          if (sladders.l3m3) {
+            const exeName = sladders.l3m3;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel3m3 = exercises;
+              });
+          }
+          if (sladders.l3m4) {
+            const exeName = sladders.l3m4;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                sladders.exel3m4 = exercises;
+              });
+          }
+        });
+      },
+      (error) => {
+        console.error('Error fetching specific workouts:', error);
+      }
+    );
+  }
+  getSpecificEmomWOD(): void {
+    this.workoutsService.getSpecificEmomWOD().subscribe(
+      (emoms: Emom[]) => {
+        this.semoms = emoms;
+        this.semoms.forEach((semoms) => {
+          this.workoutsService
+            .getStyleByName(semoms.wodStyle)
+            .subscribe((style) => {
+              // Add style information to each workout
+              semoms.styleName = style?.styleName;
+              semoms.styleDescription = style?.styleDescription;
+            });
+            //begin showing workouts from r1 if they exit within the retrieved worout.
+
+          if (semoms.e1m1) {
+            const exeName = semoms.e1m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                semoms.exe = exercises;
+              });
+          }
+          if (semoms.e1m2) {
+            const exeName = semoms.e1m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                semoms.exee1m2 = exercises;
+              });
+          }
+          if (semoms.e1m3) {
+            const exeName = semoms.e1m3;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                semoms.exee1m3 = exercises;
+              });
+          }
+          if (semoms.e1m4) {
+            const exeName = semoms.e1m4;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                semoms.exee1m4 = exercises;
+              });
+          }
+          if (semoms.e2m1) {
+            const exeName = semoms.e2m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                semoms.exee2m1 = exercises;
+              });
+          }
+          if (semoms.e2m2) {
+            const exeName = semoms.e2m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                semoms.exee2m2 = exercises;
+              });
+          }
+          if (semoms.e2m3) {
+            const exeName = semoms.e2m3;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                semoms.exee2m3 = exercises;
+              });
+          }
+          if (semoms.e2m4) {
+            const exeName = semoms.e2m4;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                semoms.exee2m4 = exercises;
+              });
+          }
+          if (semoms.e3m1) {
+            const exeName = semoms.e3m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                semoms.exee3m1 = exercises;
+              });
+          }
+          if (semoms.e3m2) {
+            const exeName = semoms.e3m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                semoms.exee3m2 = exercises;
+              });
+          }
+          if (semoms.e3m3) {
+            const exeName = semoms.e3m3;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                semoms.exee3m3 = exercises;
+              });
+          }
+          if (semoms.e3m4) {
+            const exeName = semoms.e3m4;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                semoms.exee3m4 = exercises;
+              });
+          }
         });
       },
       (error) => {

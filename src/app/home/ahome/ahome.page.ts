@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { Workout, WorkoutsService, Tabata, Ladder } from 'src/app/firebase/workouts.service';
+import { Workout, WorkoutsService, Tabata, Ladder,Emom } from 'src/app/firebase/workouts.service';
 @Component({
   selector: 'app-ahome',
   templateUrl: './ahome.page.html',
@@ -11,6 +11,7 @@ export class AhomePage implements OnInit {
   workouts: Workout[]=[];
   tabatas: Tabata[]=[];
   ladders: Ladder[]=[];
+  emoms: Emom[]=[];
   constructor(
     private workoutService: WorkoutsService,
     private router: Router,
@@ -21,6 +22,7 @@ export class AhomePage implements OnInit {
     this.loadWorkouts();
     this.loadTabatas();
     this.loadLadders();
+    this.loadEmoms();
   }
 
   loadWorkouts() {
@@ -31,6 +33,16 @@ export class AhomePage implements OnInit {
   loadTabatas() {
     this.workoutService.getAllTabatas().subscribe((tabatas) => {
       this.tabatas = tabatas;
+    });
+  }
+  loadLadders() {
+    this.workoutService.getAllLadders().subscribe((ladders) => {
+      this.ladders = ladders;
+    });
+  }
+  loadEmoms() {
+    this.workoutService.getAllEmoms().subscribe((emoms) => {
+      this.emoms = emoms;
     });
   }
   tabataCard(tabataDate: string): string {
@@ -69,11 +81,19 @@ export class AhomePage implements OnInit {
       return '#FFA500';  // Orange for future dates
     }
   }
-  loadLadders() {
-    this.workoutService.getAllLadders().subscribe((ladders) => {
-      this.ladders = ladders;
-    });
+  emomCard(emomDate: string): string {
+    const today = new Date();
+    const emomDateObj = new Date(emomDate);
+
+    if (emomDateObj.toDateString() === today.toDateString()) {
+      return '#00b250'; // green for today
+    } else if (emomDateObj < today) {
+      return '#808080'; // Grey for past dates
+    } else {
+      return '#FFA500';  // Orange for future dates
+    }
   }
+  
   onCardClick(id: string | undefined) {
     if (id) {
       this.workoutService.getWorkoutById(id).subscribe((workout: Workout | undefined) => {
@@ -113,6 +133,19 @@ ladderClick(id: string | undefined) {
       console.error('Workout ID is undefined');
     }
   }
+  emomClick(id: string | undefined) {
+    if (id) {
+      this.workoutService.getEmomById(id).subscribe((emom: Emom | undefined) => {
+        if (emom) {
+          this.router.navigate(['/wodinfo', id]); // Assuming 'wodinfo' is the route for viewing a workout
+        } else {
+          console.error('Workout not found'); // Handle error if workout is not found
+        }
+      });
+    } else {
+      console.error('Workout ID is undefined');
+    }
+  }
   deleteWorkout(id: string| undefined) {
     this.workoutService.deleteWorkout(id).then(() => {
       // Reload workouts after deletion
@@ -137,6 +170,18 @@ ladderClick(id: string | undefined) {
       // Reload workouts after deletion
       this.loadLadders();
     });
+  }
+  deleteEmom(id: string | undefined) {
+    // Show confirmation dialog
+    if (confirm("Are you sure you want to delete this Emom?")) {
+      // If user confirms deletion, proceed with deletion
+      this.workoutService.deleteEmom(id).then(() => {
+        // Reload workouts after deletion
+        this.loadEmoms();
+      });
+    }else{
+      window.location.href = '/ahome';
+    }
   }
   todaAdduser(){
     this.navCtrl.navigateForward(['/adduser']);

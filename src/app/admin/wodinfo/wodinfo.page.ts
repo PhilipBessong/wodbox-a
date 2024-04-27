@@ -9,6 +9,7 @@ import {
   Style,
   Exercise,
   Ladder,
+  Emom,
 } from 'src/app/firebase/workouts.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Component({
@@ -24,12 +25,15 @@ export class WodinfoPage implements OnInit {
   mprs: number = 0;
   numladder: number = 0;
   mpls: number = 0;
+  numemom: number = 0;
+  mpes: number = 0;
   showButtons: boolean = false;
     // Define isDateInPast property
     //isDateInPast: boolean = false;
     isTabataPresent: boolean = false;
     isIntrvalPresent: boolean = false;
     isLadderPresent: boolean = false;
+    isEmomPresent: boolean = false;
   workout: Workout = {
     id: '',
     wodCat: '',
@@ -111,6 +115,37 @@ export class WodinfoPage implements OnInit {
     l3move: 0,
     daDate: ''
   };
+  emomData: Emom = {
+    wodCat: '',
+    wodStyle: '',
+   emomNum: 0,
+    mpe: 0,
+    e1m1: '',
+    e1m2: '',
+    e1m3: '',
+    e1m4: '',
+    e2m1: '',
+    e2m2: '',
+    e2m3: '',
+    e2m4: '',
+    e3m1: '',
+    e3m2: '',
+    e3m3: '',
+    e3m4: '',
+    e1m1rep: 0,
+    e1m2rep: 0,
+    e1m3rep: 0,
+    e1m4rep: 0,
+    e2m1rep: 0,
+    e2m2rep: 0,
+    e2m3rep: 0,
+    e2m4rep: 0,
+    e3m1rep: 0,
+    e3m2rep: 0,
+    e3m3rep: 0,
+    e3m4rep: 0,
+    daDate: '', // Initialize with today's date
+  };
   constructor(
     private route: ActivatedRoute,
     private navCtrl: NavController,
@@ -169,6 +204,23 @@ export class WodinfoPage implements OnInit {
           //}
         }
       });
+      this.workoutService.getEmomById(id).subscribe((emom) => {
+        if (emom) {
+          this.emomData = emom;
+          this.mpes = emom.mpe; // Load mpt after tabataData is set
+          this.numemom = emom.emomNum;
+          this.isEmomPresent = true; // Set to true if tabata data is present
+          const currentDate = new Date();
+          const emomDate = new Date(emom.daDate);
+         // if (tabataDate  !> currentDate) {
+          
+         //   this.isDateInPast = true;
+          //} else {
+          //  this.isDateInPast = false;
+          //}
+        }
+      });
+      
       
     }
   }
@@ -240,6 +292,27 @@ export class WodinfoPage implements OnInit {
         });
     } else {
       console.error('Error: Ladder ID is null');
+      // Handle the case where the ID is null, show error message, etc.
+    }
+  }
+  saveemom(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id !== null) {
+      // Check if id is not null before using it
+      this.workoutService
+        .updateEmom(id, this.emomData)
+        .then(() => {
+          this.showButtons= false;
+          this.isDisabled = !this.isDisabled;
+          this.router.navigate(['/ahome']); // Navigate back after saving changes
+          
+        })
+        .catch((error) => {
+          console.error('Error updating emom:', error);
+          // Handle error, show error message, etc.
+        });
+    } else {
+      console.error('Error: emom ID is null');
       // Handle the case where the ID is null, show error message, etc.
     }
   }

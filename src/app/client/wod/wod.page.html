@@ -1325,7 +1325,1171 @@
   
  </ion-card>
 </ion-card>
+ <!--laddder system-->
+ <ion-card
+ class="wodbod"
+ 
+ *ngFor="let laddder of sladders"
+ style="background-color: #b27600; "
+>
+ <h2
+   class="cardttl"
+   style="
+     color: black;
+     font-size: xx-large;
+     font-weight: 700;
+     vertical-align: middle;
+   "
+ >
+   {{laddder.wodStyle}}
+ </h2>
+ <ion-card class="card" style="border-bottom-width:6px; padding-bottom: 0%; height: 100%;">
+   <ion-card-subtitle
+     style="
+       text-align: center;
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       font-size: larger;
+       padding: 10%;
+       color: aliceblue;
+     "
+   >
+     {{laddder.styleDescription}}
+   </ion-card-subtitle>
 
+   <ion-card class="cardin">
+     <ion-label class="cardintxt">{{laddder.ladderNum}} Number</ion-label>
+   </ion-card>
+   <pre></pre>
+   <h2 class="cardttl"><u>WOD Movements:</u></h2>
+   <ion-grid style="padding-bottom: 0%;">
+     <ion-row class="ion-justify-content-center" style="padding-bottom: 0%;">
+       <ion-card
+         style="
+           width: 100%;
+           border-radius: 80px;
+           background-color: rgb(58, 56, 56);
+           border-color: #b27600;
+           border-style: solid;
+           border-bottom-width: 2px;
+         "
+       >
+         <ion-card-header>
+           <ion-row class="ion-justify-content-center">
+             <ion-card-title
+               style="
+                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
+                   sans-serif;
+                 font-size: large;
+                 color: aliceblue;
+                 text-align: center;
+               "
+             >
+               Ladder 1
+             </ion-card-title>
+           </ion-row>
+         </ion-card-header>
+
+         <ion-card-content>
+           <ion-row class="ion-justify-content-center">
+             <ion-col class="ion-justify-content-center">
+               <ion-card-subtitle
+                 style="
+                   font-size: medium;
+                   text-align: center;
+                   color: aliceblue;
+                 "
+                 >{{laddder.l1move}}min(s) Move</ion-card-subtitle
+               >
+             </ion-col>
+             
+           </ion-row>
+           
+           <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
+             <ion-label style="font-size: large">Exercise 1</ion-label>
+           </ion-row>
+         
+           <ion-row
+             *ngIf="laddder.exe"
+             style="padding-top: 5%;color: aliceblue"
+             class="ion-justify-content-center"
+           >
+             <ion-label style="font-size: large"
+               >{{ laddder.exe.exeName }}</ion-label
+             >
+           </ion-row>
+           
+           <ion-row
+             class="ion-justify-content-center"
+             *ngIf="laddder.exe"
+             class="video-container"
+             style="padding-top: 5%;"
+           >
+             <video
+               controls
+               *ngIf="laddder.exe.videoUrl"
+               autoplay
+               loop
+               style="border-radius: 20px"
+             >
+               <source [src]="laddder.exe.videoUrl" type="video/mp4" />
+               <!-- Add more <source> elements for different video formats if needed -->
+               Your browser does not support the video tag.
+             </video>
+           </ion-row>
+
+           
+           <ion-row
+             *ngIf="laddder.exel1m2"
+             style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+           >
+             <ion-label style="font-size: large">Exercise 2</ion-label>
+           </ion-row>
+           
+           <ion-row
+           
+             *ngIf="laddder.exel1m2"
+             style="padding-top: 5%;color: aliceblue"
+             class="ion-justify-content-center"
+           >
+             <ion-label style="font-size: large"
+               >{{ laddder.exel1m2.exeName}}</ion-label
+             >
+           </ion-row>
+       
+           <ion-row
+             class="ion-justify-content-center"
+             *ngIf="laddder.exel1m2"
+             class="video-container"
+             style="padding-top: 5%;"
+           >
+             <video
+               controls
+               *ngIf="laddder.exel1m2.videoUrl"
+               autoplay
+               loop
+               style="border-radius: 20px"
+             >
+               <source [src]="laddder.exel1m2.videoUrl" type="video/mp4" />
+               <!-- Add more <source> elements for different video formats if needed -->
+               Your browser does not support the video tag.
+             </video>
+           </ion-row>
+           <ion-row
+             *ngIf="laddder.exel1m3"
+             style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+           >
+             <ion-label style="font-size: large">Exercise 3</ion-label>
+           </ion-row>
+           
+           <ion-row
+             *ngIf="laddder.exel1m3"
+             style="padding-top: 5%;color: aliceblue"
+             class="ion-justify-content-center"
+           >
+             <ion-label style="font-size: large"
+               >{{ laddder.exel1m3.exeName}}</ion-label
+             >
+           </ion-row>
+       
+           <ion-row
+             class="ion-justify-content-center"
+             *ngIf="laddder.exel1m3"
+             class="video-container"
+             style="padding-top: 5%;"
+           >
+             <video
+               controls
+               *ngIf="laddder.exel1m3.videoUrl"
+               autoplay
+               loop
+               style="border-radius: 20px"
+             >
+               <source [src]="laddder.exel1m3.videoUrl" type="video/mp4" />
+               <!-- Add more <source> elements for different video formats if needed -->
+               Your browser does not support the video tag.
+             </video>
+           </ion-row>
+           <ion-row
+             *ngIf="laddder.exel1m4"
+             style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+           >
+             <ion-label style="font-size: large">Exercise 4</ion-label>
+           </ion-row>
+           
+           <ion-row
+             *ngIf="laddder.exel1m4"
+             style="padding-top: 5%;color: aliceblue"
+             class="ion-justify-content-center"
+           >
+             <ion-label style="font-size: large"
+               >{{ laddder.exel1m4.exeName}}</ion-label
+             >
+           </ion-row>
+       
+           <ion-row
+             class="ion-justify-content-center"
+             *ngIf="laddder.exel1m4"
+             class="video-container"
+             style="padding-top: 5%;"
+           >
+             <video
+               controls
+               *ngIf="laddder.exel1m4.videoUrl"
+               autoplay
+               loop
+               style="border-radius: 20px"
+             >
+               <source [src]="laddder.exel1m4.videoUrl" type="video/mp4" />
+               <!-- Add more <source> elements for different video formats if needed -->
+               Your browser does not support the video tag.
+             </video>
+           </ion-row>
+
+           <pre></pre>
+         </ion-card-content>
+       </ion-card>
+       <!--ladder 2-->
+       <ion-card
+       *ngIf="laddder.exel2m1"
+         style="
+           width: 100%;
+           border-radius: 80px;
+           background-color: rgb(58, 56, 56);
+           border-color: #b27600;
+           border-style: solid;
+           border-bottom-width: 2px;
+         "
+       >
+         <ion-card-header>
+           <ion-row class="ion-justify-content-center">
+             <ion-card-title
+               style="
+                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
+                   sans-serif;
+                 font-size: large;
+                 color: aliceblue;
+                 text-align: center;
+               "
+             >
+               Ladder 2
+             </ion-card-title>
+           </ion-row>
+         </ion-card-header>
+
+         <ion-card-content>
+           <ion-row class="ion-justify-content-center">
+             <ion-col class="ion-justify-content-center">
+               <ion-card-subtitle
+                 style="
+                   font-size: medium;
+                   text-align: center;
+                   color: aliceblue;
+                 "
+                 >{{laddder.l2move}}min(s) Move</ion-card-subtitle
+               >
+             </ion-col>
+             
+           </ion-row>
+           
+           <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
+             <ion-label style="font-size: large">Exercise 1</ion-label>
+           </ion-row>
+         
+           <ion-row
+             *ngIf="laddder.exel2m1"
+             style="padding-top: 5%;color: aliceblue"
+             class="ion-justify-content-center"
+           >
+             <ion-label style="font-size: large"
+               >{{ laddder.exel2m1.exeName }}</ion-label
+             >
+           </ion-row>
+           
+           <ion-row
+             class="ion-justify-content-center"
+             *ngIf="laddder.exel2m1"
+             class="video-container"
+             style="padding-top: 5%;"
+           >
+             <video
+               controls
+               *ngIf="laddder.exel2m1.videoUrl"
+               autoplay
+               loop
+               style="border-radius: 20px"
+             >
+               <source [src]="laddder.exel2m1.videoUrl" type="video/mp4" />
+               <!-- Add more <source> elements for different video formats if needed -->
+               Your browser does not support the video tag.
+             </video>
+           </ion-row>
+
+           
+           <ion-row
+             *ngIf="laddder.exel2m2"
+             style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+           >
+             <ion-label style="font-size: large">Exercise 2</ion-label>
+           </ion-row>
+           
+           <ion-row
+             *ngIf="laddder.exel2m2"
+             style="padding-top: 5%;color: aliceblue"
+             class="ion-justify-content-center"
+           >
+             <ion-label style="font-size: large"
+               >{{ laddder.exel2m2.exeName}}</ion-label
+             >
+           </ion-row>
+       
+           <ion-row
+             class="ion-justify-content-center"
+             *ngIf="laddder.exel2m2"
+             class="video-container"
+             style="padding-top: 5%;"
+           >
+             <video
+               controls
+               *ngIf="laddder.exel2m2.videoUrl"
+               autoplay
+               loop
+               style="border-radius: 20px"
+             >
+               <source [src]="laddder.exel2m2.videoUrl" type="video/mp4" />
+               <!-- Add more <source> elements for different video formats if needed -->
+               Your browser does not support the video tag.
+             </video>
+           </ion-row>
+           <ion-row
+             *ngIf="laddder.exel2m2"
+             style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+           >
+             <ion-label style="font-size: large">Exercise 3</ion-label>
+           </ion-row>
+           
+           <ion-row
+             *ngIf="laddder.exel2m3"
+             style="padding-top: 5%;color: aliceblue"
+             class="ion-justify-content-center"
+           >
+             <ion-label style="font-size: large"
+               >{{ laddder.exel2m3.exeName}}</ion-label
+             >
+           </ion-row>
+       
+           <ion-row
+             class="ion-justify-content-center"
+             *ngIf="laddder.exel2m3"
+             class="video-container"
+             style="padding-top: 5%;"
+           >
+             <video
+               controls
+               *ngIf="laddder.exel2m3.videoUrl"
+               autoplay
+               loop
+               style="border-radius: 20px"
+             >
+               <source [src]="laddder.exel2m3.videoUrl" type="video/mp4" />
+               <!-- Add more <source> elements for different video formats if needed -->
+               Your browser does not support the video tag.
+             </video>
+           </ion-row>
+           <ion-row
+             *ngIf="laddder.exel2m4"
+             style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+           >
+             <ion-label style="font-size: large">Exercise 4</ion-label>
+           </ion-row>
+           
+           <ion-row
+             *ngIf="laddder.exel2m4"
+             style="padding-top: 5%;color: aliceblue"
+             class="ion-justify-content-center"
+           >
+             <ion-label style="font-size: large"
+               >{{ laddder.exel2m4.exeName}}</ion-label
+             >
+           </ion-row>
+       
+           <ion-row
+             class="ion-justify-content-center"
+             *ngIf="laddder.exel2m4"
+             class="video-container"
+             style="padding-top: 5%;"
+           >
+             <video
+               controls
+               *ngIf="laddder.exel2m4.videoUrl"
+               autoplay
+               loop
+               style="border-radius: 20px"
+             >
+               <source [src]="laddder.exel2m4.videoUrl" type="video/mp4" />
+               <!-- Add more <source> elements for different video formats if needed -->
+               Your browser does not support the video tag.
+             </video>
+           </ion-row>
+
+           <pre></pre>
+         </ion-card-content>
+       </ion-card>
+  <!--ladder 3-->
+  <ion-card
+  *ngIf="laddder.exel3m1"
+  style="
+    width: 100%;
+    border-radius: 80px;
+    background-color: rgb(58, 56, 56);
+    border-color: #b27600;
+    border-style: solid;
+    border-bottom-width: 2px;
+  "
+>
+  <ion-card-header>
+    <ion-row class="ion-justify-content-center">
+      <ion-card-title
+        style="
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
+            sans-serif;
+          font-size: large;
+          color: aliceblue;
+          text-align: center;
+        "
+      >
+        Ladder 3
+      </ion-card-title>
+    </ion-row>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-justify-content-center">
+        <ion-card-subtitle
+          style="
+            font-size: medium;
+            text-align: center;
+            color: aliceblue;
+          "
+          >{{laddder.l3move}}min(s) Move</ion-card-subtitle
+        >
+      </ion-col>
+      
+    </ion-row>
+    
+    <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
+      <ion-label style="font-size: large">Exercise 1</ion-label>
+    </ion-row>
+  
+    <ion-row
+      *ngIf="laddder.exel3m1"
+      style="padding-top: 5%;color: aliceblue"
+      class="ion-justify-content-center"
+    >
+      <ion-label style="font-size: large"
+        >{{ laddder.exel3m1.exeName }}</ion-label
+      >
+    </ion-row>
+    
+    <ion-row
+      class="ion-justify-content-center"
+      *ngIf="laddder.exel3m1"
+      class="video-container"
+      style="padding-top: 5%;"
+    >
+      <video
+        controls
+        *ngIf="laddder.exel3m1.videoUrl"
+        autoplay
+        loop
+        style="border-radius: 20px"
+      >
+        <source [src]="laddder.exel3m1.videoUrl" type="video/mp4" />
+        <!-- Add more <source> elements for different video formats if needed -->
+        Your browser does not support the video tag.
+      </video>
+    </ion-row>
+
+    
+    <ion-row
+      *ngIf="laddder.exel3m2"
+      style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+    >
+      <ion-label style="font-size: large">Exercise 2</ion-label>
+    </ion-row>
+    
+    <ion-row
+      *ngIf="laddder.exel3m2"
+      style="padding-top: 5%;color: aliceblue"
+      class="ion-justify-content-center"
+    >
+      <ion-label style="font-size: large"
+        >{{ laddder.exel3m2.exeName}}</ion-label
+      >
+    </ion-row>
+
+    <ion-row
+      class="ion-justify-content-center"
+      *ngIf="laddder.exel3m2"
+      class="video-container"
+      style="padding-top: 5%;"
+    >
+      <video
+        controls
+        *ngIf="laddder.exel3m2.videoUrl"
+        autoplay
+        loop
+        style="border-radius: 20px"
+      >
+        <source [src]="laddder.exel3m2.exeName" type="video/mp4" />
+        <!-- Add more <source> elements for different video formats if needed -->
+        Your browser does not support the video tag.
+      </video>
+    </ion-row>
+    <ion-row
+      *ngIf="laddder.exel3m2"
+      style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+    >
+      <ion-label style="font-size: large">Exercise 3</ion-label>
+    </ion-row>
+    
+    <ion-row
+      *ngIf="laddder.exel3m3"
+      style="padding-top: 5%;color: aliceblue"
+      class="ion-justify-content-center"
+    >
+      <ion-label style="font-size: large"
+        >{{ laddder.exel3m3.exeName}}</ion-label
+      >
+    </ion-row>
+
+    <ion-row
+      class="ion-justify-content-center"
+      *ngIf="laddder.exel3m3"
+      class="video-container"
+      style="padding-top: 5%;"
+    >
+      <video
+        controls
+        *ngIf="laddder.exel3m3.videoUrl"
+        autoplay
+        loop
+        style="border-radius: 20px"
+      >
+        <source [src]="laddder.exel3m3.videoUrl" type="video/mp4" />
+        <!-- Add more <source> elements for different video formats if needed -->
+        Your browser does not support the video tag.
+      </video>
+    </ion-row>
+    <ion-row
+      *ngIf="laddder.exel3m3"
+      style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+    >
+      <ion-label style="font-size: large">Exercise 4</ion-label>
+    </ion-row>
+    
+    <ion-row
+      *ngIf="laddder.exel3m4"
+      style="padding-top: 5%;color: aliceblue"
+      class="ion-justify-content-center"
+    >
+      <ion-label style="font-size: large"
+        >{{ laddder.exel3m4.exeName}}</ion-label
+      >
+    </ion-row>
+
+    <ion-row
+      class="ion-justify-content-center"
+      *ngIf="laddder.exel3m4"
+      class="video-container"
+      style="padding-top: 5%;"
+    >
+      <video
+        controls
+        *ngIf="laddder.exel3m4.videoUrl"
+        autoplay
+        loop
+        style="border-radius: 20px"
+      >
+        <source [src]="laddder.exel3m4.videoUrl" type="video/mp4" />
+        <!-- Add more <source> elements for different video formats if needed -->
+        Your browser does not support the video tag.
+      </video>
+    </ion-row>
+
+    <pre></pre>
+  </ion-card-content>
+</ion-card>
+     <pre></pre>
+     </ion-row>
+   </ion-grid>
+ </ion-card>
+</ion-card>
+     <!--emom system-->
+     <ion-card
+        class="wodbod"
+        
+        *ngFor="let emom of semoms"
+        style="background-color: #b27600; "
+      >
+        <h2
+          class="cardttl"
+          style="
+            color: black;
+            font-size: xx-large;
+            font-weight: 700;
+            vertical-align: middle;
+          "
+        >
+          {{emom.wodStyle}}
+        </h2>
+        <ion-card class="card" style="border-bottom-width:6px; padding-bottom: 0%; height: 100%;">
+          <ion-card-subtitle
+            style="
+              text-align: center;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: larger;
+              padding: 10%;
+              color: aliceblue;
+            "
+          >
+            {{emom.styleDescription}}
+          </ion-card-subtitle>
+   
+          <ion-card class="cardin">
+            <ion-label class="cardintxt">{{emom.emomNum}} Number</ion-label>
+          </ion-card>
+          <pre></pre>
+          <h2 class="cardttl"><u>WOD Movements:</u></h2>
+          <ion-grid style="padding-bottom: 0%;">
+            <ion-row class="ion-justify-content-center" style="padding-bottom: 0%;">
+              <ion-card
+                style="
+                  width: 100%;
+                  border-radius: 80px;
+                  background-color: rgb(58, 56, 56);
+                  border-color: #b27600;
+                  border-style: solid;
+                  border-bottom-width: 2px;
+                "
+              >
+                <ion-card-header>
+                  <ion-row class="ion-justify-content-center">
+                    <ion-card-title
+                      style="
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
+                          sans-serif;
+                        font-size: large;
+                        color: aliceblue;
+                        text-align: center;
+                      "
+                    >
+                      Emom 1
+                    </ion-card-title>
+                  </ion-row>
+                </ion-card-header>
+   
+                <ion-card-content>
+                  
+                  
+                  <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
+                    <ion-label style="font-size: large">Exercise 1</ion-label>
+                  </ion-row>
+                
+                  <ion-row
+                    *ngIf="emom.exe"
+                    style="padding-top: 5%;color: aliceblue"
+                    class="ion-justify-content-center"
+                  >
+                    <ion-label style="font-size: large"
+                      >{{ emom.exe.exeName }}</ion-label
+                    >
+                  </ion-row>
+                  
+                  <ion-row
+                    class="ion-justify-content-center"
+                    *ngIf="emom.exe"
+                    class="video-container"
+                    style="padding-top: 5%;"
+                  >
+                    <video
+                      controls
+                      *ngIf="emom.exe.videoUrl"
+                      autoplay
+                      loop
+                      style="border-radius: 20px"
+                    >
+                      <source [src]="emom.exe.videoUrl" type="video/mp4" />
+                      <!-- Add more <source> elements for different video formats if needed -->
+                      Your browser does not support the video tag.
+                    </video>
+                  </ion-row>
+   
+                  
+                  <ion-row
+                    *ngIf="emom.exee1m2"
+                    style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+                  >
+                    <ion-label style="font-size: large">Exercise 2</ion-label>
+                  </ion-row>
+                  
+                  <ion-row
+                  
+                    *ngIf="emom.exee1m2"
+                    style="padding-top: 5%;color: aliceblue"
+                    class="ion-justify-content-center"
+                  >
+                    <ion-label style="font-size: large"
+                      >{{ emom.exee1m2.exeName}}</ion-label
+                    >
+                  </ion-row>
+              
+                  <ion-row
+                    class="ion-justify-content-center"
+                    *ngIf="emom.exee1m2"
+                    class="video-container"
+                    style="padding-top: 5%;"
+                  >
+                    <video
+                      controls
+                      *ngIf="emom.exee1m2.videoUrl"
+                      autoplay
+                      loop
+                      style="border-radius: 20px"
+                    >
+                      <source [src]="emom.exee1m2.videoUrl" type="video/mp4" />
+                      <!-- Add more <source> elements for different video formats if needed -->
+                      Your browser does not support the video tag.
+                    </video>
+                  </ion-row>
+                  <ion-row
+                    *ngIf="emom.exee1m3"
+                    style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+                  >
+                    <ion-label style="font-size: large">Exercise 3</ion-label>
+                  </ion-row>
+                  
+                  <ion-row
+                    *ngIf="emom.exee1m3"
+                    style="padding-top: 5%;color: aliceblue"
+                    class="ion-justify-content-center"
+                  >
+                    <ion-label style="font-size: large"
+                      >{{ emom.exee1m3.exeName}}</ion-label
+                    >
+                  </ion-row>
+              
+                  <ion-row
+                    class="ion-justify-content-center"
+                    *ngIf="emom.exee1m3"
+                    class="video-container"
+                    style="padding-top: 5%;"
+                  >
+                    <video
+                      controls
+                      *ngIf="emom.exee1m3.videoUrl"
+                      autoplay
+                      loop
+                      style="border-radius: 20px"
+                    >
+                      <source [src]="emom.exee1m3.videoUrl" type="video/mp4" />
+                      <!-- Add more <source> elements for different video formats if needed -->
+                      Your browser does not support the video tag.
+                    </video>
+                  </ion-row>
+                  <ion-row
+                    *ngIf="emom.exee1m4"
+                    style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+                  >
+                    <ion-label style="font-size: large">Exercise 4</ion-label>
+                  </ion-row>
+                  
+                  <ion-row
+                    *ngIf="emom.exee1m4"
+                    style="padding-top: 5%;color: aliceblue"
+                    class="ion-justify-content-center"
+                  >
+                    <ion-label style="font-size: large"
+                      >{{ emom.exee1m4.exeName}}</ion-label
+                    >
+                  </ion-row>
+              
+                  <ion-row
+                    class="ion-justify-content-center"
+                    *ngIf="emom.exee1m4"
+                    class="video-container"
+                    style="padding-top: 5%;"
+                  >
+                    <video
+                      controls
+                      *ngIf="emom.exee1m4.videoUrl"
+                      autoplay
+                      loop
+                      style="border-radius: 20px"
+                    >
+                      <source [src]="emom.exee1m4.videoUrl" type="video/mp4" />
+                      <!-- Add more <source> elements for different video formats if needed -->
+                      Your browser does not support the video tag.
+                    </video>
+                  </ion-row>
+   
+                  <pre></pre>
+                </ion-card-content>
+              </ion-card>
+              <!--ladder 2-->
+              <ion-card
+              *ngIf="emom.exee2m1"
+                style="
+                  width: 100%;
+                  border-radius: 80px;
+                  background-color: rgb(58, 56, 56);
+                  border-color: #b27600;
+                  border-style: solid;
+                  border-bottom-width: 2px;
+                "
+              >
+                <ion-card-header>
+                  <ion-row class="ion-justify-content-center">
+                    <ion-card-title
+                      style="
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
+                          sans-serif;
+                        font-size: large;
+                        color: aliceblue;
+                        text-align: center;
+                      "
+                    >
+                      Emom 2
+                    </ion-card-title>
+                  </ion-row>
+                </ion-card-header>
+   
+                <ion-card-content>
+                  
+                  
+                  <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
+                    <ion-label style="font-size: large">Exercise 1</ion-label>
+                  </ion-row>
+                
+                  <ion-row
+                    *ngIf="emom.exee2m1"
+                    style="padding-top: 5%;color: aliceblue"
+                    class="ion-justify-content-center"
+                  >
+                    <ion-label style="font-size: large"
+                      >{{ emom.exee2m1.exeName }}</ion-label
+                    >
+                  </ion-row>
+                  
+                  <ion-row
+                    class="ion-justify-content-center"
+                    *ngIf="emom.exee2m1"
+                    class="video-container"
+                    style="padding-top: 5%;"
+                  >
+                    <video
+                      controls
+                      *ngIf="emom.exee2m1.videoUrl"
+                      autoplay
+                      loop
+                      style="border-radius: 20px"
+                    >
+                      <source [src]="emom.exee2m1.videoUrl" type="video/mp4" />
+                      <!-- Add more <source> elements for different video formats if needed -->
+                      Your browser does not support the video tag.
+                    </video>
+                  </ion-row>
+   
+                  
+                  <ion-row
+                    *ngIf="emom.exee2m2"
+                    style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+                  >
+                    <ion-label style="font-size: large">Exercise 2</ion-label>
+                  </ion-row>
+                  
+                  <ion-row
+                    *ngIf="emom.exee2m2"
+                    style="padding-top: 5%;color: aliceblue"
+                    class="ion-justify-content-center"
+                  >
+                    <ion-label style="font-size: large"
+                      >{{ emom.exee2m2.exeName}}</ion-label
+                    >
+                  </ion-row>
+              
+                  <ion-row
+                    class="ion-justify-content-center"
+                    *ngIf="emom.exee2m2"
+                    class="video-container"
+                    style="padding-top: 5%;"
+                  >
+                    <video
+                      controls
+                      *ngIf="emom.exee2m2.videoUrl"
+                      autoplay
+                      loop
+                      style="border-radius: 20px"
+                    >
+                      <source [src]="emom.exee2m2.videoUrl" type="video/mp4" />
+                      <!-- Add more <source> elements for different video formats if needed -->
+                      Your browser does not support the video tag.
+                    </video>
+                  </ion-row>
+                  <ion-row
+                    *ngIf="emom.exee2m2"
+                    style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+                  >
+                    <ion-label style="font-size: large">Exercise 3</ion-label>
+                  </ion-row>
+                  
+                  <ion-row
+                    *ngIf="emom.exee2m3"
+                    style="padding-top: 5%;color: aliceblue"
+                    class="ion-justify-content-center"
+                  >
+                    <ion-label style="font-size: large"
+                      >{{ emom.exee2m3.exeName}}</ion-label
+                    >
+                  </ion-row>
+              
+                  <ion-row
+                    class="ion-justify-content-center"
+                    *ngIf="emom.exee2m3"
+                    class="video-container"
+                    style="padding-top: 5%;"
+                  >
+                    <video
+                      controls
+                      *ngIf="emom.exee2m3.videoUrl"
+                      autoplay
+                      loop
+                      style="border-radius: 20px"
+                    >
+                      <source [src]="emom.exee2m3.videoUrl" type="video/mp4" />
+                      <!-- Add more <source> elements for different video formats if needed -->
+                      Your browser does not support the video tag.
+                    </video>
+                  </ion-row>
+                  <ion-row
+                    *ngIf="emom.exee2m4"
+                    style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+                  >
+                    <ion-label style="font-size: large">Exercise 4</ion-label>
+                  </ion-row>
+                  
+                  <ion-row
+                    *ngIf="emom.exee2m4"
+                    style="padding-top: 5%;color: aliceblue"
+                    class="ion-justify-content-center"
+                  >
+                    <ion-label style="font-size: large"
+                      >{{ emom.exee2m4.exeName}}</ion-label
+                    >
+                  </ion-row>
+              
+                  <ion-row
+                    class="ion-justify-content-center"
+                    *ngIf="emom.exee2m4"
+                    class="video-container"
+                    style="padding-top: 5%;"
+                  >
+                    <video
+                      controls
+                      *ngIf="emom.exee2m4.videoUrl"
+                      autoplay
+                      loop
+                      style="border-radius: 20px"
+                    >
+                      <source [src]="emom.exee2m4.videoUrl" type="video/mp4" />
+                      <!-- Add more <source> elements for different video formats if needed -->
+                      Your browser does not support the video tag.
+                    </video>
+                  </ion-row>
+   
+                  <pre></pre>
+                </ion-card-content>
+              </ion-card>
+         <!--ladder 3-->
+         <ion-card
+         *ngIf="emom.exee3m1"
+         style="
+           width: 100%;
+           border-radius: 80px;
+           background-color: rgb(58, 56, 56);
+           border-color: #b27600;
+           border-style: solid;
+           border-bottom-width: 2px;
+         "
+       >
+         <ion-card-header>
+           <ion-row class="ion-justify-content-center">
+             <ion-card-title
+               style="
+                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana,
+                   sans-serif;
+                 font-size: large;
+                 color: aliceblue;
+                 text-align: center;
+               "
+             >
+               Emom 3
+             </ion-card-title>
+           </ion-row>
+         </ion-card-header>
+   
+         <ion-card-content>
+        
+           
+           <ion-row style="padding-top: 5%;padding-left: 0%; color: aliceblue">
+             <ion-label style="font-size: large">Exercise 1</ion-label>
+           </ion-row>
+         
+           <ion-row
+             *ngIf="emom.exee3m1"
+             style="padding-top: 5%;color: aliceblue"
+             class="ion-justify-content-center"
+           >
+             <ion-label style="font-size: large"
+               >{{ emom.exee3m1.exeName }}</ion-label
+             >
+           </ion-row>
+           
+           <ion-row
+             class="ion-justify-content-center"
+             *ngIf="emom.exee3m1"
+             class="video-container"
+             style="padding-top: 5%;"
+           >
+             <video
+               controls
+               *ngIf="emom.exee3m1.videoUrl"
+               autoplay
+               loop
+               style="border-radius: 20px"
+             >
+               <source [src]="emom.exee3m1.videoUrl" type="video/mp4" />
+               <!-- Add more <source> elements for different video formats if needed -->
+               Your browser does not support the video tag.
+             </video>
+           </ion-row>
+   
+           
+           <ion-row
+             *ngIf="emom.exee3m2"
+             style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+           >
+             <ion-label style="font-size: large">Exercise 2</ion-label>
+           </ion-row>
+           
+           <ion-row
+             *ngIf="emom.exee3m2"
+             style="padding-top: 5%;color: aliceblue"
+             class="ion-justify-content-center"
+           >
+             <ion-label style="font-size: large"
+               >{{ emom.exee3m2.exeName}}</ion-label
+             >
+           </ion-row>
+       
+           <ion-row
+             class="ion-justify-content-center"
+             *ngIf="emom.exee3m2"
+             class="video-container"
+             style="padding-top: 5%;"
+           >
+             <video
+               controls
+               *ngIf="emom.exee3m2.videoUrl"
+               autoplay
+               loop
+               style="border-radius: 20px"
+             >
+               <source [src]="emom.exee3m2.exeName" type="video/mp4" />
+               <!-- Add more <source> elements for different video formats if needed -->
+               Your browser does not support the video tag.
+             </video>
+           </ion-row>
+           <ion-row
+             *ngIf="emom.exee3m2"
+             style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+           >
+             <ion-label style="font-size: large">Exercise 3</ion-label>
+           </ion-row>
+           
+           <ion-row
+             *ngIf="emom.exee3m3"
+             style="padding-top: 5%;color: aliceblue"
+             class="ion-justify-content-center"
+           >
+             <ion-label style="font-size: large"
+               >{{ emom.exee3m3.exeName}}</ion-label
+             >
+           </ion-row>
+       
+           <ion-row
+             class="ion-justify-content-center"
+             *ngIf="emom.exee3m3"
+             class="video-container"
+             style="padding-top: 5%;"
+           >
+             <video
+               controls
+               *ngIf="emom.exee3m3.videoUrl"
+               autoplay
+               loop
+               style="border-radius: 20px"
+             >
+               <source [src]="emom.exee3m3.videoUrl" type="video/mp4" />
+               <!-- Add more <source> elements for different video formats if needed -->
+               Your browser does not support the video tag.
+             </video>
+           </ion-row>
+           <ion-row
+             *ngIf="emom.exee3m3"
+             style="padding-top: 5%;padding-left: 0%; color: aliceblue"
+           >
+             <ion-label style="font-size: large">Exercise 4</ion-label>
+           </ion-row>
+           
+           <ion-row
+             *ngIf="emom.exee3m4"
+             style="padding-top: 5%;color: aliceblue"
+             class="ion-justify-content-center"
+           >
+             <ion-label style="font-size: large"
+               >{{ emom.exee3m4.exeName}}</ion-label
+             >
+           </ion-row>
+       
+           <ion-row
+             class="ion-justify-content-center"
+             *ngIf="emom.exee3m4"
+             class="video-container"
+             style="padding-top: 5%;"
+           >
+             <video
+               controls
+               *ngIf="emom.exee3m4.videoUrl"
+               autoplay
+               loop
+               style="border-radius: 20px"
+             >
+               <source [src]="emom.exee3m4.videoUrl" type="video/mp4" />
+               <!-- Add more <source> elements for different video formats if needed -->
+               Your browser does not support the video tag.
+             </video>
+           </ion-row>
+   
+           <pre></pre>
+         </ion-card-content>
+       </ion-card>
+            <pre></pre>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+     </ion-card>
+     
     <div class="nextbtn">
       <a href="/wodon" class="nextbtn">LET'S GO >>></a>
     </div>

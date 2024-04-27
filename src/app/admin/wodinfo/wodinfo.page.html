@@ -1133,6 +1133,7 @@
                 name="wodCat"
                 [(ngModel)]="ladderData.wodCat"
                 required
+                [disabled]="isDisabled"
               >
                 <ion-select-option value="Warm Up" style="text-align: center"
                   >Warm Up</ion-select-option
@@ -1170,6 +1171,7 @@
                   max="3"
                   min="1"
                   required
+                  [disabled]="isDisabled"
                 >
                 </ion-input>
               </div>
@@ -1185,6 +1187,7 @@
                   max="4"
                   min="2"
                   required
+                  [disabled]="isDisabled"
                 >
                 </ion-input>
               </div>
@@ -1202,6 +1205,7 @@
           <ion-row>
             <ion-label style="font-size: x-large; text-align: center; width: 100%">Move(mins)</ion-label>
             <ion-input placeholder="0"
+            [disabled]="isDisabled"
             style="font-size: x-large; text-align: center; width: 100%"
             type="number"  [(ngModel)]="ladderData.l1move"></ion-input>
           </ion-row>
@@ -1209,7 +1213,7 @@
             <ion-col *ngIf="mpls > 0" style="text-align: center; width: 50%;">
               <ion-select
                 placeholder="M1"
-                
+                [disabled]="isDisabled"
                 [(ngModel)]="ladderData.l1m1"
                 required
             
@@ -1234,7 +1238,7 @@
               <div *ngIf="mpls>1">
                 <ion-select
                   placeholder="M2"
-                 
+                  [disabled]="isDisabled"
                   [(ngModel)]="ladderData.l1m2"
                   style="
                     font-size: x-large;
@@ -1258,7 +1262,7 @@
               <div *ngIf="mpls>2">
                 <ion-select
                   placeholder="M3"
-               
+                  [disabled]="isDisabled"
                   [(ngModel)]="ladderData.l1m3"
                   style="
                     font-size: x-large;
@@ -1282,7 +1286,7 @@
               <div *ngIf="mpls>3">
                 <ion-select
                   placeholder="M4"
-                 
+                  [disabled]="isDisabled"
                   [(ngModel)]="ladderData.l1m4"
                   style="
                     font-size: x-large;
@@ -1315,12 +1319,14 @@
             <ion-row>
               <ion-label style="font-size: x-large; text-align: center; width: 100%">Move(mins)</ion-label>
               <ion-input placeholder="0"
+              [disabled]="isDisabled"
               style="font-size: x-large; text-align: center; width: 100%"
               type="number"  [(ngModel)]="ladderData.l2move"></ion-input>
             </ion-row>
             <ion-row class="ion-justify-content-center" style="text-align: center">
               <ion-col *ngIf="mpls>0" style="text-align: center; width: 50%;">
                 <ion-select
+                [disabled]="isDisabled"
                   placeholder="M1"
                   [(ngModel)]="ladderData.l2m1"
                 
@@ -1343,6 +1349,7 @@
 
               <ion-col style="text-align: center; width: 50%;">
                 <ion-select
+                [disabled]="isDisabled"
                   *ngIf="mpls>1"
                   [(ngModel)]="ladderData.l2m2"
                   placeholder="M2"
@@ -1365,6 +1372,7 @@
               </ion-col>
               <ion-col style="text-align: center; width: 50%;">
                 <ion-select
+                [disabled]="isDisabled"
                   *ngIf="mpls>2"
                   [(ngModel)]="ladderData.l2m3"
                   placeholder="M3"
@@ -1391,7 +1399,7 @@
                   *ngIf="mpls>3"
                   [(ngModel)]="ladderData.l2m4"
                   placeholder="M4"
-               
+                  [disabled]="isDisabled"
                
                   style="
                     font-size: x-large;
@@ -1426,14 +1434,14 @@
               <ion-label style="font-size: x-large; text-align: center; width: 100%">Move(mins)</ion-label>
               <ion-input placeholder="0"
               style="font-size: x-large; text-align: center; width: 100%"
-              type="number"  [(ngModel)]="ladderData.l3move"></ion-input>
+              type="number" [disabled]="isDisabled" [(ngModel)]="ladderData.l3move"></ion-input>
             </ion-row>
             <ion-row class="ion-justify-content-center" style="text-align: center">
               <ion-col   *ngIf="mpls>0" style="text-align: center; width: 50%;">
                 <ion-select
                   [(ngModel)]="ladderData.l3m1"
                   placeholder="M1"
-            
+                  [disabled]="isDisabled"
                   style="
                     font-size: x-large;
                     text-align: center;
@@ -1456,7 +1464,7 @@
                   *ngIf="mpls>1"
                   [(ngModel)]="ladderData.l3m2"
                   placeholder="M2"
-            
+                  [disabled]="isDisabled"
                   style="
                     font-size: x-large;
                     text-align: center;
@@ -1478,7 +1486,7 @@
                   *ngIf="mpls>2"
                   [(ngModel)]="ladderData.l3m3"
                   placeholder="M3"
-              
+                  [disabled]="isDisabled"
                   style="
                     font-size: x-large;
                     text-align: center;
@@ -1500,7 +1508,7 @@
                   *ngIf="mpls>3"
                   [(ngModel)]="ladderData.l3m4"
                   placeholder="M4"
-                 
+                  [disabled]="isDisabled"
                   style="
                     font-size: x-large;
                     text-align: center;
@@ -1533,7 +1541,7 @@
               name="daDate"
               id="daDate"
               [(ngModel)]="ladderData.daDate"
-        
+              [disabled]="isDisabled"
             ></ion-input>
           </ion-row>
           <ion-row *ngIf="showButtons">
@@ -1572,6 +1580,666 @@
           </ion-row>
           </ion-grid>
           </div>
+    </ion-card>
+    <ion-card style="width: 100%; --ion-background-color: white;" *ngIf="isEmomPresent">
+      <div class="container">
+        <ion-grid>
+          <pre></pre>
+          <ion-row>
+            <ion-label
+              style="font-size: x-large; text-align: center; width: 100%"
+              >WOD Category</ion-label
+            >
+          </ion-row>
+
+          <ion-row>
+            <div style="margin-left: auto; margin-right: auto">
+              <ion-select
+                placeholder="Select Category"
+                style="font-size: x-large; text-align: center; width: 100%"
+                id="wodCat"
+                type="text"
+                name="wodCat"
+                [(ngModel)]="emomData.wodCat"
+                [disabled]="isDisabled"
+                required
+              >
+                <ion-select-option value="Warm Up" style="text-align: center"
+                  >Warm Up</ion-select-option
+                >
+                <ion-select-option value="WOD">WOD</ion-select-option>
+              </ion-select>
+            </div>
+          </ion-row>
+          <pre></pre>
+          <ion-row style="text-align: center">
+            <ion-col>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Emom Number</ion-label
+              >
+            </ion-col>
+            <ion-col>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >MPE</ion-label
+              >
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <div style="margin-left: auto; margin-right: auto">
+                <ion-input
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  name="laddernums"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="numemom"
+                  [(ngModel)]="emomData.emomNum"
+                  max="3"
+                  min="1"
+                  required
+                >
+                </ion-input>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="margin-left: auto; margin-right: auto">
+                <ion-input
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="mpes"
+                  [(ngModel)]="emomData.mpe"
+                  max="4"
+                  min="2"
+                  required
+                >
+                </ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <pre></pre>
+
+          <ion-row>
+            <ion-label
+              style="font-size: x-large; text-align: center; width: 100%"
+              >Emom 1</ion-label
+            >
+          </ion-row>
+          <pre></pre>
+          
+          <ion-row class="ion-justify-content-center" style="text-align: center">
+            <ion-row *ngIf="mpes > 0" class="ion-justify-content-center">
+              <ion-col  style="text-align: center; width: 50%;">
+                <ion-select
+                  placeholder="M1"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="emomData.e1m1"
+                  required
+              
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+               
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+               
+              </ion-col>
+              <ion-col style="text-align: center; width: 50%;">
+                <ion-input
+                placeholder="Reps"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                [disabled]="isDisabled"
+                [(ngModel)]="emomData.e1m1rep"
+                max="15"
+                min="1"
+                required
+              >
+              </ion-input>
+              </ion-col>
+
+            </ion-row>
+            <ion-row *ngIf="mpes > 1" class="ion-justify-content-center">
+              <ion-col  style="text-align: center; width: 50%;">
+                <ion-select
+                  placeholder="M2"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="emomData.e1m2"
+                  required
+              
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+               
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+               
+              </ion-col>
+              <ion-col style="text-align: center; width: 50%;">
+                <ion-input
+                placeholder="Reps"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                [disabled]="isDisabled"
+                [(ngModel)]="emomData.e1m2rep"
+                max="15"
+                min="1"
+                required
+              >
+              </ion-input>
+              </ion-col>
+
+            </ion-row>
+            <ion-row *ngIf="mpes > 2" class="ion-justify-content-center">
+              <ion-col  style="text-align: center; width: 50%;">
+                <ion-select
+                  placeholder="M3"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="emomData.e1m3"
+                  required
+              
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+               
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+               
+              </ion-col>
+              <ion-col style="text-align: center; width: 50%;">
+                <ion-input
+                placeholder="Reps"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                [disabled]="isDisabled"
+                [(ngModel)]="emomData.e1m3rep"
+                max="15"
+                min="1"
+                required
+              >
+              </ion-input>
+              </ion-col>
+
+            </ion-row>
+            <ion-row *ngIf="mpes > 3" class="ion-justify-content-center">
+              <ion-col  style="text-align: center; width: 50%;">
+                <ion-select
+                  placeholder="M4"
+                  
+                  [(ngModel)]="emomData.e1m4"
+                  required
+                  [disabled]="isDisabled"
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+               
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+               
+              </ion-col>
+              <ion-col style="text-align: center; width: 50%;">
+                <ion-input
+                placeholder="Reps"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                [disabled]="isDisabled"
+                [(ngModel)]="emomData.e1m4rep"
+                max="15"
+                min="1"
+                required
+              >
+              </ion-input>
+              </ion-col>
+
+            </ion-row>           
+          </ion-row>
+          <!--l2-->
+          <pre></pre>
+          <div id="t2" *ngIf="numemom >1">
+            <ion-row>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Emom 2</ion-label
+              >
+            </ion-row>
+            <pre></pre>
+           
+            <ion-row class="ion-justify-content-center" style="text-align: center">
+              <ion-row *ngIf="mpes > 0" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M1"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="emomData.e2m1"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="emomData.e2m1rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>
+              <ion-row *ngIf="mpes > 1" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M2"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="emomData.e2m2"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="emomData.e2m2rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>
+              <ion-row *ngIf="mpes > 2" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M3"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="emomData.e2m3"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="emomData.e2m3rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>
+              <ion-row *ngIf="mpes > 3" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M4"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="emomData.e2m4"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="emomData.e2m4rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>  
+            </ion-row>
+            <ion-row> </ion-row>
+          </div>
+          <!--lm3-->
+          <pre></pre>
+          <div id="t3" *ngIf="numemom >2">
+            <ion-row>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Emom 3</ion-label
+              >
+            </ion-row>
+            <pre></pre>
+            <ion-row class="ion-justify-content-center" style="text-align: center">
+              <ion-row *ngIf="mpes > 0" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M1"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="emomData.e3m1"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="emomData.e3m1rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>
+              <ion-row *ngIf="mpes > 1" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M2"
+                    
+                    [(ngModel)]="emomData.e3m2"
+                    required
+                    [disabled]="isDisabled"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="emomData.e3m2rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>
+              <ion-row *ngIf="mpes > 2" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M3"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="emomData.e3m3"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="emomData.e3m3rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>
+              <ion-row *ngIf="mpes > 3" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M4"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="emomData.e3m4"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="emomData.e3m4rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>           
+            </ion-row>
+            
+            
+          </div>
+         
+          <pre></pre>
+          <ion-row>
+            <ion-label
+              style="font-size: x-large; text-align: center; width: 100%"
+              >Select a Date:</ion-label
+            >
+            <ion-input
+              style="font-size: x-large; text-align: center; color: #b27600"
+              type="datetime"
+              name="daDate"
+              id="daDate"
+              [(ngModel)]="emomData.daDate"
+              [disabled]="isDisabled"
+        
+            ></ion-input>
+          </ion-row>
+          <ion-row *ngIf="showButtons">
+            <div style="text-align: center;margin-left: auto;
+            margin-right: auto; width: 80%;">
+              <ion-button
+              [disabled]="isDisabled"
+                
+              style="
+              
+              margin-left: auto;
+              margin-right: auto;
+              color: white;
+            "                
+                type="submit"
+                (click)="saveemom()"
+                >Save</ion-button
+              >
+            </div>
+            <div style="text-align: center;margin-left: auto;
+            margin-right: auto;width: 80%;">
+              <ion-button
+              [disabled]="isDisabled"
+                style="
+           
+                  margin-left: auto;
+                  margin-right: auto;
+           
+                  color: black;
+                "
+                type="submit"
+                (click)="cancel()"
+                >CANCEL</ion-button
+              >
+            </div>
+          </ion-row>
+          
+          
+        
+        </ion-grid>
+      </div>
     </ion-card>
   </ion-row>
  
