@@ -168,6 +168,55 @@ export interface Emom {
   exee3m3?: Exercise;
   exee3m4?: Exercise;
 }
+export interface Amrap {
+  id?: string;
+  wodCat: string;
+  wodStyle: string;
+  amrapNum: number;
+  mpa: number;
+  a1m1rep: number;
+  a1m2rep: number;
+  a1m3rep: number;
+  a1m4rep: number;
+  a2m1rep: number;
+  a2m2rep: number;
+  a2m3rep: number;
+  a2m4rep: number;
+  a3m1rep: number;
+  a3m2rep: number;
+  a3m3rep: number;
+  a3m4rep: number;
+  a1m1: string;
+  a1m2: string;
+  a1m3: string;
+  a1m4: string;
+  a2m1: string;
+  a2m2: string;
+  a2m3: string;
+  a2m4: string;
+  a3m1: string;
+  a3m2: string;
+  a3m3: string;
+  a3m4: string;
+  a1move: number;
+  a2move: number;
+  a3move: number;
+  daDate: string;
+  styleName?: string;
+  styleDescription?: string;
+  exe?: Exercise;
+  exea1m2?: Exercise;
+  exea1m3?: Exercise;
+  exea1m4?: Exercise;
+  exea2m1?: Exercise;
+  exea2m2?: Exercise;
+  exea2m3?: Exercise;
+  exea2m4?: Exercise;
+  exea3m1?: Exercise;
+  exea3m2?: Exercise;
+  exea3m3?: Exercise;
+  exea3m4?: Exercise;
+}
 export class Style {
   constructor(public styleName: string, public styleDescription: string) {}
 }
@@ -192,6 +241,8 @@ export class WorkoutsService {
   private readonly lcollectionName = 'ladders';
   private emomCollection: AngularFirestoreCollection<Emom>;
   private readonly ecollectionName = 'emoms';
+  private amrapCollection: AngularFirestoreCollection<Amrap>;
+  private readonly acollectionName = 'amrap';
   constructor(private firestore: AngularFirestore) {
     this.workoutCollection = this.firestore.collection<Workout>(
       this.collectionName
@@ -203,6 +254,7 @@ export class WorkoutsService {
       this.lcollectionName
     );
     this.emomCollection = this.firestore.collection<Emom>(this.ecollectionName);
+    this.amrapCollection = this.firestore.collection<Amrap>(this.acollectionName);
   }
 
   // Create a new workout
@@ -224,7 +276,9 @@ export class WorkoutsService {
   getAllEmoms(): Observable<Emom[]> {
     return this.emomCollection.valueChanges({ idField: 'id' });
   }
-
+  getAllAmraps(): Observable<Amrap[]> {
+    return this.amrapCollection.valueChanges({ idField: 'id' });
+  }
   // Get a specific workout by ID
   getWorkoutById(id: string): Observable<Workout | undefined> {
     return this.workoutCollection.doc<Workout>(id).valueChanges();
@@ -240,6 +294,9 @@ export class WorkoutsService {
    // Get a specific tabata by ID
    getEmomById(id: string): Observable<Emom | undefined> {
     return this.emomCollection.doc<Emom>(id).valueChanges();
+  }
+  getAmrapById(id: string): Observable<Amrap | undefined> {
+    return this.amrapCollection.doc<Amrap>(id).valueChanges();
   }
 
   // Update a workout
@@ -266,6 +323,11 @@ export class WorkoutsService {
       const emomeRef = this.emomCollection.doc(id); // Ensure tabataId is not empty
       return emomeRef.update(updatedEmom);
     }
+      // Update a emoms
+      updateAmrap(id: string, updatedAmrap: Partial<Amrap>): Promise<void> {
+        const amrapRef = this.amrapCollection.doc(id); // Ensure tabataId is not empty
+        return amrapRef.update(updatedAmrap);
+      }
 
   // Delete a workout
   deleteWorkout(id: string | undefined): Promise<void> {
@@ -279,6 +341,9 @@ export class WorkoutsService {
   }
   deleteEmom(id: string | undefined): Promise<void> {
     return this.emomCollection.doc(id).delete();
+  }
+  deleteAmrap(id: string | undefined): Promise<void> {
+    return this.amrapCollection.doc(id).delete();
   }
 
   // Get workouts with specific conditions (Warm Up and today's date)
@@ -406,6 +471,38 @@ export class WorkoutsService {
             (emom: Emom) =>
               emom.wodCat === 'WOD' &&
               this.isSameDate(today, new Date(emom.daDate))
+          )
+        )
+      );
+  }
+  getSpecificAmrapWarmup(): Observable<Amrap[]> {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    return this.amrapCollection
+      .valueChanges({ idField: 'id' })
+      .pipe(
+        map((amraps: Amrap[]) =>
+          amraps.filter(
+            (amrap: Amrap) =>
+              amrap.wodCat === 'Warm Up' &&
+              this.isSameDate(today, new Date(amrap.daDate))
+          )
+        )
+      );
+  }
+  getSpecificAmrapWOD(): Observable<Amrap[]> {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    return this.amrapCollection
+      .valueChanges({ idField: 'id' })
+      .pipe(
+        map((amraps: Amrap[]) =>
+          amraps.filter(
+            (amrap: Amrap) =>
+              amrap.wodCat === 'WOD' &&
+              this.isSameDate(today, new Date(amrap.daDate))
           )
         )
       );

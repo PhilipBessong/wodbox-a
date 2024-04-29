@@ -73,6 +73,10 @@ const routes: Routes = [
   },  {
     path: 'emom',
     loadChildren: () => import('./admin/emom/emom.module').then( m => m.EmomPageModule)
+  },
+  {
+    path: 'amrap',
+    loadChildren: () => import('./admin/amrap/amrap.module').then( m => m.AmrapPageModule)
   }
 
 

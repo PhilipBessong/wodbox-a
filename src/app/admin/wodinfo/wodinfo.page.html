@@ -2241,6 +2241,682 @@
         </ion-grid>
       </div>
     </ion-card>
+    <ion-card style="width: 100%; --ion-background-color: white;" *ngIf="isAmrapPresent">
+      <div class="container">
+        <ion-grid>
+          <pre></pre>
+          <ion-row>
+            <ion-label
+              style="font-size: x-large; text-align: center; width: 100%"
+              >WOD Category</ion-label
+            >
+          </ion-row>
+
+          <ion-row>
+            <div style="margin-left: auto; margin-right: auto">
+              <ion-select
+                placeholder="Select Category"
+                style="font-size: x-large; text-align: center; width: 100%"
+                id="wodCat"
+                type="text"
+                name="wodCat"
+                [(ngModel)]="amrapData.wodCat"
+                [disabled]="isDisabled"
+                required
+              >
+                <ion-select-option value="Warm Up" style="text-align: center"
+                  >Warm Up</ion-select-option
+                >
+                <ion-select-option value="WOD">WOD</ion-select-option>
+              </ion-select>
+            </div>
+          </ion-row>
+          <pre></pre>
+          <ion-row style="text-align: center">
+            <ion-col>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Amrap Number</ion-label
+              >
+            </ion-col>
+            <ion-col>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >MPA</ion-label
+              >
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <div style="margin-left: auto; margin-right: auto">
+                <ion-input
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  name="laddernums"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="numamrap"
+                  [(ngModel)]="amrapData.amrapNum"
+                  max="3"
+                  min="1"
+                  required
+                >
+                </ion-input>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="margin-left: auto; margin-right: auto">
+                <ion-input
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="mpas"
+                  [(ngModel)]="amrapData.mpa"
+                  max="4"
+                  min="2"
+                  required
+                >
+                </ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <pre></pre>
+
+          <ion-row>
+            <ion-label
+              style="font-size: x-large; text-align: center; width: 100%"
+              >Amrap 1</ion-label
+            >
+          </ion-row>
+          <pre></pre>
+          <ion-row>
+            <ion-label style="font-size: x-large; text-align: center; width: 100%">Move(mins)</ion-label>
+            <ion-input placeholder="0"
+            style="font-size: x-large; text-align: center; width: 100%"
+            type="number"  [(ngModel)]="amrapData.a1move"></ion-input>
+          </ion-row>
+          <ion-row class="ion-justify-content-center" style="text-align: center">
+            <ion-row *ngIf="mpas > 0" class="ion-justify-content-center">
+              <ion-col  style="text-align: center; width: 50%;">
+                <ion-select
+                  placeholder="M1"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="amrapData.a1m1"
+                  required
+              
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+               
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+               
+              </ion-col>
+              <ion-col style="text-align: center; width: 50%;">
+                <ion-input
+                placeholder="Reps"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                [disabled]="isDisabled"
+                [(ngModel)]="amrapData.a1m1rep"
+                max="15"
+                min="1"
+                required
+              >
+              </ion-input>
+              </ion-col>
+
+            </ion-row>
+            <ion-row *ngIf="mpas > 1" class="ion-justify-content-center">
+              <ion-col  style="text-align: center; width: 50%;">
+                <ion-select
+                  placeholder="M2"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="amrapData.a1m2"
+                  required
+              
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+               
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+               
+              </ion-col>
+              <ion-col style="text-align: center; width: 50%;">
+                <ion-input
+                placeholder="Reps"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                [disabled]="isDisabled"
+                [(ngModel)]="amrapData.a1m2rep"
+                max="15"
+                min="1"
+                required
+              >
+              </ion-input>
+              </ion-col>
+
+            </ion-row>
+            <ion-row *ngIf="mpas > 2" class="ion-justify-content-center">
+              <ion-col  style="text-align: center; width: 50%;">
+                <ion-select
+                  placeholder="M3"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="amrapData.a1m3"
+                  required
+              
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+               
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+               
+              </ion-col>
+              <ion-col style="text-align: center; width: 50%;">
+                <ion-input
+                placeholder="Reps"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                [disabled]="isDisabled"
+                [(ngModel)]="amrapData.a1m3rep"
+                max="15"
+                min="1"
+                required
+              >
+              </ion-input>
+              </ion-col>
+
+            </ion-row>
+            <ion-row *ngIf="mpas > 3" class="ion-justify-content-center">
+              <ion-col  style="text-align: center; width: 50%;">
+                <ion-select
+                  placeholder="M4"
+                  
+                  [(ngModel)]="amrapData.a1m4"
+                  required
+                  [disabled]="isDisabled"
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                  "
+               
+                >
+                  <ion-select-option
+                    *ngFor="let move of moves"
+                    [value]="move.exeName"
+                    >{{move.exeName}}</ion-select-option
+                  >
+                </ion-select>
+               
+              </ion-col>
+              <ion-col style="text-align: center; width: 50%;">
+                <ion-input
+                placeholder="Reps"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                [disabled]="isDisabled"
+                [(ngModel)]="amrapData.a1m4rep"
+                max="15"
+                min="1"
+                required
+              >
+              </ion-input>
+              </ion-col>
+
+            </ion-row>           
+          </ion-row>
+          <!--l2-->
+          <pre></pre>
+          <div id="t2" *ngIf="numamrap >1">
+            <ion-row>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Amrap 2</ion-label
+              >
+            </ion-row>
+            <pre></pre>
+            <ion-row>
+              <ion-label style="font-size: x-large; text-align: center; width: 100%">Move(mins)</ion-label>
+              <ion-input placeholder="0"
+              style="font-size: x-large; text-align: center; width: 100%"
+              type="number"  [(ngModel)]="amrapData.a2move"></ion-input>
+            </ion-row>
+            <ion-row class="ion-justify-content-center" style="text-align: center">
+              <ion-row *ngIf="mpas > 0" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M1"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="amrapData.a2m1"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="amrapData.a2m1rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>
+              <ion-row *ngIf="mpas > 1" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M2"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="amrapData.a2m2"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="amrapData.a2m2rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>
+              <ion-row *ngIf="mpas > 2" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M3"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="amrapData.a2m3"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="amrapData.a2m3rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>
+              <ion-row *ngIf="mpas > 3" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M4"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="amrapData.a2m4"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="amrapData.a2m4rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>  
+            </ion-row>
+            <ion-row> </ion-row>
+          </div>
+          <!--lm3-->
+          <pre></pre>
+          <div id="t3" *ngIf="numamrap >2">
+            <ion-row>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Amrap 3</ion-label
+              >
+            </ion-row>
+            <pre></pre>
+            <ion-row>
+              <ion-label style="font-size: x-large; text-align: center; width: 100%">Move(mins)</ion-label>
+              <ion-input placeholder="0"
+              style="font-size: x-large; text-align: center; width: 100%"
+              type="number"  [(ngModel)]="amrapData.a3move"></ion-input>
+            </ion-row>
+            <ion-row class="ion-justify-content-center" style="text-align: center">
+              <ion-row *ngIf="mpas > 0" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M1"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="amrapData.a3m1"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="amrapData.a3m1rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>
+              <ion-row *ngIf="mpas > 1" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M2"
+                    
+                    [(ngModel)]="amrapData.a3m2"
+                    required
+                    [disabled]="isDisabled"
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="amrapData.a3m2rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>
+              <ion-row *ngIf="mpes > 2" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M3"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="amrapData.a3m3"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="amrapData.a3m3rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>
+              <ion-row *ngIf="mpas > 3" class="ion-justify-content-center">
+                <ion-col  style="text-align: center; width: 50%;">
+                  <ion-select
+                    placeholder="M4"
+                    [disabled]="isDisabled"
+                    [(ngModel)]="amrapData.a3m4"
+                    required
+                
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                    "
+                 
+                  >
+                    <ion-select-option
+                      *ngFor="let move of moves"
+                      [value]="move.exeName"
+                      >{{move.exeName}}</ion-select-option
+                    >
+                  </ion-select>
+                 
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%;">
+                  <ion-input
+                  placeholder="Reps"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [disabled]="isDisabled"
+                  [(ngModel)]="amrapData.a3m4rep"
+                  max="15"
+                  min="1"
+                  required
+                >
+                </ion-input>
+                </ion-col>
+
+              </ion-row>           
+            </ion-row>
+            
+            
+          </div>
+         
+          <pre></pre>
+          <ion-row>
+            <ion-label
+              style="font-size: x-large; text-align: center; width: 100%"
+              >Select a Date:</ion-label
+            >
+            <ion-input
+              style="font-size: x-large; text-align: center; color: #b27600"
+              type="datetime"
+              name="daDate"
+              id="daDate"
+              [(ngModel)]="amrapData.daDate"
+              [disabled]="isDisabled"
+        
+            ></ion-input>
+          </ion-row>
+          <ion-row *ngIf="showButtons">
+            <div style="text-align: center;margin-left: auto;
+            margin-right: auto; width: 80%;">
+              <ion-button
+              [disabled]="isDisabled"
+                
+              style="
+              
+              margin-left: auto;
+              margin-right: auto;
+              color: white;
+            "                
+                type="submit"
+                (click)="saveamrap()"
+                >Save</ion-button
+              >
+            </div>
+            <div style="text-align: center;margin-left: auto;
+            margin-right: auto;width: 80%;">
+              <ion-button
+              [disabled]="isDisabled"
+                style="
+           
+                  margin-left: auto;
+                  margin-right: auto;
+           
+                  color: black;
+                "
+                type="submit"
+                (click)="cancel()"
+                >CANCEL</ion-button
+              >
+            </div>
+          </ion-row>
+          
+          
+        
+        </ion-grid>
+      </div>
+    </ion-card>
   </ion-row>
  
 

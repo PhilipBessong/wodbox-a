@@ -28,7 +28,7 @@ export class WodstylePage implements OnInit {
     this.router.navigate(['/emom']);
   }
   toamrap(){
-    this.router.navigate(['/ahome']);
+    this.router.navigate(['/amrap']);
   }
 
 }

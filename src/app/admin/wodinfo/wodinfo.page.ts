@@ -10,6 +10,7 @@ import {
   Exercise,
   Ladder,
   Emom,
+  Amrap,
 } from 'src/app/firebase/workouts.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Component({
@@ -27,6 +28,8 @@ export class WodinfoPage implements OnInit {
   mpls: number = 0;
   numemom: number = 0;
   mpes: number = 0;
+  numamrap: number = 0;
+  mpas: number = 0;
   showButtons: boolean = false;
     // Define isDateInPast property
     //isDateInPast: boolean = false;
@@ -34,6 +37,7 @@ export class WodinfoPage implements OnInit {
     isIntrvalPresent: boolean = false;
     isLadderPresent: boolean = false;
     isEmomPresent: boolean = false;
+    isAmrapPresent: boolean = false;
   workout: Workout = {
     id: '',
     wodCat: '',
@@ -146,6 +150,40 @@ export class WodinfoPage implements OnInit {
     e3m4rep: 0,
     daDate: '', // Initialize with today's date
   };
+  amrapData: Amrap = {
+    wodCat: '',
+    wodStyle: '',
+  amrapNum: 0,
+    mpa: 0,
+    a1m1: '',
+    a1m2: '',
+    a1m3: '',
+    a1m4: '',
+    a2m1: '',
+    a2m2: '',
+    a2m3: '',
+    a2m4: '',
+    a3m1: '',
+    a3m2: '',
+    a3m3: '',
+    a3m4: '',
+    a1move: 0,
+    a2move: 0,
+    a3move: 0,
+    a1m1rep: 0,
+    a1m2rep: 0,
+    a1m3rep: 0,
+    a1m4rep: 0,
+    a2m1rep: 0,
+    a2m2rep: 0,
+    a2m3rep: 0,
+    a2m4rep: 0,
+    a3m1rep: 0,
+    a3m2rep: 0,
+    a3m3rep: 0,
+    a3m4rep: 0,
+    daDate: '',
+  };
   constructor(
     private route: ActivatedRoute,
     private navCtrl: NavController,
@@ -212,6 +250,22 @@ export class WodinfoPage implements OnInit {
           this.isEmomPresent = true; // Set to true if tabata data is present
           const currentDate = new Date();
           const emomDate = new Date(emom.daDate);
+         // if (tabataDate  !> currentDate) {
+          
+         //   this.isDateInPast = true;
+          //} else {
+          //  this.isDateInPast = false;
+          //}
+        }
+      });
+      this.workoutService.getAmrapById(id).subscribe((amrap) => {
+        if (amrap) {
+          this.amrapData = amrap;
+          this.mpas = amrap.mpa; // Load mpt after tabataData is set
+          this.numamrap = amrap.amrapNum;
+          this.isAmrapPresent = true; // Set to true if tabata data is present
+          const currentDate = new Date();
+          const amrapDate = new Date(amrap.daDate);
          // if (tabataDate  !> currentDate) {
           
          //   this.isDateInPast = true;
@@ -301,6 +355,27 @@ export class WodinfoPage implements OnInit {
       // Check if id is not null before using it
       this.workoutService
         .updateEmom(id, this.emomData)
+        .then(() => {
+          this.showButtons= false;
+          this.isDisabled = !this.isDisabled;
+          this.router.navigate(['/ahome']); // Navigate back after saving changes
+          
+        })
+        .catch((error) => {
+          console.error('Error updating emom:', error);
+          // Handle error, show error message, etc.
+        });
+    } else {
+      console.error('Error: emom ID is null');
+      // Handle the case where the ID is null, show error message, etc.
+    }
+  }
+  saveamrap(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id !== null) {
+      // Check if id is not null before using it
+      this.workoutService
+        .updateAmrap(id, this.amrapData)
         .then(() => {
           this.showButtons= false;
           this.isDisabled = !this.isDisabled;

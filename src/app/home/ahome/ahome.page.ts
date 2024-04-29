@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { Workout, WorkoutsService, Tabata, Ladder,Emom } from 'src/app/firebase/workouts.service';
+import { Workout, WorkoutsService, Tabata, Ladder,Emom, Amrap } from 'src/app/firebase/workouts.service';
 @Component({
   selector: 'app-ahome',
   templateUrl: './ahome.page.html',
@@ -12,6 +12,7 @@ export class AhomePage implements OnInit {
   tabatas: Tabata[]=[];
   ladders: Ladder[]=[];
   emoms: Emom[]=[];
+  amraps: Amrap[]=[]
   constructor(
     private workoutService: WorkoutsService,
     private router: Router,
@@ -23,6 +24,7 @@ export class AhomePage implements OnInit {
     this.loadTabatas();
     this.loadLadders();
     this.loadEmoms();
+    this.loadAmraps();
   }
 
   loadWorkouts() {
@@ -43,6 +45,11 @@ export class AhomePage implements OnInit {
   loadEmoms() {
     this.workoutService.getAllEmoms().subscribe((emoms) => {
       this.emoms = emoms;
+    });
+  }
+  loadAmraps() {
+    this.workoutService.getAllAmraps().subscribe((amraps) => {
+      this.amraps = amraps;
     });
   }
   tabataCard(tabataDate: string): string {
@@ -88,6 +95,18 @@ export class AhomePage implements OnInit {
     if (emomDateObj.toDateString() === today.toDateString()) {
       return '#00b250'; // green for today
     } else if (emomDateObj < today) {
+      return '#808080'; // Grey for past dates
+    } else {
+      return '#FFA500';  // Orange for future dates
+    }
+  }
+ amrapCard(amrapDate: string): string {
+    const today = new Date();
+    const amrapDateObj = new Date(amrapDate);
+
+    if (amrapDateObj.toDateString() === today.toDateString()) {
+      return '#00b250'; // green for today
+    } else if (amrapDateObj < today) {
       return '#808080'; // Grey for past dates
     } else {
       return '#FFA500';  // Orange for future dates
@@ -146,6 +165,19 @@ ladderClick(id: string | undefined) {
       console.error('Workout ID is undefined');
     }
   }
+ amrapClick(id: string | undefined) {
+    if (id) {
+      this.workoutService.getAmrapById(id).subscribe((amrap: Amrap | undefined) => {
+        if (amrap) {
+          this.router.navigate(['/wodinfo', id]); // Assuming 'wodinfo' is the route for viewing a workout
+        } else {
+          console.error('Workout not found'); // Handle error if workout is not found
+        }
+      });
+    } else {
+      console.error('Workout ID is undefined');
+    }
+  }
   deleteWorkout(id: string| undefined) {
     this.workoutService.deleteWorkout(id).then(() => {
       // Reload workouts after deletion
@@ -178,6 +210,18 @@ ladderClick(id: string | undefined) {
       this.workoutService.deleteEmom(id).then(() => {
         // Reload workouts after deletion
         this.loadEmoms();
+      });
+    }else{
+      window.location.href = '/ahome';
+    }
+  }
+  deleteAmrap(id: string | undefined) {
+    // Show confirmation dialog
+    if (confirm("Are you sure you want to delete this Amrap?")) {
+      // If user confirms deletion, proceed with deletion
+      this.workoutService.deleteAmrap(id).then(() => {
+        // Reload workouts after deletion
+        this.loadAmraps();
       });
     }else{
       window.location.href = '/ahome';

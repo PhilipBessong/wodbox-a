@@ -6,6 +6,7 @@ import {
   Style,
   Tabata,
   Emom,
+  Amrap,
   Ladder,
   Exercise,
   WorkoutsService,
@@ -20,6 +21,7 @@ export class WodonPage implements OnInit {
   stabatas: Tabata[]=[];
   sladders: Ladder[]=[];
   semoms: Emom[]=[];
+  samraps: Amrap[]=[];
   exercises: Exercise[] = [];
   videoUrl: SafeResourceUrl | undefined;
   videoHeight = '300px'; // Adjust the height as needed
@@ -34,6 +36,8 @@ export class WodonPage implements OnInit {
     this.getIonContentClass();
     this.getSpecificTabata();
     this.getSLadderWOD();
+    this.getSpecificAmrapWOD();
+    this.getSpecificEmomWOD();
   }
   getSpecificWOD(): void {
     this.workoutsService.getSpecificWOD().subscribe(
@@ -456,6 +460,123 @@ export class WodonPage implements OnInit {
               .getExebyname(exeName)
               .subscribe((exercises) => {
                 semoms.exee3m4 = exercises;
+              });
+          }
+        });
+      },
+      (error) => {
+        console.error('Error fetching specific workouts:', error);
+      }
+    );
+  }
+  getSpecificAmrapWOD(): void {
+    this.workoutsService.getSpecificAmrapWOD().subscribe(
+      (amraps: Amrap[]) => {
+        this.samraps = amraps;
+        this.samraps.forEach((samraps) => {
+          this.workoutsService
+            .getStyleByName(samraps.wodStyle)
+            .subscribe((style) => {
+              // Add style information to each workout
+              samraps.styleName = style?.styleName;
+              samraps.styleDescription = style?.styleDescription;
+            });
+            //begin showing workouts from r1 if they exit within the retrieved worout.
+
+          if (samraps.a1m1) {
+            const exeName = samraps.a1m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                samraps.exe = exercises;
+              });
+          }
+          if (samraps.a1m2) {
+            const exeName = samraps.a1m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                samraps.exea1m2 = exercises;
+              });
+          }
+          if (samraps.a1m3) {
+            const exeName = samraps.a1m3;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                samraps.exea1m3 = exercises;
+              });
+          }
+          if (samraps.a1m4) {
+            const exeName = samraps.a1m4;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                samraps.exea1m4 = exercises;
+              });
+          }
+          if (samraps.a2m1) {
+            const exeName = samraps.a2m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                samraps.exea2m1 = exercises;
+              });
+          }
+          if (samraps.a2m2) {
+            const exeName = samraps.a2m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                samraps.exea2m2 = exercises;
+              });
+          }
+          if (samraps.a2m3) {
+            const exeName = samraps.a2m3;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                samraps.exea2m3 = exercises;
+              });
+          }
+          if (samraps.a2m4) {
+            const exeName = samraps.a2m4;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                samraps.exea2m4 = exercises;
+              });
+          }
+          if (samraps.a3m1) {
+            const exeName = samraps.a3m1;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                samraps.exea3m1 = exercises;
+              });
+          }
+          if (samraps.a3m2) {
+            const exeName = samraps.a3m2;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                samraps.exea3m2 = exercises;
+              });
+          }
+          if (samraps.a3m3) {
+            const exeName = samraps.a3m3;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                samraps.exea3m3 = exercises;
+              });
+          }
+          if (samraps.a3m4) {
+            const exeName = samraps.a3m4;
+            this.workoutsService
+              .getExebyname(exeName)
+              .subscribe((exercises) => {
+                samraps.exea3m4 = exercises;
               });
           }
         });
@@ -956,6 +1077,188 @@ export class WodonPage implements OnInit {
          }, 1000);
        }
      }
+  
+     //amrap timers___________________________________________________________________________________
+  a2btn = false;
+  a3btn = false;
+  aTimer: number = 0;
+  a2Timer: number = 0;
+  a3Timer: number = 0;
+  astrt5SecTimer(samraps: Amrap) {
+    this.buttonDisabled = true; // Disable the button
+    this.cd5Sec = 10;
+    this.buttonText = 'GET READY!!!';
+    this.srtbtnShow = true;
+    this.cd5SecShow = true;
+    const timerInterval = setInterval(() => {
+      if (this.cd5Sec !== undefined && this.cd5Sec > 0) {
+        this.cd5Sec--;
+      }else {
+        clearInterval(timerInterval);
+        this.strta1m1Timer(samraps);
+        this.cd5SecShow = false;
+        this.prepimg = false;
+        this.wvid=true;
+        this.srtbtnShow = false;
+        this.buttonText = 'Start Timer';
+        this.buttonDisabled = false;
+      }
+      if (this.cd5Sec !== undefined && this.cd5Sec) {
+       
+      } 
+    }, 1000); // Update the 5-second countdown every second
+  }
+ 
+  strta1m1Timer(samraps: Amrap) {
+    this.aTimer = samraps.a1move * 60;
+
+    if (samraps.a1move) {
+      if (this.isPr1m1Timer) {
+        // Resume the countdown with the remaining time
+        this.cdr1m1Timer = this.remaincdr1m1;
+      } else if (this.cdr1m1Timer === undefined) {
+        this.cdr1m1Timer = this.aTimer;
+      }
+
+      this.cdr1m1Intval = setInterval(() => {
+      
+        if (!this.isPaused) {
+          // Check if the timer is not paused
+          if (this.cdr1m1Timer && this.cdr1m1Timer > 0) {
+            this.remaincdr1m1 = this.cdr1m1Timer; // Store remaining time
+            this.cdr1m1Timer--;
+          } else {
+            clearInterval(this.cdr1m1Intval);
+            this.clearr1m1Cd();
+           
+            if(samraps.a2m1!==''){
+              this.a2btn = true;
+              this.ladderlbls = false;
+            }else{
+              this.donebtn = true;
+              this.ladderlbls = false;
+            }
+            
+          }
+        }
+      }, 1000);
+    }
+  }
+  tolnotwoamrap(){
+    this.cdr1m1Show = false;
+    this.a2btn = false;
+    this.wvid=false;
+    this.r2m1Show = true;
+    this.ladderlbls = true;
+    this.prepimg = true;
+  }
+  tolnothreeamrap(){
+    this.r2m1Show = false;
+    this.a3btn = false;
+    this.wvid=false;
+    this.r3m1Show = true;
+    this.ladderlbls = true;
+    this.prepimg = true;
+  }
+
+  a2strt5SecTimer(samraps: Amrap) {
+    this.r2cd5Sec = 10;
+    this.r2srtbtnShow = true;
+    this.r2cd5SecShow = true;
+    this.buttonText = 'GET READY!!!'
+    const timerInterval = setInterval(() => {
+      if (this.r2cd5Sec !== undefined && this.r2cd5Sec > 0) {
+        this.r2cd5Sec--;
+      } else {
+        clearInterval(timerInterval);
+        this.strta2m1Timer(samraps);
+        this.r2cd5SecShow = false;
+        this.prepimg = false;
+        this.wvid=true;
+        this.r2srtbtnShow = false;
+        this.buttonText = 'Start Timer';
+      }
+    }, 1000); // Update the 5-second countdown every second
+  }
+  strta2m1Timer(samraps: Amrap) {
+    if (samraps.a2move) {
+      this.a2Timer = samraps.a2move * 60;
+      if (this.isPr2m1Timer) {
+        // Resume the countdown with the remaining time
+        this.cdr2m1Timer = this.remaincdr2m1;
+      } else if (this.cdr2m1Timer === undefined) {
+        this.cdr2m1Timer = this.l2Timer;
+      }
+      this.cdr2m1Intval = setInterval(() => {
+        if (!this.isPaused) {
+          if (this.cdr2m1Timer && this.cdr2m1Timer > 0) {
+            this.remaincdr2m1 = this.cdr2m1Timer; // Store remaining time
+            this.cdr2m1Timer--;
+          } else {
+            clearInterval(this.cdr2m1Intval);
+            this.clearr2m1Cd();
+
+            if(samraps.a3m1!==''){
+              this.a3btn = true;
+              this.ladderlbls = false;
+            }else{
+              this.donebtn = true;
+              this.ladderlbls = false;
+            }
+            
+          }
+        }
+      }, 1000);
+    }
+  }
+  a3strt5SecTimer(samraps: Amrap) {
+    this.r3cd5Sec = 10;
+    this.r3srtbtnShow = true;
+    this.r3cd5SecShow = true;
+    this.buttonText = 'GET READY!!!';
+    const timerInterval = setInterval(() => {
+      if (this.r3cd5Sec !== undefined && this.r3cd5Sec > 0) {
+        this.r3cd5Sec--;
+      } else {
+        clearInterval(timerInterval);
+        this.strta3m1Timer(samraps);
+        this.r3cd5SecShow = false;
+        this.prepimg = false;
+        this.wvid=true;
+        this.r3srtbtnShow = false;
+        this.buttonText = 'Start Timer';
+      }
+    }, 1000); // Update the 5-second countdown every second
+  }
+  strta3m1Timer(samraps: Amrap) {
+    if (samraps.a3move) {
+      this.a3Timer = samraps.a3move * 60;
+      if (this.isPr3m1Timer) {
+        // Resume the countdown with the remaining time
+        this.cdr3m1Timer = this.remaincdr3m1;
+      } else if (this.cdr3m1Timer === undefined) {
+        this.cdr3m1Timer = this.l3Timer;
+      }
+      this.cdr3m1Intval = setInterval(() => {
+        if (!this.isPaused) {
+          if (this.cdr3m1Timer && this.cdr3m1Timer > 0) {
+            this.remaincdr3m1 = this.cdr3m1Timer; // Store remaining time
+            this.cdr3m1Timer--;
+          } else {
+            clearInterval(this.cdr3m1Intval);
+            this.clearr3m1Cd();
+
+           
+              this.donebtn = true;
+              this.ladderlbls = false;
+            
+            
+          }
+        }
+      }, 1000);
+    }
+  }
+
   
 
    cd5Sec: number | undefined = undefined;
