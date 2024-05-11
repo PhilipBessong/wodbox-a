@@ -26,7 +26,7 @@
 
     <pre></pre>
     <div>
-      <h1 class="wodhead" style="color: aliceblue">EMOM</h1>
+      <h1 class="wodhead" style="color: aliceblue">AMRAP</h1>
     </div>
     <pre></pre>
     <ion-row>
@@ -103,6 +103,7 @@
                     max="4"
                     min="2"
                     required
+                    name="mpa"
                   >
                   </ion-input>
                 </div>
@@ -210,7 +211,7 @@
                     placeholder="M3"
                     
                     [(ngModel)]="amrapData.a1m3"
-                    required
+                    
                 
                     style="
                       font-size: x-large;
@@ -238,7 +239,7 @@
                   [(ngModel)]="amrapData.a1m3rep"
                   max="15"
                   min="1"
-                  required
+                  
                 >
                 </ion-input>
                 </ion-col>
@@ -250,7 +251,7 @@
                     placeholder="M4"
                     
                     [(ngModel)]="amrapData.a1m4"
-                    required
+                    
                 
                     style="
                       font-size: x-large;
@@ -278,7 +279,7 @@
                   [(ngModel)]="amrapData.a1m4rep"
                   max="15"
                   min="1"
-                  required
+                  
                 >
                 </ion-input>
                 </ion-col>
@@ -308,7 +309,7 @@
                       placeholder="M1"
                       
                       [(ngModel)]="amrapData.a2m1"
-                      required
+                      
                   
                       style="
                         font-size: x-large;
@@ -336,7 +337,7 @@
                     [(ngModel)]="amrapData.a2m1rep"
                     max="15"
                     min="1"
-                    required
+                    
                   >
                   </ion-input>
                   </ion-col>
@@ -348,7 +349,7 @@
                       placeholder="M2"
                       
                       [(ngModel)]="amrapData.a2m2"
-                      required
+                      
                   
                       style="
                         font-size: x-large;
@@ -376,7 +377,7 @@
                     [(ngModel)]="amrapData.a2m2rep"
                     max="15"
                     min="1"
-                    required
+                    
                   >
                   </ion-input>
                   </ion-col>
@@ -388,7 +389,7 @@
                       placeholder="M3"
                       
                       [(ngModel)]="amrapData.a2m3"
-                      required
+                      
                   
                       style="
                         font-size: x-large;
@@ -416,7 +417,7 @@
                     [(ngModel)]="amrapData.a2m3rep"
                     max="15"
                     min="1"
-                    required
+                    
                   >
                   </ion-input>
                   </ion-col>
@@ -428,7 +429,7 @@
                       placeholder="M4"
                       
                       [(ngModel)]="amrapData.a2m4"
-                      required
+                      
                   
                       style="
                         font-size: x-large;
@@ -456,7 +457,7 @@
                     [(ngModel)]="amrapData.a2m4rep"
                     max="15"
                     min="1"
-                    required
+                    
                   >
                   </ion-input>
                   </ion-col>
@@ -488,7 +489,7 @@
                       placeholder="M1"
                       
                       [(ngModel)]="amrapData.a3m1"
-                      required
+                      
                   
                       style="
                         font-size: x-large;
@@ -516,7 +517,7 @@
                     [(ngModel)]="amrapData.a3m1rep"
                     max="15"
                     min="1"
-                    required
+                    
                   >
                   </ion-input>
                   </ion-col>
@@ -528,7 +529,7 @@
                       placeholder="M2"
                       
                       [(ngModel)]="amrapData.a3m2"
-                      required
+                      
                   
                       style="
                         font-size: x-large;
@@ -556,7 +557,7 @@
                     [(ngModel)]="amrapData.a3m2rep"
                     max="15"
                     min="1"
-                    required
+                    
                   >
                   </ion-input>
                   </ion-col>
@@ -568,7 +569,7 @@
                       placeholder="M3"
                       
                       [(ngModel)]="amrapData.a3m3"
-                      required
+                      
                   
                       style="
                         font-size: x-large;
@@ -596,7 +597,7 @@
                     [(ngModel)]="amrapData.a3m3rep"
                     max="15"
                     min="1"
-                    required
+                    
                   >
                   </ion-input>
                   </ion-col>
@@ -608,7 +609,7 @@
                       placeholder="M4"
                       
                       [(ngModel)]="amrapData.a3m4"
-                      required
+                      
                   
                       style="
                         font-size: x-large;
@@ -636,7 +637,7 @@
                     [(ngModel)]="amrapData.a3m4rep"
                     max="15"
                     min="1"
-                    required
+                    
                   >
                   </ion-input>
                   </ion-col>
@@ -655,11 +656,11 @@
               >
               <ion-input
                 style="font-size: x-large; text-align: center; color: #b27600"
-                type="datetime"
+                type="date"
                 name="daDate"
                 id="daDate"
                 [(ngModel)]="amrapData.daDate"
-          
+                required
               ></ion-input>
             </ion-row>
             <div *ngIf="showErrorCard" class="error-card">

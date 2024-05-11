@@ -35,7 +35,7 @@
     <pre></pre>
     <ion-row>
       <ion-card style="width: 100%; --ion-background-color: white">
-        <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
+       
           <div class="container">
             <ion-grid>
               <pre></pre>
@@ -55,7 +55,7 @@
                   <ion-select
                     placeholder="Select Category"
                     style="font-size: x-large; text-align: center"
-                    formControlName="wodCat"
+                    [(ngModel)]="initForm.wodCat"
                     id="wodCat"
                     name="wodCat"
                   >
@@ -91,7 +91,7 @@
                     border-radius: 10px;
                   "
                   placeholder="Select Rounds"
-                  formControlName="rounds"
+                  [(ngModel)]="initForm.rounds"
                   id="rounds"
                   [(ngModel)]="selectedNumber"
                   max="4"
@@ -125,9 +125,10 @@
                     border-radius: 10px;
                   "
                   placeholder="Select MPR"
-                  formControlName="mpr"
+                  
                   id="mpr"
                   [(ngModel)]="mprs"
+                  [(ngModel)]="initForm.mpr"
                   max="3"
                   min="1"
                 ></ion-input>
@@ -150,7 +151,7 @@
                         width: 100%;
                         color: #b27600;
                       "
-                      formControlName="r1m1"
+                       [(ngModel)]="initForm.r1m1"
                       id="r1m1"
                     >
                       <ion-select-option
@@ -171,7 +172,7 @@
                       placeholder="M2"
                       name="r1m2"
                       id="r1m2"
-                      formControlName="r1m2"
+                      [(ngModel)]="initForm.r1m2"
                     >
                       <ion-select-option
                         *ngFor="let move of moves"
@@ -191,7 +192,7 @@
                       placeholder="M3"
                       name="r1m3"
                       id="r1m3"
-                      formControlName="r1m3"
+                      [(ngModel)]="initForm.r1m3"
                     >
                       <ion-select-option
                         *ngFor="let move of moves"
@@ -224,7 +225,7 @@
                       "
                       max="8"
                       min="1"
-                      formControlName="r1sets"
+                      [(ngModel)]="initForm.r1sets"
                     >
                     </ion-input>
                   </ion-col>
@@ -248,7 +249,7 @@
                         color: #b27600;
                       "
                       min="1"
-                      formControlName="r1move"
+                      [(ngModel)]="initForm.r1move"
                     />
                   </ion-col>
                   <ion-col style="text-align: center">
@@ -270,7 +271,7 @@
                         color: #b27600;
                       "
                       min="1"
-                      formControlName="r1rest"
+                      [(ngModel)]="initForm.r1rest"
                     />
                   </ion-col>
                 </ion-row>
@@ -294,7 +295,7 @@
                         width: 100%;
                         color: #b27600;
                       "
-                      formControlName="r2m1"
+                      [(ngModel)]="initForm.r2m1"
                     >
                       <ion-select-option
                         *ngFor="let move of moves"
@@ -314,7 +315,7 @@
                       placeholder="M2"
                       name="r2m2"
                       id="r2m2"
-                      formControlName="r2m2"
+                      [(ngModel)]="initForm.r2m2"
                     >
                       <ion-select-option
                         *ngFor="let move of moves"
@@ -334,7 +335,7 @@
                       placeholder="M3"
                       name="r2m3"
                       id="r2m3"
-                      formControlName="r2m3"
+                      [(ngModel)]="initForm.r2m3"
                     >
                       <ion-select-option
                         *ngFor="let move of moves"
@@ -367,7 +368,7 @@
                       "
                       max="8"
                       min="1"
-                      formControlName="r2sets"
+                      [(ngModel)]="initForm.r2sets"
                     >
                     </ion-input>
                   </ion-col>
@@ -382,7 +383,7 @@
                       >Move</ion-label
                     >
                     <ion-input
-                      formControlName="r2move"
+                    [(ngModel)]="initForm.r2move"
                       type="number"
                       name="r2move"
                       id="r2move"
@@ -404,7 +405,7 @@
                       >Rest</ion-label
                     >
                     <ion-input
-                      formControlName="r2rest"
+                    [(ngModel)]="initForm.r2rest"
                       type="number"
                       name="r2rest"
                       id="r2rest"
@@ -437,7 +438,7 @@
                         width: 100%;
                         color: #b27600;
                       "
-                      formControlName="r3m1"
+                [(ngModel)]="initForm.r3m1"
                     >
                       <ion-select-option
                         *ngFor="let move of moves"
@@ -457,7 +458,7 @@
                       placeholder="M2"
                       name="r3m2"
                       id="r3m2"
-                      formControlName="r3m2"
+                      [(ngModel)]="initForm.r3m2"
                     >
                       <ion-select-option
                         *ngFor="let move of moves"
@@ -477,7 +478,7 @@
                       placeholder="M3"
                       name="r3m3"
                       id="r3m3"
-                      formControlName="r3m3"
+                      [(ngModel)]="initForm.r3m3"
                     >
                       <ion-select-option
                         *ngFor="let move of moves"
@@ -510,7 +511,7 @@
                       "
                       max="8"
                       min="1"
-                      formControlName="r3sets"
+                      [(ngModel)]="initForm.r3sets"
                     >
                     </ion-input>
                   </ion-col>
@@ -525,7 +526,7 @@
                       >Move</ion-label
                     >
                     <ion-input
-                      formControlName="r3move"
+                    [(ngModel)]="initForm.r3move"
                       type="number"
                       name="r3move"
                       id="r3move"
@@ -547,7 +548,7 @@
                       >Rest</ion-label
                     >
                     <ion-input
-                      formControlName="r3rest"
+                    [(ngModel)]="initForm.r3rest"
                       type="number"
                       name="r3rest"
                       id="r3rest"
@@ -580,7 +581,7 @@
                         width: 100%;
                         color: #b27600;
                       "
-                      formControlName="r4m1"
+                      [(ngModel)]="initForm.r4m1"
                       id="r4m1"
                     >
                       <ion-select-option
@@ -601,7 +602,7 @@
                       placeholder="M2"
                       name="r4m2"
                       id="r4m2"
-                      formControlName="r4m2"
+                      [(ngModel)]="initForm.r4m2"
                       id="r4m2"
                     >
                       <ion-select-option
@@ -622,7 +623,7 @@
                       placeholder="M3"
                       name="r4m3"
                       id="r4m3"
-                      formControlName="r4m3"
+                      [(ngModel)]="initForm.r4m3"
                       id="r4m3"
                     >
                       <ion-select-option
@@ -656,7 +657,7 @@
                       "
                       max="8"
                       min="1"
-                      formControlName="r4sets"
+                     [(ngModel)]="initForm.r4sets"
                       id="r4sets"
                     >
                     </ion-input>
@@ -672,7 +673,7 @@
                       >Move</ion-label
                     >
                     <ion-input
-                      formControlName="r4move"
+                    [(ngModel)]="initForm.r4move"
                       id="r4move"
                       type="number"
                       name="r4move"
@@ -695,7 +696,7 @@
                       >Rest</ion-label
                     >
                     <ion-input
-                      formControlName="r4rest"
+                    [(ngModel)]="initForm.r4rest"
                       id="r4rest"
                       type="number"
                       name="r4rest"
@@ -729,7 +730,7 @@
                   type="Date"
                   name="daDate"
                   id="daDate"
-                  formControlName="daDate"
+                  [(ngModel)]="initForm.daDate"
                   id="daDate"
                 ></ion-input>
               </ion-row>
@@ -751,12 +752,12 @@
                 background-color: aliceblue;
               "
               type="submit"
-              [disabled]="!workoutForm.valid"
+              [disabled]="!initForm.wodCat || !initForm.daDate || !initForm.r1m1"
+              (click)="submitForm()"
               >Add WOD</ion-button
             >
             <pre></pre>
           </div>
-        </form>
       </ion-card>
     </ion-row>
   </div>

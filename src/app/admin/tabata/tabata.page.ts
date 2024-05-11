@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   WorkoutsService,
-  Style,
   Exercise,
 } from 'src/app/firebase/workouts.service';
 import { NavController, ToastController } from '@ionic/angular';
@@ -13,9 +12,10 @@ import { NavController, ToastController } from '@ionic/angular';
   styleUrls: ['./tabata.page.scss'],
 })
 export class TabataPage implements OnInit {
-  towodstyle() {
-    this.router.navigate(['/wodstyle']);
-  }
+  moves: Exercise[] = [];
+  numtabat: number = 0;
+  mpts: number = 0;
+
   constructor(
     private router: Router,
     private workoutsService: WorkoutsService,
@@ -23,10 +23,10 @@ export class TabataPage implements OnInit {
     private toastCtrl: ToastController,
     private firestore: AngularFirestore
   ) {}
-  moves: Exercise[] = [];
-  numtabat: number = 0;
-  mpts: number = 0;
 
+  ngOnInit() {
+    this.loadMoves();
+  }
   tabataData = {
     wodCat: '',
     wodStyle: 'TABATA',
@@ -48,9 +48,7 @@ export class TabataPage implements OnInit {
     daDate: new Date().toISOString().substring(0, 10), // Initialize with today's date
   };
 
-  ngOnInit() {
-    this.loadMoves();
-  }
+  
   loadMoves() {
     this.moves = this.workoutsService.getAllMoves();
   }
@@ -96,6 +94,8 @@ export class TabataPage implements OnInit {
   hideErrorCard() {
     this.showErrorCard = false;
   }
-  
+  towodstyle() {
+    this.router.navigate(['/wodstyle']);
+  }
   
 }

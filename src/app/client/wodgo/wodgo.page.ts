@@ -654,7 +654,9 @@ export class WodgoPage implements OnInit {
   r4m1RestShowc: boolean = false;
   r4m2RestShowc: boolean = false;
   r4m3RestShowc: boolean = false;
+  lFinishShowc: boolean = false;
   woddonec: boolean = false;
+
 
   ionContentClass: string = ''; // Property to hold the class for ion-content
   lococon: string = '';
@@ -738,7 +740,9 @@ export class WodgoPage implements OnInit {
     } else if (this.woddonec) {
       this.ionContentClass = 'home-content';
       this.lococon = 'logoconc';
-    }
+    }else if (this.lFinishShowc) {
+      this.ionContentClass = 'blue-content';
+      this.lococon = 'logocona';}
   }
   updateIonContentClass() {
     // Method to update the ion-content class based on variables
@@ -783,6 +787,7 @@ export class WodgoPage implements OnInit {
   l3btn = false;
   donebtn = false;
   ladderlbls = true;
+  lFinishShow = false;
   lTimer: number = 0;
   l2Timer: number = 0;
   l3Timer: number = 0;
@@ -812,7 +817,7 @@ export class WodgoPage implements OnInit {
   }
  
   strtl1m1Timer(sladders: Ladder) {
-    this.lTimer = sladders.l1move * 60;
+    this.lTimer = sladders.l1move * 10;
 
     if (sladders.l1move) {
       if (this.isPr1m1Timer) {
@@ -837,8 +842,12 @@ export class WodgoPage implements OnInit {
               this.l2btn = true;
               this.ladderlbls = false;
             }else{
-              this.donebtn = true;
-              this.ladderlbls = false;
+              this.lFinishShow = true;
+              this.cdr1m1Show = false;
+              // Call a method to update the ion-content class
+              this.lFinishShowc = true;
+              this.cdr1m1Showc = false;
+              this.updateIonContentClass();
             }
             
           }
@@ -884,7 +893,7 @@ export class WodgoPage implements OnInit {
   }
   strtl2m1Timer(sladders: Ladder) {
     if (sladders.l2move) {
-      this.l2Timer = sladders.l2move * 60;
+      this.l2Timer = sladders.l2move * 10;
       if (this.isPr2m1Timer) {
         // Resume the countdown with the remaining time
         this.cdr2m1Timer = this.remaincdr2m1;
@@ -904,8 +913,12 @@ export class WodgoPage implements OnInit {
               this.l3btn = true;
               this.ladderlbls = false;
             }else{
-              this.donebtn = true;
-              this.ladderlbls = false;
+             
+              this.lFinishShow = true;
+              this.r2m1Show = false;
+              this.lFinishShowc = true;
+              this.r2m1Showc = false;
+              this.updateIonContentClass();
             }
             
           }
@@ -934,7 +947,7 @@ export class WodgoPage implements OnInit {
   }
   strtl3m1Timer(sladders: Ladder) {
     if (sladders.l3move) {
-      this.l3Timer = sladders.l3move * 60;
+      this.l3Timer = sladders.l3move * 10;
       if (this.isPr3m1Timer) {
         // Resume the countdown with the remaining time
         this.cdr3m1Timer = this.remaincdr3m1;
@@ -949,10 +962,15 @@ export class WodgoPage implements OnInit {
           } else {
             clearInterval(this.cdr3m1Intval);
             this.clearr3m1Cd();
-
+            this.lFinishShow = true;
+            this.r3m1Show = false;
+            this.r3m1Showc = false;
+            // Call a method to update the ion-content class
+            this.lFinishShowc = true;
+            this.updateIonContentClass();
+            
            
-              this.donebtn = true;
-              this.ladderlbls = false;
+            
             
             
           }
@@ -960,6 +978,7 @@ export class WodgoPage implements OnInit {
       }, 1000);
     }
   }
+  
    //emom timers___________________________________________________________________________________
    e2btn = false;
    e3btn = false;;
@@ -1018,8 +1037,12 @@ export class WodgoPage implements OnInit {
                this.e2btn = true;
                this.ladderlbls = false;
              }else{
-               this.donebtn = true;
-               this.ladderlbls = false;
+              this.lFinishShow = true;
+              this.cdr1m1Show = false;
+              // Call a method to update the ion-content class
+              this.lFinishShowc = true;
+              this.cdr1m1Showc = false;
+              this.updateIonContentClass();
              }
              
            }
@@ -1086,8 +1109,12 @@ export class WodgoPage implements OnInit {
                this.e3btn = true;
                this.ladderlbls = false;
              }else{
-               this.donebtn = true;
-               this.ladderlbls = false;
+              this.lFinishShow = true;
+              this.r2m1Show = false;
+              // Call a method to update the ion-content class
+              this.lFinishShowc = true;
+              this.r2m1Showc = false;
+              this.updateIonContentClass();
              }
              
            }
@@ -1115,6 +1142,7 @@ export class WodgoPage implements OnInit {
      }, 1000); // Update the 5-second countdown every second
    }
    strte3m1Timer(semoms: Emom) {
+    
     this.e3Timer = 60;
      if (this.e3Timer) {
       
@@ -1133,9 +1161,12 @@ export class WodgoPage implements OnInit {
              clearInterval(this.cdr3m1Intval);
              this.clearr3m1Cd();
  
-            
-               this.donebtn = true;
-               this.ladderlbls = false;
+             this.lFinishShow = true;
+             this.r3m1Show = false;
+             // Call a method to update the ion-content class
+             this.lFinishShowc = true;
+             this.r3m1Showc = false;
+             this.updateIonContentClass();
              
              
            }
@@ -1201,8 +1232,12 @@ export class WodgoPage implements OnInit {
               this.a2btn = true;
               this.ladderlbls = false;
             }else{
-              this.donebtn = true;
-              this.ladderlbls = false;
+              this.lFinishShow = true;
+              this.cdr1m1Show = false;
+              // Call a method to update the ion-content class
+              this.lFinishShowc = true;
+              this.cdr1m1Showc = false;
+              this.updateIonContentClass();
             }
             
           }
@@ -1268,8 +1303,12 @@ export class WodgoPage implements OnInit {
               this.a3btn = true;
               this.ladderlbls = false;
             }else{
-              this.donebtn = true;
-              this.ladderlbls = false;
+              this.lFinishShow = true;
+              this.r2m1Show = false;
+              // Call a method to update the ion-content class
+              this.lFinishShowc = true;
+              this.r2m1Showc = false;
+              this.updateIonContentClass();
             }
             
           }
@@ -1297,6 +1336,7 @@ export class WodgoPage implements OnInit {
     }, 1000); // Update the 5-second countdown every second
   }
   strta3m1Timer(samraps: Amrap) {
+    
     if (samraps.a3move) {
       this.a3Timer = samraps.a3move * 60;
       if (this.isPr3m1Timer) {
@@ -1314,9 +1354,12 @@ export class WodgoPage implements OnInit {
             clearInterval(this.cdr3m1Intval);
             this.clearr3m1Cd();
 
-           
-              this.donebtn = true;
-              this.ladderlbls = false;
+            this.lFinishShow = true;
+            this.r3m1Show = false;
+            // Call a method to update the ion-content class
+            this.lFinishShowc = true;
+            this.r3m1Showc = false;
+            this.updateIonContentClass();
             
             
           }

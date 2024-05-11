@@ -244,15 +244,9 @@ export class WorkoutsService {
   private amrapCollection: AngularFirestoreCollection<Amrap>;
   private readonly acollectionName = 'amrap';
   constructor(private firestore: AngularFirestore) {
-    this.workoutCollection = this.firestore.collection<Workout>(
-      this.collectionName
-    );
-    this.tabataCollection = this.firestore.collection<Tabata>(
-      this.tcollectionName
-    );
-    this.ladderCollection = this.firestore.collection<Ladder>(
-      this.lcollectionName
-    );
+    this.workoutCollection = this.firestore.collection<Workout>(this.collectionName);
+    this.tabataCollection = this.firestore.collection<Tabata>(this.tcollectionName );
+    this.ladderCollection = this.firestore.collection<Ladder>(this.lcollectionName);
     this.emomCollection = this.firestore.collection<Emom>(this.ecollectionName);
     this.amrapCollection = this.firestore.collection<Amrap>(this.acollectionName);
   }

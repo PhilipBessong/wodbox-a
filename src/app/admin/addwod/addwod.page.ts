@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup,ReactiveFormsModule } from '@angular/forms';
+
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import { Timestamp } from '@firebase/firestore';
 import {
   WorkoutsService,
-  Style,
-  Workout,
   Exercise
 } from 'src/app/firebase/workouts.service';
-import { NavController, ToastController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Component({
   selector: 'app-addwod',
@@ -18,28 +14,27 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./addwod.page.scss'],
 })
 export class AddwodPage implements OnInit {
-  workoutForm!: FormGroup;
-  wodStyles: Style[] = [];
+  
   moves: Exercise[]=[];
   mprs: number = 0;
   selectedNumber: number = 0;
   constructor(
     private workoutsService: WorkoutsService,
-    private formBuilder: FormBuilder,
-    private navCtrl: NavController,
     private firestore: AngularFirestore,
     private router: Router,
-    private toastCtrl: ToastController
   ) {}
 
   ngOnInit() {
-    this.loadStyles();
-    this.initForm();
     this.loadMoves();
   }
+  
+  loadMoves(){
+    this.moves = this.workoutsService.getAllMoves();
+     // Initialize form controls after data is available
 
-  initForm(): void {
-    this.workoutForm = this.formBuilder.group({
+  }
+
+  initForm ={
       wodCat: '',
       wodStyle: 'INTERVAL',
       rounds: 0,
@@ -69,62 +64,51 @@ export class AddwodPage implements OnInit {
       r4move: 0,
       r4rest: 0,
       daDate: new Date().toISOString().substring(0, 10), // Initialize with today's date
-    });
-  }
-
-  loadStyles() {
-    // Call the getAllWodStyles() function from your data service
-    this.wodStyles = this.workoutsService.getAllWodStyles();
-  }
-  loadMoves(){
-    this.moves = this.workoutsService.getAllMoves();
-  }
+    };
   showErrorCard = false;
-  async onSubmit(): Promise<void> {
-    const newWorkout: Workout = this.workoutForm.value;
-    const dateInput = newWorkout.daDate;
-  
-    try {
-      // Check if there is a document with the same date and wodCat
-      const querySnapshot = await this.firestore.collection('tabatas', ref => ref
-        .where('daDate', '==', dateInput)
-        .where('wodCat', '==', newWorkout.wodCat))
-        .get()
-        .toPromise();
-  
-      if (querySnapshot && querySnapshot.size > 0) {
-        // If a document with the same date and wodCat already exists
-        this.showErrorCard = true;
-      } else {
-        // If no such document exists, create the workout
-        await this.workoutsService.createWorkout(newWorkout);
-        // Show success message using ToastController
-        const toast = await this.toastCtrl.create({
-          message: 'Workout created successfully!',
-          duration: 2000, // Duration in milliseconds
-          position: 'top', // Position of the toast
-        });
-        toast.present();
-  
-        // Navigate to '/ahome'
-        this.navCtrl.navigateForward('/ahome');
-      }
-    } catch (error) {
-      console.error('Error creating workout:', error);
-      // Show error message using ToastController
-      this.showErrorCard = true;
+ 
+  submitForm() {
+    if (!this.initForm.wodCat || !this.initForm.daDate || !this.initForm.r1m1) {
+      // Handle form validation or display an error message
+      // For now, I'm displaying a simple alert message
+      alert('Please fill in all the required fields.');
+      return;
+    
     }
-  }
   
-
+    // Check if there is a document with the same date and wodCat
+    this.firestore.collection('workouts', ref => ref.where('daDate', '==', this.initForm.daDate)
+                                                      .where('wodCat', '==', this.initForm.wodCat))
+      .get()
+      .toPromise()
+      .then((querySnapshot) => {
+        if (querySnapshot && querySnapshot.size > 0) {
+          // If a document with the same date and wodCat already exists
+          this.showErrorCard = true;
+        } else {
+          // If no such document exists, submit the form
+          this.firestore.collection('workouts').add(this.initForm)
+            .then(() => {
+              console.log('User data submitted successfully!');
+              // Optionally, reset the form
+              this.router.navigate(['/ahome']);
+            })
+            .catch(error => {
+              console.error('Error submitting user data:', error);
+              // Handle error appropriately
+            });
+        }
+      })
+      .catch(error => {
+        console.error('Error checking for existing document:', error);
+        // Handle error appropriately
+      });
   
-  
-  
+  } 
   hideErrorCard() {
     this.showErrorCard = false;
   }
    
-  
   backtoWarmUp(){
     this.router.navigate(['/wodstyle']);
   }

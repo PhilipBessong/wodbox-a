@@ -5055,7 +5055,7 @@
                   *ngIf="l2btn"
                   class="ladderLBL"
                   style="
-                    background-color: #00b250;
+                    background: linear-gradient(45deg, #00b250, #2E7D32);
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
@@ -5245,7 +5245,7 @@
                   *ngIf="l3btn"
                   class="ladderLBL"
                   style="
-                    background-color: #00b250;
+                   background: linear-gradient(45deg, #00b250, #2E7D32);
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
@@ -5525,6 +5525,83 @@
       </ion-card>
     </ion-card>
   </div>
+  <div class="daBackb" *ngIf="lFinishShow">
+    <ion-card
+      class="wodbodb"
+      *ngFor="let ladder of sladders"
+      style="background-color: #22b9e9"
+    >
+      <h1
+        class="cardttl"
+        style="
+          color: white;
+          font-size: xxx-large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+       
+      >
+        Finished
+      </h1>
+      <ion-card
+        class="card"
+        style="height: 670px; --ion-background-color: white"
+      >
+        <ion-row
+          class="ion-justify-content-center"
+          *ngIf="ladder.exe"
+          style="padding-top: 11%"
+        >
+        
+          <ion-img
+            
+            src="/assets/imgs/flag.jpg"
+            style="background-color: white; height: 47.4vh"
+            class="flagimg"
+          ></ion-img>
+        </ion-row>
+
+        <ion-row
+          
+          class="ion-justify-content-center"
+          style="padding-top: 1.7%"
+        >
+          <!-- Countdown timer -->
+         
+          <div id="r4m3restfinbtn" style="padding-top: 7%">
+            <button
+              (click)="wedoner4m3()"
+              
+              style="
+                height: 70px;
+                width: 330px;
+                margin-top: 20px;
+                font-size: xx-large;
+                border-radius: 30px;
+                color: black;
+                border: 2px solid #22b9e9;
+                background: linear-gradient(
+                  45deg,
+                  #ffffff,
+                  #1b7d9b
+                ); /* Gradient background for a more vibrant look */
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                  0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+                transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+              "
+              id="srtbtnr1m1"
+              color="#00b250"
+            >
+              Finish
+            </button>
+          </div>
+        </ion-row>
+      </ion-card>
+    </ion-card>
+  </div>
+  
 
   <!--________emoms______________________________________________________________-->
   <!--e1-->
@@ -5625,7 +5702,7 @@
                   *ngIf="e2btn"
                   class="ladderLBL"
                   style="
-                    background-color: #00b250;
+                         background: linear-gradient(45deg, #00b250, #2E7D32);
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
@@ -5820,7 +5897,7 @@
                   *ngIf="e3btn"
                   class="ladderLBL"
                   style="
-                    background-color: #00b250;
+                         background: linear-gradient(45deg, #00b250, #2E7D32);
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
@@ -6198,7 +6275,7 @@
                   *ngIf="a2btn"
                   class="ladderLBL"
                   style="
-                    background-color: #00b250;
+                         background: linear-gradient(45deg, #00b250, #2E7D32);
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
@@ -6393,7 +6470,7 @@
                   *ngIf="a3btn"
                   class="ladderLBL"
                   style="
-                    background-color: #00b250;
+                        background: linear-gradient(45deg, #00b250, #2E7D32);
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;

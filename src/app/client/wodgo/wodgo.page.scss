@@ -246,8 +246,11 @@ padding-bottom: 0%;
     font-size: xx-large;
     padding: 10px;
   }
-  .ladderLBLcon{
-    background-color:#00b250;
+  .ladderLBLcon {
+    /* Gradient background */
+    background: linear-gradient(45deg, #00b250, #2E7D32);
+    
+    /* Other properties */
     border-radius: 20px;
     width: 90%;
     text-align: center;
@@ -258,7 +261,9 @@ padding-bottom: 0%;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
+
+
   
   
   

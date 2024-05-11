@@ -102,6 +102,7 @@
                     [(ngModel)]="ladderData.mpl"
                     max="4"
                     min="2"
+                    name="mpl"
                     required
                   >
                   </ion-input>
@@ -148,8 +149,8 @@
                 </ion-select>
               </ion-col>
               <!--l1m2-->
-              <ion-col style="text-align: center; width: 50%;">
-                <div *ngIf="mpls>1">
+              <ion-col *ngIf="mpls>=1" style="text-align: center; width: 50%;">
+                <div >
                   <ion-select
                     placeholder="M2"
                    
@@ -172,8 +173,8 @@
                 </div>
               </ion-col>
               <!--l1m3-->
-              <ion-col style="text-align: center; width: 50%;">
-                <div *ngIf="mpls>2">
+              <ion-col *ngIf="mpls>2" style="text-align: center; width: 50%;">
+                <div >
                   <ion-select
                     placeholder="M3"
                  
@@ -196,8 +197,8 @@
                 </div>
               </ion-col>
               <!--l1m4-->
-              <ion-col style="text-align: center; width: 50%;">
-                <div *ngIf="mpls>3">
+              <ion-col *ngIf="mpls>3" style="text-align: center; width: 50%;">
+                <div >
                   <ion-select
                     placeholder="M4"
                    
@@ -447,7 +448,7 @@
               >
               <ion-input
                 style="font-size: x-large; text-align: center; color: #b27600"
-                type="datetime"
+                type="date"
                 name="daDate"
                 id="daDate"
                 [(ngModel)]="ladderData.daDate"

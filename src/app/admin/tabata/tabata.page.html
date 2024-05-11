@@ -98,6 +98,7 @@
                     placeholder="0"
                     style="font-size: x-large; text-align: center; width: 100%"
                     type="number"
+                    name="mpt"
                     [(ngModel)]="mpts"
                     [(ngModel)]="tabataData.mpt"
                     max="2"
@@ -142,8 +143,8 @@
                 </ion-select>
               </ion-col>
               <!--tm2-->
-              <ion-col style="text-align: center; width: 50%;">
-                <div *ngIf="mpts>1">
+              <ion-col *ngIf="mpts>1" style="text-align: center; width: 50%;">
+                <div >
                   <ion-select
                     placeholder="M2"
                     name="r1m2"
