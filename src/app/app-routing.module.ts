@@ -70,7 +70,8 @@ const routes: Routes = [
   {
     path: 'ladder',
     loadChildren: () => import('./admin/ladder/ladder.module').then( m => m.LadderPageModule)
-  },  {
+  },
+  {
     path: 'emom',
     loadChildren: () => import('./admin/emom/emom.module').then( m => m.EmomPageModule)
   },

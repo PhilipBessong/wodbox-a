@@ -63,7 +63,7 @@ export class EmomPage implements OnInit {
   };
   showErrorCard = false;
   submitForm() {
-    if (!this.emomData.wodCat || !this.emomData.daDate || !this.emomData.e1m1) {
+    if (!this.emomData.wodCat || !this.emomData.daDate || !this.emomData.e1m1||!this.emomData.e1m1rep) {
       // Handle form validation or display an error message
       // For now, I'm displaying a simple alert message
       alert('Please fill in all the required fields.');

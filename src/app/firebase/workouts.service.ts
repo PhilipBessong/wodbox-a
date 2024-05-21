@@ -86,7 +86,7 @@ export interface Tabata {
   exet5m2?: Exercise;
 }
 export interface Ladder {
-  id?: string;
+  id: string;
   wodCat: string;
   wodStyle: string;
   ladderNum: number;

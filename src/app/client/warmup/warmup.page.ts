@@ -14,6 +14,11 @@ import {
   WorkoutsService,
 } from 'src/app/firebase/workouts.service';
 import { Router } from '@angular/router';
+
+import { ScreenOrientation } from '@capacitor/screen-orientation';
+import { Plugins } from '@capacitor/core';
+
+const { CapacitorVideoPlayer } = Plugins;
 @Component({
   selector: 'app-warmup',
   templateUrl: './warmup.page.html',
@@ -601,6 +606,15 @@ export class WarmupPage implements OnInit {
   backtoWarmUp(){
     this.router.navigate(['/chome']);
   }
+  async openFullscreenVideo(videoUrl: string) {
+    // Lock screen orientation to landscape
+    await ScreenOrientation.lock({
+      orientation: 'landscape'
+    });
+
+    // Open the video modal
+    this.openVideoModal(videoUrl);
+}
   async openVideoModal(videoUrl: string) {
     // Sanitize the video URL
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);

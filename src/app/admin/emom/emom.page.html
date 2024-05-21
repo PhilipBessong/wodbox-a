@@ -665,6 +665,8 @@
                     background-color: aliceblue;
                   "
                   type="submit"
+                  [disabled]="!emomData.wodCat || !emomData.daDate || !emomData.e1m1||!this.emomData.e1m1rep"
+
                   (click)="submitForm()"
                   >Add WOD</ion-button
                 >

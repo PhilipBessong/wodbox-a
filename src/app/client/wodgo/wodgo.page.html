@@ -1,7 +1,12 @@
 <ion-content [fullscreen]="true" [ngClass]="ionContentClass">
   <br />
   <div class="logocon" [ngClass]="lococon">
-    <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
+    <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo" style=" width: 80%;
+    height: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    margin-bottom: 3%;"></ion-img>
   </div>
   <br />
   <div class="daBack" *ngIf="cdr1m1Show">
@@ -197,7 +202,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -419,7 +424,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -641,7 +646,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -907,7 +912,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -1129,7 +1134,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -1351,7 +1356,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -1617,7 +1622,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -1839,7 +1844,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -2061,7 +2066,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -2327,7 +2332,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -2596,7 +2601,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -2818,7 +2823,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -2937,8 +2942,9 @@
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
             "
-            id="srtbtnr1m1"
+           id="open-modal"
             color="#00b250"
+           
           >
             MOTIVATE FRIENDS
           </button>
@@ -2965,6 +2971,55 @@
         </ion-row>
       </ion-card>
     </ion-card>
+    <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+      <ng-template>
+        <ion-content  class="home-content">
+          <ion-searchbar placeholder="Search" (click)="modal.setCurrentBreakpoint(0.75)"(ionInput)="searchUsers($event)"></ion-searchbar>
+          <br>
+          <ion-label><h1 style="padding-left:2%; color: #ffffff;">
+            Friends
+          </h1></ion-label>
+          <ion-list>
+            <ion-item  class="home-content" *ngFor="let user of users | async">
+              <ion-avatar slot="start">
+                <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>Connor Smith</h2>
+                <p>{{user.email}}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-avatar slot="start">
+                <ion-img src="https://i.pravatar.cc/300?u=a"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>Daniel Smith</h2>
+                <p>Product Designer</p>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-avatar slot="start">
+                <ion-img src="https://i.pravatar.cc/300?u=d"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>Greg Smith</h2>
+                <p>Director of Operations</p>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-avatar slot="start">
+                <ion-img src="https://i.pravatar.cc/300?u=e"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>Zoey Smith</h2>
+                <p>CEO</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
   </div>
   <!--________tabatas______________________________________________________________-->
   <!--t1m1-->
@@ -3163,7 +3218,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -3389,7 +3444,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -3662,7 +3717,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -3888,7 +3943,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -4160,7 +4215,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -4386,7 +4441,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -4659,7 +4714,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -4888,7 +4943,7 @@
           <ion-img
             *ngIf="r4m3restfinbtn"
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -5034,22 +5089,85 @@
             "
           >
             <div style="border-radius: 20px; text-align: center">
-              <div *ngIf="ladderlbls && ladder.l1m1!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL">{{ ladder.l1m1 }}</ion-label>
+              <div *ngIf="ladderlbls && ladder.l1m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;">{{ ladder.l1m1 }}</ion-label>
               </div>
-              <div *ngIf="ladderlbls &&ladder.l1m2!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL">{{ ladder.l1m2 }}</ion-label>
+              <div *ngIf="ladderlbls &&ladder.l1m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;">{{ ladder.l1m2 }}</ion-label>
               </div>
-              <div *ngIf="ladderlbls &&ladder.l1m3!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL">{{ ladder.l1m3 }}</ion-label>
+              <div *ngIf="ladderlbls &&ladder.l1m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;">{{ ladder.l1m3 }}</ion-label>
               </div>
-              <div *ngIf="ladderlbls && ladder.l1m4!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL">{{ ladder.l1m4 }}</ion-label>
+              <div *ngIf="ladderlbls && ladder.l1m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;">{{ ladder.l1m4 }}</ion-label>
               </div>
-              <div
-                *ngIf="l2btn || donebtn"
+              <div  *ngIf="l2btn || donebtn"
+               
                 class="ladderLBLcon"
                 style="width: 100%"
+                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+     
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;"
               >
                 <button
                   *ngIf="l2btn"
@@ -5059,6 +5177,9 @@
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
+                    color: white;
+                text-align: center;
+                padding: 10px;
                   "
                   (click)="tolnotwo()"
                 >
@@ -5224,22 +5345,85 @@
             "
           >
             <div style="border-radius: 20px; text-align: center">
-              <div *ngIf="ladderlbls && ladder.l2m1!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL">{{ ladder.l2m1 }}</ion-label>
+              <div *ngIf="ladderlbls && ladder.l2m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;">{{ ladder.l2m1 }}</ion-label>
               </div>
-              <div *ngIf="ladderlbls && ladder.l2m2!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL">{{ ladder.l2m2 }}</ion-label>
+              <div *ngIf="ladderlbls && ladder.l2m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;">{{ ladder.l2m2 }}</ion-label>
               </div>
-              <div *ngIf="ladderlbls && ladder.l2m3!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL">{{ ladder.l2m3 }}</ion-label>
+              <div *ngIf="ladderlbls && ladder.l2m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;">{{ ladder.l2m3 }}</ion-label>
               </div>
-              <div *ngIf="ladderlbls && ladder.l2m4!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL">{{ ladder.l2m4 }}</ion-label>
+              <div *ngIf="ladderlbls && ladder.l2m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;">{{ ladder.l2m4 }}</ion-label>
               </div>
               <div
                 *ngIf="l3btn || donebtn"
                 class="ladderLBLcon"
                 style="width: 100%"
+                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;"
               >
                 <button
                   *ngIf="l3btn"
@@ -5248,6 +5432,10 @@
                    background: linear-gradient(45deg, #00b250, #2E7D32);
                     border-radius: 20px;
                     font-size: xxx-large;
+                    color: white;
+                text-align: center;
+       
+                padding: 10px;
                     width: 100%;
                   "
                   (click)="tolnothree()"
@@ -5415,22 +5603,85 @@
             "
           >
             <div style="border-radius: 20px; text-align: center">
-              <div *ngIf="ladderlbls && ladder.l3m1!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL">{{ ladder.l3m1 }}</ion-label>
+              <div *ngIf="ladderlbls && ladder.l3m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;">{{ ladder.l3m1 }}</ion-label>
               </div>
-              <div *ngIf="ladderlbls && ladder.l3m2!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL">{{ ladder.l3m2 }}</ion-label>
+              <div *ngIf="ladderlbls && ladder.l3m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;">{{ ladder.l3m2 }}</ion-label>
               </div>
-              <div *ngIf="ladderlbls && ladder.l3m3!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL">{{ ladder.l3m3 }}</ion-label>
+              <div *ngIf="ladderlbls && ladder.l3m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;">{{ ladder.l3m3 }}</ion-label>
               </div>
-              <div *ngIf="ladderlbls && ladder.l3m4!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL">{{ ladder.l3m4 }}</ion-label>
+              <div *ngIf="ladderlbls && ladder.l3m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;">{{ ladder.l3m4 }}</ion-label>
               </div>
               <div
                 *ngIf="l2btn || donebtn"
                 class="ladderLBLcon"
                 style="width: 100%"
+                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+       
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;"
               >
                 <button
                   *ngIf="donebtn"
@@ -5438,9 +5689,13 @@
                   style="
                     background-color: #00b250;
                     border-radius: 20px;
-                    font-size: xxx-large;
+                  
                     width: 100%;
-                  "
+                     color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
+                  
                   (click)="wedoner4m3()"
                 >
                   FINISHED
@@ -5528,7 +5783,7 @@
   <div class="daBackb" *ngIf="lFinishShow">
     <ion-card
       class="wodbodb"
-      *ngFor="let ladder of sladders"
+     
       style="background-color: #22b9e9"
     >
       <h1
@@ -5549,14 +5804,14 @@
       >
         <ion-row
           class="ion-justify-content-center"
-          *ngIf="ladder.exe"
+       
           style="padding-top: 11%"
         >
         
           <ion-img
             
             src="/assets/imgs/flag.jpg"
-            style="background-color: white; height: 47.4vh"
+            style="background-color: white; height: 47.4vh;padding: 5%;"
             class="flagimg"
           ></ion-img>
         </ion-row>
@@ -5674,23 +5929,75 @@
             "
           >
             <div style="border-radius: 20px; text-align: center">
-              <div *ngIf="ladderlbls && emom.e1m1!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && emom.e1m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ emom.e1m1rep}}x {{ emom.e1m1 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && emom.e1m2!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && emom.e1m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ emom.e1m2rep}}x {{ emom.e1m2 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && emom.e1m3!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && emom.e1m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ emom.e1m3rep }}x {{ emom.e1m3 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && emom.e1m4!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && emom.e1m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ emom.e1m4rep }}x {{ emom.e1m4 }}</ion-label
                 >
               </div>
@@ -5698,6 +6005,17 @@
                 *ngIf="e2btn || donebtn"
                 class="ladderLBLcon"
                 style="width: 100%"
+                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+          
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;"
               >
                 <button
                   *ngIf="e2btn"
@@ -5707,7 +6025,11 @@
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
-                  "
+                    color: white;
+                text-align: center;
+          
+                padding: 10px;"
+                  
                   (click)="tolnotwoemom()"
                 >
                   Next EMOM
@@ -5869,23 +6191,75 @@
             "
           >
             <div style="border-radius: 20px; text-align: center">
-              <div *ngIf="ladderlbls && emom.e2m1!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && emom.e2m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ emom.e2m1rep}}x {{ emom.e2m1 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && emom.e2m2!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && emom.e2m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ emom.e2m2rep}}x {{ emom.e2m2 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && emom.e2m3!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && emom.e2m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ emom.e2m3rep }}x {{ emom.e2m3 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && emom.e2m4!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && emom.e2m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ emom.e2m4rep }}x {{ emom.e2m4 }}</ion-label
                 >
               </div>
@@ -5893,6 +6267,17 @@
                 *ngIf="e3btn || donebtn"
                 class="ladderLBLcon"
                 style="width: 100%"
+                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;"
               >
                 <button
                   *ngIf="e3btn"
@@ -5902,7 +6287,11 @@
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
-                  "
+                     color: white;
+                text-align: center;
+         
+                padding: 10px;"
+                  
                   (click)="tolnothreeemom()"
                 >
                   Next EMOM
@@ -6066,23 +6455,75 @@
             "
           >
             <div style="border-radius: 20px; text-align: center">
-              <div *ngIf="ladderlbls && emom.e3m1!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && emom.e3m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ emom.e3m1rep}}x {{ emom.e3m1 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && emom.e3m2!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && emom.e3m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ emom.e3m2rep}}x {{ emom.e3m2 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && emom.e3m3!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && emom.e3m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ emom.e3m3rep }}x {{ emom.e3m3 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && emom.e3m4!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && emom.e3m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ emom.e3m4rep }}x {{ emom.e3m4 }}</ion-label
                 >
               </div>
@@ -6178,7 +6619,7 @@
     </ion-card>
   </div>
   <!--________amraps______________________________________________________________-->
-  <!--e1-->
+  <!--a1-->
   <div class="daBack" *ngIf="cdr1m1Show">
     <ion-card class="wodbod" *ngFor="let amrap of samraps ">
       <h2
@@ -6247,23 +6688,75 @@
             "
           >
             <div style="border-radius: 20px; text-align: center">
-              <div *ngIf="ladderlbls && amrap.a1m1!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a1m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a1m1rep}}x {{ amrap.a1m1 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a1m2!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a1m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a1m2rep}}x {{ amrap.a1m2 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a1m3!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a1m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a1m3rep }}x {{ amrap.a1m3 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a1m4!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a1m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a1m4rep }}x {{ amrap.a1m4 }}</ion-label
                 >
               </div>
@@ -6271,6 +6764,17 @@
                 *ngIf="a2btn || donebtn"
                 class="ladderLBLcon"
                 style="width: 100%"
+                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+            
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;"
               >
                 <button
                   *ngIf="a2btn"
@@ -6280,7 +6784,11 @@
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
-                  "
+               color: white;
+                text-align: center;
+
+                padding: 10px;"
+                  
                   (click)="tolnotwoamrap()"
                 >
                   Next AMRAP
@@ -6442,23 +6950,75 @@
             "
           >
             <div style="border-radius: 20px; text-align: center">
-              <div *ngIf="ladderlbls && amrap.a2m1!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a2m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a2m1rep}}x {{ amrap.a2m1 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a2m2!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a2m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a2m2rep}}x {{ amrap.a2m2 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a2m3!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a2m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a2m3rep }}x {{ amrap.a2m3 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a2m4!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a2m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a2m4rep }}x {{ amrap.a2m4 }}</ion-label
                 >
               </div>
@@ -6466,6 +7026,17 @@
                 *ngIf="a3btn || donebtn"
                 class="ladderLBLcon"
                 style="width: 100%"
+                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;"
               >
                 <button
                   *ngIf="a3btn"
@@ -6475,7 +7046,11 @@
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
-                  "
+                      color: white;
+                text-align: center;
+               
+                padding: 10px;"
+                  
                   (click)="tolnothreeamrap()"
                 >
                   Next AMRAP
@@ -6639,23 +7214,75 @@
             "
           >
             <div style="border-radius: 20px; text-align: center">
-              <div *ngIf="ladderlbls && amrap.a3m1!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a3m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a3m1rep}}x {{ amrap.a3m1 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a3m2!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a3m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a3m2rep}}x {{ amrap.a3m2 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a3m3!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a3m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a3m3rep }}x {{ amrap.a3m3 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a3m4!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a3m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a3m4rep }}x {{ amrap.a3m4 }}</ion-label
                 >
               </div>

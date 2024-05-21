@@ -70,7 +70,7 @@ export class AmrapPage implements OnInit {
   }
   showErrorCard = false;
   submitForm() {
-    if (!this.amrapData.wodCat || !this.amrapData.daDate || !this.amrapData.a1m1) {
+    if (!this.amrapData.wodCat || !this.amrapData.daDate || !this.amrapData.a1m1|| !this.amrapData.a1m1rep|| !this.amrapData.a1move) {
       // Handle form validation or display an error message
       // For now, I'm displaying a simple alert message
       alert('Please fill in all the required fields.');

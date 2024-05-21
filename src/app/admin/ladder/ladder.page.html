@@ -473,6 +473,8 @@
                     background-color: aliceblue;
                   "
                   type="submit"
+                  [disabled]="!ladderData.wodCat || !ladderData.daDate || !ladderData.l1m1||!this.ladderData.l1move"
+
                   (click)="submitForm()"
                   >Add WOD</ion-button
                 >

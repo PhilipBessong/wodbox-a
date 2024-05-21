@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ModalController } from '@ionic/angular';
 import { SafeResourceUrl } from '@angular/platform-browser';
+import { FriendsComponent } from '../modals/modals/friends/friends.component';
 import {
   Workout,
   Style,
@@ -24,17 +29,21 @@ export class WodgoPage implements OnInit {
   semoms: Emom[]=[];
   samraps: Amrap[]=[];
   exercises: Exercise[] = [];
+  users: Observable<any[]>;
   videoUrl: SafeResourceUrl | undefined;
   videoHeight = '280px'; // Adjust the height as needed
   videoWidth = '400px';
   audio: HTMLAudioElement;
   constructor(
     private router: Router,
+    private modalController: ModalController,
     private workoutsService: WorkoutsService,
-    private platform: Platform
+    private platform: Platform,
+    private firestore: AngularFirestore
   ) {
     this.audio = new Audio();
     this.audio.src = this.getAudioFilePath();
+    this.users = this.firestore.collection('users').valueChanges();
   }
 
   getAudioFilePath() {
@@ -817,7 +826,7 @@ export class WodgoPage implements OnInit {
   }
  
   strtl1m1Timer(sladders: Ladder) {
-    this.lTimer = sladders.l1move * 10;
+    this.lTimer = sladders.l1move * 60;
 
     if (sladders.l1move) {
       if (this.isPr1m1Timer) {
@@ -888,12 +897,13 @@ export class WodgoPage implements OnInit {
         this.wvid=true;
         this.r2srtbtnShow = false;
         this.buttonText = 'Start Timer';
+        this.cdr2m1Show =true;
       }
     }, 1000); // Update the 5-second countdown every second
   }
   strtl2m1Timer(sladders: Ladder) {
     if (sladders.l2move) {
-      this.l2Timer = sladders.l2move * 10;
+      this.l2Timer = sladders.l2move * 60;
       if (this.isPr2m1Timer) {
         // Resume the countdown with the remaining time
         this.cdr2m1Timer = this.remaincdr2m1;
@@ -913,11 +923,11 @@ export class WodgoPage implements OnInit {
               this.l3btn = true;
               this.ladderlbls = false;
             }else{
-             
               this.lFinishShow = true;
               this.r2m1Show = false;
+              // Call a method to update the ion-content class
               this.lFinishShowc = true;
-              this.r2m1Showc = false;
+              this.cdr1m1Showc = false;
               this.updateIonContentClass();
             }
             
@@ -947,7 +957,7 @@ export class WodgoPage implements OnInit {
   }
   strtl3m1Timer(sladders: Ladder) {
     if (sladders.l3move) {
-      this.l3Timer = sladders.l3move * 10;
+      this.l3Timer = sladders.l3move * 60;
       if (this.isPr3m1Timer) {
         // Resume the countdown with the remaining time
         this.cdr3m1Timer = this.remaincdr3m1;
@@ -964,7 +974,7 @@ export class WodgoPage implements OnInit {
             this.clearr3m1Cd();
             this.lFinishShow = true;
             this.r3m1Show = false;
-            this.r3m1Showc = false;
+            this.cdr1m1Showc = false;
             // Call a method to update the ion-content class
             this.lFinishShowc = true;
             this.updateIonContentClass();
@@ -1113,7 +1123,7 @@ export class WodgoPage implements OnInit {
               this.r2m1Show = false;
               // Call a method to update the ion-content class
               this.lFinishShowc = true;
-              this.r2m1Showc = false;
+              this.cdr1m1Showc = false;
               this.updateIonContentClass();
              }
              
@@ -1165,7 +1175,7 @@ export class WodgoPage implements OnInit {
              this.r3m1Show = false;
              // Call a method to update the ion-content class
              this.lFinishShowc = true;
-             this.r3m1Showc = false;
+             this.cdr1m1Showc = false;
              this.updateIonContentClass();
              
              
@@ -1282,13 +1292,14 @@ export class WodgoPage implements OnInit {
     }, 1000); // Update the 5-second countdown every second
   }
   strta2m1Timer(samraps: Amrap) {
-    if (samraps.a2move) {
-      this.a2Timer = samraps.a2move * 60;
+    this.a2Timer = samraps.a2move * 60;
+    if (this.a2Timer) {
+     
       if (this.isPr2m1Timer) {
         // Resume the countdown with the remaining time
         this.cdr2m1Timer = this.remaincdr2m1;
       } else if (this.cdr2m1Timer === undefined) {
-        this.cdr2m1Timer = this.l2Timer;
+        this.cdr2m1Timer = this.a2Timer;
       }
       this.cdr2m1Intval = setInterval(() => {
         if (!this.isPaused) {
@@ -1303,12 +1314,12 @@ export class WodgoPage implements OnInit {
               this.a3btn = true;
               this.ladderlbls = false;
             }else{
-              this.lFinishShow = true;
-              this.r2m1Show = false;
-              // Call a method to update the ion-content class
-              this.lFinishShowc = true;
-              this.r2m1Showc = false;
-              this.updateIonContentClass();
+             this.lFinishShow = true;
+             this.r2m1Show = false;
+             // Call a method to update the ion-content class
+             this.lFinishShowc = true;
+             this.cdr1m1Showc = false;
+             this.updateIonContentClass();
             }
             
           }
@@ -1343,7 +1354,7 @@ export class WodgoPage implements OnInit {
         // Resume the countdown with the remaining time
         this.cdr3m1Timer = this.remaincdr3m1;
       } else if (this.cdr3m1Timer === undefined) {
-        this.cdr3m1Timer = this.l3Timer;
+        this.cdr3m1Timer = this.a3Timer;
       }
       this.cdr3m1Intval = setInterval(() => {
         if (!this.isPaused) {
@@ -1353,13 +1364,15 @@ export class WodgoPage implements OnInit {
           } else {
             clearInterval(this.cdr3m1Intval);
             this.clearr3m1Cd();
-
             this.lFinishShow = true;
             this.r3m1Show = false;
+            this.cdr1m1Showc = false;
             // Call a method to update the ion-content class
             this.lFinishShowc = true;
-            this.r3m1Showc = false;
             this.updateIonContentClass();
+            
+           
+            
             
             
           }
@@ -3228,9 +3241,7 @@ this.buttonText = 'GET READY!!!'
               this.r2srtbtnShow = false;
               this.r2m2srtbtnShow = true;
               this.buttonDisabled = false;
-              this.cdr2m1Show = true;
               this.updateIonContentClass();
-              this.cdr2m1Show = true;
               this.strtr2m1Timertab(stabatas);
             } else {
               if (stabatas.t3m1 !== '') {
@@ -3593,6 +3604,31 @@ this.buttonText = 'GET READY!!!'
 
   redirectToHome() {
     this.router.navigate(['/chome']); // Replace 'home' with the actual route name of your home page
+  }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: FriendsComponent,
+      componentProps: {},
+      cssClass: 'half-modal' // Add a CSS class to customize modal positioning
+    });
+    return await modal.present();
+  }
+  searchUsers(event: any) {
+    const searchTerm: string = event.target.value.toLowerCase();
+
+    this.users = this.firestore.collection('users', ref =>
+      ref.where('email', '>=', searchTerm)
+         .where('email', '<=', searchTerm + '\uf8ff')
+    ).snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const id = a.payload.doc.id;
+          const data: any = a.payload.doc.data(); // Ensure 'data' is of type 'object'
+          return { id, ...data };
+        });
+      })
+    );
   }
 
   ngOnDestroy() {

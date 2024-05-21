@@ -1,7 +1,12 @@
 <ion-content [fullscreen]="true" [ngClass]="ionContentClass">
   <br />
   <div class="logocon" [ngClass]="lococon">
-    <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
+    <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo" style=" width: 80%;
+    height: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    margin-bottom: 3%;"></ion-img>
   </div>
   <br />
   <div class="daBack" *ngIf="cdr1m1Show">
@@ -4920,460 +4925,847 @@
   </div>
 
     <!--________ladders______________________________________________________________-->
- <!--l1-->
- <div class="daBack" *ngIf="cdr1m1Show">
-  <ion-card
-    class="wodbod"
-    *ngFor="let ladder of sladders "
- 
-  >
-    <h2
-      class="cardttl"
-      style="
-        color: black;
-        font-size: x-large;
-        font-weight: 700;
-        vertical-align: middle;
-      "
-    >
-      LADDER 1
-    </h2>
-    <ion-card
-      class="card"
-      style="
-        --ion-background-color: white;
-        border-bottom-width: 1px;
-        height: 700px;
-        padding-bottom: 0%;
-        padding-top: 10%
-      "
-    >
-    <ion-row class="ion-justify-content-center">
-      <ion-label
-      style="
-        text-align: center;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: x-large;
-        padding-bottom: 10%;
-        color: aliceblue;
-      "
-    >
-      Do 1 of each, then 2,then 3,etc.
-    </ion-label></ion-row>
-      
-      <ion-row class="ion-justify-content-center" *ngIf="ladder.exe">
-        <div *ngIf="prepimg" style="position: relative; background-color: white; height: 445px; width: 99%">
-          <ion-img src="/assets/imgs/stopwatch.png" style="padding-top: 2%;"></ion-img>
-          <div class="countdown-wrapper" *ngIf="cd5Sec !== undefined">
-            <ion-row class="countdown-row">
-              <!-- Display the 5-second timer -->
-              <ion-label *ngIf="cd5SecShow">{{ cd5Sec }}</ion-label>
-            </ion-row>
-          </div>
-        </div>
-        <div *ngIf="wvid" style="display: flex; justify-content: center; align-items: center; height: 445px;">
-          <div style="border-radius: 20px; text-align: center;">
-              <div *ngIf="ladderlbls && ladder.l1m1!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ ladder.l1m1 }}</ion-label>
-              </div>
-              <div *ngIf="ladderlbls &&ladder.l1m2!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ ladder.l1m2 }}</ion-label>
-              </div>
-              <div *ngIf="ladderlbls &&ladder.l1m3!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ ladder.l1m3 }}</ion-label>
-              </div>
-              <div *ngIf="ladderlbls && ladder.l1m4!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ ladder.l1m4 }}</ion-label>
-              </div>
-              <div *ngIf="l2btn || donebtn" class="ladderLBLcon" style="width: 100%;">
-                  <button *ngIf="l2btn" class="ladderLBL" style="background-color:#00b250;border-radius: 20px;font-size: xxx-large;width: 100%" (click)="tolnotwo()">Next Ladder</button>
-                  <button *ngIf="donebtn" class="ladderLBL" style="background-color:#00b250;border-radius: 20px;font-size: xxx-large; width: 100%" (click)="wedoner4m3()">FINISHED</button>
-              </div>
-          </div>
-      </div>
-      
-      
-      
-      </ion-row>
-      <br />
-      <ion-row
-        *ngIf="ladder.l1move !== undefined"
-        class="ion-justify-content-center"
-      >
-        <!-- Countdown timer -->
-
-        <button
-        [disabled]="buttonDisabled"
-        (click)="lstrt5SecTimer(ladder)"
-        *ngIf="srtbtnShow"
-        style="
-          height: 70px;
-          margin-top: 20px;
-          width: 330px;
-          font-size: xx-large;
-          border-radius: 30px;
-          color: black;
-          border: 2px solid #00b250;
-          background: linear-gradient(45deg, #ffffff, #00b250);
-          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2);
-          transition: box-shadow 0.3s ease;
-        "
-        id="srtbtnr1m1"
-        color="#00b250"
-      >
-        {{ buttonText }} <!-- Bind buttonText variable for dynamic text -->
-      </button>
-      
-
-        <ion-row *ngIf="cdr1m1Timer !== undefined" style="height: 10px">
-          <!-- Display the 5-second timer -->
-          <div
-            *ngIf="cdr1m1Show"
-            style="
-              padding-top: 21px;
-              position: relative;
-              width: 120px; /* Fixed width */
-              height: 120px; /* Fixed height */
-              margin: 0 auto; /* Center horizontally */
-              text-align: center;
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                sans-serif;
-              font-size: 7vh; /* Use 'vh' units for relative sizing */
-              color: #00b250;
-              cursor: pointer; /* Add cursor pointer for better user interaction */
-            "
-            (click)="togglePauseResume()"
-          >
-            <div
+    <div class="daBack" *ngIf="cdr1m1Show">
+      <ion-card class="wodbod" *ngFor="let ladder of sladders ">
+        <h2
+          class="cardttl"
+          style="
+            color: black;
+            font-size: x-large;
+            font-weight: 700;
+            vertical-align: middle;
+          "
+        >
+          LADDER 1
+        </h2>
+        <ion-card
+          class="card"
+          style="
+            --ion-background-color: white;
+            border-bottom-width: 1px;
+            height: 700px;
+            padding-bottom: 0%;
+            padding-top: 10%;
+          "
+        >
+          <ion-row class="ion-justify-content-center">
+            <ion-label
               style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                border-radius: 50%;
-                border-style: solid;
-                border-color: #00b250;
-                border-width: 6px;
+                text-align: center;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: x-large;
+                padding-bottom: 10%;
+                color: aliceblue;
+              "
+            >
+              Do 1 of each, then 2,then 3,etc.
+            </ion-label></ion-row
+          >
+  
+          <ion-row class="ion-justify-content-center" *ngIf="ladder.exe">
+            <div
+              *ngIf="prepimg"
+              style="
+                position: relative;
                 background-color: white;
-                z-index: -1;
+                height: 445px;
+                width: 99%;
               "
-            ></div>
-            {{ cdr1m1Timer }}
-          </div>
-        </ion-row>
-      </ion-row>
-    </ion-card>
-  </ion-card>
-</div>
-<!--l2-->
-<div class="daBack" *ngIf="r2m1Show">
-  <ion-card
-    class="wodbod"
-    *ngFor="let ladder of sladders "
- 
-  >
-    <h2
-      class="cardttl"
-      style="
-        color: black;
-        font-size: x-large;
-        font-weight: 700;
-        vertical-align: middle;
-      "
-    >
-      LADDER 2
-    </h2>
-    <ion-card
-      class="card"
-      style="
-        --ion-background-color: white;
-        border-bottom-width: 1px;
-        height: 700px;
-        padding-bottom: 0%;
-        padding-top: 10%
-      "
-    >
-    <ion-row class="ion-justify-content-center">
-      <ion-label
-      style="
-        text-align: center;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: x-large;
-        padding-bottom: 10%;
-        color: aliceblue;
-      "
-    >
-      Do 1 of each, then 2,then 3,etc.
-    </ion-label></ion-row>
-      
-      <ion-row class="ion-justify-content-center" *ngIf="ladder.exe">
-        <div *ngIf="prepimg" style="position: relative; background-color: white; height: 445px; width: 99%">
-          <ion-img src="/assets/imgs/stopwatch.png" style="padding-top: 2%;"></ion-img>
-          <div class="countdown-wrapper" *ngIf="r2cd5Sec !== undefined">
-            <ion-row class="countdown-row">
-              <!-- Display the 5-second timer -->
-              <ion-label *ngIf="r2cd5SecShow">{{ r2cd5Sec }}</ion-label>
-            </ion-row>
-          </div>
-        </div>
-        <div *ngIf="wvid" style="display: flex; justify-content: center; align-items: center; height: 445px;">
-          <div style="border-radius: 20px; text-align: center;">
-              <div *ngIf="ladderlbls && ladder.l2m1!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ ladder.l2m1 }}</ion-label>
-              </div>
-              <div *ngIf="ladderlbls && ladder.l2m2!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ ladder.l2m2 }}</ion-label>
-              </div>
-              <div *ngIf="ladderlbls && ladder.l2m3!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ ladder.l2m3 }}</ion-label>
-              </div>
-              <div *ngIf="ladderlbls && ladder.l2m4!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ ladder.l2m4 }}</ion-label>
-              </div>
-              <div *ngIf="l3btn || donebtn" class="ladderLBLcon" style="width: 100%;">
-                  <button *ngIf="l3btn" class="ladderLBL" style="background-color:#00b250;border-radius: 20px;font-size: xxx-large;width: 100%" (click)="tolnothree()">Next Ladder</button>
-                  <button *ngIf="donebtn" class="ladderLBL" style="background-color:#00b250;border-radius: 20px;font-size: xxx-large;width: 100%" (click)="wedoner4m3()">FINISHED</button>
-              </div>
-          </div>
-      </div>
-      </ion-row>
-      <br />
-      <ion-row
-          *ngIf="ladder.l2move !== undefined"
-          class="ion-justify-content-center"
-        >
-          <!-- Countdown timer -->
-
-          <button
-            
-            (click)="l2strt5SecTimer(ladder)"
-            *ngIf="r2srtbtnShow"
-            style="
-              height: 70px;
-              margin-top: 20px;
-              width: 330px;
-              font-size: xx-large;
-              border-radius: 30px;
-              color: black;
-              border: 2px solid #00b250;
-              background: linear-gradient(
-                45deg,
-                #ffffff,
-                #00b250
-              ); /* Gradient background for a more vibrant look */
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                sans-serif;
-              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
-            "
-            id="srtbtnr1m1"
-            color="#00b250"
-          >
-            {{buttonText}}
-          </button>
-
-         
-          <ion-row *ngIf="cdr2m1Timer !== undefined" style="height: 10px">
-            <!-- Display the 5-second timer -->
-            <div
-              *ngIf="cdr2m1Show"
-              style="
-                padding-top: 21px;
-                position: relative;
-                width: 120px; /* Fixed width */
-                height: 120px; /* Fixed height */
-                margin: 0 auto; /* Center horizontally */
-                text-align: center;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                font-size: 7vh; /* Use 'vh' units for relative sizing */
-                color: #00b250;
-                cursor: pointer; /* Add cursor pointer for better user interaction */
-              "
-              (click)="togglePauseResume()"
             >
-              <div
-                style="
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  width: 100%;
-                  height: 100%;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-color: #00b250;
-                  border-width: 6px;
-                  background-color: white;
-                  z-index: -1;
-                "
-              ></div>
-              {{ cdr2m1Timer }}
+              <ion-img
+                src="/assets/imgs/stopwatch.png"
+                style="padding-top: 2%"
+              ></ion-img>
+              <div class="countdown-wrapper" *ngIf="cd5Sec !== undefined">
+                <ion-row class="countdown-row">
+                  <!-- Display the 5-second timer -->
+                  <ion-label *ngIf="cd5SecShow">{{ cd5Sec }}</ion-label>
+                </ion-row>
+              </div>
+            </div>
+            <div
+              *ngIf="wvid"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 445px;
+              "
+            >
+              <div style="border-radius: 20px; text-align: center">
+                <div *ngIf="ladderlbls && ladder.l1m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                width: 90%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;">
+                  <ion-label class="ladderLBL" style="  color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;">{{ ladder.l1m1 }}</ion-label>
+                </div>
+                <div *ngIf="ladderlbls &&ladder.l1m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                width: 90%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;">
+                  <ion-label class="ladderLBL" style="  color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;">{{ ladder.l1m2 }}</ion-label>
+                </div>
+                <div *ngIf="ladderlbls &&ladder.l1m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                width: 90%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;">
+                  <ion-label class="ladderLBL" style="  color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;">{{ ladder.l1m3 }}</ion-label>
+                </div>
+                <div *ngIf="ladderlbls && ladder.l1m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                width: 90%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;">
+                  <ion-label class="ladderLBL" style="  color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;">{{ ladder.l1m4 }}</ion-label>
+                </div>
+                <div  *ngIf="l2btn || donebtn"
+                 
+                  class="ladderLBLcon"
+                  style="width: 100%"
+                  style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+       
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;"
+                >
+                  <button
+                    *ngIf="l2btn"
+                    class="ladderLBL"
+                    style="
+                      background: linear-gradient(45deg, #00b250, #2E7D32);
+                      border-radius: 20px;
+                      font-size: xxx-large;
+                      width: 100%;
+                      color: white;
+                  text-align: center;
+                  padding: 10px;
+                    "
+                    (click)="tolnotwo()"
+                  >
+                    Next Ladder
+                  </button>
+                  <button
+                    *ngIf="donebtn"
+                    class="ladderLBL"
+                    style="
+                      background-color: #00b250;
+                      border-radius: 20px;
+                      font-size: xxx-large;
+                      width: 100%;
+                    "
+                    (click)="wedoner4m3()"
+                  >
+                    FINISHED
+                  </button>
+                </div>
+              </div>
             </div>
           </ion-row>
-        </ion-row>
-    </ion-card>
-  </ion-card>
-</div>
-<div class="daBack" *ngIf="r3m1Show">
-  <ion-card
-    class="wodbod"
-    *ngFor="let ladder of sladders "
- 
-  >
-    <h2
-      class="cardttl"
-      style="
-        color: black;
-        font-size: x-large;
-        font-weight: 700;
-        vertical-align: middle;
-      "
-    >
-      LADDER 3
-    </h2>
-    <ion-card
-      class="card"
-      style="
-        --ion-background-color: white;
-        border-bottom-width: 1px;
-        height: 700px;
-        padding-bottom: 0%;
-        padding-top: 10%
-      "
-    >
-    <ion-row class="ion-justify-content-center">
-      <ion-label
-      style="
-        text-align: center;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: x-large;
-        padding-bottom: 10%;
-        color: aliceblue;
-      "
-    >
-      Do 1 of each, then 2,then 3,etc.
-    </ion-label></ion-row>
-      
-      <ion-row class="ion-justify-content-center" *ngIf="ladder.exe">
-        <div *ngIf="prepimg" style="position: relative; background-color: white; height: 445px; width: 99%">
-          <ion-img src="/assets/imgs/stopwatch.png" style="padding-top: 2%;"></ion-img>
-          <div class="countdown-wrapper" *ngIf="r3cd5Sec !== undefined">
-            <ion-row class="countdown-row">
-              <!-- Display the 5-second timer -->
-              <ion-label *ngIf="r3cd5SecShow">{{ r3cd5Sec }}</ion-label>
-            </ion-row>
-          </div>
-        </div>
-        <div *ngIf="wvid" style="display: flex; justify-content: center; align-items: center; height: 445px;">
-          <div style="border-radius: 20px; text-align: center;">
-              <div *ngIf="ladderlbls && ladder.l3m1!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ ladder.l3m1 }}</ion-label>
-              </div>
-              <div *ngIf="ladderlbls && ladder.l3m2!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ ladder.l3m2 }}</ion-label>
-              </div>
-              <div *ngIf="ladderlbls && ladder.l3m3!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ ladder.l3m3 }}</ion-label>
-              </div>
-              <div *ngIf="ladderlbls && ladder.l3m4!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ ladder.l3m4 }}</ion-label>
-              </div>
-              <div *ngIf="l2btn || donebtn" class="ladderLBLcon" style="width: 100%; ">
-                  <button *ngIf="donebtn" class="ladderLBL" style="background-color:#00b250;border-radius: 20px;font-size: xxx-large;width: 100%" (click)="wedoner4m3()">FINISHED</button>
-              </div>
-          </div>
-      </div>
-      </ion-row>
-      <br />
-      <ion-row
-          *ngIf="ladder.l3move !== undefined"
-          class="ion-justify-content-center"
-        >
-          <!-- Countdown timer -->
-
-          <button
-            
-            (click)="l3strt5SecTimer(ladder)"
-            *ngIf="r3srtbtnShow"
-            style="
-              height: 70px;
-              margin-top: 20px;
-              width: 330px;
-              font-size: xx-large;
-              border-radius: 30px;
-              color: black;
-              border: 2px solid #00b250;
-              background: linear-gradient(
-                45deg,
-                #ffffff,
-                #00b250
-              ); /* Gradient background for a more vibrant look */
-              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                sans-serif;
-              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
-            "
-            id="srtbtnr1m1"
-            color="#00b250"
+          <br />
+          <ion-row
+            *ngIf="ladder.l1move !== undefined"
+            class="ion-justify-content-center"
           >
-            {{buttonText}}
-          </button>
-
-         
-          <ion-row *ngIf="cdr3m1Timer !== undefined" style="height: 10px">
-            <!-- Display the 5-second timer -->
-            <div
-              *ngIf="cdr3m1Show"
+            <!-- Countdown timer -->
+  
+            <button
+              [disabled]="buttonDisabled"
+              (click)="lstrt5SecTimer(ladder)"
+              *ngIf="srtbtnShow"
               style="
-                padding-top: 21px;
-                position: relative;
-                width: 120px; /* Fixed width */
-                height: 120px; /* Fixed height */
-                margin: 0 auto; /* Center horizontally */
-                text-align: center;
+                height: 70px;
+                margin-top: 20px;
+                width: 330px;
+                font-size: xx-large;
+                border-radius: 30px;
+                color: black;
+                border: 2px solid #00b250;
+                background: linear-gradient(45deg, #ffffff, #00b250);
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                   sans-serif;
-                font-size: 7vh; /* Use 'vh' units for relative sizing */
-                color: #00b250;
-                cursor: pointer; /* Add cursor pointer for better user interaction */
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                  0 3px 5px rgba(0, 0, 0, 0.2);
+                transition: box-shadow 0.3s ease;
               "
-              (click)="togglePauseResume()"
+              id="srtbtnr1m1"
+              color="#00b250"
             >
+              {{ buttonText }}
+              <!-- Bind buttonText variable for dynamic text -->
+            </button>
+  
+            <ion-row *ngIf="cdr1m1Timer !== undefined" style="height: 10px">
+              <!-- Display the 5-second timer -->
               <div
+                *ngIf="cdr1m1Show"
                 style="
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  width: 100%;
-                  height: 100%;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-color: #00b250;
-                  border-width: 6px;
-                  background-color: white;
-                  z-index: -1;
+                  padding-top: 21px;
+                  position: relative;
+                  width: 120px; /* Fixed width */
+                  height: 120px; /* Fixed height */
+                  margin: 0 auto; /* Center horizontally */
+                  text-align: center;
+                  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                    sans-serif;
+                  font-size: 7vh; /* Use 'vh' units for relative sizing */
+                  color: #00b250;
+                  cursor: pointer; /* Add cursor pointer for better user interaction */
                 "
-              ></div>
-              {{ cdr3m1Timer }}
+                (click)="togglePauseResume()"
+              >
+                <div
+                  style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    border-style: solid;
+                    border-color: #00b250;
+                    border-width: 6px;
+                    background-color: white;
+                    z-index: -1;
+                  "
+                ></div>
+                {{ cdr1m1Timer }}
+              </div>
+            </ion-row>
+          </ion-row>
+        </ion-card>
+      </ion-card>
+    </div>
+    <!--l2-->
+    <div class="daBack" *ngIf="r2m1Show">
+      <ion-card class="wodbod" *ngFor="let ladder of sladders ">
+        <h2
+          class="cardttl"
+          style="
+            color: black;
+            font-size: x-large;
+            font-weight: 700;
+            vertical-align: middle;
+          "
+        >
+          LADDER 2
+        </h2>
+        <ion-card
+          class="card"
+          style="
+            --ion-background-color: white;
+            border-bottom-width: 1px;
+            height: 700px;
+            padding-bottom: 0%;
+            padding-top: 10%;
+          "
+        >
+          <ion-row class="ion-justify-content-center">
+            <ion-label
+              style="
+                text-align: center;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: x-large;
+                padding-bottom: 10%;
+                color: aliceblue;
+              "
+            >
+              Do 1 of each, then 2,then 3,etc.
+            </ion-label></ion-row
+          >
+  
+          <ion-row class="ion-justify-content-center" *ngIf="ladder.exe">
+            <div
+              *ngIf="prepimg"
+              style="
+                position: relative;
+                background-color: white;
+                height: 445px;
+                width: 99%;
+              "
+            >
+              <ion-img
+                src="/assets/imgs/stopwatch.png"
+                style="padding-top: 2%"
+              ></ion-img>
+              <div class="countdown-wrapper" *ngIf="r2cd5Sec !== undefined">
+                <ion-row class="countdown-row">
+                  <!-- Display the 5-second timer -->
+                  <ion-label *ngIf="r2cd5SecShow">{{ r2cd5Sec }}</ion-label>
+                </ion-row>
+              </div>
+            </div>
+            <div
+              *ngIf="wvid"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 445px;
+              "
+            >
+              <div style="border-radius: 20px; text-align: center">
+                <div *ngIf="ladderlbls && ladder.l2m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                width: 90%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;">
+                  <ion-label class="ladderLBL" style="  color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;">{{ ladder.l2m1 }}</ion-label>
+                </div>
+                <div *ngIf="ladderlbls && ladder.l2m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                width: 90%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;">
+                  <ion-label class="ladderLBL" style="  color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;">{{ ladder.l2m2 }}</ion-label>
+                </div>
+                <div *ngIf="ladderlbls && ladder.l2m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                width: 90%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;">
+                  <ion-label class="ladderLBL" style="  color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;">{{ ladder.l2m3 }}</ion-label>
+                </div>
+                <div *ngIf="ladderlbls && ladder.l2m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                width: 90%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;">
+                  <ion-label class="ladderLBL" style="  color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;">{{ ladder.l2m4 }}</ion-label>
+                </div>
+                <div
+                  *ngIf="l3btn || donebtn"
+                  class="ladderLBLcon"
+                  style="width: 100%"
+                  style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;"
+                >
+                  <button
+                    *ngIf="l3btn"
+                    class="ladderLBL"
+                    style="
+                     background: linear-gradient(45deg, #00b250, #2E7D32);
+                      border-radius: 20px;
+                      font-size: xxx-large;
+                      color: white;
+                  text-align: center;
+         
+                  padding: 10px;
+                      width: 100%;
+                    "
+                    (click)="tolnothree()"
+                  >
+                    Next Ladder
+                  </button>
+                  <button
+                    *ngIf="donebtn"
+                    class="ladderLBL"
+                    style="
+                      background-color: #00b250;
+                      border-radius: 20px;
+                      font-size: xxx-large;
+                      width: 100%;
+                    "
+                    (click)="wedoner4m3()"
+                  >
+                    FINISHED
+                  </button>
+                </div>
+              </div>
             </div>
           </ion-row>
-        </ion-row>
-    </ion-card>
-  </ion-card>
-</div>
+          <br />
+          <ion-row
+            *ngIf="ladder.l2move !== undefined"
+            class="ion-justify-content-center"
+          >
+            <!-- Countdown timer -->
+  
+            <button
+              (click)="l2strt5SecTimer(ladder)"
+              *ngIf="r2srtbtnShow"
+              style="
+                height: 70px;
+                margin-top: 20px;
+                width: 330px;
+                font-size: xx-large;
+                border-radius: 30px;
+                color: black;
+                border: 2px solid #00b250;
+                background: linear-gradient(
+                  45deg,
+                  #ffffff,
+                  #00b250
+                ); /* Gradient background for a more vibrant look */
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                  0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+                transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+              "
+              id="srtbtnr1m1"
+              color="#00b250"
+            >
+              {{buttonText}}
+            </button>
+  
+            <ion-row *ngIf="cdr2m1Timer !== undefined" style="height: 10px">
+              <!-- Display the 5-second timer -->
+              <div
+                *ngIf="cdr2m1Show"
+                style="
+                  padding-top: 21px;
+                  position: relative;
+                  width: 120px; /* Fixed width */
+                  height: 120px; /* Fixed height */
+                  margin: 0 auto; /* Center horizontally */
+                  text-align: center;
+                  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                    sans-serif;
+                  font-size: 7vh; /* Use 'vh' units for relative sizing */
+                  color: #00b250;
+                  cursor: pointer; /* Add cursor pointer for better user interaction */
+                "
+                (click)="togglePauseResume()"
+              >
+                <div
+                  style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    border-style: solid;
+                    border-color: #00b250;
+                    border-width: 6px;
+                    background-color: white;
+                    z-index: -1;
+                  "
+                ></div>
+                {{ cdr2m1Timer }}
+              </div>
+            </ion-row>
+          </ion-row>
+        </ion-card>
+      </ion-card>
+    </div>
+    <div class="daBack" *ngIf="r3m1Show">
+      <ion-card class="wodbod" *ngFor="let ladder of sladders ">
+        <h2
+          class="cardttl"
+          style="
+            color: black;
+            font-size: x-large;
+            font-weight: 700;
+            vertical-align: middle;
+          "
+        >
+          LADDER 3
+        </h2>
+        <ion-card
+          class="card"
+          style="
+            --ion-background-color: white;
+            border-bottom-width: 1px;
+            height: 700px;
+            padding-bottom: 0%;
+            padding-top: 10%;
+          "
+        >
+          <ion-row class="ion-justify-content-center">
+            <ion-label
+              style="
+                text-align: center;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: x-large;
+                padding-bottom: 10%;
+                color: aliceblue;
+              "
+            >
+              Do 1 of each, then 2,then 3,etc.
+            </ion-label></ion-row
+          >
+  
+          <ion-row class="ion-justify-content-center" *ngIf="ladder.exe">
+            <div
+              *ngIf="prepimg"
+              style="
+                position: relative;
+                background-color: white;
+                height: 445px;
+                width: 99%;
+              "
+            >
+              <ion-img
+                src="/assets/imgs/stopwatch.png"
+                style="padding-top: 2%"
+              ></ion-img>
+              <div class="countdown-wrapper" *ngIf="r3cd5Sec !== undefined">
+                <ion-row class="countdown-row">
+                  <!-- Display the 5-second timer -->
+                  <ion-label *ngIf="r3cd5SecShow">{{ r3cd5Sec }}</ion-label>
+                </ion-row>
+              </div>
+            </div>
+            <div
+              *ngIf="wvid"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 445px;
+              "
+            >
+              <div style="border-radius: 20px; text-align: center">
+                <div *ngIf="ladderlbls && ladder.l3m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                width: 90%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;">
+                  <ion-label class="ladderLBL" style="  color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;">{{ ladder.l3m1 }}</ion-label>
+                </div>
+                <div *ngIf="ladderlbls && ladder.l3m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                width: 90%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;">
+                  <ion-label class="ladderLBL" style="  color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;">{{ ladder.l3m2 }}</ion-label>
+                </div>
+                <div *ngIf="ladderlbls && ladder.l3m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                width: 90%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;">
+                  <ion-label class="ladderLBL" style="  color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;">{{ ladder.l3m3 }}</ion-label>
+                </div>
+                <div *ngIf="ladderlbls && ladder.l3m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+                width: 90%;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;">
+                  <ion-label class="ladderLBL" style="  color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;">{{ ladder.l3m4 }}</ion-label>
+                </div>
+                <div
+                  *ngIf="l2btn || donebtn"
+                  class="ladderLBLcon"
+                  style="width: 100%"
+                  style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+                border-radius: 20px;
+         
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                margin-bottom: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;"
+                >
+                  <button
+                    *ngIf="donebtn"
+                    class="ladderLBL"
+                    style="
+                      background-color: #00b250;
+                      border-radius: 20px;
+                    
+                      width: 100%;
+                       color: white;
+                  text-align: center;
+                  font-size: xx-large;
+                  padding: 10px;"
+                    
+                    (click)="wedoner4m3()"
+                  >
+                    FINISHED
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ion-row>
+          <br />
+          <ion-row
+            *ngIf="ladder.l3move !== undefined"
+            class="ion-justify-content-center"
+          >
+            <!-- Countdown timer -->
+  
+            <button
+              (click)="l3strt5SecTimer(ladder)"
+              *ngIf="r3srtbtnShow"
+              style="
+                height: 70px;
+                margin-top: 20px;
+                width: 330px;
+                font-size: xx-large;
+                border-radius: 30px;
+                color: black;
+                border: 2px solid #00b250;
+                background: linear-gradient(
+                  45deg,
+                  #ffffff,
+                  #00b250
+                ); /* Gradient background for a more vibrant look */
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                  0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+                transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+              "
+              id="srtbtnr1m1"
+              color="#00b250"
+            >
+              {{buttonText}}
+            </button>
+  
+            <ion-row *ngIf="cdr3m1Timer !== undefined" style="height: 10px">
+              <!-- Display the 5-second timer -->
+              <div
+                *ngIf="cdr3m1Show"
+                style="
+                  padding-top: 21px;
+                  position: relative;
+                  width: 120px; /* Fixed width */
+                  height: 120px; /* Fixed height */
+                  margin: 0 auto; /* Center horizontally */
+                  text-align: center;
+                  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                    sans-serif;
+                  font-size: 7vh; /* Use 'vh' units for relative sizing */
+                  color: #00b250;
+                  cursor: pointer; /* Add cursor pointer for better user interaction */
+                "
+                (click)="togglePauseResume()"
+              >
+                <div
+                  style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    border-style: solid;
+                    border-color: #00b250;
+                    border-width: 6px;
+                    background-color: white;
+                    z-index: -1;
+                  "
+                ></div>
+                {{ cdr3m1Timer }}
+              </div>
+            </ion-row>
+          </ion-row>
+        </ion-card>
+      </ion-card>
+    </div>
+    <div class="daBackb" *ngIf="lFinishShow">
+      <ion-card
+        class="wodbodb"
+  
+        style="background-color: #22b9e9"
+      >
+        <h1
+          class="cardttl"
+          style="
+            color: white;
+            font-size: xxx-large;
+            font-weight: 700;
+            vertical-align: middle;
+          "
+         
+        >
+          Finished
+        </h1>
+        <ion-card
+          class="card"
+          style="height: 670px; --ion-background-color: white"
+        >
+          <ion-row
+            class="ion-justify-content-center"
+       
+            style="padding-top: 11%"
+          >
+          
+            <ion-img
+              
+              src="/assets/imgs/flag.jpg"
+              style="background-color: white; height: 47.4vh;padding: 5%;"
+              class="flagimg"
+            ></ion-img>
+          </ion-row>
+  
+          <ion-row
+            
+            class="ion-justify-content-center"
+            style="padding-top: 1.7%"
+          >
+            <!-- Countdown timer -->
+           
+            <div id="r4m3restfinbtn" style="padding-top: 7%">
+              <button
+                (click)="wedoner4m3()"
+                
+                style="
+                  height: 70px;
+                  width: 330px;
+                  margin-top: 20px;
+                  font-size: xx-large;
+                  border-radius: 30px;
+                  color: black;
+                  border: 2px solid #22b9e9;
+                  background: linear-gradient(
+                    45deg,
+                    #ffffff,
+                    #1b7d9b
+                  ); /* Gradient background for a more vibrant look */
+                  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                    sans-serif;
+                  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                    0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+                  transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+                "
+                id="srtbtnr1m1"
+                color="#00b250"
+              >
+                Finish
+              </button>
+              <br>
+            </div>
+          </ion-row>
+        </ion-card>
+      </ion-card>
+    </div>
 
     <!--________emoms______________________________________________________________-->
- <!--l1-->
+ <!--e1-->
  <div class="daBack" *ngIf="cdr1m1Show">
-  <ion-card
-    class="wodbod"
-    *ngFor="let emom of semoms "
- 
-  >
+  <ion-card class="wodbod" *ngFor="let emom of semoms ">
     <h2
       class="cardttl"
       style="
@@ -5392,25 +5784,37 @@
         border-bottom-width: 1px;
         height: 700px;
         padding-bottom: 0%;
-        padding-top: 10%
+        padding-top: 10%;
       "
     >
-    <ion-row class="ion-justify-content-center">
-      <ion-label
-      style="
-        text-align: center;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: x-large;
-        padding-bottom: 10%;
-        color: aliceblue;
-      "
-    >
-      Do all exercises before the timer runs out.
-    </ion-label></ion-row>
-      
+      <ion-row class="ion-justify-content-center">
+        <ion-label
+          style="
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: x-large;
+            padding-bottom: 10%;
+            color: aliceblue;
+          "
+        >
+          Do all exercises before the timer runs out.
+        </ion-label></ion-row
+      >
+
       <ion-row class="ion-justify-content-center" *ngIf="emom.exe">
-        <div *ngIf="prepimg" style="position: relative; background-color: white; height: 430px; width: 99%">
-          <ion-img src="/assets/imgs/stopwatch.png" style="padding-top: 2%;"></ion-img>
+        <div
+          *ngIf="prepimg"
+          style="
+            position: relative;
+            background-color: white;
+            height: 430px;
+            width: 99%;
+          "
+        >
+          <ion-img
+            src="/assets/imgs/stopwatch.png"
+            style="padding-top: 2%"
+          ></ion-img>
           <div class="countdown-wrapper" *ngIf="cd5Sec !== undefined">
             <ion-row class="countdown-row">
               <!-- Display the 5-second timer -->
@@ -5418,60 +5822,167 @@
             </ion-row>
           </div>
         </div>
-        <div *ngIf="wvid" style="display: flex; justify-content: center; align-items: center; height: 420px;">
-          <div style="border-radius: 20px; text-align: center;">
-              <div *ngIf="ladderlbls && emom.e1m1!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ emom.e1m1rep}}x {{ emom.e1m1 }}</ion-label>
-              </div>
-              <div *ngIf="ladderlbls && emom.e1m2!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ emom.e1m2rep}}x {{ emom.e1m2 }}</ion-label>
-              </div>
-              <div *ngIf="ladderlbls && emom.e1m3!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ emom.e1m3rep }}x {{ emom.e1m3 }}</ion-label>
-              </div>
-              <div *ngIf="ladderlbls && emom.e1m4!==''" class="ladderLBLcon">
-                  <ion-label class="ladderLBL">{{ emom.e1m4rep }}x {{ emom.e1m4 }}</ion-label>
-              </div>
-              <div *ngIf="e2btn || donebtn" class="ladderLBLcon" style="width: 100%;">
-                  <button *ngIf="e2btn" class="ladderLBL" style="background-color:#00b250;border-radius: 20px;font-size: xxx-large;width: 100%" (click)="tolnotwoemom()">Next EMOM</button>
-                  <button *ngIf="donebtn" class="ladderLBL" style="background-color:#00b250;border-radius: 20px;font-size: xxx-large; width: 100%" (click)="wedoner4m3()">FINISHED</button>
-              </div>
+        <div
+          *ngIf="wvid"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 420px;
+          "
+        >
+          <div style="border-radius: 20px; text-align: center">
+            <div *ngIf="ladderlbls && emom.e1m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            width: 90%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+              <ion-label class="ladderLBL" style="  color: white;
+              text-align: center;
+              font-size: xx-large;
+              padding: 10px;"
+                >{{ emom.e1m1rep}}x {{ emom.e1m1 }}</ion-label
+              >
+            </div>
+            <div *ngIf="ladderlbls && emom.e1m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            width: 90%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+              <ion-label class="ladderLBL" style="  color: white;
+              text-align: center;
+              font-size: xx-large;
+              padding: 10px;"
+                >{{ emom.e1m2rep}}x {{ emom.e1m2 }}</ion-label
+              >
+            </div>
+            <div *ngIf="ladderlbls && emom.e1m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            width: 90%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+              <ion-label class="ladderLBL" style="  color: white;
+              text-align: center;
+              font-size: xx-large;
+              padding: 10px;"
+                >{{ emom.e1m3rep }}x {{ emom.e1m3 }}</ion-label
+              >
+            </div>
+            <div *ngIf="ladderlbls && emom.e1m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            width: 90%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+              <ion-label class="ladderLBL" style="  color: white;
+              text-align: center;
+              font-size: xx-large;
+              padding: 10px;"
+                >{{ emom.e1m4rep }}x {{ emom.e1m4 }}</ion-label
+              >
+            </div>
+            <div
+              *ngIf="e2btn || donebtn"
+              class="ladderLBLcon"
+              style="width: 100%"
+              style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+        
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;"
+            >
+              <button
+                *ngIf="e2btn"
+                class="ladderLBL"
+                style="
+                       background: linear-gradient(45deg, #00b250, #2E7D32);
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
+                  color: white;
+              text-align: center;
+        
+              padding: 10px;"
+                
+                (click)="tolnotwoemom()"
+              >
+                Next EMOM
+              </button>
+              <button
+                *ngIf="donebtn"
+                class="ladderLBL"
+                style="
+                  background-color: #00b250;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
+                "
+                (click)="wedoner4m3()"
+              >
+                FINISHED
+              </button>
+            </div>
           </div>
-      </div>
-      
-      
-      
+        </div>
       </ion-row>
       <br />
-      <ion-row
-       
-        class="ion-justify-content-center"
-      >
+      <ion-row class="ion-justify-content-center">
         <!-- Countdown timer -->
 
         <button
-        [disabled]="buttonDisabled"
-        (click)="estrt5SecTimer(emom)"
-        *ngIf="srtbtnShow"
-        style="
-          height: 70px;
-          margin-top: 20px;
-          width: 330px;
-          font-size: xx-large;
-          border-radius: 30px;
-          color: black;
-          border: 2px solid #00b250;
-          background: linear-gradient(45deg, #ffffff, #00b250);
-          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2);
-          transition: box-shadow 0.3s ease;
-        "
-        id="srtbtnr1m1"
-        color="#00b250"
-      >
-        {{ buttonText }} <!-- Bind buttonText variable for dynamic text -->
-      </button>
-      
+          [disabled]="buttonDisabled"
+          (click)="estrt5SecTimer(emom)"
+          *ngIf="srtbtnShow"
+          style="
+            height: 70px;
+            margin-top: 20px;
+            width: 330px;
+            font-size: xx-large;
+            border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(45deg, #ffffff, #00b250);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 3px 5px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+          "
+          id="srtbtnr1m1"
+          color="#00b250"
+        >
+          {{ buttonText }}
+          <!-- Bind buttonText variable for dynamic text -->
+        </button>
 
         <ion-row *ngIf="cdr1m1Timer !== undefined" style="height: 10px">
           <!-- Display the 5-second timer -->
@@ -5514,13 +6025,9 @@
     </ion-card>
   </ion-card>
 </div>
-<!--l2-->
+<!--e2-->
 <div class="daBack" *ngIf="r2m1Show">
-  <ion-card
-    class="wodbod"
-    *ngFor="let emom of semoms "
- 
-  >
+  <ion-card class="wodbod" *ngFor="let emom of semoms ">
     <h2
       class="cardttl"
       style="
@@ -5539,25 +6046,37 @@
         border-bottom-width: 1px;
         height: 700px;
         padding-bottom: 0%;
-        padding-top: 10%
+        padding-top: 10%;
       "
     >
-    <ion-row class="ion-justify-content-center">
-      <ion-label
-      style="
-        text-align: center;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: x-large;
-        padding-bottom: 10%;
-        color: aliceblue;
-      "
-    >
-    Do all exercises before the timer runs out.
-    </ion-label></ion-row>
-      
+      <ion-row class="ion-justify-content-center">
+        <ion-label
+          style="
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: x-large;
+            padding-bottom: 10%;
+            color: aliceblue;
+          "
+        >
+          Do all exercises before the timer runs out.
+        </ion-label></ion-row
+      >
+
       <ion-row class="ion-justify-content-center" *ngIf="emom.exe">
-        <div *ngIf="prepimg" style="position: relative; background-color: white; height: 430px; width: 99%">
-          <ion-img src="/assets/imgs/stopwatch.png" style="padding-top: 2%;"></ion-img>
+        <div
+          *ngIf="prepimg"
+          style="
+            position: relative;
+            background-color: white;
+            height: 430px;
+            width: 99%;
+          "
+        >
+          <ion-img
+            src="/assets/imgs/stopwatch.png"
+            style="padding-top: 2%"
+          ></ion-img>
           <div class="countdown-wrapper" *ngIf="r2cd5Sec !== undefined">
             <ion-row class="countdown-row">
               <!-- Display the 5-second timer -->
@@ -5565,112 +6084,214 @@
             </ion-row>
           </div>
         </div>
-        <div *ngIf="wvid" style="display: flex; justify-content: center; align-items: center; height: 420px;">
-
-        <div style="border-radius: 20px; text-align: center;">
-          <div *ngIf="ladderlbls && emom.e2m1!==''" class="ladderLBLcon">
-              <ion-label class="ladderLBL">{{ emom.e2m1rep}}x {{ emom.e2m1 }}</ion-label>
+        <div
+          *ngIf="wvid"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 420px;
+          "
+        >
+          <div style="border-radius: 20px; text-align: center">
+            <div *ngIf="ladderlbls && emom.e2m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            width: 90%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+              <ion-label class="ladderLBL" style="  color: white;
+              text-align: center;
+              font-size: xx-large;
+              padding: 10px;"
+                >{{ emom.e2m1rep}}x {{ emom.e2m1 }}</ion-label
+              >
+            </div>
+            <div *ngIf="ladderlbls && emom.e2m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            width: 90%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+              <ion-label class="ladderLBL" style="  color: white;
+              text-align: center;
+              font-size: xx-large;
+              padding: 10px;"
+                >{{ emom.e2m2rep}}x {{ emom.e2m2 }}</ion-label
+              >
+            </div>
+            <div *ngIf="ladderlbls && emom.e2m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            width: 90%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+              <ion-label class="ladderLBL" style="  color: white;
+              text-align: center;
+              font-size: xx-large;
+              padding: 10px;"
+                >{{ emom.e2m3rep }}x {{ emom.e2m3 }}</ion-label
+              >
+            </div>
+            <div *ngIf="ladderlbls && emom.e2m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            width: 90%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+              <ion-label class="ladderLBL" style="  color: white;
+              text-align: center;
+              font-size: xx-large;
+              padding: 10px;"
+                >{{ emom.e2m4rep }}x {{ emom.e2m4 }}</ion-label
+              >
+            </div>
+            <div
+              *ngIf="e3btn || donebtn"
+              class="ladderLBLcon"
+              style="width: 100%"
+              style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;"
+            >
+              <button
+                *ngIf="e3btn"
+                class="ladderLBL"
+                style="
+                       background: linear-gradient(45deg, #00b250, #2E7D32);
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
+                   color: white;
+              text-align: center;
+       
+              padding: 10px;"
+                
+                (click)="tolnothreeemom()"
+              >
+                Next EMOM
+              </button>
+              <button
+                *ngIf="donebtn"
+                class="ladderLBL"
+                style="
+                  background-color: #00b250;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
+                "
+                (click)="wedoner4m3()"
+              >
+                FINISHED
+              </button>
+            </div>
           </div>
-          <div *ngIf="ladderlbls && emom.e2m2!==''" class="ladderLBLcon">
-              <ion-label class="ladderLBL">{{ emom.e2m2rep}}x {{ emom.e2m2 }}</ion-label>
-          </div>
-          <div *ngIf="ladderlbls && emom.e2m3!==''" class="ladderLBLcon">
-              <ion-label class="ladderLBL">{{ emom.e2m3rep }}x {{ emom.e2m3 }}</ion-label>
-          </div>
-          <div *ngIf="ladderlbls && emom.e2m4!==''" class="ladderLBLcon">
-              <ion-label class="ladderLBL">{{ emom.e2m4rep }}x {{ emom.e2m4 }}</ion-label>
-          </div>
-          <div *ngIf="e3btn || donebtn" class="ladderLBLcon" style="width: 100%;">
-              <button *ngIf="e3btn" class="ladderLBL" style="background-color:#00b250;border-radius: 20px;font-size: xxx-large;width: 100%" (click)="tolnothreeemom()">Next EMOM</button>
-              <button *ngIf="donebtn" class="ladderLBL" style="background-color:#00b250;border-radius: 20px;font-size: xxx-large; width: 100%" (click)="wedoner4m3()">FINISHED</button>
-          </div>
-          </div>
-      </div>
+        </div>
       </ion-row>
       <br />
-      <ion-row
-         
-          class="ion-justify-content-center"
-        >
-          <!-- Countdown timer -->
+      <ion-row class="ion-justify-content-center">
+        <!-- Countdown timer -->
 
-          <button
-            
-            (click)="e2strt5SecTimer(emom)"
-            *ngIf="r2srtbtnShow"
+        <button
+          (click)="e2strt5SecTimer(emom)"
+          *ngIf="r2srtbtnShow"
+          style="
+            height: 70px;
+            margin-top: 20px;
+            width: 330px;
+            font-size: xx-large;
+            border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(
+              45deg,
+              #ffffff,
+              #00b250
+            ); /* Gradient background for a more vibrant look */
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+            transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+          "
+          id="srtbtnr1m1"
+          color="#00b250"
+        >
+          {{buttonText}}
+        </button>
+
+        <ion-row *ngIf="cdr2m1Timer !== undefined" style="height: 10px">
+          <!-- Display the 5-second timer -->
+          <div
+            *ngIf="cdr2m1Show"
             style="
-              height: 70px;
-              margin-top: 20px;
-              width: 330px;
-              font-size: xx-large;
-              border-radius: 30px;
-              color: black;
-              border: 2px solid #00b250;
-              background: linear-gradient(
-                45deg,
-                #ffffff,
-                #00b250
-              ); /* Gradient background for a more vibrant look */
+              padding-top: 21px;
+              position: relative;
+              width: 120px; /* Fixed width */
+              height: 120px; /* Fixed height */
+              margin: 0 auto; /* Center horizontally */
+              text-align: center;
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
-              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+              font-size: 7vh; /* Use 'vh' units for relative sizing */
+              color: #00b250;
+              cursor: pointer; /* Add cursor pointer for better user interaction */
             "
-            id="srtbtnr1m1"
-            color="#00b250"
+            (click)="togglePauseResume()"
           >
-            {{buttonText}}
-          </button>
-
-         
-          <ion-row *ngIf="cdr2m1Timer !== undefined" style="height: 10px">
-            <!-- Display the 5-second timer -->
             <div
-              *ngIf="cdr2m1Show"
               style="
-                padding-top: 21px;
-                position: relative;
-                width: 120px; /* Fixed width */
-                height: 120px; /* Fixed height */
-                margin: 0 auto; /* Center horizontally */
-                text-align: center;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                font-size: 7vh; /* Use 'vh' units for relative sizing */
-                color: #00b250;
-                cursor: pointer; /* Add cursor pointer for better user interaction */
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                border-style: solid;
+                border-color: #00b250;
+                border-width: 6px;
+                background-color: white;
+                z-index: -1;
               "
-              (click)="togglePauseResume()"
-            >
-              <div
-                style="
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  width: 100%;
-                  height: 100%;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-color: #00b250;
-                  border-width: 6px;
-                  background-color: white;
-                  z-index: -1;
-                "
-              ></div>
-              {{ cdr2m1Timer }}
-            </div>
-          </ion-row>
+            ></div>
+            {{ cdr2m1Timer }}
+          </div>
         </ion-row>
+      </ion-row>
     </ion-card>
   </ion-card>
 </div>
+<!--e3-->
 <div class="daBack" *ngIf="r3m1Show">
-  <ion-card
-    class="wodbod"
-    *ngFor="let emom of semoms "
- 
-  >
+  <ion-card class="wodbod" *ngFor="let emom of semoms ">
     <h2
       class="cardttl"
       style="
@@ -5689,25 +6310,37 @@
         border-bottom-width: 1px;
         height: 700px;
         padding-bottom: 0%;
-        padding-top: 10%
+        padding-top: 10%;
       "
     >
-    <ion-row class="ion-justify-content-center">
-      <ion-label
-      style="
-        text-align: center;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: x-large;
-        padding-bottom: 10%;
-        color: aliceblue;
-      "
-    >
-    Do all exercises before the timer runs out.
-    </ion-label></ion-row>
-      
+      <ion-row class="ion-justify-content-center">
+        <ion-label
+          style="
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: x-large;
+            padding-bottom: 10%;
+            color: aliceblue;
+          "
+        >
+          Do all exercises before the timer runs out.
+        </ion-label></ion-row
+      >
+
       <ion-row class="ion-justify-content-center" *ngIf="emom.exe">
-        <div *ngIf="prepimg" style="position: relative; background-color: white; height: 430px; width: 99%">
-          <ion-img src="/assets/imgs/stopwatch.png" style="padding-top: 2%;"></ion-img>
+        <div
+          *ngIf="prepimg"
+          style="
+            position: relative;
+            background-color: white;
+            height: 430px;
+            width: 99%;
+          "
+        >
+          <ion-img
+            src="/assets/imgs/stopwatch.png"
+            style="padding-top: 2%"
+          ></ion-img>
           <div class="countdown-wrapper" *ngIf="r3cd5Sec !== undefined">
             <ion-row class="countdown-row">
               <!-- Display the 5-second timer -->
@@ -5715,107 +6348,181 @@
             </ion-row>
           </div>
         </div>
-        <div *ngIf="wvid" style="display: flex; justify-content: center; align-items: center; height: 420px;">
-
-        <div style="border-radius: 20px; text-align: center;">
-          <div *ngIf="ladderlbls && emom.e3m1!==''" class="ladderLBLcon">
-              <ion-label class="ladderLBL">{{ emom.e3m1rep}}x {{ emom.e3m1 }}</ion-label>
+        <div
+          *ngIf="wvid"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 420px;
+          "
+        >
+          <div style="border-radius: 20px; text-align: center">
+            <div *ngIf="ladderlbls && emom.e3m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            width: 90%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+              <ion-label class="ladderLBL" style="  color: white;
+              text-align: center;
+              font-size: xx-large;
+              padding: 10px;"
+                >{{ emom.e3m1rep}}x {{ emom.e3m1 }}</ion-label
+              >
+            </div>
+            <div *ngIf="ladderlbls && emom.e3m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            width: 90%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+              <ion-label class="ladderLBL" style="  color: white;
+              text-align: center;
+              font-size: xx-large;
+              padding: 10px;"
+                >{{ emom.e3m2rep}}x {{ emom.e3m2 }}</ion-label
+              >
+            </div>
+            <div *ngIf="ladderlbls && emom.e3m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            width: 90%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+              <ion-label class="ladderLBL" style="  color: white;
+              text-align: center;
+              font-size: xx-large;
+              padding: 10px;"
+                >{{ emom.e3m3rep }}x {{ emom.e3m3 }}</ion-label
+              >
+            </div>
+            <div *ngIf="ladderlbls && emom.e3m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+            width: 90%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+              <ion-label class="ladderLBL" style="  color: white;
+              text-align: center;
+              font-size: xx-large;
+              padding: 10px;"
+                >{{ emom.e3m4rep }}x {{ emom.e3m4 }}</ion-label
+              >
+            </div>
+            <div *ngIf=" donebtn" class="ladderLBLcon" style="width: 100%">
+              <button
+                *ngIf="donebtn"
+                class="ladderLBL"
+                style="
+                  background-color: #00b250;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
+                "
+                (click)="wedoner4m3()"
+              >
+                FINISHED
+              </button>
+            </div>
           </div>
-          <div *ngIf="ladderlbls && emom.e3m2!==''" class="ladderLBLcon">
-              <ion-label class="ladderLBL">{{ emom.e3m2rep}}x {{ emom.e3m2 }}</ion-label>
-          </div>
-          <div *ngIf="ladderlbls && emom.e3m3!==''" class="ladderLBLcon">
-              <ion-label class="ladderLBL">{{ emom.e3m3rep }}x {{ emom.e3m3 }}</ion-label>
-          </div>
-          <div *ngIf="ladderlbls && emom.e3m4!==''" class="ladderLBLcon">
-              <ion-label class="ladderLBL">{{ emom.e3m4rep }}x {{ emom.e3m4 }}</ion-label>
-          </div>
-          <div *ngIf=" donebtn" class="ladderLBLcon" style="width: 100%;">
-              <button *ngIf="donebtn" class="ladderLBL" style="background-color:#00b250;border-radius: 20px;font-size: xxx-large; width: 100%" (click)="wedoner4m3()">FINISHED</button>
-          </div>
-          </div>
-      </div>
+        </div>
       </ion-row>
       <br />
-      <ion-row
-        
-          class="ion-justify-content-center"
-        >
-          <!-- Countdown timer -->
+      <ion-row class="ion-justify-content-center">
+        <!-- Countdown timer -->
 
-          <button
-            
-            (click)="e3strt5SecTimer(emom)"
-            *ngIf="r3srtbtnShow"
+        <button
+          (click)="e3strt5SecTimer(emom)"
+          *ngIf="r3srtbtnShow"
+          style="
+            height: 70px;
+            margin-top: 20px;
+            width: 330px;
+            font-size: xx-large;
+            border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(
+              45deg,
+              #ffffff,
+              #00b250
+            ); /* Gradient background for a more vibrant look */
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+            transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+          "
+          id="srtbtnr1m1"
+          color="#00b250"
+        >
+          {{buttonText}}
+        </button>
+
+        <ion-row *ngIf="cdr3m1Timer !== undefined" style="height: 10px">
+          <!-- Display the 5-second timer -->
+          <div
+            *ngIf="cdr3m1Show"
             style="
-              height: 70px;
-              margin-top: 20px;
-              width: 330px;
-              font-size: xx-large;
-              border-radius: 30px;
-              color: black;
-              border: 2px solid #00b250;
-              background: linear-gradient(
-                45deg,
-                #ffffff,
-                #00b250
-              ); /* Gradient background for a more vibrant look */
+              padding-top: 21px;
+              position: relative;
+              width: 120px; /* Fixed width */
+              height: 120px; /* Fixed height */
+              margin: 0 auto; /* Center horizontally */
+              text-align: center;
               font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
                 sans-serif;
-              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
-              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+              font-size: 7vh; /* Use 'vh' units for relative sizing */
+              color: #00b250;
+              cursor: pointer; /* Add cursor pointer for better user interaction */
             "
-            id="srtbtnr1m1"
-            color="#00b250"
+            (click)="togglePauseResume()"
           >
-            {{buttonText}}
-          </button>
-
-         
-          <ion-row *ngIf="cdr3m1Timer !== undefined" style="height: 10px">
-            <!-- Display the 5-second timer -->
             <div
-              *ngIf="cdr3m1Show"
               style="
-                padding-top: 21px;
-                position: relative;
-                width: 120px; /* Fixed width */
-                height: 120px; /* Fixed height */
-                margin: 0 auto; /* Center horizontally */
-                text-align: center;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-                  sans-serif;
-                font-size: 7vh; /* Use 'vh' units for relative sizing */
-                color: #00b250;
-                cursor: pointer; /* Add cursor pointer for better user interaction */
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                border-style: solid;
+                border-color: #00b250;
+                border-width: 6px;
+                background-color: white;
+                z-index: -1;
               "
-              (click)="togglePauseResume()"
-            >
-              <div
-                style="
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  width: 100%;
-                  height: 100%;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-color: #00b250;
-                  border-width: 6px;
-                  background-color: white;
-                  z-index: -1;
-                "
-              ></div>
-              {{ cdr3m1Timer }}
-            </div>
-          </ion-row>
+            ></div>
+            {{ cdr3m1Timer }}
+          </div>
         </ion-row>
+      </ion-row>
     </ion-card>
   </ion-card>
 </div>
 <!--________amraps______________________________________________________________-->
-  <!--e1-->
+  <!--a1-->
   <div class="daBack" *ngIf="cdr1m1Show">
     <ion-card class="wodbod" *ngFor="let amrap of samraps ">
       <h2
@@ -5884,23 +6591,75 @@
             "
           >
             <div style="border-radius: 20px; text-align: center">
-              <div *ngIf="ladderlbls && amrap.a1m1!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a1m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a1m1rep}}x {{ amrap.a1m1 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a1m2!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a1m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a1m2rep}}x {{ amrap.a1m2 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a1m3!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a1m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a1m3rep }}x {{ amrap.a1m3 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a1m4!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a1m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a1m4rep }}x {{ amrap.a1m4 }}</ion-label
                 >
               </div>
@@ -5908,16 +6667,31 @@
                 *ngIf="a2btn || donebtn"
                 class="ladderLBLcon"
                 style="width: 100%"
+                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+            
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;"
               >
                 <button
                   *ngIf="a2btn"
                   class="ladderLBL"
                   style="
-                    background-color: #00b250;
+                         background: linear-gradient(45deg, #00b250, #2E7D32);
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
-                  "
+               color: white;
+                text-align: center;
+
+                padding: 10px;"
+                  
                   (click)="tolnotwoamrap()"
                 >
                   Next AMRAP
@@ -6079,23 +6853,75 @@
             "
           >
             <div style="border-radius: 20px; text-align: center">
-              <div *ngIf="ladderlbls && amrap.a2m1!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a2m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a2m1rep}}x {{ amrap.a2m1 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a2m2!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a2m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a2m2rep}}x {{ amrap.a2m2 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a2m3!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a2m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a2m3rep }}x {{ amrap.a2m3 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a2m4!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a2m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a2m4rep }}x {{ amrap.a2m4 }}</ion-label
                 >
               </div>
@@ -6103,16 +6929,31 @@
                 *ngIf="a3btn || donebtn"
                 class="ladderLBLcon"
                 style="width: 100%"
+                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;"
               >
                 <button
                   *ngIf="a3btn"
                   class="ladderLBL"
                   style="
-                    background-color: #00b250;
+                        background: linear-gradient(45deg, #00b250, #2E7D32);
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
-                  "
+                      color: white;
+                text-align: center;
+               
+                padding: 10px;"
+                  
                   (click)="tolnothreeamrap()"
                 >
                   Next AMRAP
@@ -6276,23 +7117,75 @@
             "
           >
             <div style="border-radius: 20px; text-align: center">
-              <div *ngIf="ladderlbls && amrap.a3m1!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a3m1!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a3m1rep}}x {{ amrap.a3m1 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a3m2!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a3m2!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a3m2rep}}x {{ amrap.a3m2 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a3m3!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a3m3!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a3m3rep }}x {{ amrap.a3m3 }}</ion-label
                 >
               </div>
-              <div *ngIf="ladderlbls && amrap.a3m4!==''" class="ladderLBLcon">
-                <ion-label class="ladderLBL"
+              <div *ngIf="ladderlbls && amrap.a3m4!==''" class="ladderLBLcon" style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+              border-radius: 20px;
+              width: 90%;
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              height: 20%;
+              margin-bottom: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;">
+                <ion-label class="ladderLBL" style="  color: white;
+                text-align: center;
+                font-size: xx-large;
+                padding: 10px;"
                   >{{ amrap.a3m4rep }}x {{ amrap.a3m4 }}</ion-label
                 >
               </div>

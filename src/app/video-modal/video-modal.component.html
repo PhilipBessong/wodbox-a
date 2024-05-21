@@ -12,22 +12,17 @@
   <ion-grid *ngFor="let workout of specificWorkouts">
 
     <ion-row class="ion-justify-content-center" *ngIf="workout.exe">
-      <pre></pre>
-      <ion-row>
-        <div style="padding-top: 13%;padding-bottom: 13%;">
-          <ion-label  style="font-size: x-large; color: azure;padding: 25px;border-color:#b27600 ;border-style: solid;border-radius: 20px;">{{workout.r1m1}}</ion-label>
-        </div>
-      </ion-row>
+      
       <pre></pre>
       <video
         controls
-        *ngIf="workout.exe.mobileUrl"
+        *ngIf="workout.exe.videoUrl"
         autoplay
         loop
-        style="border-radius: 20px; height: 100;"
+        style="border-radius: 20px;"
 
       >
-        <source [src]="workout.exe.mobileUrl" type="video/mp4" />
+        <source [src]="workout.exe.videoUrl" type="video/mp4" />
         <!-- Add more <source> elements for different video formats if needed -->
         Your browser does not support the video tag.
       </video>

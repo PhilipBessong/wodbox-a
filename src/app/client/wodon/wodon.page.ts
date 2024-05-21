@@ -620,6 +620,7 @@ export class WodonPage implements OnInit {
    r4m1RestShowc: boolean = false;
    r4m2RestShowc: boolean = false;
    r4m3RestShowc: boolean = false;
+   lFinishShowc: boolean = false;
    woddonec: boolean = false;
  
    ionContentClass: string = ''; // Property to hold the class for ion-content
@@ -704,18 +705,21 @@ export class WodonPage implements OnInit {
      } else if (this.woddonec) {
        this.ionContentClass = 'home-content';
        this.lococon = 'logoconc';
-     }
+     }else if (this.lFinishShowc) {
+      this.ionContentClass = 'blue-content';
+      this.lococon = 'logocona';}
    }
    updateIonContentClass() {
      // Method to update the ion-content class based on variables
      this.getIonContentClass();
      // Apply ion-content class or update a property bound to ngClass in the template
    }
-    //ladder timers___________________________________________________________________________________
+  //ladder timers___________________________________________________________________________________
   l2btn = false;
   l3btn = false;
   donebtn = false;
   ladderlbls = true;
+  lFinishShow = false;
   lTimer: number = 0;
   l2Timer: number = 0;
   l3Timer: number = 0;
@@ -739,7 +743,7 @@ export class WodonPage implements OnInit {
         this.buttonDisabled = false;
       }
       if (this.cd5Sec !== undefined && this.cd5Sec) {
-       // this.playSound();
+      
       } 
     }, 1000); // Update the 5-second countdown every second
   }
@@ -770,8 +774,12 @@ export class WodonPage implements OnInit {
               this.l2btn = true;
               this.ladderlbls = false;
             }else{
-              this.donebtn = true;
-              this.ladderlbls = false;
+              this.lFinishShow = true;
+              this.cdr1m1Show = false;
+              // Call a method to update the ion-content class
+              this.lFinishShowc = true;
+              this.cdr1m1Showc = false;
+              this.updateIonContentClass();
             }
             
           }
@@ -812,6 +820,7 @@ export class WodonPage implements OnInit {
         this.wvid=true;
         this.r2srtbtnShow = false;
         this.buttonText = 'Start Timer';
+        this.cdr2m1Show =true;
       }
     }, 1000); // Update the 5-second countdown every second
   }
@@ -837,8 +846,12 @@ export class WodonPage implements OnInit {
               this.l3btn = true;
               this.ladderlbls = false;
             }else{
-              this.donebtn = true;
-              this.ladderlbls = false;
+              this.lFinishShow = true;
+              this.r2m1Show = false;
+              // Call a method to update the ion-content class
+              this.lFinishShowc = true;
+              this.cdr1m1Showc = false;
+              this.updateIonContentClass();
             }
             
           }
@@ -882,10 +895,15 @@ export class WodonPage implements OnInit {
           } else {
             clearInterval(this.cdr3m1Intval);
             this.clearr3m1Cd();
-
+            this.lFinishShow = true;
+            this.r3m1Show = false;
+            this.cdr1m1Showc = false;
+            // Call a method to update the ion-content class
+            this.lFinishShowc = true;
+            this.updateIonContentClass();
+            
            
-              this.donebtn = true;
-              this.ladderlbls = false;
+            
             
             
           }
@@ -902,181 +920,194 @@ export class WodonPage implements OnInit {
      e2Timer: number = 0;
      e3Timer: number = 0;
      estrt5SecTimer(semoms: Emom) {
-       this.buttonDisabled = true; // Disable the button
-       this.cd5Sec = 10;
-       this.buttonText = 'GET READY!!!';
-       this.srtbtnShow = true;
-       this.cd5SecShow = true;
-       const timerInterval = setInterval(() => {
-         if (this.cd5Sec !== undefined && this.cd5Sec > 0) {
-           this.cd5Sec--;
-         }else {
-           clearInterval(timerInterval);
-           this.strte1m1Timer(semoms);
-           this.cd5SecShow = false;
-           this.prepimg = false;
-           this.wvid=true;
-           this.srtbtnShow = false;
-           this.buttonText = 'Start Timer';
-           this.buttonDisabled = false;
-         }
-         if (this.cd5Sec !== undefined && this.cd5Sec) {
-         
-         } 
-       }, 1000); // Update the 5-second countdown every second
-     }
-    
-     strte1m1Timer(semoms: Emom) {
-       this.eTimer = 60;
+      this.buttonDisabled = true; // Disable the button
+      this.cd5Sec = 10;
+      this.buttonText = 'GET READY!!!';
+      this.srtbtnShow = true;
+      this.cd5SecShow = true;
+      const timerInterval = setInterval(() => {
+        if (this.cd5Sec !== undefined && this.cd5Sec > 0) {
+          this.cd5Sec--;
+        }else {
+          clearInterval(timerInterval);
+          this.strte1m1Timer(semoms);
+          this.cd5SecShow = false;
+          this.prepimg = false;
+          this.wvid=true;
+          this.srtbtnShow = false;
+          this.buttonText = 'Start Timer';
+          this.buttonDisabled = false;
+        }
+        if (this.cd5Sec !== undefined && this.cd5Sec) {
+          
+        } 
+      }, 1000); // Update the 5-second countdown every second
+    }
    
-       if (this.eTimer) {
-         if (this.isPr1m1Timer) {
-           // Resume the countdown with the remaining time
-           this.cdr1m1Timer = this.remaincdr1m1;
-         } else if (this.cdr1m1Timer === undefined) {
-           this.cdr1m1Timer = this.eTimer;
-         }
-   
-         this.cdr1m1Intval = setInterval(() => {
-         
-           if (!this.isPaused) {
-             // Check if the timer is not paused
-             if (this.cdr1m1Timer && this.cdr1m1Timer > 0) {
-               this.remaincdr1m1 = this.cdr1m1Timer; // Store remaining time
-               this.cdr1m1Timer--;
-             } else {
-               clearInterval(this.cdr1m1Intval);
-               this.clearr1m1Cd();
-              
-               if(semoms.e2m1!==''){
-                 this.e2btn = true;
-                 this.ladderlbls = false;
-               }else{
-                 this.donebtn = true;
-                 this.ladderlbls = false;
-               }
-               
-             }
-           }
-         }, 1000);
-       }
-     }
-     tolnotwoemom(){
-       this.cdr1m1Show = false;
-       this.e2btn = false;
-       this.wvid=false;
-       this.r2m1Show = true;
-       this.ladderlbls = true;
-       this.prepimg = true;
-     }
-     tolnothreeemom(){
-       this.r2m1Show = false;
-       this.e3btn = false;
-       this.wvid=false;
-       this.r3m1Show = true;
-       this.ladderlbls = true;
-       this.prepimg = true;
-     }
-   
-     e2strt5SecTimer(semoms: Emom) {
-       this.r2cd5Sec = 10;
-       this.r2srtbtnShow = true;
-       this.r2cd5SecShow = true;
-       this.buttonText = 'GET READY!!!'
-       const timerInterval = setInterval(() => {
-         if (this.r2cd5Sec !== undefined && this.r2cd5Sec > 0) {
-           this.r2cd5Sec--;
-         } else {
-           clearInterval(timerInterval);
-           this.strte2m1Timer(semoms);
-           this.r2cd5SecShow = false;
-           this.prepimg = false;
-           this.wvid=true;
-           this.r2srtbtnShow = false;
-           this.buttonText = 'Start Timer';
-         }
-       }, 1000); // Update the 5-second countdown every second
-     }
-     strte2m1Timer(semoms: Emom) {
-      this.e2Timer = 60;
-       if (this.e2Timer) {
-       
-         if (this.isPr2m1Timer) {
-           // Resume the countdown with the remaining time
-           this.cdr2m1Timer = this.remaincdr2m1;
-         } else if (this.cdr2m1Timer === undefined) {
-           this.cdr2m1Timer = this.e2Timer;
-         }
-         this.cdr2m1Intval = setInterval(() => {
-           if (!this.isPaused) {
-             if (this.cdr2m1Timer && this.cdr2m1Timer > 0) {
-               this.remaincdr2m1 = this.cdr2m1Timer; // Store remaining time
-               this.cdr2m1Timer--;
-             } else {
-               clearInterval(this.cdr2m1Intval);
-               this.clearr2m1Cd();
-   
-               if(semoms.e3m1!==''){
-                 this.e3btn = true;
-                 this.ladderlbls = false;
-               }else{
-                 this.donebtn = true;
-                 this.ladderlbls = false;
-               }
-               
-             }
-           }
-         }, 1000);
-       }
-     }
-     e3strt5SecTimer(semoms: Emom) {
-       this.r3cd5Sec = 10;
-       this.r3srtbtnShow = true;
-       this.r3cd5SecShow = true;
-       this.buttonText = 'GET READY!!!';
-       const timerInterval = setInterval(() => {
-         if (this.r3cd5Sec !== undefined && this.r3cd5Sec > 0) {
-           this.r3cd5Sec--;
-         } else {
-           clearInterval(timerInterval);
-           this.strte3m1Timer(semoms);
-           this.r3cd5SecShow = false;
-           this.prepimg = false;
-           this.wvid=true;
-           this.r3srtbtnShow = false;
-           this.buttonText = 'Start Timer';
-         }
-       }, 1000); // Update the 5-second countdown every second
-     }
-     strte3m1Timer(semoms: Emom) {
-      this.e3Timer = 60;
-       if (this.e3Timer) {
+    strte1m1Timer(semoms: Emom) {
+      this.eTimer = 60;
+  
+      if (this.eTimer) {
+        if (this.isPr1m1Timer) {
+          // Resume the countdown with the remaining time
+          this.cdr1m1Timer = this.remaincdr1m1;
+        } else if (this.cdr1m1Timer === undefined) {
+          this.cdr1m1Timer = this.eTimer;
+        }
+  
+        this.cdr1m1Intval = setInterval(() => {
         
-         if (this.isPr3m1Timer) {
-           // Resume the countdown with the remaining time
-           this.cdr3m1Timer = this.remaincdr3m1;
-         } else if (this.cdr3m1Timer === undefined) {
-           this.cdr3m1Timer = this.e3Timer;
-         }
-         this.cdr3m1Intval = setInterval(() => {
-           if (!this.isPaused) {
-             if (this.cdr3m1Timer && this.cdr3m1Timer > 0) {
-               this.remaincdr3m1 = this.cdr3m1Timer; // Store remaining time
-               this.cdr3m1Timer--;
-             } else {
-               clearInterval(this.cdr3m1Intval);
-               this.clearr3m1Cd();
-   
+          if (!this.isPaused) {
+            // Check if the timer is not paused
+            if (this.cdr1m1Timer && this.cdr1m1Timer > 0) {
+              this.remaincdr1m1 = this.cdr1m1Timer; // Store remaining time
+              this.cdr1m1Timer--;
+            } else {
+              clearInterval(this.cdr1m1Intval);
+              this.clearr1m1Cd();
+             
+              if(semoms.e2m1!==''){
+                this.e2btn = true;
+                this.ladderlbls = false;
+              }else{
+               this.lFinishShow = true;
+               this.cdr1m1Show = false;
+               // Call a method to update the ion-content class
+               this.lFinishShowc = true;
+               this.cdr1m1Showc = false;
+               this.updateIonContentClass();
+              }
               
-                 this.donebtn = true;
-                 this.ladderlbls = false;
-               
-               
-             }
-           }
-         }, 1000);
-       }
-     }
+            }
+          }
+        }, 1000);
+      }
+    }
+    tolnotwoemom(){
+      this.cdr1m1Show = false;
+      this.e2btn = false;
+      this.wvid=false;
+      this.r2m1Show = true;
+      this.ladderlbls = true;
+      this.prepimg = true;
+    }
+    tolnothreeemom(){
+      this.r2m1Show = false;
+      this.e3btn = false;
+      this.wvid=false;
+      this.r3m1Show = true;
+      this.ladderlbls = true;
+      this.prepimg = true;
+    }
+  
+    e2strt5SecTimer(semoms: Emom) {
+      this.r2cd5Sec = 10;
+      this.r2srtbtnShow = true;
+      this.r2cd5SecShow = true;
+      this.buttonText = 'GET READY!!!'
+      const timerInterval = setInterval(() => {
+        if (this.r2cd5Sec !== undefined && this.r2cd5Sec > 0) {
+          this.r2cd5Sec--;
+        } else {
+          clearInterval(timerInterval);
+          this.strte2m1Timer(semoms);
+          this.r2cd5SecShow = false;
+          this.prepimg = false;
+          this.wvid=true;
+          this.r2srtbtnShow = false;
+          this.buttonText = 'Start Timer';
+        }
+      }, 1000); // Update the 5-second countdown every second
+    }
+    strte2m1Timer(semoms: Emom) {
+     this.e2Timer = 60;
+      if (this.e2Timer) {
+      
+        if (this.isPr2m1Timer) {
+          // Resume the countdown with the remaining time
+          this.cdr2m1Timer = this.remaincdr2m1;
+        } else if (this.cdr2m1Timer === undefined) {
+          this.cdr2m1Timer = this.e2Timer;
+        }
+        this.cdr2m1Intval = setInterval(() => {
+          if (!this.isPaused) {
+            if (this.cdr2m1Timer && this.cdr2m1Timer > 0) {
+              this.remaincdr2m1 = this.cdr2m1Timer; // Store remaining time
+              this.cdr2m1Timer--;
+            } else {
+              clearInterval(this.cdr2m1Intval);
+              this.clearr2m1Cd();
+  
+              if(semoms.e3m1!==''){
+                this.e3btn = true;
+                this.ladderlbls = false;
+              }else{
+               this.lFinishShow = true;
+               this.r2m1Show = false;
+               // Call a method to update the ion-content class
+               this.lFinishShowc = true;
+               this.cdr1m1Showc = false;
+               this.updateIonContentClass();
+              }
+              
+            }
+          }
+        }, 1000);
+      }
+    }
+    e3strt5SecTimer(semoms: Emom) {
+      this.r3cd5Sec = 10;
+      this.r3srtbtnShow = true;
+      this.r3cd5SecShow = true;
+      this.buttonText = 'GET READY!!!';
+      const timerInterval = setInterval(() => {
+        if (this.r3cd5Sec !== undefined && this.r3cd5Sec > 0) {
+          this.r3cd5Sec--;
+        } else {
+          clearInterval(timerInterval);
+          this.strte3m1Timer(semoms);
+          this.r3cd5SecShow = false;
+          this.prepimg = false;
+          this.wvid=true;
+          this.r3srtbtnShow = false;
+          this.buttonText = 'Start Timer';
+        }
+      }, 1000); // Update the 5-second countdown every second
+    }
+    strte3m1Timer(semoms: Emom) {
+     
+     this.e3Timer = 60;
+      if (this.e3Timer) {
+       
+        if (this.isPr3m1Timer) {
+          // Resume the countdown with the remaining time
+          this.cdr3m1Timer = this.remaincdr3m1;
+        } else if (this.cdr3m1Timer === undefined) {
+          this.cdr3m1Timer = this.e3Timer;
+        }
+        this.cdr3m1Intval = setInterval(() => {
+          if (!this.isPaused) {
+            if (this.cdr3m1Timer && this.cdr3m1Timer > 0) {
+              this.remaincdr3m1 = this.cdr3m1Timer; // Store remaining time
+              this.cdr3m1Timer--;
+            } else {
+              clearInterval(this.cdr3m1Intval);
+              this.clearr3m1Cd();
+  
+              this.lFinishShow = true;
+              this.r3m1Show = false;
+              // Call a method to update the ion-content class
+              this.lFinishShowc = true;
+              this.cdr1m1Showc = false;
+              this.updateIonContentClass();
+              
+              
+            }
+          }
+        }, 1000);
+      }
+    }
+ 
   
      //amrap timers___________________________________________________________________________________
   a2btn = false;
@@ -1104,7 +1135,7 @@ export class WodonPage implements OnInit {
         this.buttonDisabled = false;
       }
       if (this.cd5Sec !== undefined && this.cd5Sec) {
-       
+    
       } 
     }, 1000); // Update the 5-second countdown every second
   }
@@ -1135,8 +1166,12 @@ export class WodonPage implements OnInit {
               this.a2btn = true;
               this.ladderlbls = false;
             }else{
-              this.donebtn = true;
-              this.ladderlbls = false;
+              this.lFinishShow = true;
+              this.cdr1m1Show = false;
+              // Call a method to update the ion-content class
+              this.lFinishShowc = true;
+              this.cdr1m1Showc = false;
+              this.updateIonContentClass();
             }
             
           }
@@ -1181,13 +1216,14 @@ export class WodonPage implements OnInit {
     }, 1000); // Update the 5-second countdown every second
   }
   strta2m1Timer(samraps: Amrap) {
-    if (samraps.a2move) {
-      this.a2Timer = samraps.a2move * 60;
+    this.a2Timer = samraps.a2move * 60;
+    if (this.a2Timer) {
+     
       if (this.isPr2m1Timer) {
         // Resume the countdown with the remaining time
         this.cdr2m1Timer = this.remaincdr2m1;
       } else if (this.cdr2m1Timer === undefined) {
-        this.cdr2m1Timer = this.l2Timer;
+        this.cdr2m1Timer = this.a2Timer;
       }
       this.cdr2m1Intval = setInterval(() => {
         if (!this.isPaused) {
@@ -1202,8 +1238,12 @@ export class WodonPage implements OnInit {
               this.a3btn = true;
               this.ladderlbls = false;
             }else{
-              this.donebtn = true;
-              this.ladderlbls = false;
+             this.lFinishShow = true;
+             this.r2m1Show = false;
+             // Call a method to update the ion-content class
+             this.lFinishShowc = true;
+             this.cdr1m1Showc = false;
+             this.updateIonContentClass();
             }
             
           }
@@ -1231,13 +1271,14 @@ export class WodonPage implements OnInit {
     }, 1000); // Update the 5-second countdown every second
   }
   strta3m1Timer(samraps: Amrap) {
+    
     if (samraps.a3move) {
       this.a3Timer = samraps.a3move * 60;
       if (this.isPr3m1Timer) {
         // Resume the countdown with the remaining time
         this.cdr3m1Timer = this.remaincdr3m1;
       } else if (this.cdr3m1Timer === undefined) {
-        this.cdr3m1Timer = this.l3Timer;
+        this.cdr3m1Timer = this.a3Timer;
       }
       this.cdr3m1Intval = setInterval(() => {
         if (!this.isPaused) {
@@ -1247,10 +1288,15 @@ export class WodonPage implements OnInit {
           } else {
             clearInterval(this.cdr3m1Intval);
             this.clearr3m1Cd();
-
+            this.lFinishShow = true;
+            this.r3m1Show = false;
+            this.cdr1m1Showc = false;
+            // Call a method to update the ion-content class
+            this.lFinishShowc = true;
+            this.updateIonContentClass();
+            
            
-              this.donebtn = true;
-              this.ladderlbls = false;
+            
             
             
           }
@@ -1258,6 +1304,7 @@ export class WodonPage implements OnInit {
       }, 1000);
     }
   }
+
 
   
 

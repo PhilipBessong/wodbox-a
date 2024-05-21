@@ -10,9 +10,9 @@ import { VideoModalComponent } from './video-modal/video-modal.component'; // Im
 import { R1m2Component } from './vidmods/r1m2/r1m2.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../environments/environment';
-
+import { FriendsComponent } from './client/modals/modals/friends/friends.component';
 @NgModule({
-  declarations: [AppComponent,VideoModalComponent,R1m2Component ],
+  declarations: [AppComponent,VideoModalComponent,R1m2Component, FriendsComponent ],
   imports: [
     ReactiveFormsModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig),

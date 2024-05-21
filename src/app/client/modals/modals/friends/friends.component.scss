@@ -1,0 +1,16 @@
+/* friends.component.scss */
+
+.modal-content {
+    background-color: transparent; /* Set the background color to transparent */
+    height: 50vh; /* Set the height of the modal to 50% of the viewport height */
+    width: 50vw; /* Set the width of the modal to 50% of the viewport width */
+    top: 50%; /* Position the top edge of the modal halfway down the viewport */
+    left: 50%; /* Position the left edge of the modal halfway across the viewport */
+    transform: translate(-50%, -50%); /* Center the modal horizontally and vertically */
+    border-radius: 20px; /* Optional: Set border radius */
+  }
+  
+  ion-header {
+    --border-radius: 20px 20px 0 0; /* Optional: Adjust border-radius for header */
+  }
+  

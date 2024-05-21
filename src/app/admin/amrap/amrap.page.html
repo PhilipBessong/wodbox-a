@@ -642,7 +642,7 @@
                   </ion-input>
                   </ion-col>
   
-                </ion-row>           
+                </ion-row>
               </ion-row>
               
               
@@ -682,6 +682,8 @@
                   "
                   type="submit"
                   (click)="submitForm()"
+                  [disabled]="!amrapData.wodCat || !amrapData.daDate || !amrapData.a1m1||!this.amrapData.a1m1rep||!this.amrapData.a1move"
+
                   >Add WOD</ion-button
                 >
               </div>
