@@ -2989,33 +2989,7 @@
                 <p>{{user.email}}</p>
               </ion-label>
             </ion-item>
-            <ion-item>
-              <ion-avatar slot="start">
-                <ion-img src="https://i.pravatar.cc/300?u=a"></ion-img>
-              </ion-avatar>
-              <ion-label>
-                <h2>Daniel Smith</h2>
-                <p>Product Designer</p>
-              </ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-avatar slot="start">
-                <ion-img src="https://i.pravatar.cc/300?u=d"></ion-img>
-              </ion-avatar>
-              <ion-label>
-                <h2>Greg Smith</h2>
-                <p>Director of Operations</p>
-              </ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-avatar slot="start">
-                <ion-img src="https://i.pravatar.cc/300?u=e"></ion-img>
-              </ion-avatar>
-              <ion-label>
-                <h2>Zoey Smith</h2>
-                <p>CEO</p>
-              </ion-label>
-            </ion-item>
+          
           </ion-list>
         </ion-content>
       </ng-template>
@@ -5173,11 +5147,19 @@
                   *ngIf="l2btn"
                   class="ladderLBL"
                   style="
-                    background: linear-gradient(45deg, #00b250, #2E7D32);
+                    border-radius: 30px;
+              color: black;
+              border: 2px solid #00b250;
+              background: linear-gradient(45deg, #ffffff, #00b250);
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2);
+              transition: box-shadow 0.3s ease;
                     border-radius: 20px;
                     font-size: xxx-large;
                     width: 100%;
-                    color: white;
+                    
                 text-align: center;
                 padding: 10px;
                   "
@@ -5409,53 +5391,60 @@
                 font-size: xx-large;
                 padding: 10px;">{{ ladder.l2m4 }}</ion-label>
               </div>
-              <div
-                *ngIf="l3btn || donebtn"
-                class="ladderLBLcon"
-                style="width: 100%"
-                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
-              border-radius: 20px;
-              
+              <div  *ngIf="l3btn || donebtn"
+               
+              class="ladderLBLcon"
+              style="width: 100%"
+              style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+   
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;"
+            >
+              <button
+                *ngIf="l3btn"
+                class="ladderLBL"
+                style="
+                  border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(45deg, #ffffff, #00b250);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 3px 5px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
+                  
               text-align: center;
-              margin-left: auto;
-              margin-right: auto;
-              height: 20%;
-              margin-bottom: 5%;
-              display: flex;
-              align-items: center;
-              justify-content: center;"
+              padding: 10px;
+                "
+                (click)="tolnothree()"
               >
-                <button
-                  *ngIf="l3btn"
-                  class="ladderLBL"
-                  style="
-                   background: linear-gradient(45deg, #00b250, #2E7D32);
-                    border-radius: 20px;
-                    font-size: xxx-large;
-                    color: white;
-                text-align: center;
-       
-                padding: 10px;
-                    width: 100%;
-                  "
-                  (click)="tolnothree()"
-                >
-                  Next Ladder
-                </button>
-                <button
-                  *ngIf="donebtn"
-                  class="ladderLBL"
-                  style="
-                    background-color: #00b250;
-                    border-radius: 20px;
-                    font-size: xxx-large;
-                    width: 100%;
-                  "
-                  (click)="wedoner4m3()"
-                >
-                  FINISHED
-                </button>
-              </div>
+                Next Ladder
+              </button>
+              <button
+                *ngIf="donebtn"
+                class="ladderLBL"
+                style="
+                  background-color: #00b250;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
+                "
+                (click)="wedoner4m3()"
+              >
+                FINISHED
+              </button>
+            </div>
             </div>
           </div>
         </ion-row>
@@ -5858,7 +5847,6 @@
     </ion-card>
   </div>
   
-
   <!--________emoms______________________________________________________________-->
   <!--e1-->
   <div class="daBack" *ngIf="cdr1m1Show">
@@ -6001,53 +5989,60 @@
                   >{{ emom.e1m4rep }}x {{ emom.e1m4 }}</ion-label
                 >
               </div>
-              <div
-                *ngIf="e2btn || donebtn"
-                class="ladderLBLcon"
-                style="width: 100%"
-                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
-              border-radius: 20px;
-          
-              text-align: center;
-              margin-left: auto;
-              margin-right: auto;
-              height: 20%;
-              margin-bottom: 5%;
-              display: flex;
-              align-items: center;
-              justify-content: center;"
-              >
-                <button
-                  *ngIf="e2btn"
-                  class="ladderLBL"
-                  style="
-                         background: linear-gradient(45deg, #00b250, #2E7D32);
-                    border-radius: 20px;
-                    font-size: xxx-large;
-                    width: 100%;
-                    color: white;
-                text-align: center;
-          
-                padding: 10px;"
+              <div  *ngIf="e2btn || donebtn"
+               
+              class="ladderLBLcon"
+              style="width: 100%"
+              style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+   
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;"
+            >
+              <button
+                *ngIf="e2btn"
+                class="ladderLBL"
+                style="
+                  border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(45deg, #ffffff, #00b250);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 3px 5px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
                   
-                  (click)="tolnotwoemom()"
-                >
-                  Next EMOM
-                </button>
-                <button
-                  *ngIf="donebtn"
-                  class="ladderLBL"
-                  style="
-                    background-color: #00b250;
-                    border-radius: 20px;
-                    font-size: xxx-large;
-                    width: 100%;
-                  "
-                  (click)="wedoner4m3()"
-                >
-                  FINISHED
-                </button>
-              </div>
+              text-align: center;
+              padding: 10px;
+                "
+                (click)="tolnotwoemom()"
+              >
+                Next Ladder
+              </button>
+              <button
+                *ngIf="donebtn"
+                class="ladderLBL"
+                style="
+                  background-color: #00b250;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
+                "
+                (click)="wedoner4m3()"
+              >
+                FINISHED
+              </button>
+            </div>
             </div>
           </div>
         </ion-row>
@@ -6263,53 +6258,60 @@
                   >{{ emom.e2m4rep }}x {{ emom.e2m4 }}</ion-label
                 >
               </div>
-              <div
-                *ngIf="e3btn || donebtn"
-                class="ladderLBLcon"
-                style="width: 100%"
-                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
-              border-radius: 20px;
-              
-              text-align: center;
-              margin-left: auto;
-              margin-right: auto;
-              height: 20%;
-              margin-bottom: 5%;
-              display: flex;
-              align-items: center;
-              justify-content: center;"
-              >
-                <button
-                  *ngIf="e3btn"
-                  class="ladderLBL"
-                  style="
-                         background: linear-gradient(45deg, #00b250, #2E7D32);
-                    border-radius: 20px;
-                    font-size: xxx-large;
-                    width: 100%;
-                     color: white;
-                text-align: center;
-         
-                padding: 10px;"
+              <div  *ngIf="e3btn || donebtn"
+               
+              class="ladderLBLcon"
+              style="width: 100%"
+              style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+   
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;"
+            >
+              <button
+                *ngIf="e3btn"
+                class="ladderLBL"
+                style="
+                  border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(45deg, #ffffff, #00b250);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 3px 5px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
                   
-                  (click)="tolnothreeemom()"
-                >
-                  Next EMOM
-                </button>
-                <button
-                  *ngIf="donebtn"
-                  class="ladderLBL"
-                  style="
-                    background-color: #00b250;
-                    border-radius: 20px;
-                    font-size: xxx-large;
-                    width: 100%;
-                  "
-                  (click)="wedoner4m3()"
-                >
-                  FINISHED
-                </button>
-              </div>
+              text-align: center;
+              padding: 10px;
+                "
+                (click)="tolnothreeemom()"
+              >
+                Next Ladder
+              </button>
+              <button
+                *ngIf="donebtn"
+                class="ladderLBL"
+                style="
+                  background-color: #00b250;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
+                "
+                (click)="wedoner4m3()"
+              >
+                FINISHED
+              </button>
+            </div>
             </div>
           </div>
         </ion-row>
@@ -6760,53 +6762,60 @@
                   >{{ amrap.a1m4rep }}x {{ amrap.a1m4 }}</ion-label
                 >
               </div>
-              <div
-                *ngIf="a2btn || donebtn"
-                class="ladderLBLcon"
-                style="width: 100%"
-                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
-              border-radius: 20px;
-            
-              text-align: center;
-              margin-left: auto;
-              margin-right: auto;
-              height: 20%;
-              margin-bottom: 5%;
-              display: flex;
-              align-items: center;
-              justify-content: center;"
-              >
-                <button
-                  *ngIf="a2btn"
-                  class="ladderLBL"
-                  style="
-                         background: linear-gradient(45deg, #00b250, #2E7D32);
-                    border-radius: 20px;
-                    font-size: xxx-large;
-                    width: 100%;
-               color: white;
-                text-align: center;
-
-                padding: 10px;"
+              <div  *ngIf="a2btn || donebtn"
+               
+              class="ladderLBLcon"
+              style="width: 100%"
+              style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+   
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;"
+            >
+              <button
+                *ngIf="a2btn"
+                class="ladderLBL"
+                style="
+                  border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(45deg, #ffffff, #00b250);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 3px 5px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
                   
-                  (click)="tolnotwoamrap()"
-                >
-                  Next AMRAP
-                </button>
-                <button
-                  *ngIf="donebtn"
-                  class="ladderLBL"
-                  style="
-                    background-color: #00b250;
-                    border-radius: 20px;
-                    font-size: xxx-large;
-                    width: 100%;
-                  "
-                  (click)="wedoner4m3()"
-                >
-                  FINISHED
-                </button>
-              </div>
+              text-align: center;
+              padding: 10px;
+                "
+                (click)="tolnotwoamrap()"
+              >
+                Next Ladder
+              </button>
+              <button
+                *ngIf="donebtn"
+                class="ladderLBL"
+                style="
+                  background-color: #00b250;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
+                "
+                (click)="wedoner4m3()"
+              >
+                FINISHED
+              </button>
+            </div>
             </div>
           </div>
         </ion-row>
@@ -7022,53 +7031,60 @@
                   >{{ amrap.a2m4rep }}x {{ amrap.a2m4 }}</ion-label
                 >
               </div>
-              <div
-                *ngIf="a3btn || donebtn"
-                class="ladderLBLcon"
-                style="width: 100%"
-                style=" background: linear-gradient(45deg, #00b250, #2e7d32);
-              border-radius: 20px;
-
-              text-align: center;
-              margin-left: auto;
-              margin-right: auto;
-              height: 20%;
-              margin-bottom: 5%;
-              display: flex;
-              align-items: center;
-              justify-content: center;"
-              >
-                <button
-                  *ngIf="a3btn"
-                  class="ladderLBL"
-                  style="
-                        background: linear-gradient(45deg, #00b250, #2E7D32);
-                    border-radius: 20px;
-                    font-size: xxx-large;
-                    width: 100%;
-                      color: white;
-                text-align: center;
+              <div  *ngIf="a2btn || donebtn"
                
-                padding: 10px;"
+              class="ladderLBLcon"
+              style="width: 100%"
+              style=" background: linear-gradient(45deg, #00b250, #2e7d32);
+            border-radius: 20px;
+   
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+            margin-bottom: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;"
+            >
+              <button
+                *ngIf="a2btn"
+                class="ladderLBL"
+                style="
+                  border-radius: 30px;
+            color: black;
+            border: 2px solid #00b250;
+            background: linear-gradient(45deg, #ffffff, #00b250);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+              sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+              0 3px 5px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
                   
-                  (click)="tolnothreeamrap()"
-                >
-                  Next AMRAP
-                </button>
-                <button
-                  *ngIf="donebtn"
-                  class="ladderLBL"
-                  style="
-                    background-color: #00b250;
-                    border-radius: 20px;
-                    font-size: xxx-large;
-                    width: 100%;
-                  "
-                  (click)="wedoner4m3()"
-                >
-                  FINISHED
-                </button>
-              </div>
+              text-align: center;
+              padding: 10px;
+                "
+                (click)="tolnotwoamrap()"
+              >
+                Next Ladder
+              </button>
+              <button
+                *ngIf="donebtn"
+                class="ladderLBL"
+                style="
+                  background-color: #00b250;
+                  border-radius: 20px;
+                  font-size: xxx-large;
+                  width: 100%;
+                "
+                (click)="wedoner4m3()"
+              >
+                FINISHED
+              </button>
+            </div>
             </div>
           </div>
         </ion-row>

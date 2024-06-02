@@ -1,14 +1,14 @@
 <ion-content class="daBack">
   <ion-grid *ngFor="let workout of specificWorkouts">
-    <ion-row class="ion-justify-content-center" *ngIf="workout.exe">
+    <ion-row class="ion-justify-content-center" *ngIf="workout.exeR1M3">
       <video
         class="full-screen-video"
         controls
-        *ngIf="workout.exe.videoUrl"
+        *ngIf="workout.exeR1M3.videoUrl"
         autoplay
         loop
       >
-        <source [src]="workout.exe.videoUrl" type="video/mp4" />
+        <source [src]="workout.exeR1M3.videoUrl" type="video/mp4" />
         <!-- Add more <source> elements for different video formats if needed -->
         Your browser does not support the video tag.
       </video>

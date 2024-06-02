@@ -1,5 +1,0 @@
-// settings.gradle
-rootProject.name = 'wodbox-a'
-apply from: new File(['..', 'capacitor.settings.gradle'].join(File.separator))
-include ':app'
-project(':app').projectDir = new File(rootDir, 'app')

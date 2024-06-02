@@ -826,7 +826,7 @@ export class WodgoPage implements OnInit {
   }
  
   strtl1m1Timer(sladders: Ladder) {
-    this.lTimer = sladders.l1move * 60;
+    this.lTimer = sladders.l1move * 10;
 
     if (sladders.l1move) {
       if (this.isPr1m1Timer) {
@@ -903,7 +903,7 @@ export class WodgoPage implements OnInit {
   }
   strtl2m1Timer(sladders: Ladder) {
     if (sladders.l2move) {
-      this.l2Timer = sladders.l2move * 60;
+      this.l2Timer = sladders.l2move * 10;
       if (this.isPr2m1Timer) {
         // Resume the countdown with the remaining time
         this.cdr2m1Timer = this.remaincdr2m1;
@@ -957,7 +957,7 @@ export class WodgoPage implements OnInit {
   }
   strtl3m1Timer(sladders: Ladder) {
     if (sladders.l3move) {
-      this.l3Timer = sladders.l3move * 60;
+      this.l3Timer = sladders.l3move * 10;
       if (this.isPr3m1Timer) {
         // Resume the countdown with the remaining time
         this.cdr3m1Timer = this.remaincdr3m1;
@@ -2901,6 +2901,7 @@ export class WodgoPage implements OnInit {
             this.r1m3RestShow = false;
             this.r1m2RestShow = false;
             this.r1RestShow = false;
+            this.lFinishShow= false;
             this.updateIonContentClass();
   }
   //Tabata funtions

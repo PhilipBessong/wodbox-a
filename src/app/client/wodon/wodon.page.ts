@@ -2856,6 +2856,7 @@ export class WodonPage implements OnInit {
              this.r1m3RestShow = false;
              this.r1m2RestShow = false;
              this.r1RestShow = false;
+             this.lFinishShow= false;
              this.updateIonContentClass();
    }
    //Tabata funtions

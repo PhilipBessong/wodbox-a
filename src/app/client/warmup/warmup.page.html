@@ -178,7 +178,7 @@
 
               <ion-row
                 *ngIf="workout.exeR1M2"
-                (click)="openr1m2(workout.exeR1M2.videoUrl)"
+                (click)="openr1m2vm(workout.exeR1M2.videoUrl)"
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -208,6 +208,7 @@
               <!--3-->
               <ion-row
                 *ngIf="workout.exeR1M3"
+                (click)="openr1m3vm(workout.exeR1M3.videoUrl)"
                 style="padding-top: 5%; padding-left: 0%; color: aliceblue"
               >
                 <ion-label style="font-size: large">Exercise 3</ion-label>
