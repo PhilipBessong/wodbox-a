@@ -1,33 +1,17 @@
 /* Ensure ion-content and other parent elements take full height */
 ion-content, ion-grid, ion-row {
-    height: 100vh; /* Full viewport height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0; /* Remove any default margins */
-    padding: 0; /* Remove any default padding */
-  }
-  
-  .full-screen-video {
-    width: 100%;
-    height: 100%; /* Full height of the parent container */
-    object-fit: cover; /* This makes sure the video covers the entire area without distortion */
-    border-radius: 0; /* Optional: Set to 0 to remove border radius for full screen */
-  }
-  
-  /* Portrait mode */
-  @media (orientation: portrait) {
-    .full-screen-video {
-      width: 100%;
-      height: 100vh;
-    }
-  }
-  
-  /* Landscape mode */
-  @media (orientation: landscape) {
-    .full-screen-video {
-      width: 100vw;
-      height: 100%;
-    }
-  }
-  
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0; /* Remove any default margins */
+  padding: 0; /* Remove any default padding */
+  background-color: black; /* Set background color to black */
+}
+
+.full-screen-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video covers the entire area without distortion */
+  border-radius: 0; /* Optional: Set to 0 to remove border radius for full screen */
+}

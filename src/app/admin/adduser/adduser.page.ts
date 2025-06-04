@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseAuthService } from 'src/app/firebase/auth/firebase-auth.service';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+
 @Component({
   selector: 'app-adduser',
   templateUrl: './adduser.page.html',
@@ -11,6 +12,8 @@ export class AdduserPage implements OnInit {
   email: string = '';
   password: string = '';
   usertype: string = '';
+  fName: string = '';
+  lName: string = '';
   constructor(
     private authService: FirebaseAuthService,
     private router: Router,
@@ -22,7 +25,7 @@ export class AdduserPage implements OnInit {
 
   async signUp() {
     try {
-      await this.authService.signUp(this.email, this.password, this.usertype);
+      await this.authService.signUp(this.email, this.password, this.usertype, this.fName, this.lName, 'defaultProfileImage');
       await this.presentSuccessToast('Sign up successful! Please login.');
       this.router.navigate(['/login']);
     } catch (error) {

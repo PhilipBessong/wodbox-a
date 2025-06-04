@@ -18,3 +18,17 @@ ion-col{
 ion-select{
     color: #b27600;
 }
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile-picture {
+    width: 220px; /* Adjust as needed */
+    height: 220px; /* Adjust as needed */
+    border-radius: 50%; /* Makes the image circular */
+    border: 2px solid #b27600; /* Corrected border syntax */
+    object-fit: cover; /* Ensures the image covers the entire circle */
+    margin: 0 auto; /* Centers the image horizontally */
+    display: block; /* Ensures the image is displayed as a block element */
+  }

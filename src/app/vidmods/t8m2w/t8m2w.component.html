@@ -1,0 +1,17 @@
+<ion-content class="daBack">
+  <ion-grid *ngFor="let tabata of stabatas">
+    <ion-row class="ion-justify-content-center" *ngIf="tabata.exet8m2">
+      <video
+        class="full-screen-video"
+        *ngIf="tabata.exet8m2.videoUrl"
+        autoplay
+        muted
+        loop
+      >
+        <source [src]="tabata.exet8m2.videoUrl" type="video/mp4" />
+        <!-- Add more <source> elements for different video formats if needed -->
+        Your browser does not support the video tag.
+      </video>
+    </ion-row>
+  </ion-grid>
+</ion-content>

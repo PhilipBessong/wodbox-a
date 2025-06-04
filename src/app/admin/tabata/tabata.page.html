@@ -2,7 +2,7 @@
   <div class="daBack">
     <div class="col">
       <br />
-       <button
+      <button
         (click)="towodstyle()"
         style="
           background-color: #b27600;
@@ -15,7 +15,11 @@
           align-items: center;
         "
       >
-        <ion-icon name="chevron-back-outline" style="margin-right: 1px;"></ion-icon>Back
+        <ion-icon
+          name="chevron-back-outline"
+          style="margin-right: 1px"
+        ></ion-icon
+        >Back
       </button>
       <div class="col">
         <div class="logocon">
@@ -30,7 +34,7 @@
     </div>
     <pre></pre>
     <ion-row>
-      <ion-card style="width: 100%; --ion-background-color: white;">
+      <ion-card style="width: 100%; --ion-background-color: white">
         <div class="container">
           <ion-grid>
             <pre></pre>
@@ -84,9 +88,10 @@
                     type="number"
                     name="tabatanums"
                     [(ngModel)]="numtabat"
-                    [(ngModel)]="tabataData.tabataNum"
-                    max="4"
+                    (ngModelChange)="onNumberChange($event)"
+                   
                     min="1"
+                    [value]="numtabat === null ? '' : numtabat"
                     required
                   >
                   </ion-input>
@@ -110,257 +115,449 @@
               </ion-col>
             </ion-row>
             <pre></pre>
-
-            <ion-row>
-              <ion-label
-                style="font-size: x-large; text-align: center; width: 100%"
-                >Tabata 1</ion-label
-              >
-            </ion-row>
-
-            <ion-row style="text-align: center" class="ion-justify-content-center">
-              <ion-col *ngIf="mpts > 0" style="text-align: center; width: 50%;">
-                <ion-select
-                  placeholder="M1"
-                  name="r1m1"
-                  [(ngModel)]="tabataData.t1m1"
-                  required
-                  id="r1m1"
-                  style="
-                    font-size: x-large;
-                    text-align: center;
-                    width: 100%;
-                    color: #b27600;
-                    padding-left: 30%;
-                  "
-                  id="r1m1"
+            <!--t1-->
+            <div>
+              <ion-row>
+                <ion-label
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  >Tabata 1</ion-label
                 >
-                  <ion-select-option
-                    *ngFor="let move of moves"
-                    [value]="move.exeName"
-                    >{{move.exeName}}</ion-select-option
-                  >
-                </ion-select>
-              </ion-col>
-              <!--tm2-->
-              <ion-col *ngIf="mpts>1" style="text-align: center; width: 50%;">
-                <div >
-                  <ion-select
-                    placeholder="M2"
-                    name="r1m2"
-                    id="r1m2"
-                    [(ngModel)]="tabataData.t1m2"
+              </ion-row>
+              <ion-row style="text-align: center">
+                <ion-col style="text-align: center; width: 50%">
+                  <ion-input
+                    *ngIf="mpts > 0"
+                    placeholder="M1"
+                    [(ngModel)]="tabataData.t1m1"
+                    (click)="openMoveSelection('t1m1')"
+                    readonly
                     style="
                       font-size: x-large;
                       text-align: center;
                       width: 100%;
                       color: #b27600;
                       padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */
                     "
-                    id="r1m2"
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
-                </div>
-              </ion-col>
-            </ion-row>
-            <!--tm2-->
+                  ></ion-input>
+                </ion-col>
+                <ion-col style="text-align: center; width: 50%">
+                  <ion-input
+                    *ngIf="mpts > 1"
+                    placeholder="M2"
+                    [(ngModel)]="tabataData.t1m2"
+                    (click)="openMoveSelection('t1m2')"
+                    readonly
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */
+                    "
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+              <ion-row> </ion-row>
+            </div>
+            <!--t2-->
             <pre></pre>
-            <div id="t2" *ngIf="numtabat >1">
+            <div id="t2" *ngIf="numtabat !== null && numtabat > 1">
               <ion-row>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
-                  >Tabata 2</ion-label
-                >
+                >Tabata 2</ion-label>
               </ion-row>
               <ion-row style="text-align: center">
-                <ion-col  *ngIf="mpts > 0" style="text-align: center;; width: 50%;">
-                  <ion-select
+                <ion-col style="text-align: center; width: 50%">
+                  <ion-input
+                    *ngIf="mpts > 0"
                     placeholder="M1"
                     [(ngModel)]="tabataData.t2m1"
-                    name="r2m1"
-                    id="r2m1"
+                    (click)="openMoveSelection('t2m1')"
+                    readonly
                     style="
                       font-size: x-large;
                       text-align: center;
                       width: 100%;
                       color: #b27600;
                       padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */
                     "
-                    id="r2m1"
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                  ></ion-input>
                 </ion-col>
-
-                <ion-col style="text-align: center; ; width: 50%;">
-                  <ion-select
-                    *ngIf="mpts>1"
+                <ion-col style="text-align: center; width: 50%">
+                  <ion-input
+                    *ngIf="mpts > 1"
+                    placeholder="M2"
                     [(ngModel)]="tabataData.t2m2"
-                    placeholder="M2"
-                    name="r2m2"
-                    id="r2m2"
+                    (click)="openMoveSelection('t2m2')"
+                    readonly
                     style="
                       font-size: x-large;
                       text-align: center;
                       width: 100%;
                       color: #b27600;
                       padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */
                     "
-                    id="r2m2"
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                  ></ion-input>
                 </ion-col>
               </ion-row>
               <ion-row> </ion-row>
             </div>
-            <!--tm3-->
+            <!--t3-->
             <pre></pre>
-            <div id="t3" *ngIf="numtabat >2">
+            <div id="t3" *ngIf="numtabat !== null && numtabat > 2">
               <ion-row>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
-                  >Tabata 3</ion-label
-                >
+                >Tabata 3</ion-label>
               </ion-row>
               <ion-row style="text-align: center">
-                <ion-col style="text-align: center;width: 50%;">
-                  <ion-select
-                  *ngIf="mpts > 0"
+                <ion-col style="text-align: center; width: 50%">
+                  <ion-input
+                    *ngIf="mpts > 0"
+                    placeholder="M1"
                     [(ngModel)]="tabataData.t3m1"
-                    placeholder="M1"
-                    name="r3m1"
-                    id="r3m1"
+                    (click)="openMoveSelection('t3m1')"
+                    readonly
                     style="
                       font-size: x-large;
                       text-align: center;
                       width: 100%;
                       color: #b27600;
                       padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */
                     "
-                    id="r3m1"
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                  ></ion-input>
                 </ion-col>
-
-                <ion-col style="text-align: center; width: 50%;">
-                  <ion-select
-                    *ngIf="mpts>1"
-                    [(ngModel)]="tabataData.t3m2"
+                <ion-col style="text-align: center; width: 50%">
+                  <ion-input
+                    *ngIf="mpts > 1"
                     placeholder="M2"
-                    name="r3m2"
-                    id="r3m2"
+                    [(ngModel)]="tabataData.t3m2"
+                    (click)="openMoveSelection('t3m2')"
+                    readonly
                     style="
                       font-size: x-large;
                       text-align: center;
                       width: 100%;
                       color: #b27600;
                       padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */
                     "
-                    id="r3m2"
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                  ></ion-input>
                 </ion-col>
               </ion-row>
               <ion-row> </ion-row>
             </div>
-            <!--tm4-->
+<!-- t4 -->
+<pre></pre>
+<div id="t4" *ngIf="numtabat !== null && numtabat > 3">
+  <ion-row>
+    <ion-label
+      style="font-size: x-large; text-align: center; width: 100%"
+    >Tabata 4</ion-label>
+  </ion-row>
+  <ion-row style="text-align: center">
+    <ion-col style="text-align: center; width: 50%">
+      <ion-input
+        *ngIf="mpts > 0"
+        placeholder="M1"
+        [(ngModel)]="tabataData.t4m1"
+        (click)="openMoveSelection('t4m1')"
+        readonly
+        style="
+          font-size: x-large;
+          text-align: center;
+          width: 100%;
+          color: #b27600;
+          padding-left: 30%;
+          border-color: #b27600; /* Border color */
+          border-style: solid;   /* Border style */
+          border-radius: 10px;   /* Border radius */
+          border-width: 2px;     /* Border width */
+        "
+      ></ion-input>
+    </ion-col>
+    <ion-col style="text-align: center; width: 50%">
+      <ion-input
+        *ngIf="mpts > 1"
+        placeholder="M2"
+        [(ngModel)]="tabataData.t4m2"
+        (click)="openMoveSelection('t4m2')"
+        readonly
+        style="
+          font-size: x-large;
+          text-align: center;
+          width: 100%;
+          color: #b27600;
+          padding-left: 30%;
+          border-color: #b27600; /* Border color */
+          border-style: solid;   /* Border style */
+          border-radius: 10px;   /* Border radius */
+          border-width: 2px;     /* Border width */
+        "
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row> </ion-row>
+</div>
+
+<!-- t5 -->
+<pre></pre>
+<div id="t5" *ngIf="numtabat !== null && numtabat > 4">
+  <ion-row>
+    <ion-label
+      style="font-size: x-large; text-align: center; width: 100%"
+    >Tabata 5</ion-label>
+  </ion-row>
+  <ion-row style="text-align: center">
+    <ion-col style="text-align: center; width: 50%">
+      <ion-input
+        *ngIf="mpts > 0"
+        placeholder="M1"
+        [(ngModel)]="tabataData.t5m1"
+        (click)="openMoveSelection('t5m1')"
+        readonly
+        style="
+          font-size: x-large;
+          text-align: center;
+          width: 100%;
+          color: #b27600;
+          padding-left: 30%;
+          border-color: #b27600; /* Border color */
+          border-style: solid;   /* Border style */
+          border-radius: 10px;   /* Border radius */
+          border-width: 2px;     /* Border width */
+        "
+      ></ion-input>
+    </ion-col>
+    <ion-col style="text-align: center; width: 50%">
+      <ion-input
+        *ngIf="mpts > 1"
+        placeholder="M2"
+        [(ngModel)]="tabataData.t5m2"
+        (click)="openMoveSelection('t5m2')"
+        readonly
+        style="
+          font-size: x-large;
+          text-align: center;
+          width: 100%;
+          color: #b27600;
+          padding-left: 30%;
+          border-color: #b27600; /* Border color */
+          border-style: solid;   /* Border style */
+          border-radius: 10px;   /* Border radius */
+          border-width: 2px;     /* Border width */
+        "
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row> </ion-row>
+</div>
+
+<!-- t6 -->
+<pre></pre>
+<div id="t6" *ngIf="numtabat !== null && numtabat > 5">
+  <ion-row>
+    <ion-label
+      style="font-size: x-large; text-align: center; width: 100%"
+    >Tabata 6</ion-label>
+  </ion-row>
+  <ion-row style="text-align: center">
+    <ion-col style="text-align: center; width: 50%">
+      <ion-input
+        *ngIf="mpts > 0"
+        placeholder="M1"
+        [(ngModel)]="tabataData.t6m1"
+        (click)="openMoveSelection('t6m1')"
+        readonly
+        style="
+          font-size: x-large;
+          text-align: center;
+          width: 100%;
+          color: #b27600;
+          padding-left: 30%;
+          border-color: #b27600; /* Border color */
+          border-style: solid;   /* Border style */
+          border-radius: 10px;   /* Border radius */
+          border-width: 2px;     /* Border width */
+        "
+      ></ion-input>
+    </ion-col>
+    <ion-col style="text-align: center; width: 50%">
+      <ion-input
+        *ngIf="mpts > 1"
+        placeholder="M2"
+        [(ngModel)]="tabataData.t6m2"
+        (click)="openMoveSelection('t6m2')"
+        readonly
+        style="
+          font-size: x-large;
+          text-align: center;
+          width: 100%;
+          color: #b27600;
+          padding-left: 30%;
+          border-color: #b27600; /* Border color */
+          border-style: solid;   /* Border style */
+          border-radius: 10px;   /* Border radius */
+          border-width: 2px;     /* Border width */
+        "
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row> </ion-row>
+</div>
+
+<!-- t7 -->
+<pre></pre>
+<div id="t7" *ngIf="numtabat !== null && numtabat > 6">
+  <ion-row>
+    <ion-label
+      style="font-size: x-large; text-align: center; width: 100%"
+    >Tabata 7</ion-label>
+  </ion-row>
+  <ion-row style="text-align: center">
+    <ion-col style="text-align: center; width: 50%">
+      <ion-input
+        *ngIf="mpts > 0"
+        placeholder="M1"
+        [(ngModel)]="tabataData.t7m1"
+        (click)="openMoveSelection('t7m1')"
+        readonly
+        style="
+          font-size: x-large;
+          text-align: center;
+          width: 100%;
+          color: #b27600;
+          padding-left: 30%;
+          border-color: #b27600; /* Border color */
+          border-style: solid;   /* Border style */
+          border-radius: 10px;   /* Border radius */
+          border-width: 2px;     /* Border width */
+        "
+      ></ion-input>
+    </ion-col>
+    <ion-col style="text-align: center; width: 50%">
+      <ion-input
+        *ngIf="mpts > 1"
+        placeholder="M2"
+        [(ngModel)]="tabataData.t7m2"
+        (click)="openMoveSelection('t7m2')"
+        readonly
+        style="
+          font-size: x-large;
+          text-align: center;
+          width: 100%;
+          color: #b27600;
+          padding-left: 30%;
+          border-color: #b27600; /* Border color */
+          border-style: solid;   /* Border style */
+          border-radius: 10px;   /* Border radius */
+          border-width: 2px;     /* Border width */
+        "
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row> </ion-row>
+</div>
+
+           <!-- t8 -->
+<pre></pre>
+<div id="t8" *ngIf="numtabat !== null && numtabat > 7">
+  <ion-row>
+    <ion-label
+      style="font-size: x-large; text-align: center; width: 100%"
+    >Tabata 8</ion-label>
+  </ion-row>
+  <ion-row style="text-align: center">
+    <ion-col style="text-align: center; width: 50%">
+      <ion-input
+        *ngIf="mpts > 0"
+        placeholder="M1"
+        [(ngModel)]="tabataData.t8m1"
+        (click)="openMoveSelection('t8m1')"
+        readonly
+        style="
+          font-size: x-large;
+          text-align: center;
+          width: 100%;
+          color: #b27600;
+          padding-left: 30%;
+          border-color: #b27600; /* Border color */
+          border-style: solid;   /* Border style */
+          border-radius: 10px;   /* Border radius */
+          border-width: 2px;     /* Border width */
+        "
+      ></ion-input>
+    </ion-col>
+    <ion-col style="text-align: center; width: 50%">
+      <ion-input
+        *ngIf="mpts > 1"
+        placeholder="M2"
+        [(ngModel)]="tabataData.t8m2"
+        (click)="openMoveSelection('t8m2')"
+        readonly
+        style="
+          font-size: x-large;
+          text-align: center;
+          width: 100%;
+          color: #b27600;
+          padding-left: 30%;
+          border-color: #b27600; /* Border color */
+          border-style: solid;   /* Border style */
+          border-radius: 10px;   /* Border radius */
+          border-width: 2px;     /* Border width */
+        "
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row> </ion-row>
+</div>
+
             <pre></pre>
-            <div id="t4" *ngIf="numtabat >3">
-              <ion-row>
-                <ion-label
-                  style="font-size: x-large; text-align: center; width: 100%"
-                  >Tabata 4</ion-label
+            <ion-row class="ion-justify-content-center ion-align-items-center">
+              <ion-row class="ion-justify-content-center" style="width: 100%">
+                <ion-label style="font-size: x-large; display: block"
+                  >Select a Date:</ion-label
                 >
               </ion-row>
-              <ion-row style="text-align: center">
-                <ion-col style="text-align: center; width: 50%;">
-                  <ion-select
-                  *ngIf="mpts > 0"
-                    placeholder="M1"
-                    [(ngModel)]="tabataData.t4m1"
-                    name="r4m1"
-                    id="r4m1"
+              <ion-row>
+                <div style="margin-left: auto; margin-right: auto">
+                  <ion-input
                     style="
                       font-size: x-large;
                       text-align: center;
-                      width: 100%;
                       color: #b27600;
-                      padding-left: 30%;
                     "
-                    id="r4m1"
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
-                </ion-col>
-
-                <ion-col style="text-align: center; width: 50%;">
-                  <ion-select
-                    *ngIf="mpts>1"
-                    [(ngModel)]="tabataData.t4m2"
-                    placeholder="M2"
-                    name="r4m2"
-                    id="r4m2"
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                    id="r4m2"
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
-                </ion-col>
+                    type="date"
+                    name="daDate"
+                    id="daDate"
+                    [(ngModel)]="tabataData.daDate"
+                  ></ion-input>
+                </div>
               </ion-row>
-              <ion-row> </ion-row>
-            </div>
-            <pre></pre>
-            <ion-row>
-              <ion-label
-                style="font-size: x-large; text-align: center; width: 100%"
-                >Select a Date:</ion-label
-              >
-              <ion-input
-                style="font-size: x-large; text-align: center; color: #b27600"
-                type="Date"
-                name="daDate"
-                id="daDate"
-                [(ngModel)]="tabataData.daDate"
-                id="daDate"
-              ></ion-input>
             </ion-row>
             <div *ngIf="showErrorCard" class="error-card">
               <div class="error-message">
@@ -368,13 +565,18 @@
               </div>
               <button (click)="hideErrorCard()" class="close-btn">Close</button>
             </div>
-            
+
             <ion-row>
-              <div style="text-align: center;margin-left: auto;
-              margin-right: auto;">
+              <div
+                style="
+                  text-align: center;
+                  margin-left: auto;
+                  margin-right: auto;
+                "
+              >
                 <ion-button
                   style="
-                    font-size: xxx-large;
+                    font-size: xx-large;
                     margin-left: auto;
                     margin-right: auto;
                     border-radius: 10%;
@@ -387,8 +589,6 @@
                 >
               </div>
             </ion-row>
-            
-          
           </ion-grid>
         </div>
       </ion-card>

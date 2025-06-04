@@ -1,0 +1,17 @@
+<ion-content class="daBack">
+  <ion-grid *ngFor="let laddder of sladders">
+    <ion-row class="ion-justify-content-center" *ngIf="laddder.exel1m3">
+      <video
+        class="full-screen-video"
+        *ngIf="laddder.exel1m3.videoUrl"
+        autoplay
+        muted
+        loop
+      >
+        <source [src]="laddder.exel1m3.videoUrl" type="video/mp4" />
+        <!-- Add more <source> elements for different video formats if needed -->
+        Your browser does not support the video tag.
+      </video>
+    </ion-row>
+  </ion-grid>
+</ion-content>

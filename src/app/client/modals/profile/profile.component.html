@@ -1,0 +1,152 @@
+<ion-header style="--ion-background-color: black">
+  <ion-toolbar>
+    <ion-title color="warning"> Profile </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()"
+        ><ion-icon name="close-outline" color="warning"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Your modal content goes here -->
+  <ion-row class="ion-justify-content-center">
+   <pre></pre>
+    <div class="row" style="margin-top: 20px;">
+      <div class="profile-container">
+        <img
+          (click)="uploadImage()"
+          *ngIf="profileImageUrl; else defaultIcon"
+          class="profile-picture"
+          [src]="profileImageUrl"
+        >
+        <ng-template #defaultIcon>
+          <ion-icon
+            (click)="uploadImage()"
+            class="profile-picture default-icon"
+            name="person-circle-outline"
+          ></ion-icon>
+        </ng-template>
+      </div>
+      <input type="file" hidden #fileInput (change)="onFileSelected($event)" />
+      <ion-button *ngIf="profileImageUrl" fill="clear" shape="round" (click)="presentActionSheet()">
+        <ion-icon slot="icon-only" name="create-outline" color="warning"></ion-icon>
+      </ion-button>
+      
+          </div>
+   
+
+    <ion-card>
+      <ion-card-content>
+        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+          <div *ngIf="isEditing" style="padding-bottom: 4%">
+            <ion-button
+              fill="clear"
+              (click)="cancelEditing()"
+              style="
+                width: 2px;
+                margin-left: 90%;
+                font-size: small;
+                color: black;
+              "
+            >
+              x
+            </ion-button>
+          </div>
+
+          <!-- Inputs Section -->
+          <div>
+            <ion-item >
+              <ion-input
+                formControlName="fName"
+                placeholder="First Name"
+                [attr.disabled]="!isEditing ? true : null"
+                class="custom-input"
+              >
+              </ion-input>
+            </ion-item>
+          </div>
+          <pre></pre>
+          <div>
+            <ion-item>
+              <ion-input
+                formControlName="lName"
+                placeholder="Last Name"
+                [attr.disabled]="!isEditing ? true : null"
+                class="custom-input"
+              >
+              </ion-input>
+            </ion-item>
+          </div>
+          <pre></pre>
+          <div>
+            <ion-item>
+              <ion-input
+                formControlName="email"
+                placeholder="Email"
+                [attr.disabled]="!isEditing ? true : null"
+                class="custom-input"
+              >
+              </ion-input>
+            </ion-item>
+          </div>
+          <pre></pre>
+
+          <!-- Buttons Section -->
+          <div *ngIf="!isEditing">
+            <ion-button
+              expand="full"
+              class="chngbtn"
+              (click)="enableEditing()"
+              >Edit Profile</ion-button
+            >
+          </div>
+          <div *ngIf="isEditing">
+            <ion-button
+              expand="full"
+              type="submit"
+              [disabled]="!profileForm.valid"
+              >Update Profile</ion-button
+            >
+          </div>
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card style="--background: #b27600;">
+      <ion-card-header>
+        <ion-card-title   (click)="enablePassChange()">Change Password</ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="isPassChange">
+        <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+          <ion-item>
+            <ion-input
+              class="custom-input"
+              formControlName="newPassword"
+              type="password"
+              placeholder="New Password"
+            ></ion-input>
+          </ion-item>
+          <pre></pre>
+          <ion-item>
+            <ion-input
+              class="custom-input"
+              formControlName="confirmPassword"
+              type="password"
+              placeholder="Confirm Password"
+            ></ion-input>
+          </ion-item>
+          <pre></pre>
+          <ion-button
+
+            expand="full"
+            type="submit"
+            [disabled]="!passwordForm.valid"
+            >Change Password</ion-button
+          >
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </ion-row>
+</ion-content>

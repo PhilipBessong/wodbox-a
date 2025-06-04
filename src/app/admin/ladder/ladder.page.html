@@ -2,7 +2,7 @@
   <div class="daBack">
     <div class="col">
       <br />
-       <button
+      <button
         (click)="towodstyle()"
         style="
           background-color: #b27600;
@@ -15,7 +15,11 @@
           align-items: center;
         "
       >
-        <ion-icon name="chevron-back-outline" style="margin-right: 1px;"></ion-icon>Back
+        <ion-icon
+          name="chevron-back-outline"
+          style="margin-right: 1px"
+        ></ion-icon
+        >Back
       </button>
       <div class="col">
         <div class="logocon">
@@ -30,7 +34,7 @@
     </div>
     <pre></pre>
     <ion-row>
-      <ion-card style="width: 100%; --ion-background-color: white;">
+      <ion-card style="width: 100%; --ion-background-color: white">
         <div class="container">
           <ion-grid>
             <pre></pre>
@@ -84,9 +88,10 @@
                     type="number"
                     name="laddernums"
                     [(ngModel)]="numladder"
-                    [(ngModel)]="ladderData.ladderNum"
+                    (ngModelChange)="onNumberChange($event)"
                     max="3"
                     min="1"
+                    [value]="numladder === null ? '' : numladder"
                     required
                   >
                   </ion-input>
@@ -119,111 +124,105 @@
             </ion-row>
             <pre></pre>
             <ion-row>
-              <ion-label style="font-size: x-large; text-align: center; width: 100%">Move(mins)</ion-label>
-              <ion-input placeholder="0"
-              style="font-size: x-large; text-align: center; width: 100%"
-              type="number"  [(ngModel)]="ladderData.l1move"></ion-input>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Move(mins)</ion-label
+              >
+              <ion-input
+                placeholder="0"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                placeholder="0" 
+                [(ngModel)]="ladderData.l1move"
+              ></ion-input>
             </ion-row>
-            <ion-row class="ion-justify-content-center" style="text-align: center">
-              <ion-col *ngIf="mpls > 0" style="text-align: center; width: 50%;">
-                <ion-select
-                  placeholder="M1"
-                  
-                  [(ngModel)]="ladderData.l1m1"
-                  required
-              
-                  style="
-                    font-size: x-large;
-                    text-align: center;
-                    width: 100%;
-                    color: #b27600;
-                    padding-left: 30%;
-                  "
-               
-                >
-                  <ion-select-option
-                    *ngFor="let move of moves"
-                    [value]="move.exeName"
-                    >{{move.exeName}}</ion-select-option
-                  >
-                </ion-select>
+            <ion-row
+              class="ion-justify-content-center"
+              style="text-align: center"
+            >
+              <ion-col *ngIf="mpls > 0" style="text-align: center; width: 50%">
+                <ion-input
+                placeholder="M1"
+                [(ngModel)]="ladderData.l1m1"
+                (click)="openMoveSelection('l1m1')"
+                readonly
+                style="
+                  font-size: x-large;
+                  text-align: center;
+                  width: 100%;
+                  color: #b27600;
+                  padding-left: 30%;
+                  border-color: #b27600; /* Border color */
+                  border-style: solid;   /* Border style */
+                  border-radius: 10px;   /* Border radius */
+                  border-width: 2px;     /* Border width */
+                "
+              ></ion-input>
               </ion-col>
               <!--l1m2-->
-              <ion-col *ngIf="mpls>=1" style="text-align: center; width: 50%;">
-                <div >
-                  <ion-select
-                    placeholder="M2"
-                   
-                    [(ngModel)]="ladderData.l1m2"
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
-                </div>
+              <ion-col *ngIf="mpls>=1" style="text-align: center; width: 50%">
+                <ion-input
+                placeholder="M2"
+                [(ngModel)]="ladderData.l1m2"
+                (click)="openMoveSelection('l1m2')"
+                readonly
+                style="
+                  font-size: x-large;
+                  text-align: center;
+                  width: 100%;
+                  color: #b27600;
+                  padding-left: 30%;
+                  border-color: #b27600; /* Border color */
+                  border-style: solid;   /* Border style */
+                  border-radius: 10px;   /* Border radius */
+                  border-width: 2px;     /* Border width */
+                "
+              ></ion-input>
               </ion-col>
               <!--l1m3-->
-              <ion-col *ngIf="mpls>2" style="text-align: center; width: 50%;">
-                <div >
-                  <ion-select
-                    placeholder="M3"
-                 
-                    [(ngModel)]="ladderData.l1m3"
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
-                </div>
+              <ion-col *ngIf="mpls>2" style="text-align: center; width: 50%">
+                <ion-input
+                placeholder="M3"
+                [(ngModel)]="ladderData.l1m3"
+                (click)="openMoveSelection('l1m3')"
+                readonly
+                style="
+                  font-size: x-large;
+                  text-align: center;
+                  width: 100%;
+                  color: #b27600;
+                  padding-left: 30%;
+                  border-color: #b27600; /* Border color */
+                  border-style: solid;   /* Border style */
+                  border-radius: 10px;   /* Border radius */
+                  border-width: 2px;     /* Border width */
+                "
+              ></ion-input>
               </ion-col>
               <!--l1m4-->
-              <ion-col *ngIf="mpls>3" style="text-align: center; width: 50%;">
-                <div >
-                  <ion-select
-                    placeholder="M4"
-                   
-                    [(ngModel)]="ladderData.l1m4"
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                  
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
-                </div>
+              <ion-col *ngIf="mpls>3" style="text-align: center; width: 50%">
+                <ion-input
+                placeholder="M4"
+                [(ngModel)]="ladderData.l1m4"
+                (click)="openMoveSelection('l1m4')"
+                readonly
+                style="
+                  font-size: x-large;
+                  text-align: center;
+                  width: 100%;
+                  color: #b27600;
+                  padding-left: 30%;
+                  border-color: #b27600; /* Border color */
+                  border-style: solid;   /* Border style */
+                  border-radius: 10px;   /* Border radius */
+                  border-width: 2px;     /* Border width */
+                "
+              ></ion-input>
               </ion-col>
             </ion-row>
             <!--l2-->
             <pre></pre>
-            <div id="t2" *ngIf="numladder >1">
+            <div id="t2" *ngIf="numladder !== null && numladder >1">
               <ion-row>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
@@ -232,108 +231,105 @@
               </ion-row>
               <pre></pre>
               <ion-row>
-                <ion-label style="font-size: x-large; text-align: center; width: 100%">Move(mins)</ion-label>
-                <ion-input placeholder="0"
-                style="font-size: x-large; text-align: center; width: 100%"
-                type="number"  [(ngModel)]="ladderData.l2move"></ion-input>
+                <ion-label
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  >Move(mins)</ion-label
+                >
+                <ion-input
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  placeholder="0" 
+                  [(ngModel)]="ladderData.l2move"
+                ></ion-input>
               </ion-row>
-              <ion-row class="ion-justify-content-center" style="text-align: center">
-                <ion-col *ngIf="mpls>0" style="text-align: center; width: 50%;">
-                  <ion-select
-                    placeholder="M1"
-                    [(ngModel)]="ladderData.l2m1"
-                  
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+              <ion-row
+                class="ion-justify-content-center"
+                style="text-align: center"
+              >
+                <ion-col *ngIf="mpls>0" style="text-align: center; width: 50%">
+                  <ion-input
+                  placeholder="M1"
+                  [(ngModel)]="ladderData.l2m1"
+                  (click)="openMoveSelection('l2m1')"
+                  readonly
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                    border-color: #b27600; /* Border color */
+                    border-style: solid;   /* Border style */
+                    border-radius: 10px;   /* Border radius */
+                    border-width: 2px;     /* Border width */
+                  "
+                ></ion-input>
                 </ion-col>
 
-                <ion-col style="text-align: center; width: 50%;">
-                  <ion-select
-                    *ngIf="mpls>1"
-                    [(ngModel)]="ladderData.l2m2"
-                    placeholder="M2"
-                    
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                <ion-col *ngIf="mpls>1" style="text-align: center; width: 50%">
+                  <ion-input
+                  placeholder="M2"
+                  [(ngModel)]="ladderData.l2m2"
+                  (click)="openMoveSelection('l2m2')"
+                  readonly
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                    border-color: #b27600; /* Border color */
+                    border-style: solid;   /* Border style */
+                    border-radius: 10px;   /* Border radius */
+                    border-width: 2px;     /* Border width */
+                  "
+                ></ion-input>
                 </ion-col>
-                <ion-col style="text-align: center; width: 50%;">
-                  <ion-select
-                    *ngIf="mpls>2"
-                    [(ngModel)]="ladderData.l2m3"
-                    placeholder="M3"
-                 
-                  
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                  
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                <ion-col *ngIf="mpls>2" style="text-align: center; width: 50%">
+                  <ion-input
+                  placeholder="M3"
+                  [(ngModel)]="ladderData.l2m3"
+                  (click)="openMoveSelection('l2m3')"
+                  readonly
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                    border-color: #b27600; /* Border color */
+                    border-style: solid;   /* Border style */
+                    border-radius: 10px;   /* Border radius */
+                    border-width: 2px;     /* Border width */
+                  "
+                ></ion-input>
                 </ion-col>
-                <ion-col style="text-align: center; width: 50%;">
-                  <ion-select
-                    *ngIf="mpls>3"
-                    [(ngModel)]="ladderData.l2m4"
-                    placeholder="M4"
-                 
-                 
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                 
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                <ion-col *ngIf="mpls>3" style="text-align: center; width: 50%">
+                  <ion-input
+                  placeholder="M4"
+                  [(ngModel)]="ladderData.l2m4"
+                  (click)="openMoveSelection('l2m4')"
+                  readonly
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                    border-color: #b27600; /* Border color */
+                    border-style: solid;   /* Border style */
+                    border-radius: 10px;   /* Border radius */
+                    border-width: 2px;     /* Border width */
+                  "
+                ></ion-input>
                 </ion-col>
               </ion-row>
               <ion-row> </ion-row>
             </div>
             <!--lm3-->
             <pre></pre>
-            <div id="t3" *ngIf="numladder >2">
+            <div id="t3" *ngIf="numladder !== null && numladder >2">
               <ion-row>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
@@ -342,118 +338,123 @@
               </ion-row>
               <pre></pre>
               <ion-row>
-                <ion-label style="font-size: x-large; text-align: center; width: 100%">Move(mins)</ion-label>
-                <ion-input placeholder="0"
-                style="font-size: x-large; text-align: center; width: 100%"
-                type="number"  [(ngModel)]="ladderData.l3move"></ion-input>
+                <ion-label
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  >Move(mins)</ion-label
+                >
+                <ion-input
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  [(ngModel)]="ladderData.l3move"
+                ></ion-input>
               </ion-row>
-              <ion-row class="ion-justify-content-center" style="text-align: center">
-                <ion-col   *ngIf="mpls>0" style="text-align: center; width: 50%;">
-                  <ion-select
-                    [(ngModel)]="ladderData.l3m1"
-                    placeholder="M1"
-              
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-            
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+              <ion-row
+                class="ion-justify-content-center"
+                style="text-align: center"
+              >
+                <ion-col *ngIf="mpls>0" style="text-align: center; width: 50%">
+                  <ion-input
+                  placeholder="M1"
+                  [(ngModel)]="ladderData.l3m1"
+                  (click)="openMoveSelection('l3m1')"
+                  readonly
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                    border-color: #b27600; /* Border color */
+                    border-style: solid;   /* Border style */
+                    border-radius: 10px;   /* Border radius */
+                    border-width: 2px;     /* Border width */
+                  "
+                ></ion-input>
                 </ion-col>
 
-                <ion-col style="text-align: center; width: 50%;">
-                  <ion-select
-                    *ngIf="mpls>1"
-                    [(ngModel)]="ladderData.l3m2"
-                    placeholder="M2"
-              
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-               
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                <ion-col *ngIf="mpls>1" style="text-align: center; width: 50%">
+                  <ion-input
+                  placeholder="M2"
+                  [(ngModel)]="ladderData.l3m2"
+                  (click)="openMoveSelection('l3m2')"
+                  readonly
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                    border-color: #b27600; /* Border color */
+                    border-style: solid;   /* Border style */
+                    border-radius: 10px;   /* Border radius */
+                    border-width: 2px;     /* Border width */
+                  "
+                ></ion-input>
                 </ion-col>
-                <ion-col style="text-align: center; width: 50%;">
-                  <ion-select
-                    *ngIf="mpls>2"
-                    [(ngModel)]="ladderData.l3m3"
-                    placeholder="M3"
-                
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-             
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                <ion-col *ngIf="mpls>2" style="text-align: center; width: 50%">
+                  <ion-input
+                  placeholder="M3"
+                  [(ngModel)]="ladderData.l3m3"
+                  (click)="openMoveSelection('l3m3')"
+                  readonly
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                    border-color: #b27600; /* Border color */
+                    border-style: solid;   /* Border style */
+                    border-radius: 10px;   /* Border radius */
+                    border-width: 2px;     /* Border width */
+                  "
+                ></ion-input>
                 </ion-col>
-                <ion-col style="text-align: center; width: 50%;">
-                  <ion-select
-                    *ngIf="mpls>3"
-                    [(ngModel)]="ladderData.l3m4"
-                    placeholder="M4"
-                   
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                   
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                <ion-col *ngIf="mpls>3" style="text-align: center; width: 50%">
+                  <ion-input
+                  placeholder="M4"
+                  [(ngModel)]="ladderData.l3m4"
+                  (click)="openMoveSelection('l3m4')"
+                  readonly
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                    border-color: #b27600; /* Border color */
+                    border-style: solid;   /* Border style */
+                    border-radius: 10px;   /* Border radius */
+                    border-width: 2px;     /* Border width */
+                  "
+                ></ion-input>
                 </ion-col>
               </ion-row>
-              
             </div>
-           
+
             <pre></pre>
-            <ion-row>
-              <ion-label
-                style="font-size: x-large; text-align: center; width: 100%"
-                >Select a Date:</ion-label
-              >
-              <ion-input
-                style="font-size: x-large; text-align: center; color: #b27600"
-                type="date"
-                name="daDate"
-                id="daDate"
-                [(ngModel)]="ladderData.daDate"
-          
-              ></ion-input>
+            <ion-row class="ion-justify-content-center ion-align-items-center">
+              <ion-row class="ion-justify-content-center" style="width: 100%">
+                <ion-label style="font-size: x-large; display: block"
+                  >Select a Date:</ion-label
+                >
+              </ion-row>
+              <ion-row>
+                <div style="margin-left: auto; margin-right: auto">
+                  <ion-input
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      color: #b27600;
+                    "
+                    type="date"
+                    name="daDate"
+                    id="daDate"
+                    [(ngModel)]="ladderData.daDate"
+                  ></ion-input>
+                </div>
+              </ion-row>
             </ion-row>
             <div *ngIf="showErrorCard" class="error-card">
               <div class="error-message">
@@ -462,11 +463,16 @@
               <button (click)="hideErrorCard()" class="close-btn">Close</button>
             </div>
             <ion-row>
-              <div style="text-align: center;margin-left: auto;
-              margin-right: auto;">
+              <div
+                style="
+                  text-align: center;
+                  margin-left: auto;
+                  margin-right: auto;
+                "
+              >
                 <ion-button
                   style="
-                    font-size: xxx-large;
+                    font-size: xx-large;
                     margin-left: auto;
                     margin-right: auto;
                     border-radius: 10%;
@@ -474,14 +480,11 @@
                   "
                   type="submit"
                   [disabled]="!ladderData.wodCat || !ladderData.daDate || !ladderData.l1m1||!this.ladderData.l1move"
-
                   (click)="submitForm()"
                   >Add WOD</ion-button
                 >
               </div>
             </ion-row>
-            
-          
           </ion-grid>
         </div>
       </ion-card>

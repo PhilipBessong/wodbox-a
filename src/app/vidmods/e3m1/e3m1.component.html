@@ -1,0 +1,17 @@
+<ion-content class="daBack">
+  <ion-grid *ngFor="let emom of semoms">
+    <ion-row class="ion-justify-content-center" *ngIf="emom.exee3m1">
+      <video
+        class="full-screen-video"
+        *ngIf="emom.exee3m1.videoUrl"
+        autoplay
+        loop
+        muted
+      >
+        <source [src]="emom.exee3m1.videoUrl" type="video/mp4" />
+        <!-- Add more <source> elements for different video formats if needed -->
+        Your browser does not support the video tag.
+      </video>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,17 @@
+<ion-content class="daBack">
+  <ion-grid *ngFor="let amrap of samraps">
+    <ion-row class="ion-justify-content-center" *ngIf="amrap.exea2m1">
+      <video
+        class="full-screen-video"
+        *ngIf="amrap.exea2m1.videoUrl"
+        autoplay
+        muted
+        loop
+      >
+        <source [src]="amrap.exea2m1.videoUrl" type="video/mp4" />
+        <!-- Add more <source> elements for different video formats if needed -->
+        Your browser does not support the video tag.
+      </video>
+    </ion-row>
+  </ion-grid>
+</ion-content>

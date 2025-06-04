@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { KeepAwake } from '@capacitor-community/keep-awake';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -68,6 +69,12 @@ export interface Tabata {
   t4m2: string;
   t5m1: string;
   t5m2: string;
+  t6m1: string;
+  t6m2: string;
+  t7m1: string;
+  t7m2: string;
+  t8m1: string;
+  t8m2: string;
   move: number;
   rest: number;
   sets: number;
@@ -84,6 +91,12 @@ export interface Tabata {
   exet4m2?: Exercise;
   exet5m1?: Exercise;
   exet5m2?: Exercise;
+  exet6m1?: Exercise;
+  exet6m2?: Exercise;
+  exet7m1?: Exercise;
+  exet7m2?: Exercise;
+  exet8m1?: Exercise;
+  exet8m2?: Exercise;
 }
 export interface Ladder {
   id: string;
@@ -128,6 +141,7 @@ export interface Emom {
   wodStyle: string;
   emomNum: number;
   mpe: number;
+  sets: number;
   e1m1rep: number;
   e1m2rep: number;
   e1m3rep: number;
@@ -294,10 +308,7 @@ export class WorkoutsService {
   }
 
   // Update a workout
-  updateWorkout(
-    id: string | undefined,
-    updatedWorkout: Partial<Workout>
-  ): Promise<void> {
+  updateWorkout(id: string | undefined, updatedWorkout: Partial<Workout>): Promise<void> {
     const intervalRef = this.workoutCollection.doc(id);
     return intervalRef.update(updatedWorkout);
   }
@@ -515,8 +526,8 @@ export class WorkoutsService {
   private wodStyles: Style[] = [
     new Style(
       'EMOM',
-      'Perform a specific movement for a duration of one minute, transition immediately to the next movement at the start of the following minute. Continue for x number of minutes.'
-    ),
+      'Complete all movements in order within each minute, resting for the remaining time. If you can\'t finish within 45 seconds, rest for the remainder of the minute.'
+    ),    
     new Style(
       'TABATA',
       'It consists of performing an exercise at maximum effort for 20 seconds, followed by a 10-second rest and repeating this cycle for a total of eight rounds.'
@@ -745,7 +756,7 @@ export class WorkoutsService {
     ),
     new Exercise(
       34,
-      'Man Makers (Single Arm)',
+      'Single Arm DB Push-up Row',
       'https://storage.googleapis.com/wodbox-alpha.appspot.com/vids/34.mp4',
       'https://storage.googleapis.com/wodbox-alpha.appspot.com/vids/34mbl.mp4'
     ),
@@ -805,4 +816,25 @@ export class WorkoutsService {
     const exercise = this.moves.find((e) => e.exeName === exeName);
     return of(exercise);
   }
+
+  async  enableKeepAwake() {
+    try {
+      await KeepAwake.keepAwake();
+      console.log('Screen will stay awake.');
+    } catch (error) {
+      console.error('Failed to keep the screen awake:', error);
+    }
+  }
+  
+  async  disableKeepAwake() {
+    try {
+      await KeepAwake.allowSleep();
+      console.log('Screen can now sleep.');
+    } catch (error) {
+      console.error('Failed to allow sleep:', error);
+    }
+  } 
+  
+  
+  
 }

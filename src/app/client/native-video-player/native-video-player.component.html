@@ -1,0 +1,22 @@
+
+<ng-container *ngIf="isNative; else webVideo">
+   <div id="native-video-container" class="video-container" (click)="onClickFullscreen()" ></div>
+</ng-container>
+<!-- <div 
+  id="native-video-container"
+  (click)="onClickFullscreen()" 
+  class="video-container">
+</div>-->
+<ng-template #webVideo>
+  <video
+  (click)="onClickFullscreen()"
+    [src]="videoUrl"
+    width="320"
+    height="220"
+    autoplay
+    muted
+    loop
+    playsinline
+    controls
+  ></video>
+</ng-template>

@@ -2,7 +2,7 @@
   <div class="daBack">
     <div class="col">
       <br />
-       <button
+      <button
         (click)="towodstyle()"
         style="
           background-color: #b27600;
@@ -15,7 +15,11 @@
           align-items: center;
         "
       >
-        <ion-icon name="chevron-back-outline" style="margin-right: 1px;"></ion-icon>Back
+        <ion-icon
+          name="chevron-back-outline"
+          style="margin-right: 1px"
+        ></ion-icon
+        >Back
       </button>
       <div class="col">
         <div class="logocon">
@@ -30,7 +34,7 @@
     </div>
     <pre></pre>
     <ion-row>
-      <ion-card style="width: 100%; --ion-background-color: white;">
+      <ion-card style="width: 100%; --ion-background-color: white">
         <div class="container">
           <ion-grid>
             <pre></pre>
@@ -64,7 +68,7 @@
               <ion-col>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
-                  >Emom Number</ion-label
+                  >Aamrap Number</ion-label
                 >
               </ion-col>
               <ion-col>
@@ -73,6 +77,7 @@
                   >MPA</ion-label
                 >
               </ion-col>
+             
             </ion-row>
 
             <ion-row>
@@ -84,9 +89,10 @@
                     type="number"
                     name="laddernums"
                     [(ngModel)]="numamrap"
-                    [(ngModel)]="amrapData.amrapNum"
+                    (ngModelChange)="onNumberChange($event)"
                     max="3"
                     min="1"
+                    [value]="numamrap === null ? '' : numamrap"
                     required
                   >
                   </ion-input>
@@ -119,176 +125,162 @@
             </ion-row>
             <pre></pre>
             <ion-row>
-              <ion-label style="font-size: x-large; text-align: center; width: 100%">Move(mins)</ion-label>
-              <ion-input placeholder="0"
-              style="font-size: x-large; text-align: center; width: 100%"
-              type="number"  [(ngModel)]="amrapData.a1move"></ion-input>
+              <ion-label
+                style="font-size: x-large; text-align: center; width: 100%"
+                >Move(mins)</ion-label
+              >
+              <ion-input
+                placeholder="0"
+                style="font-size: x-large; text-align: center; width: 100%"
+                type="number"
+                placeholder="0"
+                [(ngModel)]="amrapData.a1move"
+              ></ion-input>
             </ion-row>
-            <ion-row class="ion-justify-content-center" style="text-align: center">
+            <ion-row
+              class="ion-justify-content-center"
+              style="text-align: center"
+            >
               <ion-row *ngIf="mpas > 0" class="ion-justify-content-center">
-                <ion-col  style="text-align: center; width: 50%;">
-                  <ion-select
+                <ion-col style="text-align: center; width: 50%">
+                  <ion-input
                     placeholder="M1"
-                    
+                    (click)="openMoveSelection('a1m1')"
                     [(ngModel)]="amrapData.a1m1"
                     required
-                
+                    readonly
                     style="
                       font-size: x-large;
                       text-align: center;
                       width: 100%;
                       color: #b27600;
                       padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid; /* Border style */
+                      border-radius: 10px; /* Border radius */
+                      border-width: 2px; /* Border width */
                     "
-                 
                   >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
-                 
+                  </ion-input>
                 </ion-col>
-                <ion-col style="text-align: center; width: 50%;">
+                <ion-col style="text-align: center; width: 50%">
                   <ion-input
-                  placeholder="Reps"
-                  style="font-size: x-large; text-align: center; width: 100%"
-                  type="number"
-                 
-                  [(ngModel)]="amrapData.a1m1rep"
-                  max="15"
-                  min="1"
-                  required
-                >
-                </ion-input>
+                    placeholder="Reps"
+                    style="font-size: x-large; text-align: center; width: 100%"
+                    type="number"
+                    [(ngModel)]="amrapData.a1m1rep"
+                    max="15"
+                    min="1"
+                    required
+                  >
+                  </ion-input>
                 </ion-col>
-
               </ion-row>
               <ion-row *ngIf="mpas > 1" class="ion-justify-content-center">
-                <ion-col  style="text-align: center; width: 50%;">
-                  <ion-select
+                <ion-col style="text-align: center; width: 50%">
+                  <ion-input
                     placeholder="M2"
-                    
+                    (click)="openMoveSelection('a1m2')"
                     [(ngModel)]="amrapData.a1m2"
                     required
-                
+                    readonly
                     style="
                       font-size: x-large;
                       text-align: center;
                       width: 100%;
                       color: #b27600;
                       padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid; /* Border style */
+                      border-radius: 10px; /* Border radius */
+                      border-width: 2px; /* Border width */
                     "
-                 
                   >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
-                 
+                  </ion-input>
                 </ion-col>
-                <ion-col style="text-align: center; width: 50%;">
+                <ion-col style="text-align: center; width: 50%">
                   <ion-input
-                  placeholder="Reps"
-                  style="font-size: x-large; text-align: center; width: 100%"
-                  type="number"
-                 
-                  [(ngModel)]="amrapData.a1m2rep"
-                  max="15"
-                  min="1"
-                  required
-                >
-                </ion-input>
+                    placeholder="Reps"
+                    style="font-size: x-large; text-align: center; width: 100%"
+                    type="number"
+                    [(ngModel)]="amrapData.a1m2rep"
+                    max="15"
+                    min="1"
+                    required
+                  >
+                  </ion-input>
                 </ion-col>
-
               </ion-row>
               <ion-row *ngIf="mpas > 2" class="ion-justify-content-center">
-                <ion-col  style="text-align: center; width: 50%;">
-                  <ion-select
+                <ion-col style="text-align: center; width: 50%">
+                  <ion-input
                     placeholder="M3"
-                    
+                    (click)="openMoveSelection('a1m3')"
                     [(ngModel)]="amrapData.a1m3"
-                    
-                
+                    readonly
                     style="
                       font-size: x-large;
                       text-align: center;
                       width: 100%;
                       color: #b27600;
                       padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid; /* Border style */
+                      border-radius: 10px; /* Border radius */
+                      border-width: 2px; /* Border width */
                     "
-                 
                   >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
-                 
+                  </ion-input>
                 </ion-col>
-                <ion-col style="text-align: center; width: 50%;">
+                <ion-col style="text-align: center; width: 50%">
                   <ion-input
-                  placeholder="Reps"
-                  style="font-size: x-large; text-align: center; width: 100%"
-                  type="number"
-                 
-                  [(ngModel)]="amrapData.a1m3rep"
-                  max="15"
-                  min="1"
-                  
-                >
-                </ion-input>
+                    placeholder="Reps"
+                    style="font-size: x-large; text-align: center; width: 100%"
+                    type="number"
+                    [(ngModel)]="amrapData.a1m3rep"
+                    max="15"
+                    min="1"
+                  >
+                  </ion-input>
                 </ion-col>
-
               </ion-row>
               <ion-row *ngIf="mpas > 3" class="ion-justify-content-center">
-                <ion-col  style="text-align: center; width: 50%;">
-                  <ion-select
+                <ion-col style="text-align: center; width: 50%">
+                  <ion-input
                     placeholder="M4"
-                    
+                    (click)="openMoveSelection('a1m4')"
                     [(ngModel)]="amrapData.a1m4"
-                    
-                
+                    readonly
                     style="
                       font-size: x-large;
                       text-align: center;
                       width: 100%;
                       color: #b27600;
                       padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid; /* Border style */
+                      border-radius: 10px; /* Border radius */
+                      border-width: 2px; /* Border width */
                     "
-                 
                   >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
-                 
+                  </ion-input>
                 </ion-col>
-                <ion-col style="text-align: center; width: 50%;">
+                <ion-col style="text-align: center; width: 50%">
                   <ion-input
-                  placeholder="Reps"
-                  style="font-size: x-large; text-align: center; width: 100%"
-                  type="number"
-                 
-                  [(ngModel)]="amrapData.a1m4rep"
-                  max="15"
-                  min="1"
-                  
-                >
-                </ion-input>
+                    placeholder="Reps"
+                    style="font-size: x-large; text-align: center; width: 100%"
+                    type="number"
+                    [(ngModel)]="amrapData.a1m4rep"
+                    max="15"
+                    min="1"
+                  >
+                  </ion-input>
                 </ion-col>
-
-              </ion-row>           
+              </ion-row>
             </ion-row>
             <!--l2-->
             <pre></pre>
-            <div id="t2" *ngIf="numamrap >1">
+            <div id="t2" *ngIf="numamrap !== null && numamrap >1">
               <ion-row>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
@@ -297,178 +289,176 @@
               </ion-row>
               <pre></pre>
               <ion-row>
-                <ion-label style="font-size: x-large; text-align: center; width: 100%">Move(mins)</ion-label>
-                <ion-input placeholder="0"
-                style="font-size: x-large; text-align: center; width: 100%"
-                type="number"  [(ngModel)]="amrapData.a2move"></ion-input>
+                <ion-label
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  >Move(mins)</ion-label
+                >
+                <ion-input
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  placeholder="0"
+                  [(ngModel)]="amrapData.a2move"
+                ></ion-input>
               </ion-row>
-              <ion-row class="ion-justify-content-center" style="text-align: center">
+              <ion-row
+                class="ion-justify-content-center"
+                style="text-align: center"
+              >
                 <ion-row *ngIf="mpas > 0" class="ion-justify-content-center">
-                  <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
+                  <ion-col style="text-align: center; width: 50%">
+                    <ion-input
                       placeholder="M1"
-                      
+                      (click)="openMoveSelection('a2m1')"
                       [(ngModel)]="amrapData.a2m1"
-                      
-                  
+                      readonly
                       style="
                         font-size: x-large;
                         text-align: center;
                         width: 100%;
                         color: #b27600;
                         padding-left: 30%;
+                        border-color: #b27600; /* Border color */
+                        border-style: solid; /* Border style */
+                        border-radius: 10px; /* Border radius */
+                        border-width: 2px; /* Border width */
                       "
-                   
                     >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
-                   
+                    </ion-input>
                   </ion-col>
-                  <ion-col style="text-align: center; width: 50%;">
+                  <ion-col style="text-align: center; width: 50%">
                     <ion-input
-                    placeholder="Reps"
-                    style="font-size: x-large; text-align: center; width: 100%"
-                    type="number"
-                   
-                    [(ngModel)]="amrapData.a2m1rep"
-                    max="15"
-                    min="1"
-                    
-                  >
-                  </ion-input>
+                      placeholder="Reps"
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      type="number"
+                      [(ngModel)]="amrapData.a2m1rep"
+                      max="15"
+                      min="1"
+                    >
+                    </ion-input>
                   </ion-col>
-  
                 </ion-row>
                 <ion-row *ngIf="mpas > 1" class="ion-justify-content-center">
-                  <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
+                  <ion-col style="text-align: center; width: 50%">
+                    <ion-input
                       placeholder="M2"
-                      
+                      (click)="openMoveSelection('a2m2')"
                       [(ngModel)]="amrapData.a2m2"
-                      
-                  
+                      readonly
                       style="
                         font-size: x-large;
                         text-align: center;
                         width: 100%;
                         color: #b27600;
                         padding-left: 30%;
+                        border-color: #b27600; /* Border color */
+                        border-style: solid; /* Border style */
+                        border-radius: 10px; /* Border radius */
+                        border-width: 2px; /* Border width */
                       "
-                   
                     >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
-                   
+                    </ion-input>
                   </ion-col>
-                  <ion-col style="text-align: center; width: 50%;">
+                  <ion-col style="text-align: center; width: 50%">
                     <ion-input
-                    placeholder="Reps"
-                    style="font-size: x-large; text-align: center; width: 100%"
-                    type="number"
-                   
-                    [(ngModel)]="amrapData.a2m2rep"
-                    max="15"
-                    min="1"
-                    
-                  >
-                  </ion-input>
+                      placeholder="Reps"
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      type="number"
+                      [(ngModel)]="amrapData.a2m2rep"
+                      max="15"
+                      min="1"
+                    >
+                    </ion-input>
                   </ion-col>
-  
                 </ion-row>
                 <ion-row *ngIf="mpas > 2" class="ion-justify-content-center">
-                  <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
+                  <ion-col style="text-align: center; width: 50%">
+                    <ion-input
                       placeholder="M3"
-                      
+                      (click)="openMoveSelection('a2m3')"
                       [(ngModel)]="amrapData.a2m3"
-                      
-                  
+                      readonly
                       style="
                         font-size: x-large;
                         text-align: center;
                         width: 100%;
                         color: #b27600;
                         padding-left: 30%;
+                        border-color: #b27600; /* Border color */
+                        border-style: solid; /* Border style */
+                        border-radius: 10px; /* Border radius */
+                        border-width: 2px; /* Border width */
                       "
-                   
                     >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
-                   
+                    </ion-input>
                   </ion-col>
-                  <ion-col style="text-align: center; width: 50%;">
+                  <ion-col style="text-align: center; width: 50%">
                     <ion-input
-                    placeholder="Reps"
-                    style="font-size: x-large; text-align: center; width: 100%"
-                    type="number"
-                   
-                    [(ngModel)]="amrapData.a2m3rep"
-                    max="15"
-                    min="1"
-                    
-                  >
-                  </ion-input>
+                      placeholder="Reps"
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      type="number"
+                      [(ngModel)]="amrapData.a2m3rep"
+                      max="15"
+                      min="1"
+                    >
+                    </ion-input>
                   </ion-col>
-  
                 </ion-row>
                 <ion-row *ngIf="mpas > 3" class="ion-justify-content-center">
-                  <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
+                  <ion-col style="text-align: center; width: 50%">
+                    <ion-input
                       placeholder="M4"
-                      
+                      (click)="openMoveSelection('a2m4')"
                       [(ngModel)]="amrapData.a2m4"
-                      
-                  
+                      readonly
                       style="
                         font-size: x-large;
                         text-align: center;
                         width: 100%;
                         color: #b27600;
                         padding-left: 30%;
+                        border-color: #b27600; /* Border color */
+                        border-style: solid; /* Border style */
+                        border-radius: 10px; /* Border radius */
+                        border-width: 2px; /* Border width */
                       "
-                   
                     >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
-                   
+                    </ion-input>
                   </ion-col>
-                  <ion-col style="text-align: center; width: 50%;">
+                  <ion-col style="text-align: center; width: 50%">
                     <ion-input
-                    placeholder="Reps"
-                    style="font-size: x-large; text-align: center; width: 100%"
-                    type="number"
-                   
-                    [(ngModel)]="amrapData.a2m4rep"
-                    max="15"
-                    min="1"
-                    
-                  >
-                  </ion-input>
+                      placeholder="Reps"
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      type="number"
+                      [(ngModel)]="amrapData.a2m4rep"
+                      max="15"
+                      min="1"
+                    >
+                    </ion-input>
                   </ion-col>
-  
-                </ion-row>  
+                </ion-row>
               </ion-row>
               <ion-row> </ion-row>
             </div>
             <!--lm3-->
             <pre></pre>
-            <div id="t3" *ngIf="numamrap >2">
+            <div id="t3" *ngIf="numamrap !== null && numamrap >2">
               <ion-row>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
@@ -477,191 +467,195 @@
               </ion-row>
               <pre></pre>
               <ion-row>
-                <ion-label style="font-size: x-large; text-align: center; width: 100%">Move(mins)</ion-label>
-                <ion-input placeholder="0"
-                style="font-size: x-large; text-align: center; width: 100%"
-                type="number"  [(ngModel)]="amrapData.a3move"></ion-input>
+                <ion-label
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  >Move(mins)</ion-label
+                >
+                <ion-input
+                  placeholder="0"
+                  style="font-size: x-large; text-align: center; width: 100%"
+                  type="number"
+                  placeholder="0"
+                  [(ngModel)]="amrapData.a3move"
+                ></ion-input>
               </ion-row>
-              <ion-row class="ion-justify-content-center" style="text-align: center">
+              <ion-row
+                class="ion-justify-content-center"
+                style="text-align: center"
+              >
                 <ion-row *ngIf="mpas > 0" class="ion-justify-content-center">
-                  <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
+                  <ion-col style="text-align: center; width: 50%">
+                    <ion-input
                       placeholder="M1"
-                      
+                      (click)="openMoveSelection('a3m1')"
                       [(ngModel)]="amrapData.a3m1"
-                      
-                  
+                      readonly
                       style="
                         font-size: x-large;
                         text-align: center;
                         width: 100%;
                         color: #b27600;
                         padding-left: 30%;
+                        border-color: #b27600; /* Border color */
+                        border-style: solid; /* Border style */
+                        border-radius: 10px; /* Border radius */
+                        border-width: 2px; /* Border width */
                       "
-                   
                     >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
-                   
+                    </ion-input>
                   </ion-col>
-                  <ion-col style="text-align: center; width: 50%;">
+                  <ion-col style="text-align: center; width: 50%">
                     <ion-input
-                    placeholder="Reps"
-                    style="font-size: x-large; text-align: center; width: 100%"
-                    type="number"
-                   
-                    [(ngModel)]="amrapData.a3m1rep"
-                    max="15"
-                    min="1"
-                    
-                  >
-                  </ion-input>
+                      placeholder="Reps"
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      type="number"
+                      [(ngModel)]="amrapData.a3m1rep"
+                      max="15"
+                      min="1"
+                    >
+                    </ion-input>
                   </ion-col>
-  
                 </ion-row>
                 <ion-row *ngIf="mpas > 1" class="ion-justify-content-center">
-                  <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
+                  <ion-col style="text-align: center; width: 50%">
+                    <ion-input
                       placeholder="M2"
-                      
+                      (click)="openMoveSelection('a3m2')"
                       [(ngModel)]="amrapData.a3m2"
-                      
-                  
+                      readonly
                       style="
                         font-size: x-large;
                         text-align: center;
                         width: 100%;
                         color: #b27600;
                         padding-left: 30%;
+                        border-color: #b27600; /* Border color */
+                        border-style: solid; /* Border style */
+                        border-radius: 10px; /* Border radius */
+                        border-width: 2px; /* Border width */
                       "
-                   
                     >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
-                   
+                    </ion-input>
                   </ion-col>
-                  <ion-col style="text-align: center; width: 50%;">
+                  <ion-col style="text-align: center; width: 50%">
                     <ion-input
-                    placeholder="Reps"
-                    style="font-size: x-large; text-align: center; width: 100%"
-                    type="number"
-                   
-                    [(ngModel)]="amrapData.a3m2rep"
-                    max="15"
-                    min="1"
-                    
-                  >
-                  </ion-input>
+                      placeholder="Reps"
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      type="number"
+                      [(ngModel)]="amrapData.a3m2rep"
+                      max="15"
+                      min="1"
+                    >
+                    </ion-input>
                   </ion-col>
-  
                 </ion-row>
                 <ion-row *ngIf="mpas > 2" class="ion-justify-content-center">
-                  <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
+                  <ion-col style="text-align: center; width: 50%">
+                    <ion-input
                       placeholder="M3"
-                      
+                      (click)="openMoveSelection('a3m3')"
                       [(ngModel)]="amrapData.a3m3"
-                      
-                  
+                      readonly
                       style="
                         font-size: x-large;
                         text-align: center;
                         width: 100%;
                         color: #b27600;
                         padding-left: 30%;
+                        border-color: #b27600; /* Border color */
+                        border-style: solid; /* Border style */
+                        border-radius: 10px; /* Border radius */
+                        border-width: 2px; /* Border width */
                       "
-                   
                     >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
-                   
+                    </ion-input>
                   </ion-col>
-                  <ion-col style="text-align: center; width: 50%;">
+                  <ion-col style="text-align: center; width: 50%">
                     <ion-input
-                    placeholder="Reps"
-                    style="font-size: x-large; text-align: center; width: 100%"
-                    type="number"
-                   
-                    [(ngModel)]="amrapData.a3m3rep"
-                    max="15"
-                    min="1"
-                    
-                  >
-                  </ion-input>
+                      placeholder="Reps"
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      type="number"
+                      [(ngModel)]="amrapData.a3m3rep"
+                      max="15"
+                      min="1"
+                    >
+                    </ion-input>
                   </ion-col>
-  
                 </ion-row>
                 <ion-row *ngIf="mpas > 3" class="ion-justify-content-center">
-                  <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
+                  <ion-col style="text-align: center; width: 50%">
+                    <ion-input
                       placeholder="M4"
-                      
+                      (click)="openMoveSelection('a3m4')"
                       [(ngModel)]="amrapData.a3m4"
-                      
-                  
+                      readonly
                       style="
                         font-size: x-large;
                         text-align: center;
                         width: 100%;
                         color: #b27600;
                         padding-left: 30%;
+                        border-color: #b27600; /* Border color */
+                        border-style: solid; /* Border style */
+                        border-radius: 10px; /* Border radius */
+                        border-width: 2px; /* Border width */
                       "
-                   
                     >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
-                   
+                    </ion-input>
                   </ion-col>
-                  <ion-col style="text-align: center; width: 50%;">
+                  <ion-col style="text-align: center; width: 50%">
                     <ion-input
-                    placeholder="Reps"
-                    style="font-size: x-large; text-align: center; width: 100%"
-                    type="number"
-                   
-                    [(ngModel)]="amrapData.a3m4rep"
-                    max="15"
-                    min="1"
-                    
-                  >
-                  </ion-input>
+                      placeholder="Reps"
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                      "
+                      type="number"
+                      [(ngModel)]="amrapData.a3m4rep"
+                      max="15"
+                      min="1"
+                    >
+                    </ion-input>
                   </ion-col>
-  
                 </ion-row>
               </ion-row>
-              
-              
             </div>
-           
+
             <pre></pre>
-            <ion-row>
-              <ion-label
-                style="font-size: x-large; text-align: center; width: 100%"
-                >Select a Date:</ion-label
-              >
-              <ion-input
-                style="font-size: x-large; text-align: center; color: #b27600"
-                type="date"
-                name="daDate"
-                id="daDate"
-                [(ngModel)]="amrapData.daDate"
-                required
-              ></ion-input>
+            <ion-row class="ion-justify-content-center ion-align-items-center">
+              <ion-row class="ion-justify-content-center" style="width: 100%">
+                <ion-label style="font-size: x-large; display: block"
+                  >Select a Date:</ion-label
+                >
+              </ion-row>
+              <ion-row>
+                <div style="margin-left: auto; margin-right: auto">
+                  <ion-input
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      color: #b27600;
+                    "
+                    type="date"
+                    name="daDate"
+                    id="daDate"
+                    [(ngModel)]="amrapData.daDate"
+                  ></ion-input>
+                </div>
+              </ion-row>
             </ion-row>
             <div *ngIf="showErrorCard" class="error-card">
               <div class="error-message">
@@ -670,11 +664,16 @@
               <button (click)="hideErrorCard()" class="close-btn">Close</button>
             </div>
             <ion-row>
-              <div style="text-align: center;margin-left: auto;
-              margin-right: auto;">
+              <div
+                style="
+                  text-align: center;
+                  margin-left: auto;
+                  margin-right: auto;
+                "
+              >
                 <ion-button
                   style="
-                    font-size: xxx-large;
+                    font-size: xx-large;
                     margin-left: auto;
                     margin-right: auto;
                     border-radius: 10%;
@@ -683,13 +682,10 @@
                   type="submit"
                   (click)="submitForm()"
                   [disabled]="!amrapData.wodCat || !amrapData.daDate || !amrapData.a1m1||!this.amrapData.a1m1rep||!this.amrapData.a1move"
-
                   >Add WOD</ion-button
                 >
               </div>
             </ion-row>
-            
-          
           </ion-grid>
         </div>
       </ion-card>

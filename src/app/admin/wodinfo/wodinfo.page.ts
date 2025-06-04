@@ -1,24 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { IonRouterOutlet  } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import {
   Workout,
   Tabata,
   WorkoutsService,
-  Style,
   Exercise,
   Ladder,
   Emom,
   Amrap,
 } from 'src/app/firebase/workouts.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ModalController } from '@ionic/angular';
+import { MsearchComponent } from '../msearch/msearch.component';
+// Define the keys type 
+type WorkoutKeys = keyof Workout;
+type TabataKeys = keyof Tabata;
 @Component({
   selector: 'app-wodinfo',
   templateUrl: './wodinfo.page.html',
   styleUrls: ['./wodinfo.page.scss'],
 })
-export class WodinfoPage implements OnInit {
+export class WodinfoPage implements OnInit, OnDestroy  {
+  private wodSub: Subscription[] = [];
   moves: Exercise[] = [];
   numtabat: number = 0;
   mpts: number = 0;
@@ -30,6 +36,7 @@ export class WodinfoPage implements OnInit {
   mpes: number = 0;
   numamrap: number = 0;
   mpas: number = 0;
+  sets:number = 0;
   showButtons: boolean = false;
     // Define isDateInPast property
     //isDateInPast: boolean = false;
@@ -95,6 +102,12 @@ export class WodinfoPage implements OnInit {
     rest: 0,
     sets: 0,
     daDate: '',
+    t6m1: '',
+    t6m2: '',
+    t7m1: '',
+    t7m2: '',
+    t8m1: '',
+    t8m2: ''
   };
   ladderData: Ladder= {
     id:'',
@@ -123,6 +136,7 @@ export class WodinfoPage implements OnInit {
     wodCat: '',
     wodStyle: '',
    emomNum: 0,
+   sets: 0,
     mpe: 0,
     e1m1: '',
     e1m2: '',
@@ -186,217 +200,619 @@ export class WodinfoPage implements OnInit {
   };
   constructor(
     private route: ActivatedRoute,
-    private navCtrl: NavController,
     private workoutService: WorkoutsService,
     private router: Router,
+ 
+    private modalController: ModalController,
     private firestore: AngularFirestore
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadMoves();
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.workoutService.getWorkoutById(id).subscribe((workout) => {
-        if (workout) {
-          this.workout = workout;
-          this.mprs = workout.mpr;
-          this.rounds= workout.rounds;
-          this.isIntrvalPresent = true;
-          const currentDate = new Date();
-          const intDate = new Date(workout.daDate);
-         // if (intDate !> currentDate) {
-       
-       //     this.isDateInPast = true;
-        //  } else {this.isDateInPast = false;}
-        }
-      });
-      this.workoutService.getTabataById(id).subscribe((tabata) => {
-        if (tabata) {
-          this.tabataData = tabata;
-          this.mpts = tabata.mpt; // Load mpt after tabataData is set
-          this.numtabat = tabata.tabataNum;
-          this.isTabataPresent = true; // Set to true if tabata data is present
-          const currentDate = new Date();
-          const tabataDate = new Date(tabata.daDate);
-         // if (tabataDate  !> currentDate) {
-          
-         //   this.isDateInPast = true;
-          //} else {
-          //  this.isDateInPast = false;
-          //}
-        }
-      });
-      this.workoutService.getLadderById(id).subscribe((ladder) => {
-        if (ladder) {
-          this.ladderData = ladder;
-          this.mpls = ladder.mpl; // Load mpt after tabataData is set
-          this.numladder = ladder.ladderNum;
-          this.isLadderPresent = true; // Set to true if tabata data is present
-          const currentDate = new Date();
-          const ladderDate = new Date(ladder.daDate);
-         // if (tabataDate  !> currentDate) {
-          
-         //   this.isDateInPast = true;
-          //} else {
-          //  this.isDateInPast = false;
-          //}
-        }
-      });
-      this.workoutService.getEmomById(id).subscribe((emom) => {
-        if (emom) {
-          this.emomData = emom;
-          this.mpes = emom.mpe; // Load mpt after tabataData is set
-          this.numemom = emom.emomNum;
-          this.isEmomPresent = true; // Set to true if tabata data is present
-          const currentDate = new Date();
-          const emomDate = new Date(emom.daDate);
-         // if (tabataDate  !> currentDate) {
-          
-         //   this.isDateInPast = true;
-          //} else {
-          //  this.isDateInPast = false;
-          //}
-        }
-      });
-      this.workoutService.getAmrapById(id).subscribe((amrap) => {
-        if (amrap) {
-          this.amrapData = amrap;
-          this.mpas = amrap.mpa; // Load mpt after tabataData is set
-          this.numamrap = amrap.amrapNum;
-          this.isAmrapPresent = true; // Set to true if tabata data is present
-          const currentDate = new Date();
-          const amrapDate = new Date(amrap.daDate);
-         // if (tabataDate  !> currentDate) {
-          
-         //   this.isDateInPast = true;
-          //} else {
-          //  this.isDateInPast = false;
-          //}
-        }
-      });
-      
-      
+      this.wodSub.push(
+        this.workoutService.getWorkoutById(id).subscribe((workout) => {
+          if (workout) {
+            this.workout = workout;
+            this.mprs = workout.mpr;
+            this.rounds = workout.rounds;
+            this.isIntrvalPresent = true;
+          }
+        })
+      );
+
+      this.wodSub.push(
+        this.workoutService.getTabataById(id).subscribe((tabata) => {
+          if (tabata) {
+            this.tabataData = tabata;
+            this.mpts = tabata.mpt;
+            this.numtabat = tabata.tabataNum;
+            this.isTabataPresent = true;
+          }
+        })
+      );
+
+      this.wodSub.push(
+        this.workoutService.getLadderById(id).subscribe((ladder) => {
+          if (ladder) {
+            this.ladderData = ladder;
+            this.mpls = ladder.mpl;
+            this.numladder = ladder.ladderNum;
+            this.isLadderPresent = true;
+          }
+        })
+      );
+
+      this.wodSub.push(
+        this.workoutService.getEmomById(id).subscribe((emom) => {
+          if (emom) {
+            this.emomData = emom;
+            this.mpes = emom.mpe;
+            this.numemom = emom.emomNum;
+            this.isEmomPresent = true;
+          }
+        })
+      );
+
+      this.wodSub.push(
+        this.workoutService.getAmrapById(id).subscribe((amrap) => {
+          if (amrap) {
+            this.amrapData = amrap;
+            this.mpas = amrap.mpa;
+            this.numamrap = amrap.amrapNum;
+            this.isAmrapPresent = true;
+          }
+        })
+      );
     }
+    
   }
 
-
-
+  ngOnDestroy(): void {
+    // Unsubscribe from all active subscriptions
+    this.wodSub.forEach((sub) => sub.unsubscribe());
+  }
   loadMoves() {
     this.moves = this.workoutService.getAllMoves();
   }
+  async openMoveSelection(inputField: WorkoutKeys) {
+    const modal = await this.modalController.create({
+      component: MsearchComponent,
+      componentProps: { moves: this.moves }
+    });
 
-  backhome() {
-    this.router.navigate(['/ahome']);
+    modal.onDidDismiss().then((dataReturned: any) => {
+      if (dataReturned !== null && dataReturned.data) {
+        const selectedMove: Exercise = dataReturned.data as Exercise;
+        if (inputField in this.workout) {
+          (this.workout[inputField] as unknown) = selectedMove.exeName; // Use type assertion
+        }
+      }
+    });
+
+    return await modal.present();
   }
-  saveinterval(): void {
+  async opentMoveSlct(inputField: TabataKeys) {
+    const modal = await this.modalController.create({
+      component: MsearchComponent,
+      componentProps: { moves: this.moves }
+    });
+
+    modal.onDidDismiss().then((dataReturned: any) => {
+      if (dataReturned !== null && dataReturned.data) {
+        const selectedMove: Exercise = dataReturned.data as Exercise;
+        if (inputField in this.tabataData) {
+          (this.tabataData[inputField] as unknown) = selectedMove.exeName; // Use type assertion
+        }
+      }
+    });
+
+    return await modal.present();
+  }
+
+  backhome(): void{
+  // Unsubscribe from subscriptions and navigate to the desired route
+  this.ngOnDestroy(); // Ensure cleanup
+  this.router.navigate(['/ahome']); // Navigate to the home page
+  }
+  ionViewWillLeave() {
+    console.log('View is leaving');
+    this.ngOnDestroy(); // Cleanup when user navigates away
+  }
+
+  showErrorCard = false;
+  showSaveCard = false;
+
+  async saveInterval(): Promise<void> {
     const id = this.route.snapshot.paramMap.get('id');
-    if (id !== null) {
-      // Check if id is not null before using it
-      this.workoutService
-        .updateWorkout(id, this.workout)
-        .then(() => {
-          this.showButtons= false;
-          this.isDisabled = !this.isDisabled;
-          this.router.navigate(['/ahome']);        })
-        .catch((error) => {
-          console.error('Error updating tabata:', error);
-          // Handle error, show error message, etc.
-        });
-    }else {
-      console.error('Error: Tabata ID is null');
-      // Handle the case where the ID is null, show error message, etc.
+    if (!id) {
+      console.error('Error: interval ID is null');
+      return;
     }
-  }
-  savetabata(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== null) {
-      // Check if id is not null before using it
-      this.workoutService
-        .updateTabata(id, this.tabataData)
-        .then(() => {
-          this.showButtons= false;
-          this.isDisabled = !this.isDisabled;
-          this.router.navigate(['/ahome']); // Navigate back after saving changes
-          
-        })
-        .catch((error) => {
-          console.error('Error updating tabata:', error);
-          // Handle error, show error message, etc.
-        });
-    } else {
-      console.error('Error: Tabata ID is null');
-      // Handle the case where the ID is null, show error message, etc.
-    }
-  }
-  saveladder(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== null) {
-      // Check if id is not null before using it
-      this.workoutService
-        .updateLadder(id, this.ladderData)
-        .then(() => {
-          this.showButtons= false;
-          this.isDisabled = !this.isDisabled;
-          this.router.navigate(['/ahome']); // Navigate back after saving changes
-          
-        })
-        .catch((error) => {
-          console.error('Error updating Ladder:', error);
-          // Handle error, show error message, etc.
-        });
-    } else {
-      console.error('Error: Ladder ID is null');
-      // Handle the case where the ID is null, show error message, etc.
-    }
-  }
-  saveemom(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== null) {
-      // Check if id is not null before using it
-      this.workoutService
-        .updateEmom(id, this.emomData)
-        .then(() => {
-          this.showButtons= false;
-          this.isDisabled = !this.isDisabled;
-          this.router.navigate(['/ahome']); // Navigate back after saving changes
-          
-        })
-        .catch((error) => {
-          console.error('Error updating emom:', error);
-          // Handle error, show error message, etc.
-        });
-    } else {
-      console.error('Error: emom ID is null');
-      // Handle the case where the ID is null, show error message, etc.
-    }
-  }
-  saveamrap(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== null) {
-      // Check if id is not null before using it
-      this.workoutService
-        .updateAmrap(id, this.amrapData)
-        .then(() => {
-          this.showButtons= false;
-          this.isDisabled = !this.isDisabled;
-          this.router.navigate(['/ahome']); // Navigate back after saving changes
-          
-        })
-        .catch((error) => {
-          console.error('Error updating emom:', error);
-          // Handle error, show error message, etc.
-        });
-    } else {
-      console.error('Error: emom ID is null');
-      // Handle the case where the ID is null, show error message, etc.
-    }
-  }
   
+    if (!this.workout.daDate || !this.workout.wodCat) {
+      console.error('Error: daDate or wodCat is undefined in workout');
+      return;
+    }
 
-  cancel() {
-   
+    if (this.workout.rounds < 4) {
+      this.workout.r4m1 = '';
+      this.workout.r4m2 = '';
+      this.workout.r4m3 = '';
+      this.workout.r4sets = 0;
+      this.workout.r4move = 0;
+      this.workout.r4rest = 0;
+    }
+    if (this.workout.rounds < 3) {
+      this.workout.r3m1 = '';
+      this.workout.r3m2 = ''; 
+      this.workout.r3m3 = '';
+      this.workout.r3sets = 0;
+      this.workout.r3move = 0;
+      this.workout.r3rest = 0;
+      this.workout.r4m1 = '';
+      this.workout.r4m2 = '';
+      this.workout.r4m3 = '';
+      this.workout.r4sets = 0;
+      this.workout.r4move = 0;
+      this.workout.r4rest = 0;
+    }
+    if (this.workout.rounds < 2) {
+      this.workout.r2m1 = '';
+      this.workout.r2m2 = '';
+      this.workout.r2m3 = '';
+      this.workout.r2sets = 0;
+      this.workout.r2move = 0;
+      this.workout.r2rest = 0;
+      this.workout.r3m1 = '';
+      this.workout.r3m2 = '';
+      this.workout.r3m3 = '';
+      this.workout.r3sets = 0;
+      this.workout.r3move = 0;
+      this.workout.r3rest = 0;
+      this.workout.r4m1 = '';
+      this.workout.r4m2 = '';
+      this.workout.r4m3 = '';
+      this.workout.r4sets = 0;
+      this.workout.r4move = 0;
+      this.workout.r4rest = 0;
+    }
+
+    if (this.workout.mpr < 3) {
+    this.workout.r1m3 = '';
+    this.workout.r2m3 = '';
+    this.workout.r3m3 = '';
+    this.workout.r4m3 = '';
+    }
+    if (this.workout.mpr < 2) {
+      this.workout.r2m2 = '';
+      this.workout.r3m2 = '';
+      this.workout.r4m2 = '';
+    }
+  
+    const collections = ['workouts', 'tabatas', 'ladders', 'emoms', 'amrap'];
+  
+    try {
+      const querySnapshots = await Promise.all(
+        collections.map(async collection => {
+          return this.firestore.collection(collection, ref =>
+            ref
+              .where('daDate', '==', this.workout.daDate)
+              .where('wodCat', '==', this.workout.wodCat)
+              .where('id', '!=', id)
+          ).get().toPromise();
+        })
+      );
+  
+      const documentExists = querySnapshots.some(snapshot => snapshot && snapshot.size > 0);
+  
+      if (documentExists) {
+        this.showErrorCard = true;
+        return;
+      }
+  
+      await this.workoutService.updateWorkout(id, this.workout);
+      // Update UI state
+      this.showButtons = false;
+      this.isDisabled = true;
+      this.showSaveCard= true;
+      
+    } catch (error) {
+      console.error('Error during saveInterval execution:', error);
+    }
+  }
+  async savetabata(): Promise<void> {
+    // Extract `id` from the route at the beginning
+    const id = this.route.snapshot.paramMap.get('id');
+    if (!id) {
+      console.error('Error: tabata ID is null');
+      return; // Exit if no ID
+    }
+  
+    // Ensure `daDate` and `wodCat` are defined
+    if (!this.tabataData.daDate || !this.tabataData.wodCat) {
+      console.error('Error: daDate or wodCat is undefined in tabata');
+      return;
+    }
+
+    if (this.tabataData.tabataNum < 8) {
+      this.tabataData.t8m1 = '';
+      this.tabataData.t8m2 = '';
+    }
+    if (this.tabataData.tabataNum < 7) {
+      this.tabataData.t7m1 = '';
+      this.tabataData.t7m2 = '';
+    }
+    if (this.tabataData.tabataNum < 6) {
+      this.tabataData.t6m1 = '';
+      this.tabataData.t6m2 = '';
+    }
+    if (this.tabataData.tabataNum < 5) {
+      this.tabataData.t5m1 = '';
+      this.tabataData.t5m2 = '';
+    }
+    if (this.tabataData.tabataNum < 4) {
+      this.tabataData.t4m1 = '';
+      this.tabataData.t4m2 = '';
+    }
+    if (this.tabataData.tabataNum < 3) {
+      this.tabataData.t3m1 = '';
+      this.tabataData.t3m2 = '';
+    }
+    if (this.tabataData.tabataNum < 2) {
+      this.tabataData.t2m1 = '';
+      this.tabataData.t2m2 = '';
+    }
+    if (this.tabataData.mpt < 2) {
+      this.tabataData.t1m2 = '';
+      this.tabataData.t2m2 = '';
+      this.tabataData.t3m2 = '';
+      this.tabataData.t4m2 = '';
+      this.tabataData.t5m2 = '';
+      this.tabataData.t6m2 = '';
+      this.tabataData.t7m2 = '';
+      this.tabataData.t8m2 = '';
+    }
+    // Define the collections to check
+    const collections = ['workouts', 'tabatas', 'ladders', 'emoms', 'amrap'];
+    
+    try {
+      // Perform Firestore checks for all collections
+      const querySnapshots = await Promise.all(
+        collections.map(async collection => {
+          return this.firestore.collection(collection, ref =>
+            ref
+              .where('daDate', '==', this.tabataData.daDate)
+              .where('wodCat', '==', this.tabataData.wodCat)
+              .where('id', '!=', id)
+          ).get().toPromise();
+        })
+      );
+      // Determine if a conflicting document exists
+      const documentExists = querySnapshots.some(snapshot => snapshot && snapshot.size > 0);
+  
+      if (documentExists) {
+        this.showErrorCard = true; // Show error card
+        return;
+      }
+        
+      // Update the tabata
+      await this.workoutService.updateTabata(id, this.tabataData);
+      // Update UI state
+      this.showButtons = false;
+      this.isDisabled = true;
+      this.showSaveCard= true;
+  
+    } catch (error) {
+      console.error('Error during saveTabata execution:', error);
+      // Handle error (e.g., display error message to user)
+    }
+  }
+  async saveladder(): Promise<void> {
+    // Extract `id` from the route at the beginning
+    const id = this.route.snapshot.paramMap.get('id');
+  
+    if (!id) {
+      console.error('Error: ladder ID is null');
+      return; // Exit if no ID
+    }
+    // Ensure `daDate` and `wodCat` are defined
+    if (!this.ladderData.daDate || !this.ladderData.wodCat) {
+      console.error('Error: daDate or wodCat is undefined in ladder');
+      return;
+    }
+
+    if (this.ladderData.ladderNum < 3) {
+      this.ladderData.l3m1 = '';
+      this.ladderData.l3m2 = '';
+      this.ladderData.l3m3 = '';
+      this.ladderData.l3m4 = '';
+    }
+    if (this.ladderData.ladderNum < 2) {
+      this.ladderData.l2m1 = '';
+      this.ladderData.l2m2 = '';
+      this.ladderData.l2m3 = '';
+      this.ladderData.l2m4 = '';
+    }
+    if (this.ladderData.mpl < 4) {
+      this.ladderData.l1m4 = '';
+      this.ladderData.l2m4 = '';
+      this.ladderData.l3m4 = '';
+    }
+    if (this.ladderData.mpl < 3) {
+      this.ladderData.l1m3 = '';
+      this.ladderData.l2m3 = '';
+      this.ladderData.l3m3 = '';
+      this.ladderData.l1m4 = '';
+      this.ladderData.l2m4 = '';
+      this.ladderData.l3m4 = '';
+    }
+    if (this.ladderData.mpl < 2) {
+      this.ladderData.l1m2 = '';
+      this.ladderData.l2m2 = '';
+      this.ladderData.l3m2 = '';
+      this.ladderData.l1m3 = '';
+      this.ladderData.l2m3 = '';
+      this.ladderData.l3m3 = '';
+      this.ladderData.l1m4 = '';
+      this.ladderData.l2m4 = '';
+      this.ladderData.l3m4 = '';
+    }    
+  
+    // Define the collections to check
+    const collections = ['workouts', 'tabatas', 'ladders', 'emoms', 'amrap'];
+    
+    try {
+
+      
+      // Perform Firestore checks for all collections
+      const querySnapshots = await Promise.all(
+        collections.map(async collection => {
+          console.log(`Checking collection: ${collection}`);
+          return this.firestore.collection(collection, ref =>
+            ref
+              .where('daDate', '==', this.ladderData.daDate)
+              .where('wodCat', '==', this.ladderData.wodCat)
+              .where('id', '!=', id)
+          ).get().toPromise();
+        })
+      );
+  
+  
+      // Determine if a conflicting document exists
+      const documentExists = querySnapshots.some(snapshot => snapshot && snapshot.size > 0);
+  
+      if (documentExists) {
+        console.log('Document with the same date and wodCat already exists.');
+        this.showErrorCard = true; // Show error card
+        return;
+      }
+  
+      console.log('No conflicting document found, proceeding to update...');
+      
+      // Update the ladder
+      await this.workoutService.updateLadder(id, this.ladderData);
+      // Update UI state
+      this.showButtons = false;
+      this.isDisabled = true;
+      this.showSaveCard= true;
+    } catch (error) {
+      console.error('Error during saveLadder execution:', error);
+      // Handle error (e.g., display error message to user)
+    }
+  }
+  async saveemom(): Promise<void> {
+    // Extract `id` from the route at the beginning
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log('Emom ID:', id);
+  
+    if (!id) {
+      console.error('Error: Emom ID is null');
+      return; // Exit if no ID
+    }
+  
+    // Ensure `daDate` and `wodCat` are defined
+    if (!this.emomData.daDate || !this.emomData.wodCat) {
+      console.error('Error: daDate or wodCat is undefined in emom');
+      return;
+    }
+
+    if (this.emomData.emomNum < 3) {
+      this.emomData.e3m1 = '';
+      this.emomData.e3m2 = '';
+      this.emomData.e3m3 = '';
+      this.emomData.e3m4 = '';
+    }
+    if (this.emomData.emomNum < 2) {
+      this.emomData.e2m1 = '';
+      this.emomData.e2m2 = '';
+      this.emomData.e2m3 = '';
+      this.emomData.e2m4 = '';
+    }
+    if (this.emomData.mpe < 4) {
+      this.emomData.e1m4 = '';
+      this.emomData.e2m4 = '';
+      this.emomData.e3m4 = '';
+    }
+    if (this.emomData.mpe < 3) {
+      this.emomData.e1m3 = '';
+      this.emomData.e2m3 = '';
+      this.emomData.e3m3 = '';
+      this.emomData.e1m4 = '';
+      this.emomData.e2m4 = '';
+      this.emomData.e3m4 = '';
+    }
+    if (this.emomData.mpe < 2) {
+      this.emomData.e1m2 = '';
+      this.emomData.e2m2 = '';
+      this.emomData.e3m2 = '';
+      this.emomData.e1m3 = '';
+      this.emomData.e2m3 = '';
+      this.emomData.e3m3 = '';
+      this.emomData.e1m4 = '';
+      this.emomData.e2m4 = '';
+      this.emomData.e3m4 = '';
+    }    
+  
+    // Define the collections to check
+    const collections = ['workouts', 'tabatas', 'ladders', 'emoms', 'amrap'];
+    
+    try {
+      const start = Date.now();
+      
+      // Perform Firestore checks for all collections
+      const querySnapshots = await Promise.all(
+        collections.map(async collection => {
+          console.log(`Checking collection: ${collection}`);
+          return this.firestore.collection(collection, ref =>
+            ref
+              .where('daDate', '==', this.emomData.daDate)
+              .where('wodCat', '==', this.emomData.wodCat)
+              .where('id', '!=', id)
+          ).get().toPromise();
+        })
+      );
+  
+      console.log('Firestore checks completed in', Date.now() - start, 'ms');
+  
+      // Determine if a conflicting document exists
+      const documentExists = querySnapshots.some(snapshot => snapshot && snapshot.size > 0);
+  
+      if (documentExists) {
+        console.log('Document with the same date and wodCat already exists.');
+        this.showErrorCard = true; // Show error card
+        return;
+      }
+  
+      console.log('No conflicting document found, proceeding to update...');
+      
+      // Update the emom
+      await this.workoutService.updateEmom(id, this.emomData);
+      console.log('Emom updated successfully.');
+  
+      // Update UI state
+      this.showButtons = false;
+      this.isDisabled = true;
+      this.showSaveCard= true;
+
+    } catch (error) {
+      console.error('Error during saveEmom execution:', error);
+      // Handle error (e.g., display error message to user)
+    }
+  }
+  async saveamrap(): Promise<void> {
+    // Extract `id` from the route at the beginning
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log('Amrap ID:', id);
+  
+    if (!id) {
+      console.error('Error: Amrap ID is null');
+      return; // Exit if no ID
+    }
+  
+    // Ensure `daDate` and `wodCat` are defined
+    if (!this.amrapData.daDate || !this.amrapData.wodCat) {
+      console.error('Error: daDate or wodCat is undefined in amrap');
+      return;
+    }
+
+    if (this.amrapData.amrapNum < 3) {
+     this.amrapData.a3m1 = '';
+      this.amrapData.a3m2 = '';
+      this.amrapData.a3m3 = '';
+      this.amrapData.a3m4 = '';
+    }
+    if (this.amrapData.amrapNum < 2) {
+      this.amrapData.a2m1 = '';
+      this.amrapData.a2m2 = '';
+      this.amrapData.a2m3 = '';
+      this.amrapData.a2m4 = '';
+    }
+    if (this.amrapData.mpa < 4) {
+      this.amrapData.a1m4 = '';
+      this.amrapData.a2m4 = '';
+      this.amrapData.a3m4 = '';
+    }
+    if (this.amrapData.mpa < 3) {
+      this.amrapData.a1m3 = '';
+      this.amrapData.a2m3 = '';
+      this.amrapData.a3m3 = '';
+      this.amrapData.a1m4 = '';
+      this.amrapData.a2m4 = '';
+      this.amrapData.a3m4 = '';
+    }
+    if (this.amrapData.mpa < 2) {
+      this.amrapData.a1m2 = '';
+      this.amrapData.a2m2 = '';
+      this.amrapData.a3m2 = '';
+      this.amrapData.a1m3 = '';
+      this.amrapData.a2m3 = '';
+      this.amrapData.a3m3 = '';
+      this.amrapData.a1m4 = '';
+      this.amrapData.a2m4 = '';
+      this.amrapData.a3m4 = '';
+    }    
+  
+    // Define the collections to check
+    const collections = ['workouts', 'tabatas', 'ladders', 'emoms', 'amrap'];
+    
+    try {
+      const start = Date.now();
+      
+      // Perform Firestore checks for all collections
+      const querySnapshots = await Promise.all(
+        collections.map(async collection => {
+          console.log(`Checking collection: ${collection}`);
+          return this.firestore.collection(collection, ref =>
+            ref
+              .where('daDate', '==', this.amrapData.daDate)
+              .where('wodCat', '==', this.amrapData.wodCat)
+              .where('id', '!=', id)
+          ).get().toPromise();
+        })
+      );
+  
+      console.log('Firestore checks completed in', Date.now() - start, 'ms');
+  
+      // Determine if a conflicting document exists
+      const documentExists = querySnapshots.some(snapshot => snapshot && snapshot.size > 0);
+  
+      if (documentExists) {
+        console.log('Document with the same date and wodCat already exists.');
+        this.showErrorCard = true; // Show error card
+        return;
+      }
+  
+      console.log('No conflicting document found, proceeding to update...');
+      
+      // Update the amrap
+      await this.workoutService.updateAmrap(id, this.amrapData);
+      console.log('Amrap updated successfully.');
+  
+      // Update UI state
+      this.showButtons = false;
+      this.isDisabled = true;
+      this.showSaveCard= true;
+
+    } catch (error) {
+      console.error('Error during saveAmrap execution:', error);
+      // Handle error (e.g., display error message to user)
+    }
+  }
+  hideErrorCard() {
+    this.showErrorCard = false;
+  }
+  hideSaveCard(){
+    this.showSaveCard = false;
+    this.ngOnDestroy();
     this.router.navigate(['/ahome']);
+  }
+  cancel() {
     this.showButtons= false;
     this.isDisabled = !this.isDisabled;
+    this.ngOnDestroy();
+    this.router.navigate(['/ahome']);
+   
   }
 }

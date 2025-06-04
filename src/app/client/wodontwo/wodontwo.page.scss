@@ -1,0 +1,345 @@
+.red-content,
+.blue-content,
+.home-content {
+  --ion-padding: 0; // Consolidated padding properties
+  border: solid 1px; // Combined border properties
+  --ion-background-color: linear-gradient(
+    to bottom,
+    black 0%,
+    var(--border-color) 100%
+  ); // Simplified gradient declaration
+  height: 100vh;
+}
+
+.red-content {
+  --border-color: #00b250;
+}
+
+.blue-content {
+  --border-color: #22b9e9;
+}
+
+.home-content {
+  --border-color: #b27600;
+}
+
+.logocon,
+.logocona,
+.logoconc {
+  background-color: aliceblue;
+  border: 4px solid; // Combined border properties
+  width: 18%;
+  padding: 5px 0; // Combined padding properties
+  border-radius: 20%;
+  margin: auto; // Combined margin properties
+}
+
+.logocon {
+  border-color: #00b250;
+}
+
+.logocona {
+  border-color: #22b9e9;
+}
+
+.logoconc {
+  border-color: #b27600;
+}
+.backbtnclrG {
+  background-color: #00b250;
+}
+.backbtnclrB {
+  background-color: #22b9e9;
+}
+
+.wodbod,
+.wodbodb,
+.wodbodc {
+  border: 2px solid; // Combined border properties
+  background: linear-gradient(to top, black 0%, var(--border-color) 100%);
+  border-radius: 80px;
+}
+
+.wodbod {
+  border-color: #00b250;
+}
+
+.wodbodb {
+  border-color: #22b9e9;
+}
+
+.wodbodc {
+  border-color: #b27600;
+}
+
+.cardttl {
+  text-align: center;
+  color: aliceblue;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  margin: auto; // Center the element horizontally
+  border-radius: 80px;
+  border: 2px solid #000; // Combined border properties
+  background-color: #000;
+  width: 99%;
+  height: 700px;
+  border-bottom-width: 1px;
+  padding-bottom: 0; // Removed unnecessary percentage symbol
+}
+
+.countdown-wrapper {
+  position: absolute;
+  top: 60%; /* Center vertically */
+  left: 49%; /* Center horizontally */
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px; /* Doubled border size */
+}
+
+.countdown-row {
+  position: relative; /* Ensure the countdown row stays within the countdown wrapper */
+  text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 10vh;
+  color: black;
+}
+
+ion-img {
+  width: 100%;
+  margin-top: 10%;
+}
+
+/* home.page.scss */
+.half-modal {
+  --height: 50%; /* Set the height of the modal to 50% of the viewport height */
+  --top: 50%; /* Position the top edge of the modal halfway down the viewport */
+  --transform: translateY(
+    -50%
+  ); /* Translate the modal up by 50% of its own height */
+  --border-radius: 20px; /* Optional: Set border radius if needed */
+}
+
+.frndsearch {
+  border: 2px solid #b27600; // Combined border properties
+  border-radius: 80px;
+}
+
+.timer-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px; /* Keep width fixed */
+  height: 110px;
+  text-align: center;
+  line-height: 1;
+  font-family: "Courier New", Courier, monospace; /* Use a fixed-width font */
+  font-size: 7dvh;
+  font-weight: bold;
+}
+
+.timer-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border: 6px solid #00b250;
+  width: 200px;
+  height: 110px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.timer-container {
+  position: relative;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace; /* Use the same fixed-width font */
+  font-weight: 600;
+  font-size: 7dvh;
+  color: #00b250;
+}
+
+.tb1-counter {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 10px); /* Position it on the right side with a 10px gap */
+  transform: translateY(-50%);
+  font-size: 5dvh; /* Adjust the size to match your design */
+  color: #ffac05;
+}
+.play-icon {
+  width: 60px;
+  height: 60px;
+  color: #22b9e9; /* Adjust the color to match the circle */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Ensure it appears above the circle */
+}
+.video-hidden {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.video-visible {
+  opacity: 1;
+}
+
+.hidden-label {
+  visibility: hidden;
+}
+.carousel-container {
+  width: 100%;
+}
+
+.carousel-label {
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: large;
+  color: aliceblue;
+}
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  z-index: 1; /* Ensures the overlay is above the video */
+}
+ion-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10; // Ensure spinner is above the video
+}
+
+.amrapLBLcon {
+  border-radius: 20px;
+  width: 85%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  height: 20%;
+  margin-bottom: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #00b250, #ffffff);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+}
+.amrapLBL{
+   color: black;
+                    text-align: center;
+                    font-size: large;
+                    padding: 10px;
+                    font-weight: 600;
+}
+.emomlbls{
+  display: block;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: medium;
+  color: aliceblue;
+}
+.carousel {
+  overflow: hidden;
+  width: 100%;
+}
+.carousel-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.carousel-item {
+  min-width: 100%;
+ margin: 7%;
+ margin-left: auto;
+ margin-right: auto;
+  text-align: center;
+  /* Customize your item style here */
+}
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0%;
+}
+
+.caro-button {
+  padding: 5px 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #00b250;
+  background-color: #0000; /* Original color */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+button:hover {
+  background-color: #00b250; /* Green color on hover */
+  color: white;
+}
+
+button:disabled {
+  background-color: #0000; /* Disabled color */
+  color: grey;
+  cursor: not-allowed;
+}
+
+.orange-class {
+  background: #b27600;
+  border-color: #b27600;
+}
+
+.orange-text {
+  border-radius: 20px;
+  width: 85%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  height: 20%;
+  margin-bottom: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #b27600, #ffffff);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+}
+.orange-circle{
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #b27600;
+  border-width: 7px;
+  width: 110px;
+  height: 110px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.orange-ttext{
+
+  color: #b27600;
+}

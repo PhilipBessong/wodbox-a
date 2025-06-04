@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Select Move</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar
+    [(ngModel)]="searchTerm"
+    (ionInput)="filterMoves()"
+    placeholder="Search moves"
+  ></ion-searchbar>
+
+  <ion-list>
+    <ion-item
+      *ngFor="let move of filteredMoves"
+      (click)="selectMove(move)"
+    >
+      {{ move.exeName }}
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -41,7 +41,8 @@
             "node_modules/@ionic/angular/css/normalize.css",
             "node_modules/@ionic/angular/css/structure.css",
             "node_modules/@ionic/angular/css/typography.css",
-            "node_modules/@ionic/angular/css/display.css"],
+            "node_modules/@ionic/angular/css/display.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -54,8 +55,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "5kb",
+                  "maximumError": "10kb"
                 }
               ],
               "fileReplacements": [
@@ -121,7 +122,8 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss"],
+            "styles": [
+              "src/theme/variables.scss", "src/global.scss"],
             "scripts": []
           },
           "configurations": {

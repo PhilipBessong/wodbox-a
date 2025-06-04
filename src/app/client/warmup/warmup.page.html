@@ -27,7 +27,6 @@
         </div>
       </div>
     </div>
-
     <pre></pre>
     <div>
       <h1 class="wodhead" style="color: aliceblue">WOD Description</h1>
@@ -106,34 +105,13 @@
             <ion-card-content>
               <ion-row class="ion-justify-content-center">
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{workout.r1sets}} sets</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{workout.r1sets}} sets</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{workout.r1move}}sec Move</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{workout.r1move}} sec Move</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{workout.r1rest}}sec Rest</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{workout.r1rest}} sec Rest</ion-card-subtitle>
                 </ion-col>
               </ion-row>
 
@@ -154,14 +132,15 @@
                 >
               </ion-row>
 
-              <ion-row class="ion-justify-content-center video-container">
+              <ion-row  *ngIf="workout.exe && workout.exe.videoUrl" class="ion-justify-content-center video-container">
                 <video
-                  controls
-                  *ngIf="workout.exe && workout.exe.videoUrl"
+                #videoR1M1
+                 playsinline
+                  muted
                   autoplay
                   loop
                   style="border-radius: 20px"
-                  (click)="openVideoModal(workout.exe.videoUrl)"
+                  (click)="openFullscreenVideo(workout.exe.videoUrl)"
                 >
                   <source [src]="workout.exe.videoUrl" type="video/mp4" />
                   <!-- Add more <source> elements for different video formats if needed -->
@@ -178,7 +157,7 @@
 
               <ion-row
                 *ngIf="workout.exeR1M2"
-                (click)="openr1m2vm(workout.exeR1M2.videoUrl)"
+              
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -189,13 +168,15 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="workout.exeR1M2"
+                *ngIf="workout.exeR1M2 && workout.exeR1M2.videoUrl"
                 class="video-container"
               >
                 <video
-                  controls
-                  *ngIf="workout.exeR1M2.videoUrl"
-                  autoplay
+                 #videoR1M2
+                  playsinline
+                (click)="ofvr1m2(workout.exeR1M2.videoUrl)"
+                muted
+                autoplay
                   loop
                   style="border-radius: 20px"
                 >
@@ -208,7 +189,7 @@
               <!--3-->
               <ion-row
                 *ngIf="workout.exeR1M3"
-                (click)="openr1m3vm(workout.exeR1M3.videoUrl)"
+                
                 style="padding-top: 5%; padding-left: 0%; color: aliceblue"
               >
                 <ion-label style="font-size: large">Exercise 3</ion-label>
@@ -218,6 +199,7 @@
                 *ngIf="workout.exeR1M3"
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
+         
               >
                 <ion-label style="font-size: large"
                   >{{ workout.exeR1M3.exeName}}</ion-label
@@ -226,14 +208,17 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="workout.exeR1M3"
+                *ngIf="workout.exeR1M3 && workout.exeR1M3.videoUrl"
                 class="video-container"
               >
                 <video
-                  controls
+                 #videoR1M3
+                  playsinline
+                (click)="ofvr1m3(workout.exeR1M3.videoUrl)"
                   *ngIf="workout.exeR1M3.videoUrl"
                   autoplay
                   loop
+                  muted
                   style="border-radius: 20px"
                 >
                   <source [src]="workout.exeR1M3.videoUrl" type="video/mp4" />
@@ -251,7 +236,6 @@
               border-radius: 80px;
               background-color: rgb(58, 56, 56);
               border-color: #b27600;
-              padding-top: 5%;
               border-style: solid;
             "
             *ngIf="workout.exeR2M1"
@@ -274,34 +258,13 @@
             <ion-card-content>
               <ion-row class="ion-justify-content-center">
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{workout.r2sets}} sets</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{workout.r2sets}} sets</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{workout.r2move}}sec Move</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{workout.r2move}} sec Move</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{workout.r2rest}}sec Rest</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{workout.r2rest}} sec Rest</ion-card-subtitle>
                 </ion-col>
               </ion-row>
 
@@ -313,6 +276,7 @@
 
               <ion-row
                 *ngIf="workout.exeR2M1"
+                
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -323,12 +287,12 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="workout.exeR2M1"
+                *ngIf="workout.exeR2M1 && workout.exeR2M1.videoUrl"
                 class="video-container"
               >
                 <video
-                  controls
-                  *ngIf="workout.exeR2M1.videoUrl"
+                (click)="ofvr2m1(workout.exeR2M1.videoUrl)"
+                muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -348,6 +312,7 @@
 
               <ion-row
                 *ngIf="workout.exeR2M2"
+                
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -358,12 +323,12 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="workout.exeR2M2"
+                *ngIf="workout.exeR2M2 && workout.exeR2M2.videoUrl"
                 class="video-container"
               >
                 <video
-                  controls
-                  *ngIf="workout.exeR2M2.videoUrl"
+                (click)="ofvr2m2(workout.exeR2M2.videoUrl)"
+                muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -383,6 +348,7 @@
 
               <ion-row
                 *ngIf="workout.exeR2M3"
+              
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -393,12 +359,12 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="workout.exeR2M3"
+                *ngIf="workout.exeR2M3 && workout.exeR2M3.videoUrl"
                 class="video-container"
               >
                 <video
-                  controls
-                  *ngIf="workout.exeR2M3.videoUrl"
+                (click)="ofvr2m3(workout.exeR2M3.videoUrl)"
+                muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -408,8 +374,8 @@
                   Your browser does not support the video tag.
                 </video>
               </ion-row>
+              <pre></pre>
             </ion-card-content>
-            <pre></pre>
           </ion-card>
           <!--r3-->
           <ion-card
@@ -419,7 +385,6 @@
               background-color: rgb(58, 56, 56);
               border-color: #b27600;
               border-style: solid;
-              padding-top: 5%;
             "
             *ngIf="workout.exeR3M1"
           >
@@ -441,34 +406,13 @@
             <ion-card-content>
               <ion-row class="ion-justify-content-center">
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{workout.r3sets}} sets</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{workout.r3sets}} sets</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{workout.r3move}}sec Move</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{workout.r3move}} sec Move</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{workout.r3rest}}sec Rest</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{workout.r3rest}} sec Rest</ion-card-subtitle>
                 </ion-col>
               </ion-row>
 
@@ -480,6 +424,7 @@
 
               <ion-row
                 *ngIf="workout.exeR3M1"
+               
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -490,12 +435,12 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="workout.exeR3M1"
+                *ngIf="workout.exeR3M1 && workout.exeR3M1.videoUrl"
                 class="video-container"
               >
                 <video
-                  controls
-                  *ngIf="workout.exeR3M1.videoUrl"
+                (click)="ofvr3m1(workout.exeR3M1.videoUrl)"
+                muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -515,6 +460,7 @@
 
               <ion-row
                 *ngIf="workout.exeR3M2"
+               
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -525,12 +471,12 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="workout.exeR3M2"
+                *ngIf="workout.exeR3M2 && workout.exeR3M2.videoUrl"
                 class="video-container"
               >
                 <video
-                  controls
-                  *ngIf="workout.exeR3M2.videoUrl"
+                (click)="ofvr3m2(workout.exeR3M2.videoUrl)"
+                muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -550,6 +496,7 @@
 
               <ion-row
                 *ngIf="workout.exeR3M3"
+           
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -560,12 +507,12 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="workout.exeR3M3"
+                *ngIf="workout.exeR3M3 && workout.exeR3M3.videoUrl"
                 class="video-container"
               >
                 <video
-                  controls
-                  *ngIf="workout.exeR3M3.videoUrl"
+                (click)="ofvr3m3(workout.exeR3M3.videoUrl)"
+                muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -582,7 +529,7 @@
           <ion-card
             style="
               width: 100%;
-              padding-top: 5%;
+           
               border-radius: 80px;
               background-color: rgb(58, 56, 56);
               border-color: #b27600;
@@ -608,34 +555,13 @@
             <ion-card-content>
               <ion-row class="ion-justify-content-center">
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{workout.r4sets}} sets</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{workout.r4sets}} sets</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{workout.r4move}}sec Move</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{workout.r4move}} sec Move</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{workout.r4rest}}sec Rest</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{workout.r4rest}} sec Rest</ion-card-subtitle>
                 </ion-col>
               </ion-row>
 
@@ -647,6 +573,7 @@
 
               <ion-row
                 *ngIf="workout.exeR4M1"
+               
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -657,12 +584,12 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="workout.exeR4M1"
+                *ngIf="workout.exeR4M1 && workout.exeR4M1.videoUrl"
                 class="video-container"
               >
                 <video
-                  controls
-                  *ngIf="workout.exeR4M1.videoUrl"
+                (click)="ofvr4m1(workout.exeR4M1.videoUrl)"
+                muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -682,6 +609,7 @@
 
               <ion-row
                 *ngIf="workout.exeR4M2"
+               
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -692,12 +620,12 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="workout.exeR4M2"
+                *ngIf="workout.exeR4M2 && workout.exeR4M2.videoUrl"
                 class="video-container"
               >
                 <video
-                  controls
-                  *ngIf="workout.exeR4M2.videoUrl"
+                (click)="ofvr4m2(workout.exeR4M2.videoUrl)"
+                muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -717,6 +645,7 @@
 
               <ion-row
                 *ngIf="workout.exeR4M3"
+              
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -727,18 +656,18 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="workout.exeR4M3"
+                *ngIf="workout.exeR4M3 && workout.exeR4M3.videoUrl"
                 class="video-container"
               >
                 <video
-                  controls
-                  *ngIf="workout.exeR4M3.videoUrl"
+                (click)="ofvr4m3(workout.exeR4M3.videoUrl)"
+                muted
                   autoplay
                   loop
                   style="border-radius: 20px"
                 >
                   <source [src]="workout.exeR4M3.videoUrl" type="video/mp4" />
-                  <!-- Add more <source> elements for different video formats if needed -->
+                  <!-- Adds more <source> elements for different video formats if needed -->
                   Your browser does not support the video tag.
                 </video>
               </ion-row>
@@ -749,9 +678,7 @@
       </ion-card>
     </ion-card>
     <!--tabata system-->
-    <ion-card
-      class="wodbod"
-      *ngFor="let tabata of stabatas"
+    <ion-card class="wodbod" *ngFor="let tabata of stabatas"
       style="background-color: #b27600"
     >
       <h2
@@ -780,7 +707,6 @@
         >
           {{tabata.styleDescription}}
         </ion-card-subtitle>
-
         <ion-card class="cardin">
           <ion-label class="cardintxt"
             >{{tabata.tabataNum}} x Tabata(s)</ion-label
@@ -818,36 +744,16 @@
             <ion-card-content>
               <ion-row class="ion-justify-content-center">
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.sets}} sets</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.sets}} sets</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.move}}sec Move</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.move}} sec Move</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.rest}}sec Rest</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.rest}} sec Rest</ion-card-subtitle>
                 </ion-col>
               </ion-row>
+              
 
               <ion-row
                 style="padding-top: 5%; padding-left: 0%; color: aliceblue"
@@ -857,6 +763,7 @@
 
               <ion-row
                 *ngIf="tabata.exe"
+               
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -867,13 +774,17 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="tabata.exe"
+                *ngIf="tabata.exe && tabata.exe.videoUrl"
                 class="video-container"
                 style="padding-top: 5%"
               >
+              <div>
+
+              </div>
                 <video
-                  controls
-                  *ngIf="tabata.exe.videoUrl"
+                #videoElement (loadeddata)="onVideoLoaded()"
+                (click)="ofvt1m1(tabata.exe.videoUrl)"
+                  muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -882,6 +793,7 @@
                   <!-- Add more <source> elements for different video formats if needed -->
                   Your browser does not support the video tag.
                 </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
               </ion-row>
 
               <ion-row
@@ -893,6 +805,7 @@
 
               <ion-row
                 *ngIf="tabata.exet1m2"
+               
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -903,13 +816,14 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="tabata.exet1m2"
+                *ngIf="tabata.exet1m2 && tabata.exet1m2.videoUrl"
                 class="video-container"
                 style="padding-top: 5%"
               >
                 <video
-                  controls
-                  *ngIf="tabata.exet1m2.videoUrl"
+                #videoElement (loadeddata)="onVideoLoaded()" 
+                (click)="ofvt1m2(tabata.exet1m2.videoUrl)"
+                  muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -918,6 +832,7 @@
                   <!-- Add more <source> elements for different video formats if needed -->
                   Your browser does not support the video tag.
                 </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
               </ion-row>
 
               <pre></pre>
@@ -953,37 +868,15 @@
             <ion-card-content>
               <ion-row class="ion-justify-content-center">
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.sets}} sets</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.sets}} sets</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.move}}sec Move</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.move}} sec Move</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.rest}}sec Rest</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.rest}} sec Rest</ion-card-subtitle>
                 </ion-col>
-              </ion-row>
-
+              </ion-row>              
               <ion-row
                 style="padding-top: 5%; padding-left: 0%; color: aliceblue"
               >
@@ -992,6 +885,7 @@
 
               <ion-row
                 *ngIf="tabata.exet2m1"
+               
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -1002,13 +896,14 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="tabata.exet2m1"
+                *ngIf="tabata.exet2m1 && tabata.exet2m1.videoUrl"
                 class="video-container"
                 style="padding-top: 5%"
               >
                 <video
-                  controls
-                  *ngIf="tabata.exet2m1.videoUrl"
+                #videoElement (loadeddata)="onVideoLoaded()" 
+                (click)="ofvt2m1(tabata.exet2m1.videoUrl)"
+                  muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -1017,6 +912,7 @@
                   <!-- Add more <source> elements for different video formats if needed -->
                   Your browser does not support the video tag.
                 </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
               </ion-row>
 
               <ion-row
@@ -1028,6 +924,7 @@
 
               <ion-row
                 *ngIf="tabata.exet2m2"
+               
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -1038,13 +935,14 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="tabata.exet2m2"
+                *ngIf="tabata.exet2m2 && tabata.exet2m2.videoUrl"
                 class="video-container"
                 style="padding-top: 5%"
               >
                 <video
-                  controls
-                  *ngIf="tabata.exet2m2.videoUrl"
+                   (click)="ofvt2m2(tabata.exet2m2.videoUrl)"
+                   #videoElement (loadeddata)="onVideoLoaded()"
+                   muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -1053,6 +951,7 @@
                   <!-- Add more <source> elements for different video formats if needed -->
                   Your browser does not support the video tag.
                 </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
               </ion-row>
             </ion-card-content>
             <pre></pre>
@@ -1087,36 +986,15 @@
             <ion-card-content>
               <ion-row class="ion-justify-content-center">
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.sets}} sets</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.sets}} sets</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.move}}sec Move</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.move}} sec Move</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.rest}}sec Rest</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.rest}} sec Rest</ion-card-subtitle>
                 </ion-col>
-              </ion-row>
+              </ion-row>              
 
               <ion-row
                 style="padding-top: 5%; padding-left: 0%; color: aliceblue"
@@ -1126,6 +1004,7 @@
 
               <ion-row
                 *ngIf="tabata.exet3m1"
+             
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -1136,14 +1015,15 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="tabata.exet3m1"
+                *ngIf="tabata.exet3m1 && tabata.exet3m1.videoUrl"
                 class="video-container"
                 style="padding-top: 5%"
               >
                 <video
-                  controls
-                  *ngIf="tabata.exet3m1.videoUrl"
+                (click)="ofvt3m1(tabata.exet3m1.videoUrl)"
+                #videoElement (loadeddata)="onVideoLoaded()" 
                   autoplay
+                  muted
                   loop
                   style="border-radius: 20px"
                 >
@@ -1151,6 +1031,7 @@
                   <!-- Add more <source> elements for different video formats if needed -->
                   Your browser does not support the video tag.
                 </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
               </ion-row>
 
               <ion-row
@@ -1162,6 +1043,7 @@
 
               <ion-row
                 *ngIf="tabata.exet3m2"
+              
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -1172,21 +1054,23 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="tabata.exet3m2"
+                *ngIf="tabata.exet3m2 && tabata.exet3m2.videoUrl"
                 class="video-container"
                 style="padding-top: 5%"
               >
                 <video
-                  controls
-                  *ngIf="tabata.exet3m2.videoUrl"
+                (click)="ofvt3m2(tabata.exet3m2.videoUrl)"
+                #videoElement (loadeddata)="onVideoLoaded()" 
                   autoplay
                   loop
+                  muted
                   style="border-radius: 20px"
                 >
                   <source [src]="tabata.exet3m2.videoUrl" type="video/mp4" />
                   <!-- Add more <source> elements for different video formats if needed -->
                   Your browser does not support the video tag.
                 </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
               </ion-row>
 
               <pre></pre>
@@ -1222,37 +1106,15 @@
             <ion-card-content>
               <ion-row class="ion-justify-content-center">
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.sets}} sets</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.sets}} sets</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.move}}sec Move</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.move}} sec Move</ion-card-subtitle>
                 </ion-col>
                 <ion-col class="ion-justify-content-center">
-                  <ion-card-subtitle
-                    style="
-                      font-size: medium;
-                      text-align: center;
-                      color: aliceblue;
-                    "
-                    >{{tabata.rest}}sec Rest</ion-card-subtitle
-                  >
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.rest}} sec Rest</ion-card-subtitle>
                 </ion-col>
-              </ion-row>
-
+              </ion-row>             
               <ion-row
                 style="padding-top: 5%; padding-left: 0%; color: aliceblue"
               >
@@ -1261,6 +1123,7 @@
 
               <ion-row
                 *ngIf="tabata.exet4m1"
+                
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -1271,14 +1134,15 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="tabata.exet4m1"
+                *ngIf="tabata.exet4m1 && tabata.exet4m1.videoUrl"
                 class="video-container"
                 style="padding-top: 5%"
               >
                 <video
-                  controls
-                  *ngIf="tabata.exet4m1.videoUrl"
+                (click)="ofvt4m1(tabata.exet4m1.videoUrl)"
+                #videoElement (loadeddata)="onVideoLoaded()"
                   autoplay
+                  muted
                   loop
                   style="border-radius: 20px"
                 >
@@ -1286,6 +1150,7 @@
                   <!-- Add more <source> elements for different video formats if needed -->
                   Your browser does not support the video tag.
                 </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
               </ion-row>
 
               <ion-row
@@ -1297,6 +1162,7 @@
 
               <ion-row
                 *ngIf="tabata.exet4m2"
+            
                 style="padding-top: 5%; color: aliceblue"
                 class="ion-justify-content-center"
               >
@@ -1307,13 +1173,14 @@
 
               <ion-row
                 class="ion-justify-content-center"
-                *ngIf="tabata.exet4m2"
+                *ngIf="tabata.exet4m2 && tabata.exet4m2.videoUrl"
                 class="video-container"
                 style="padding-top: 5%"
               >
                 <video
-                  controls
-                  *ngIf="tabata.exet4m2.videoUrl"
+                      (click)="ofvt4m2(tabata.exet4m2.videoUrl)"
+                      #videoElement (loadeddata)="onVideoLoaded()"
+                      muted
                   autoplay
                   loop
                   style="border-radius: 20px"
@@ -1322,6 +1189,483 @@
                   <!-- Add more <source> elements for different video formats if needed -->
                   Your browser does not support the video tag.
                 </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
+              </ion-row>
+
+              <pre></pre>
+            </ion-card-content>
+          </ion-card>
+          <!--t5-->
+          <ion-card
+            style="
+              padding-top: 5%;
+              width: 100%;
+              border-radius: 80px;
+              background-color: rgb(58, 56, 56);
+              border-color: #b27600;
+              border-style: solid;
+            "
+            *ngIf="tabata.exet5m1"
+          >
+            <ion-card-header>
+              <ion-row class="ion-justify-content-center">
+                <ion-card-title
+                  style="
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-size: large;
+                    color: aliceblue;
+                    text-align: center;
+                  "
+                >
+                  TABATA 5
+                </ion-card-title>
+              </ion-row>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-row class="ion-justify-content-center">
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.sets}} sets</ion-card-subtitle>
+                </ion-col>
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.move}} sec Move</ion-card-subtitle>
+                </ion-col>
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.rest}} sec Rest</ion-card-subtitle>
+                </ion-col>
+              </ion-row> 
+              <ion-row
+                style="padding-top: 5%; padding-left: 0%; color: aliceblue"
+              >
+                <ion-label style="font-size: large">Exercise 1</ion-label>
+              </ion-row>
+
+              <ion-row
+                *ngIf="tabata.exet5m1"
+             
+                style="padding-top: 5%; color: aliceblue"
+                class="ion-justify-content-center"
+              >
+                <ion-label style="font-size: large"
+                  >{{ tabata.exet5m1.exeName}}</ion-label
+                >
+              </ion-row>
+
+              <ion-row
+                class="ion-justify-content-center"
+                *ngIf="tabata.exet5m1 && tabata.exet5m1.videoUrl"
+                class="video-container"
+                style="padding-top: 5%"
+              >
+                <video
+                (click)="ofvt5m1(tabata.exet5m1.videoUrl)"
+                #videoElement (loadeddata)="onVideoLoaded()" 
+                muted
+                  autoplay
+                  loop
+                  style="border-radius: 20px"
+                >
+                  <source [src]="tabata.exet5m1.videoUrl" type="video/mp4" />
+                  <!-- Add more <source> elements for different video formats if needed -->
+                  Your browser does not support the video tag.
+                </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
+              </ion-row>
+
+              <ion-row
+                *ngIf="tabata.exet5m2"
+                style="padding-top: 5%; padding-left: 0%; color: aliceblue"
+              >
+                <ion-label style="font-size: large">Exercise 2</ion-label>
+              </ion-row>
+
+              <ion-row
+                *ngIf="tabata.exet5m2"
+               
+                style="padding-top: 5%; color: aliceblue"
+                class="ion-justify-content-center"
+              >
+                <ion-label style="font-size: large"
+                  >{{ tabata.exet5m2.exeName}}</ion-label
+                >
+              </ion-row>
+
+              <ion-row
+                class="ion-justify-content-center"
+                *ngIf="tabata.exet5m2 && tabata.exet5m2.videoUrl"
+                class="video-container"
+                style="padding-top: 5%"
+              >
+                <video
+                (click)="ofvt5m2(tabata.exet5m2.videoUrl)"
+                #videoElement (loadeddata)="onVideoLoaded()" 
+                  autoplay
+                  muted
+                  loop
+                  style="border-radius: 20px"
+                >
+                  <source [src]="tabata.exet5m2.videoUrl" type="video/mp4" />
+                  <!-- Add more <source> elements for different video formats if needed -->
+                  Your browser does not support the video tag.
+                </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
+              </ion-row>
+
+              <pre></pre>
+            </ion-card-content>
+          </ion-card>
+          <!--t6-->
+          <ion-card
+            style="
+              padding-top: 5%;
+              width: 100%;
+              border-radius: 80px;
+              background-color: rgb(58, 56, 56);
+              border-color: #b27600;
+              border-style: solid;
+            "
+            *ngIf="tabata.exet6m1"
+          >
+            <ion-card-header>
+              <ion-row class="ion-justify-content-center">
+                <ion-card-title
+                  style="
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-size: large;
+                    color: aliceblue;
+                    text-align: center;
+                  "
+                >
+                  TABATA 6
+                </ion-card-title>
+              </ion-row>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-row class="ion-justify-content-center">
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.sets}} sets</ion-card-subtitle>
+                </ion-col>
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.move}} sec Move</ion-card-subtitle>
+                </ion-col>
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.rest}} sec Rest</ion-card-subtitle>
+                </ion-col>
+              </ion-row>
+              <ion-row
+                style="padding-top: 5%; padding-left: 0%; color: aliceblue"
+              >
+                <ion-label style="font-size: large">Exercise 1</ion-label>
+              </ion-row>
+
+              <ion-row
+                *ngIf="tabata.exet6m1"
+             
+                style="padding-top: 5%; color: aliceblue"
+                class="ion-justify-content-center"
+              >
+                <ion-label style="font-size: large"
+                  >{{ tabata.exet6m1.exeName}}</ion-label
+                >
+              </ion-row>
+
+              <ion-row
+                class="ion-justify-content-center"
+                *ngIf="tabata.exet6m1 && tabata.exet6m1.videoUrl"
+                class="video-container"
+                style="padding-top: 5%"
+              >
+                <video
+                (click)="ofvt6m1(tabata.exet6m1.videoUrl)"
+                #videoElement (loadeddata)="onVideoLoaded()"
+                  autoplay
+                  muted
+                  loop
+                  style="border-radius: 20px"
+                >
+                  <source [src]="tabata.exet6m1.videoUrl" type="video/mp4" />
+                  <!-- Add more <source> elements for different video formats if needed -->
+                  Your browser does not support the video tag.
+                </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
+              </ion-row>
+
+              <ion-row
+                *ngIf="tabata.exet6m2"
+                style="padding-top: 5%; padding-left: 0%; color: aliceblue"
+              >
+                <ion-label style="font-size: large">Exercise 2</ion-label>
+              </ion-row>
+
+              <ion-row
+                *ngIf="tabata.exet6m2"
+              
+                style="padding-top: 5%; color: aliceblue"
+                class="ion-justify-content-center"
+              >
+                <ion-label style="font-size: large"
+                  >{{ tabata.exet6m2.exeName}}</ion-label
+                >
+              </ion-row>
+
+              <ion-row
+                class="ion-justify-content-center"
+                *ngIf="tabata.exet6m2 && tabata.exet6m2.videoUrl"
+                class="video-container"
+                style="padding-top: 5%"
+              >
+                <video
+                (click)="ofvt6m2(tabata.exet6m2.videoUrl)"
+                #videoElement (loadeddata)="onVideoLoaded()"
+                  autoplay
+                  muted
+                  loop
+                  style="border-radius: 20px"
+                >
+                  <source [src]="tabata.exet6m2.videoUrl" type="video/mp4" />
+                  <!-- Add more <source> elements for different video formats if needed -->
+                  Your browser does not support the video tag.
+                </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
+              </ion-row>
+
+              <pre></pre>
+            </ion-card-content>
+          </ion-card>
+          <!--t7-->
+          <ion-card
+            style="
+              padding-top: 5%;
+              width: 100%;
+              border-radius: 80px;
+              background-color: rgb(58, 56, 56);
+              border-color: #b27600;
+              border-style: solid;
+            "
+            *ngIf="tabata.exet7m1"
+          >
+            <ion-card-header>
+              <ion-row class="ion-justify-content-center">
+                <ion-card-title
+                  style="
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-size: large;
+                    color: aliceblue;
+                    text-align: center;
+                  "
+                >
+                  TABATA 7
+                </ion-card-title>
+              </ion-row>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-row class="ion-justify-content-center">
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.sets}} sets</ion-card-subtitle>
+                </ion-col>
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.move}} sec Move</ion-card-subtitle>
+                </ion-col>
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.rest}} sec Rest</ion-card-subtitle>
+                </ion-col>
+              </ion-row>
+              <ion-row
+                style="padding-top: 5%; padding-left: 0%; color: aliceblue"
+              >
+                <ion-label style="font-size: large">Exercise 1</ion-label>
+              </ion-row>
+
+              <ion-row
+                *ngIf="tabata.exet7m1"
+           
+                style="padding-top: 5%; color: aliceblue"
+                class="ion-justify-content-center"
+              >
+                <ion-label style="font-size: large"
+                  >{{ tabata.exet7m1.exeName}}</ion-label
+                >
+              </ion-row>
+
+              <ion-row
+                class="ion-justify-content-center"
+                *ngIf="tabata.exet7m1 && tabata.exet7m1.videoUrl"
+                class="video-container"
+                style="padding-top: 5%"
+              >
+                <video
+                (click)="ofvt7m1(tabata.exet7m1.videoUrl)"
+                #videoElement (loadeddata)="onVideoLoaded()"
+                  autoplay
+                  muted
+                  loop
+                  style="border-radius: 20px"
+                >
+                  <source [src]="tabata.exet7m1.videoUrl" type="video/mp4" />
+                  <!-- Add more <source> elements for different video formats if needed -->
+                  Your browser does not support the video tag.
+                </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
+              </ion-row>
+
+              <ion-row
+                *ngIf="tabata.exet7m2"
+                style="padding-top: 5%; padding-left: 0%; color: aliceblue"
+              >
+                <ion-label style="font-size: large">Exercise 2</ion-label>
+              </ion-row>
+
+              <ion-row
+                *ngIf="tabata.exet7m2"
+             
+                style="padding-top: 5%; color: aliceblue"
+                class="ion-justify-content-center"
+              >
+                <ion-label style="font-size: large"
+                  >{{ tabata.exet7m2.exeName}}</ion-label
+                >
+              </ion-row>
+
+              <ion-row
+                class="ion-justify-content-center"
+                *ngIf="tabata.exet7m2 && tabata.exet7m2.videoUrl"
+                class="video-container"
+                style="padding-top: 5%"
+              >
+                <video
+                (click)="ofvt7m2(tabata.exet7m2.videoUrl)"
+                #videoElement (loadeddata)="onVideoLoaded()"
+                  autoplay
+                  muted
+                  loop
+                  style="border-radius: 20px"
+                >
+                  <source [src]="tabata.exet7m2.videoUrl" type="video/mp4" />
+                  <!-- Add more <source> elements for different video formats if needed -->
+                  Your browser does not support the video tag.
+                </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
+              </ion-row>
+
+              <pre></pre>
+            </ion-card-content>
+          </ion-card>
+          <!--t8-->
+          <ion-card
+            style="
+              padding-top: 5%;
+              width: 100%;
+              border-radius: 80px;
+              background-color: rgb(58, 56, 56);
+              border-color: #b27600;
+              border-style: solid;
+            "
+            *ngIf="tabata.exet8m1"
+          >
+            <ion-card-header>
+              <ion-row class="ion-justify-content-center">
+                <ion-card-title
+                  style="
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-size: large;
+                    color: aliceblue;
+                    text-align: center;
+                  "
+                >
+                  TABATA 8
+                </ion-card-title>
+              </ion-row>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-row class="ion-justify-content-center">
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.sets}} sets</ion-card-subtitle>
+                </ion-col>
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.move}} sec Move</ion-card-subtitle>
+                </ion-col>
+                <ion-col class="ion-justify-content-center">
+                  <ion-card-subtitle class="centered-subtitle">{{tabata.rest}} sec Rest</ion-card-subtitle>
+                </ion-col>
+              </ion-row>              
+              <ion-row
+                style="padding-top: 5%; padding-left: 0%; color: aliceblue"
+              >
+                <ion-label style="font-size: large">Exercise 1</ion-label>
+              </ion-row>
+
+              <ion-row
+                *ngIf="tabata.exet8m1"
+         
+                style="padding-top: 5%; color: aliceblue"
+                class="ion-justify-content-center"
+              >
+                <ion-label style="font-size: large"
+                  >{{ tabata.exet8m1.exeName}}</ion-label
+                >
+              </ion-row>
+
+              <ion-row
+                class="ion-justify-content-center"
+                *ngIf="tabata.exet8m1 && tabata.exet8m1.videoUrl"
+                class="video-container"
+                style="padding-top: 5%"
+              >
+                <video
+                (click)="ofvt8m1(tabata.exet8m1.videoUrl)"
+                #videoElement (loadeddata)="onVideoLoaded()"
+                  autoplay
+                  muted
+                  loop
+                  style="border-radius: 20px"
+                >
+                  <source [src]="tabata.exet8m1.videoUrl" type="video/mp4" />
+                  <!-- Add more <source> elements for different video formats if needed -->
+                  Your browser does not support the video tag.
+                </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
+              </ion-row>
+
+              <ion-row
+                *ngIf="tabata.exet8m2"
+                style="padding-top: 5%; padding-left: 0%; color: aliceblue"
+              >
+                <ion-label style="font-size: large">Exercise 2</ion-label>
+              </ion-row>
+
+              <ion-row
+                *ngIf="tabata.exet8m2"
+                
+                style="padding-top: 5%; color: aliceblue"
+                class="ion-justify-content-center"
+              >
+                <ion-label style="font-size: large"
+                  >{{ tabata.exet8m2.exeName}}</ion-label
+                >
+              </ion-row>
+
+              <ion-row
+                class="ion-justify-content-center"
+                *ngIf="tabata.exet8m2 && tabata.exet8m2.videoUrl"
+                class="video-container"
+                style="padding-top: 5%"
+              >
+                <video
+                (click)="ofvt8m2(tabata.exet8m2.videoUrl)"
+                #videoElement (loadeddata)="onVideoLoaded()"
+                  autoplay
+                  muted
+                  loop
+                  style="border-radius: 20px"
+                >
+                  <source [src]="tabata.exet8m2.videoUrl" type="video/mp4" />
+                  <!-- Add more <source> elements for different video formats if needed -->
+                  Your browser does not support the video tag.
+                </video>
+                <ion-spinner *ngIf="loading" name="circles"></ion-spinner>
               </ion-row>
 
               <pre></pre>
@@ -1331,9 +1675,7 @@
       </ion-card>
     </ion-card>
     <!--laddder system-->
-    <ion-card
-      class="wodbod"
-      *ngFor="let laddder of sladders"
+    <ion-card class="wodbod" *ngFor="let laddder of sladders"
       style="background-color: #b27600"
     >
       <h2
@@ -1364,7 +1706,7 @@
         </ion-card-subtitle>
 
         <ion-card class="cardin">
-          <ion-label class="cardintxt">{{laddder.ladderNum}} Number</ion-label>
+          <ion-label class="cardintxt">{{laddder.ladderNum}} Ladders</ion-label>
         </ion-card>
         <pre></pre>
         <h2 class="cardttl"><u>WOD Movements:</u></h2>
@@ -1421,6 +1763,7 @@
 
                 <ion-row
                   *ngIf="laddder.exe"
+                 
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -1431,14 +1774,15 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="laddder.exe"
+                  *ngIf="laddder.exe && laddder.exe.videoUrl"
                   class="video-container"
-                  style="padding-top: 5%"
+          
                 >
                   <video
-                    controls
+                  (click)="ofvl1m1(laddder.exe.videoUrl)"
                     *ngIf="laddder.exe.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -1457,6 +1801,7 @@
 
                 <ion-row
                   *ngIf="laddder.exel1m2"
+                  
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -1469,13 +1814,14 @@
                   class="ion-justify-content-center"
                   *ngIf="laddder.exel1m2"
                   class="video-container"
-                  style="padding-top: 5%"
+           
                 >
                   <video
-                    controls
+                  (click)="ofvl1m2(laddder.exel1m2.videoUrl)"
                     *ngIf="laddder.exel1m2.videoUrl"
                     autoplay
                     loop
+                    muted
                     style="border-radius: 20px"
                   >
                     <source [src]="laddder.exel1m2.videoUrl" type="video/mp4" />
@@ -1492,6 +1838,7 @@
 
                 <ion-row
                   *ngIf="laddder.exel1m3"
+               
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -1504,12 +1851,13 @@
                   class="ion-justify-content-center"
                   *ngIf="laddder.exel1m3"
                   class="video-container"
-                  style="padding-top: 5%"
+     
                 >
                   <video
-                    controls
+                  (click)="ofvl1m3(laddder.exel1m3.videoUrl)"
                     *ngIf="laddder.exel1m3.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -1527,6 +1875,7 @@
 
                 <ion-row
                   *ngIf="laddder.exel1m4"
+               
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -1539,13 +1888,14 @@
                   class="ion-justify-content-center"
                   *ngIf="laddder.exel1m4"
                   class="video-container"
-                  style="padding-top: 5%"
+         
                 >
                   <video
-                    controls
+                  (click)="ofvl1m4(laddder.exel1m4.videoUrl)"
                     *ngIf="laddder.exel1m4.videoUrl"
                     autoplay
                     loop
+                    muted
                     style="border-radius: 20px"
                   >
                     <source [src]="laddder.exel1m4.videoUrl" type="video/mp4" />
@@ -1607,6 +1957,7 @@
 
                 <ion-row
                   *ngIf="laddder.exel2m1"
+             
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -1619,12 +1970,13 @@
                   class="ion-justify-content-center"
                   *ngIf="laddder.exel2m1"
                   class="video-container"
-                  style="padding-top: 5%"
+                
                 >
                   <video
-                    controls
+                  (click)="ofvl2m1(laddder.exel2m1.videoUrl)"
                     *ngIf="laddder.exel2m1.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -1643,6 +1995,7 @@
 
                 <ion-row
                   *ngIf="laddder.exel2m2"
+             
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -1655,12 +2008,13 @@
                   class="ion-justify-content-center"
                   *ngIf="laddder.exel2m2"
                   class="video-container"
-                  style="padding-top: 5%"
+                 
                 >
                   <video
-                    controls
+                  (click)="ofvl2m2(laddder.exel2m2.videoUrl)"
                     *ngIf="laddder.exel2m2.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -1670,7 +2024,7 @@
                   </video>
                 </ion-row>
                 <ion-row
-                  *ngIf="laddder.exel2m2"
+                  *ngIf="laddder.exel2m3"
                   style="padding-top: 5%; padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
@@ -1678,6 +2032,7 @@
 
                 <ion-row
                   *ngIf="laddder.exel2m3"
+                
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -1690,13 +2045,14 @@
                   class="ion-justify-content-center"
                   *ngIf="laddder.exel2m3"
                   class="video-container"
-                  style="padding-top: 5%"
+             
                 >
                   <video
-                    controls
+                  (click)="ofvl2m3(laddder.exel2m3.videoUrl)"
                     *ngIf="laddder.exel2m3.videoUrl"
                     autoplay
                     loop
+                    muted
                     style="border-radius: 20px"
                   >
                     <source [src]="laddder.exel2m3.videoUrl" type="video/mp4" />
@@ -1713,6 +2069,7 @@
 
                 <ion-row
                   *ngIf="laddder.exel2m4"
+                
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -1725,12 +2082,13 @@
                   class="ion-justify-content-center"
                   *ngIf="laddder.exel2m4"
                   class="video-container"
-                  style="padding-top: 5%"
+          
                 >
                   <video
-                    controls
+                  (click)="ofvl2m4(laddder.exel2m4.videoUrl)"
                     *ngIf="laddder.exel2m4.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -1793,6 +2151,7 @@
 
                 <ion-row
                   *ngIf="laddder.exel3m1"
+           
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -1805,12 +2164,13 @@
                   class="ion-justify-content-center"
                   *ngIf="laddder.exel3m1"
                   class="video-container"
-                  style="padding-top: 5%"
+              
                 >
                   <video
-                    controls
+                  (click)="ofvl3m1(laddder.exel3m1.videoUrl)"
                     *ngIf="laddder.exel3m1.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -1829,6 +2189,7 @@
 
                 <ion-row
                   *ngIf="laddder.exel3m2"
+           
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -1841,12 +2202,13 @@
                   class="ion-justify-content-center"
                   *ngIf="laddder.exel3m2"
                   class="video-container"
-                  style="padding-top: 5%"
+              
                 >
                   <video
-                    controls
+                  (click)="ofvl3m2(laddder.exel3m2.videoUrl)"
                     *ngIf="laddder.exel3m2.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -1856,7 +2218,7 @@
                   </video>
                 </ion-row>
                 <ion-row
-                  *ngIf="laddder.exel3m2"
+                  *ngIf="laddder.exel3m3"
                   style="padding-top: 5%; padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
@@ -1864,6 +2226,7 @@
 
                 <ion-row
                   *ngIf="laddder.exel3m3"
+                 
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -1876,13 +2239,14 @@
                   class="ion-justify-content-center"
                   *ngIf="laddder.exel3m3"
                   class="video-container"
-                  style="padding-top: 5%"
+             
                 >
                   <video
-                    controls
+                  (click)="ofvl3m3(laddder.exel3m3.videoUrl)"
                     *ngIf="laddder.exel3m3.videoUrl"
                     autoplay
                     loop
+                    muted
                     style="border-radius: 20px"
                   >
                     <source [src]="laddder.exel3m3.videoUrl" type="video/mp4" />
@@ -1891,7 +2255,7 @@
                   </video>
                 </ion-row>
                 <ion-row
-                  *ngIf="laddder.exel3m3"
+                  *ngIf="laddder.exel3m4"
                   style="padding-top: 5%; padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 4</ion-label>
@@ -1899,6 +2263,7 @@
 
                 <ion-row
                   *ngIf="laddder.exel3m4"
+              
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -1911,12 +2276,13 @@
                   class="ion-justify-content-center"
                   *ngIf="laddder.exel3m4"
                   class="video-container"
-                  style="padding-top: 5%"
+                
                 >
                   <video
-                    controls
+                  (click)="ofvl3m4(laddder.exel3m4.videoUrl)"
                     *ngIf="laddder.exel3m4.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -1935,9 +2301,7 @@
       </ion-card>
     </ion-card>
     <!--emom system-->
-    <ion-card
-      class="wodbod"
-      *ngFor="let emom of semoms"
+    <ion-card class="wodbod" *ngFor="let emom of semoms"
       style="background-color: #b27600"
     >
       <h2
@@ -1968,14 +2332,14 @@
         </ion-card-subtitle>
 
         <ion-card class="cardin">
-          <ion-label class="cardintxt">{{emom.emomNum}} Number</ion-label>
+          <ion-label class="cardintxt">{{emom.emomNum}} EMOM(s) <br> {{emom.sets}} min</ion-label>
         </ion-card>
         <pre></pre>
         <h2 class="cardttl"><u>WOD Movements:</u></h2>
         <ion-grid style="padding-bottom: 0%">
           <ion-row
             class="ion-justify-content-center"
-            style="padding-bottom: 0%"
+            style="padding-bottom: 1%"
           >
             <ion-card
               style="
@@ -2012,6 +2376,7 @@
 
                 <ion-row
                   *ngIf="emom.exe"
+                  
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2024,12 +2389,13 @@
                   class="ion-justify-content-center"
                   *ngIf="emom.exe"
                   class="video-container"
-                  style="padding-top: 5%"
+             
                 >
                   <video
-                    controls
+                  (click)="ofve1m1(emom.exe.videoUrl)"
                     *ngIf="emom.exe.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -2048,6 +2414,7 @@
 
                 <ion-row
                   *ngIf="emom.exee1m2"
+                
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2060,13 +2427,14 @@
                   class="ion-justify-content-center"
                   *ngIf="emom.exee1m2"
                   class="video-container"
-                  style="padding-top: 5%"
+                  
                 >
                   <video
-                    controls
+                  (click)="ofve1m2(emom.exee1m2.videoUrl)"
                     *ngIf="emom.exee1m2.videoUrl"
                     autoplay
                     loop
+                    muted
                     style="border-radius: 20px"
                   >
                     <source [src]="emom.exee1m2.videoUrl" type="video/mp4" />
@@ -2083,6 +2451,7 @@
 
                 <ion-row
                   *ngIf="emom.exee1m3"
+                 
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2095,12 +2464,13 @@
                   class="ion-justify-content-center"
                   *ngIf="emom.exee1m3"
                   class="video-container"
-                  style="padding-top: 5%"
+                 
                 >
                   <video
-                    controls
+                  (click)="ofve1m3(emom.exee1m3.videoUrl)"
                     *ngIf="emom.exee1m3.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -2118,6 +2488,7 @@
 
                 <ion-row
                   *ngIf="emom.exee1m4"
+                 
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2130,13 +2501,14 @@
                   class="ion-justify-content-center"
                   *ngIf="emom.exee1m4"
                   class="video-container"
-                  style="padding-top: 5%"
+           
                 >
                   <video
-                    controls
+                  (click)="ofve1m4(emom.exee1m4.videoUrl)"
                     *ngIf="emom.exee1m4.videoUrl"
                     autoplay
                     loop
+                    muted
                     style="border-radius: 20px"
                   >
                     <source [src]="emom.exee1m4.videoUrl" type="video/mp4" />
@@ -2185,6 +2557,7 @@
 
                 <ion-row
                   *ngIf="emom.exee2m1"
+                
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2197,13 +2570,14 @@
                   class="ion-justify-content-center"
                   *ngIf="emom.exee2m1"
                   class="video-container"
-                  style="padding-top: 5%"
+        
                 >
                   <video
-                    controls
+                  (click)="ofve2m1(emom.exee2m1.videoUrl)"
                     *ngIf="emom.exee2m1.videoUrl"
                     autoplay
                     loop
+                    muted
                     style="border-radius: 20px"
                   >
                     <source [src]="emom.exee2m1.videoUrl" type="video/mp4" />
@@ -2221,6 +2595,7 @@
 
                 <ion-row
                   *ngIf="emom.exee2m2"
+                
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2233,12 +2608,13 @@
                   class="ion-justify-content-center"
                   *ngIf="emom.exee2m2"
                   class="video-container"
-                  style="padding-top: 5%"
+            
                 >
                   <video
-                    controls
+                  (click)="ofve2m2(emom.exee2m2.videoUrl)"
                     *ngIf="emom.exee2m2.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -2248,7 +2624,7 @@
                   </video>
                 </ion-row>
                 <ion-row
-                  *ngIf="emom.exee2m2"
+                  *ngIf="emom.exee2m3"
                   style="padding-top: 5%; padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
@@ -2256,6 +2632,7 @@
 
                 <ion-row
                   *ngIf="emom.exee2m3"
+                 
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2268,12 +2645,13 @@
                   class="ion-justify-content-center"
                   *ngIf="emom.exee2m3"
                   class="video-container"
-                  style="padding-top: 5%"
+           
                 >
                   <video
-                    controls
+                  (click)="ofve2m3(emom.exee2m3.videoUrl)"
                     *ngIf="emom.exee2m3.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -2291,6 +2669,7 @@
 
                 <ion-row
                   *ngIf="emom.exee2m4"
+                 
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2303,12 +2682,13 @@
                   class="ion-justify-content-center"
                   *ngIf="emom.exee2m4"
                   class="video-container"
-                  style="padding-top: 5%"
+          
                 >
                   <video
-                    controls
+                  (click)="ofve2m4(emom.exee2m4.videoUrl)"
                     *ngIf="emom.exee2m4.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -2358,6 +2738,7 @@
 
                 <ion-row
                   *ngIf="emom.exee3m1"
+               
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2370,13 +2751,14 @@
                   class="ion-justify-content-center"
                   *ngIf="emom.exee3m1"
                   class="video-container"
-                  style="padding-top: 5%"
+         
                 >
                   <video
-                    controls
+                  (click)="ofve3m1(emom.exee3m1.videoUrl)"
                     *ngIf="emom.exee3m1.videoUrl"
                     autoplay
                     loop
+                    muted
                     style="border-radius: 20px"
                   >
                     <source [src]="emom.exee3m1.videoUrl" type="video/mp4" />
@@ -2394,6 +2776,7 @@
 
                 <ion-row
                   *ngIf="emom.exee3m2"
+                
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2406,12 +2789,13 @@
                   class="ion-justify-content-center"
                   *ngIf="emom.exee3m2"
                   class="video-container"
-                  style="padding-top: 5%"
+      
                 >
                   <video
-                    controls
+                  (click)="ofve3m2(emom.exee3m2.videoUrl)"
                     *ngIf="emom.exee3m2.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -2421,7 +2805,7 @@
                   </video>
                 </ion-row>
                 <ion-row
-                  *ngIf="emom.exee3m2"
+                  *ngIf="emom.exee3m3"
                   style="padding-top: 5%; padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
@@ -2429,6 +2813,7 @@
 
                 <ion-row
                   *ngIf="emom.exee3m3"
+              
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2441,12 +2826,13 @@
                   class="ion-justify-content-center"
                   *ngIf="emom.exee3m3"
                   class="video-container"
-                  style="padding-top: 5%"
+
                 >
                   <video
-                    controls
+                  (click)="ofve3m3(emom.exee3m3.videoUrl)"
                     *ngIf="emom.exee3m3.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -2456,7 +2842,7 @@
                   </video>
                 </ion-row>
                 <ion-row
-                  *ngIf="emom.exee3m3"
+                  *ngIf="emom.exee3m4"
                   style="padding-top: 5%; padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 4</ion-label>
@@ -2464,6 +2850,7 @@
 
                 <ion-row
                   *ngIf="emom.exee3m4"
+                 
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2476,12 +2863,13 @@
                   class="ion-justify-content-center"
                   *ngIf="emom.exee3m4"
                   class="video-container"
-                  style="padding-top: 5%"
+             
                 >
                   <video
-                    controls
+                  (click)="ofve3m4(emom.exee3m4.videoUrl)"
                     *ngIf="emom.exee3m4.videoUrl"
                     autoplay
+                    muted
                     loop
                     style="border-radius: 20px"
                   >
@@ -2494,15 +2882,12 @@
                 <pre></pre>
               </ion-card-content>
             </ion-card>
-            <pre></pre>
           </ion-row>
         </ion-grid>
       </ion-card>
     </ion-card>
     <!--amrap system-->
-    <ion-card
-      class="wodbod"
-      *ngFor="let amrap of samraps"
+    <ion-card class="wodbod" *ngFor="let amrap of samraps"
       style="background-color: #b27600"
     >
       <h2
@@ -2533,7 +2918,7 @@
         </ion-card-subtitle>
 
         <ion-card class="cardin">
-          <ion-label class="cardintxt">{{amrap.amrapNum}} Number</ion-label>
+          <ion-label class="cardintxt">{{amrap.amrapNum}} AMRAPs</ion-label>
         </ion-card>
         <pre></pre>
         <h2 class="cardttl"><u>WOD Movements:</u></h2>
@@ -2590,6 +2975,7 @@
 
                 <ion-row
                   *ngIf="amrap.exe"
+                
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2600,13 +2986,13 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="amrap.exe"
+                  *ngIf="amrap.exe && amrap.exe.videoUrl"
                   class="video-container"
-                  style="padding-top: 5%"
+               
                 >
                   <video
-                    controls
-                    *ngIf="amrap.exe.videoUrl"
+                  (click)="ofva1m1(amrap.exe.videoUrl)"
+                    muted
                     autoplay
                     loop
                     style="border-radius: 20px"
@@ -2626,6 +3012,7 @@
 
                 <ion-row
                   *ngIf="amrap.exea1m2"
+                  
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2636,13 +3023,13 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="amrap.exea1m2"
+                  *ngIf="amrap.exea1m2 && amrap.exea1m2.videoUrl"
                   class="video-container"
-                  style="padding-top: 5%"
+     
                 >
                   <video
-                    controls
-                    *ngIf="amrap.exea1m2.videoUrl"
+                  (click)="ofva1m2(amrap.exea1m2.videoUrl)"
+                  muted
                     autoplay
                     loop
                     style="border-radius: 20px"
@@ -2671,13 +3058,13 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="amrap.exea1m3"
+                  *ngIf="amrap.exea1m3 && amrap.exea1m3.videoUrl"
                   class="video-container"
-                  style="padding-top: 5%"
+                 
                 >
                   <video
-                    controls
-                    *ngIf="amrap.exea1m3.videoUrl"
+                  (click)="ofva1m3(amrap.exea1m3.videoUrl)"
+                  muted
                     autoplay
                     loop
                     style="border-radius: 20px"
@@ -2706,13 +3093,13 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="amrap.exea1m4"
+                  *ngIf="amrap.exea1m4 && amrap.exea1m4.videoUrl"
                   class="video-container"
-                  style="padding-top: 5%"
+              
                 >
                   <video
-                    controls
-                    *ngIf="amrap.exea1m4.videoUrl"
+                  (click)="ofva1m4(amrap.exea1m4.videoUrl)"
+                  muted
                     autoplay
                     loop
                     style="border-radius: 20px"
@@ -2726,7 +3113,7 @@
                 <pre></pre>
               </ion-card-content>
             </ion-card>
-            <!--ladder 2-->
+            <!--amrap 2-->
             <ion-card
               *ngIf="amrap.exea2m1"
               style="
@@ -2776,6 +3163,7 @@
 
                 <ion-row
                   *ngIf="amrap.exea2m1"
+                
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2786,13 +3174,13 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="amrap.exea2m1"
+                  *ngIf="amrap.exea2m1 && amrap.exea2m1.videoUrl "
                   class="video-container"
-                  style="padding-top: 5%"
+                 
                 >
                   <video
-                    controls
-                    *ngIf="amrap.exea2m1.videoUrl"
+                  (click)="ofva2m1(amrap.exea2m1.videoUrl)"
+                  muted
                     autoplay
                     loop
                     style="border-radius: 20px"
@@ -2822,13 +3210,13 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="amrap.exea2m2"
+                  *ngIf="amrap.exea2m2 && amrap.exea2m2.videoUrl"
                   class="video-container"
-                  style="padding-top: 5%"
+                
                 >
                   <video
-                    controls
-                    *ngIf="amrap.exea2m2.videoUrl"
+                  (click)="ofva2m2(amrap.exea2m2.videoUrl)"
+                  muted
                     autoplay
                     loop
                     style="border-radius: 20px"
@@ -2839,7 +3227,7 @@
                   </video>
                 </ion-row>
                 <ion-row
-                  *ngIf="amrap.exea2m2"
+                  *ngIf="amrap.exea2m3"
                   style="padding-top: 5%; padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
@@ -2847,6 +3235,7 @@
 
                 <ion-row
                   *ngIf="amrap.exea2m3"
+                
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2857,13 +3246,13 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="amrap.exea2m3"
+                  *ngIf="amrap.exea2m3 && amrap.exea2m3.videoUrl"
                   class="video-container"
-                  style="padding-top: 5%"
+               
                 >
                   <video
-                    controls
-                    *ngIf="amrap.exea2m3.videoUrl"
+                  (click)="ofva2m3(amrap.exea2m3.videoUrl)"
+                  muted
                     autoplay
                     loop
                     style="border-radius: 20px"
@@ -2882,6 +3271,7 @@
 
                 <ion-row
                   *ngIf="amrap.exea2m4"
+                
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -2892,13 +3282,13 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="amrap.exea2m4"
+                  *ngIf="amrap.exea2m4 && amrap.exea2m4.videoUrl"
                   class="video-container"
-                  style="padding-top: 5%"
+             
                 >
                   <video
-                    controls
-                    *ngIf="amrap.exea2m4.videoUrl"
+                  (click)="ofva2m4(amrap.exea2m4.videoUrl)"
+                  muted
                     autoplay
                     loop
                     style="border-radius: 20px"
@@ -2912,7 +3302,7 @@
                 <pre></pre>
               </ion-card-content>
             </ion-card>
-            <!--ladder 3-->
+            <!--amrap 3-->
             <ion-card
               *ngIf="amrap.exea3m1"
               style="
@@ -2972,13 +3362,13 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="amrap.exea3m1"
+                  *ngIf="amrap.exea3m1 && amrap.exea3m1.videoUrl"
                   class="video-container"
-                  style="padding-top: 5%"
+             
                 >
                   <video
-                    controls
-                    *ngIf="amrap.exea3m1.videoUrl"
+                  (click)="ofva3m1(amrap.exea3m1.videoUrl)"
+                  muted
                     autoplay
                     loop
                     style="border-radius: 20px"
@@ -3008,13 +3398,13 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="amrap.exea3m2"
+                  *ngIf="amrap.exea3m2 && amrap.exea3m2.videoUrl"
                   class="video-container"
-                  style="padding-top: 5%"
+                
                 >
                   <video
-                    controls
-                    *ngIf="amrap.exea3m2.videoUrl"
+                  (click)="ofva3m2(amrap.exea3m2.videoUrl)"
+                  muted
                     autoplay
                     loop
                     style="border-radius: 20px"
@@ -3025,7 +3415,7 @@
                   </video>
                 </ion-row>
                 <ion-row
-                  *ngIf="amrap.exea3m2"
+                  *ngIf="amrap.exea3m3"
                   style="padding-top: 5%; padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 3</ion-label>
@@ -3033,6 +3423,7 @@
 
                 <ion-row
                   *ngIf="amrap.exea3m3"
+          
                   style="padding-top: 5%; color: aliceblue"
                   class="ion-justify-content-center"
                 >
@@ -3043,13 +3434,13 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="amrap.exea3m3"
+                  *ngIf="amrap.exea3m3 && amrap.exea3m3.videoUrl"
                   class="video-container"
-                  style="padding-top: 5%"
+              
                 >
                   <video
-                    controls
-                    *ngIf="amrap.exea3m3.videoUrl"
+                  (click)="ofva3m3(amrap.exea3m3.videoUrl)"
+                  muted
                     autoplay
                     loop
                     style="border-radius: 20px"
@@ -3060,7 +3451,7 @@
                   </video>
                 </ion-row>
                 <ion-row
-                  *ngIf="amrap.exea3m3"
+                  *ngIf="amrap.exea3m4"
                   style="padding-top: 5%; padding-left: 0%; color: aliceblue"
                 >
                   <ion-label style="font-size: large">Exercise 4</ion-label>
@@ -3078,13 +3469,13 @@
 
                 <ion-row
                   class="ion-justify-content-center"
-                  *ngIf="amrap.exea3m4"
+                  *ngIf="amrap.exea3m4 && amrap.exea3m4.videoUrl"
                   class="video-container"
-                  style="padding-top: 5%"
+            
                 >
                   <video
-                    controls
-                    *ngIf="amrap.exea3m4.videoUrl"
+                  (click)="ofva3m4(amrap.exea3m4.videoUrl)"
+                  muted
                     autoplay
                     loop
                     style="border-radius: 20px"
@@ -3103,8 +3494,8 @@
         </ion-grid>
       </ion-card>
     </ion-card>
-    <div class="nextbtn">
-      <a href="/wodgo" class="nextbtn">LET'S GO >>></a>
-    </div>
+    <div class="nextbtn" (click)="navigateToPage()">
+      <ion-button fill="clear" class="custom-button">LET'S GO &gt;&gt;&gt;</ion-button>
+    </div>    
   </div>
 </ion-content>

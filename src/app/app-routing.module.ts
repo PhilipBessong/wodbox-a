@@ -78,7 +78,15 @@ const routes: Routes = [
   {
     path: 'amrap',
     loadChildren: () => import('./admin/amrap/amrap.module').then( m => m.AmrapPageModule)
+  },  {
+    path: 'wodgotwo',
+    loadChildren: () => import('./client/wodgotwo/wodgotwo.module').then( m => m.WodgotwoPageModule)
+  },
+  {
+    path: 'wodontwo',
+    loadChildren: () => import('./client/wodontwo/wodontwo.module').then( m => m.WodontwoPageModule)
   }
+
 
 
 

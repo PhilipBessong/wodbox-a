@@ -63,14 +63,20 @@
             <ion-row style="text-align: center">
               <ion-col>
                 <ion-label
-                  style="font-size: x-large; text-align: center; width: 100%"
-                  >Emom Number</ion-label
+                  style="font-size: large; text-align: center; width: 100%;font-weight: bold;"
+                  >Number of Emoms</ion-label
                 >
               </ion-col>
               <ion-col>
                 <ion-label
-                  style="font-size: x-large; text-align: center; width: 100%"
+                  style="font-size: large; text-align: center; width: 100%;font-weight: bold;"
                   >MPE</ion-label
+                >
+              </ion-col>
+              <ion-col>
+                <ion-label
+                  style="font-size: large; text-align: center; width: 100%;font-weight: bold;"
+                  >Minutes</ion-label
                 >
               </ion-col>
             </ion-row>
@@ -84,7 +90,8 @@
                     type="number"
                     name="laddernums"
                     [(ngModel)]="numemom"
-                    [(ngModel)]="emomData.emomNum"
+                    (ngModelChange)="onNumberChange($event)"
+                    [value]="numemom === null ? '' : numemom"
                     max="3"
                     min="1"
                     required
@@ -108,6 +115,22 @@
                   </ion-input>
                 </div>
               </ion-col>
+              <ion-col>
+                <div style="margin-left: auto; margin-right: auto">
+                  <ion-input
+                    placeholder="0"
+                    style="font-size: x-large; text-align: center; width: 100%"
+                    type="number"
+                    [(ngModel)]="sets"
+                    [(ngModel)]="emomData.sets"
+                    max="15"
+                    min="0"
+                    required
+                    name="mpa"
+                  >
+                  </ion-input>
+                </div>
+              </ion-col>
             </ion-row>
             <pre></pre>
 
@@ -121,29 +144,28 @@
             
             <ion-row class="ion-justify-content-center" style="text-align: center">
               <ion-row *ngIf="mpes > 0" class="ion-justify-content-center">
-                <ion-col  style="text-align: center; width: 50%;">
-                  <ion-select
-                    placeholder="M1"
-                    
-                    [(ngModel)]="emomData.e1m1"
-                    required
-                
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                 
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
-                 
+                <ion-col  style="text-align: center; width: 50%;">         
+                  <ion-input
+                  placeholder="M1"
+                  (click)="openMoveSelection('e1m1')"
+                  [(ngModel)]="emomData.e1m1"
+                  required
+                  readonly
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                    border-color: #b27600; /* Border color */
+                    border-style: solid;   /* Border style */
+                    border-radius: 10px;   /* Border radius */
+                    border-width: 2px;     /* Border width */"
+               
+                >
+             
+                  
+                </ion-input>
                 </ion-col>
                 <ion-col style="text-align: center; width: 50%;">
                   <ion-input
@@ -162,27 +184,27 @@
               </ion-row>
               <ion-row *ngIf="mpes > 1" class="ion-justify-content-center">
                 <ion-col  style="text-align: center; width: 50%;">
-                  <ion-select
-                    placeholder="M2"
-                    
-                    [(ngModel)]="emomData.e1m2"
-                    required
-                
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                 
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                  <ion-input
+                  placeholder="M2"
+                  (click)="openMoveSelection('e1m2')"
+                  [(ngModel)]="emomData.e1m2"
+                  required
+                  readonly
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                    border-color: #b27600; /* Border color */
+                    border-style: solid;   /* Border style */
+                    border-radius: 10px;   /* Border radius */
+                    border-width: 2px;     /* Border width */"
+               
+                >
+             
+                  
+                </ion-input>
                  
                 </ion-col>
                 <ion-col style="text-align: center; width: 50%;">
@@ -202,27 +224,27 @@
               </ion-row>
               <ion-row *ngIf="mpes > 2" class="ion-justify-content-center">
                 <ion-col  style="text-align: center; width: 50%;">
-                  <ion-select
-                    placeholder="M3"
-                    
-                    [(ngModel)]="emomData.e1m3"
-                    required
-                
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                 
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                  <ion-input
+                  placeholder="M3"
+                  (click)="openMoveSelection('e1m3')"
+                  [(ngModel)]="emomData.e1m3"
+                  required
+                  readonly
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                    border-color: #b27600; /* Border color */
+                    border-style: solid;   /* Border style */
+                    border-radius: 10px;   /* Border radius */
+                    border-width: 2px;     /* Border width */"
+               
+                >
+             
+                  
+                </ion-input>
                  
                 </ion-col>
                 <ion-col style="text-align: center; width: 50%;">
@@ -242,27 +264,27 @@
               </ion-row>
               <ion-row *ngIf="mpes > 3" class="ion-justify-content-center">
                 <ion-col  style="text-align: center; width: 50%;">
-                  <ion-select
-                    placeholder="M4"
-                    
-                    [(ngModel)]="emomData.e1m4"
-                    required
-                
-                    style="
-                      font-size: x-large;
-                      text-align: center;
-                      width: 100%;
-                      color: #b27600;
-                      padding-left: 30%;
-                    "
-                 
-                  >
-                    <ion-select-option
-                      *ngFor="let move of moves"
-                      [value]="move.exeName"
-                      >{{move.exeName}}</ion-select-option
-                    >
-                  </ion-select>
+                  <ion-input
+                  placeholder="M4"
+                  (click)="openMoveSelection('e1m4')"
+                  [(ngModel)]="emomData.e1m4"
+                  required
+                  readonly
+                  style="
+                    font-size: x-large;
+                    text-align: center;
+                    width: 100%;
+                    color: #b27600;
+                    padding-left: 30%;
+                    border-color: #b27600; /* Border color */
+                    border-style: solid;   /* Border style */
+                    border-radius: 10px;   /* Border radius */
+                    border-width: 2px;     /* Border width */"
+               
+                >
+             
+                  
+                </ion-input>
                  
                 </ion-col>
                 <ion-col style="text-align: center; width: 50%;">
@@ -283,7 +305,7 @@
             </ion-row>
             <!--l2-->
             <pre></pre>
-            <div id="t2" *ngIf="numemom >1">
+            <div id="t2" *ngIf="numemom !== null && numemom >1">
               <ion-row>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
@@ -295,27 +317,27 @@
               <ion-row class="ion-justify-content-center" style="text-align: center">
                 <ion-row *ngIf="mpes > 0" class="ion-justify-content-center">
                   <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
-                      placeholder="M1"
-                      
-                      [(ngModel)]="emomData.e2m1"
-                      required
-                  
-                      style="
-                        font-size: x-large;
-                        text-align: center;
-                        width: 100%;
-                        color: #b27600;
-                        padding-left: 30%;
-                      "
-                   
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
+                    <ion-input
+                    placeholder="M1"
+                    (click)="openMoveSelection('e2m1')"
+                    [(ngModel)]="emomData.e2m1"
+                    required
+                    readonly
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */"
+                 
+                  >
+               
+                    
+                  </ion-input>
                    
                   </ion-col>
                   <ion-col style="text-align: center; width: 50%;">
@@ -335,28 +357,27 @@
                 </ion-row>
                 <ion-row *ngIf="mpes > 1" class="ion-justify-content-center">
                   <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
-                      placeholder="M2"
-                      
-                      [(ngModel)]="emomData.e2m2"
-                      required
-                  
-                      style="
-                        font-size: x-large;
-                        text-align: center;
-                        width: 100%;
-                        color: #b27600;
-                        padding-left: 30%;
-                      "
-                   
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
-                   
+                    <ion-input
+                    placeholder="M2"
+                    (click)="openMoveSelection('e2m2')"
+                    [(ngModel)]="emomData.e2m2"
+                    required
+                    readonly
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */"
+                 
+                  >
+               
+                    
+                  </ion-input>
                   </ion-col>
                   <ion-col style="text-align: center; width: 50%;">
                     <ion-input
@@ -375,27 +396,27 @@
                 </ion-row>
                 <ion-row *ngIf="mpes > 2" class="ion-justify-content-center">
                   <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
-                      placeholder="M3"
-                      
-                      [(ngModel)]="emomData.e2m3"
-                      required
-                  
-                      style="
-                        font-size: x-large;
-                        text-align: center;
-                        width: 100%;
-                        color: #b27600;
-                        padding-left: 30%;
-                      "
-                   
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
+                    <ion-input
+                    placeholder="M3"
+                    (click)="openMoveSelection('e2m3')"
+                    [(ngModel)]="emomData.e2m3"
+                    required
+                    readonly
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */"
+                 
+                  >
+               
+                    
+                  </ion-input>
                    
                   </ion-col>
                   <ion-col style="text-align: center; width: 50%;">
@@ -415,27 +436,27 @@
                 </ion-row>
                 <ion-row *ngIf="mpes > 3" class="ion-justify-content-center">
                   <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
-                      placeholder="M4"
-                      
-                      [(ngModel)]="emomData.e2m4"
-                      required
-                  
-                      style="
-                        font-size: x-large;
-                        text-align: center;
-                        width: 100%;
-                        color: #b27600;
-                        padding-left: 30%;
-                      "
-                   
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
+                    <ion-input
+                    placeholder="M4"
+                    (click)="openMoveSelection('e2m4')"
+                    [(ngModel)]="emomData.e2m4"
+                    required
+                    readonly
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */"
+                 
+                  >
+               
+                    
+                  </ion-input>
                    
                   </ion-col>
                   <ion-col style="text-align: center; width: 50%;">
@@ -458,7 +479,7 @@
             </div>
             <!--lm3-->
             <pre></pre>
-            <div id="t3" *ngIf="numemom >2">
+            <div id="t3" *ngIf="numemom !== null && numemom >2">
               <ion-row>
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
@@ -469,27 +490,27 @@
               <ion-row class="ion-justify-content-center" style="text-align: center">
                 <ion-row *ngIf="mpes > 0" class="ion-justify-content-center">
                   <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
-                      placeholder="M1"
-                      
-                      [(ngModel)]="emomData.e3m1"
-                      required
-                  
-                      style="
-                        font-size: x-large;
-                        text-align: center;
-                        width: 100%;
-                        color: #b27600;
-                        padding-left: 30%;
-                      "
-                   
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
+                    <ion-input
+                    placeholder="M1"
+                    (click)="openMoveSelection('e3m1')"
+                    [(ngModel)]="emomData.e3m1"
+                    required
+                    readonly
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */"
+                 
+                  >
+               
+                    
+                  </ion-input>
                    
                   </ion-col>
                   <ion-col style="text-align: center; width: 50%;">
@@ -509,27 +530,27 @@
                 </ion-row>
                 <ion-row *ngIf="mpes > 1" class="ion-justify-content-center">
                   <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
-                      placeholder="M2"
-                      
-                      [(ngModel)]="emomData.e3m2"
-                      required
-                  
-                      style="
-                        font-size: x-large;
-                        text-align: center;
-                        width: 100%;
-                        color: #b27600;
-                        padding-left: 30%;
-                      "
-                   
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
+                    <ion-input
+                    placeholder="M2"
+                    (click)="openMoveSelection('e3m2')"
+                    [(ngModel)]="emomData.e3m2"
+                    required
+                    readonly
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */"
+                 
+                  >
+               
+                    
+                  </ion-input>
                    
                   </ion-col>
                   <ion-col style="text-align: center; width: 50%;">
@@ -549,27 +570,27 @@
                 </ion-row>
                 <ion-row *ngIf="mpes > 2" class="ion-justify-content-center">
                   <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
-                      placeholder="M3"
-                      
-                      [(ngModel)]="emomData.e3m3"
-                      required
-                  
-                      style="
-                        font-size: x-large;
-                        text-align: center;
-                        width: 100%;
-                        color: #b27600;
-                        padding-left: 30%;
-                      "
-                   
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
+                    <ion-input
+                    placeholder="M3"
+                    (click)="openMoveSelection('e3m3')"
+                    [(ngModel)]="emomData.e3m3"
+                    required
+                    readonly
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */"
+                 
+                  >
+               
+                    
+                  </ion-input>
                    
                   </ion-col>
                   <ion-col style="text-align: center; width: 50%;">
@@ -589,27 +610,27 @@
                 </ion-row>
                 <ion-row *ngIf="mpes > 3" class="ion-justify-content-center">
                   <ion-col  style="text-align: center; width: 50%;">
-                    <ion-select
-                      placeholder="M4"
-                      
-                      [(ngModel)]="emomData.e3m4"
-                      required
-                  
-                      style="
-                        font-size: x-large;
-                        text-align: center;
-                        width: 100%;
-                        color: #b27600;
-                        padding-left: 30%;
-                      "
-                   
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
+                    <ion-input
+                    placeholder="M4"
+                    (click)="openMoveSelection('e3m4')"
+                    [(ngModel)]="emomData.e3m4"
+                    required
+                    readonly
+                    style="
+                      font-size: x-large;
+                      text-align: center;
+                      width: 100%;
+                      color: #b27600;
+                      padding-left: 30%;
+                      border-color: #b27600; /* Border color */
+                      border-style: solid;   /* Border style */
+                      border-radius: 10px;   /* Border radius */
+                      border-width: 2px;     /* Border width */"
+                 
+                  >
+               
+                    
+                  </ion-input>
                    
                   </ion-col>
                   <ion-col style="text-align: center; width: 50%;">
@@ -633,19 +654,21 @@
             </div>
            
             <pre></pre>
-            <ion-row>
-              <ion-label
-                style="font-size: x-large; text-align: center; width: 100%"
-                >Select a Date:</ion-label
-              >
-              <ion-input
-                style="font-size: x-large; text-align: center; color: #b27600"
-                type="date"
-                name="daDate"
-                id="daDate"
-                [(ngModel)]="emomData.daDate"
-          
-              ></ion-input>
+            <ion-row class="ion-justify-content-center ion-align-items-center">
+              <ion-row class="ion-justify-content-center" style="width: 100%;">
+                <ion-label style="font-size: x-large; display: block;">Select a Date:</ion-label>
+              </ion-row>
+              <ion-row>
+                <div style="margin-left: auto;margin-right: auto;">
+                  <ion-input
+                  style="font-size: x-large; text-align: center; color: #b27600;"
+                  type="date"
+                  name="daDate"
+                  id="daDate"
+                  [(ngModel)]="emomData.daDate"
+                ></ion-input>
+                </div>
+              </ion-row>
             </ion-row>
             <div *ngIf="showErrorCard" class="error-card">
               <div class="error-message">
@@ -658,7 +681,7 @@
               margin-right: auto;">
                 <ion-button
                   style="
-                    font-size: xxx-large;
+                    font-size: xx-large;
                     margin-left: auto;
                     margin-right: auto;
                     border-radius: 10%;

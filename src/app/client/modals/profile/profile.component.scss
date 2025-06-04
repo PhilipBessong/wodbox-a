@@ -1,0 +1,112 @@
+ion-content{
+    --ion-padding-start: 0;
+    --ion-padding-end: 0;
+    --ion-safe-area-top: 0;
+    --ion-safe-area-bottom: 0;
+    border-style: solid;
+    border-color: #b27600;
+    --ion-background-color: linear-gradient(
+        to bottom,
+        black 0%,
+        black 50%,                                                                 
+        black 50%,       
+        #b27600 100%
+    );
+  }
+  .wodbod{
+    background-color: #b27600;
+    border-radius: 80px;
+    --ion-background-color: #b27600;
+    box-shadow: 0 0 20px 5px black;
+  }
+  .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile-picture {
+    width: 120px; /* Adjust as needed */
+    height: 120px; /* Adjust as needed */
+    border-radius: 50%; /* Makes the image circular */
+    border: 2px solid #b27600; /* Corrected border syntax */
+    object-fit: cover; /* Ensures the image covers the entire circle */
+    margin: 0 auto; /* Centers the image horizontally */
+    display: block; /* Ensures the image is displayed as a block element */
+  }
+  
+  ion-img {
+    --border-radius: 50%;
+    --border-width: 2px;
+    --box-shadow: none;
+  }
+  
+  .default-icon {
+    font-size: 120px;
+    color: #b27600;
+    padding: 5px;
+  }
+  .custom-input {
+    --background: black; /* Black background */
+    --color: white; /* White text color */
+    --border-color: orange; /* Orange border */
+    --border-width: 2px; /* Border width */
+    --border-radius: 5px; /* Rounded corners */
+    --padding-start: 10px; /* Left padding */
+    --padding-end: 10px; /* Right padding */
+
+    background-color: var(--background) !important;
+    color: var(--color) !important;
+    border: var(--border-width) solid var(--border-color) !important;
+    border-radius: var(--border-radius) !important;
+    padding-left: var(--padding-start) !important;
+    padding-right: var(--padding-end) !important;
+  }
+  ion-button{
+    width: 100%;
+    --background: #b27600;
+    font-size: x-large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    white-space: nowrap;
+    
+  
+  }
+  .chngbtn{
+    --border-color: orange; /* Orange border */
+    --border-width: 2px; /* Border width */
+    --border-radius: 5px; /* Rounded corners */
+  }
+  .remove-btn {
+    margin-top: 10px;
+    padding: 8px 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+    color: #b27600;
+    border: solid;
+    border-color:#b27600 ;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+  }
+  .remove-btn:hover {
+    background-color: darkred;
+  }
+  ion-item {
+    --background: transparent !important;
+    --border-color: transparent !important;
+    --inner-border-width: 0 !important;
+    --highlight-color-focused: transparent !important;
+    --highlight-color-valid: transparent !important;
+    --highlight-color-invalid: transparent !important;
+    --padding-start: 0 !important;
+    --padding-end: 0 !important;
+    --inner-padding-end: 0 !important;
+    --inner-padding-start: 0 !important;
+    --min-height: auto !important;
+    --border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  
+  ion-item::part(native) {
+    all: unset !important;
+  }
+  

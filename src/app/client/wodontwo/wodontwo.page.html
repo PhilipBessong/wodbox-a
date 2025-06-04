@@ -1,0 +1,2844 @@
+
+
+<ion-content [fullscreen]="true" [ngClass]="ionContentClass" >
+  <br>
+    <button
+      *ngIf="!donescrnShow"
+      (click)="backtoWod()"
+      [ngClass]="backbtnclr"
+      style="
+        border-radius: 5px;
+        color: aliceblue;
+        margin-left: 85%;
+        width: 50px;
+       
+        height: 25px;
+        display: flex;
+        align-items: center;
+      "
+    >
+      <ion-icon name="chevron-back-outline" style="margin-right: 1px"></ion-icon
+      >Back
+    </button>
+    <div class="logocon" [ngClass]="lococon">
+      <ion-img
+        src="assets/imgs/WODBOX ICON@2x.png"
+        id="logo"
+        style="
+          width: 80%;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: auto;
+        "
+      ></ion-img>
+    </div>
+    <!--________ladders______________________________________________________________-->
+  <!--l1-->
+  <div class="daBack" *ngIf="cdr1m1Show">
+    <ion-card
+      class="wodbod"
+      [ngClass]="wodbodClass"
+      *ngFor="let ladder of sladders "
+    >
+      <h2
+        class="cardttl"
+        style="
+          color: black;
+          font-size: large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+      >
+        LADDER 1
+      </h2>
+      <ion-card
+        class="card"
+        style="
+          --ion-background-color: white;
+          border-bottom-width: 1px;
+          height: 500px;
+          padding-bottom: 0%;
+        "
+      >
+        <ion-row class="ion-justify-content-center">
+          <div *ngIf="carobtn" class="carousel">
+            <div
+              class="carousel-wrapper"
+              [style.transform]="'translateX(-' + (lcurrentindex  * 100) + '%)'"
+            >
+              <div
+                class="carousel-item"
+                *ngIf="ladder.l1m1"
+                (click)="ofvl1m1(ladder.exe!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ ladder.l1m1 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="ladder.l1m2 && !intervallbls"
+                (click)="ofvl1m2(ladder.exel1m2!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ ladder.l1m2 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="ladder.l1m3 && !intervallbls"
+                (click)="ofvl1m3(ladder.exel1m3!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ ladder.l1m3 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="ladder.l1m4 && !intervallbls"
+                (click)="ofvl1m4(ladder.exel1m4!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ ladder.l1m4 }}</ion-label>
+              </div>
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <div *ngIf="carobtn" class="carousel-controls">
+            <button
+              class="caro-button"
+              (click)="lprevSlide()"
+              [disabled]="lcurrentindex  === 0"
+            >
+              Prev
+            </button>
+            <button
+              class="caro-button"
+              (click)="lnextSlide()"
+              [disabled]="lcurrentindex  === lmaxindex  || lmaxindex  === -1"
+            >
+              Next
+            </button>
+          </div>
+          <ion-label
+            *ngIf="!carobtn"
+            [ngStyle]="{'visibility': isLadderlblHidden ? 'hidden' : 'visible'}"
+            style="
+              text-align: center;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: large;
+              padding: 4%;
+              padding-bottom: 10%;
+              margin: 3%;
+              color: aliceblue;
+            "
+          >
+            Do 1 of each, then 2, then 3, etc.
+          </ion-label>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center" *ngIf="ladder.exe">
+          <div
+            *ngIf="prepimg"
+            style="
+              position: relative;
+              background-color: white;
+              height: 260px;
+              width: 99%;
+            "
+          >
+            <ion-img
+              src="/assets/imgs/stopwatch.png"
+              style="
+                padding-top: 0%;
+                margin-top: 0%;
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            ></ion-img>
+            <div class="countdown-wrapper" *ngIf="cd5Sec !== undefined">
+              <ion-row class="countdown-row">
+                <!-- Display the 5-second timer -->
+                <ion-label *ngIf="cd5SecShow" style="font-weight: 600"
+                  >{{ cd5Sec }}</ion-label
+                >
+              </ion-row>
+            </div>
+          </div>
+          <div
+            *ngIf="wvid"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 260px;
+            "
+          >
+            <div style="border-radius: 20px; text-align: center">
+              <div
+                *ngIf="ladderlbls && ladder.l1m1!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofvl1m1(ladder.exe.videoUrl)"
+                  >{{ ladder.l1m1 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && ladder.l1m2!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofvl1m2(ladder.exel1m2?.videoUrl || '')"
+                  >{{ ladder.l1m2 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && ladder.l1m3!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofvl1m3(ladder.exel1m3?.videoUrl || '')"
+                >
+                  {{ ladder.l1m3 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && ladder.l1m4!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofvl1m4(ladder.exel1m4?.videoUrl|| '')"
+                  >{{ ladder.l1m4 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="l2btn || donebtn"
+                class="amrapLBLcon"
+                style="width: 100%; margin-top: 60%"
+              >
+                <button
+                  *ngIf="l2btn"
+                  class="amrapLBL"
+                  style="
+                    border-radius: 30px;
+                    color: black;
+                    border: 2px solid #00b250;
+                    background: linear-gradient(45deg, #ffffff, #00b250);
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                      sans-serif;
+                    font-weight: 400;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                      0 3px 5px rgba(0, 0, 0, 0.2);
+                    transition: box-shadow 0.3s ease;
+                    border-radius: 20px;
+                    font-size: xx-large;
+                    width: 100%;
+
+                    text-align: center;
+                    padding: 10px;
+                  "
+                  (click)="tolnotwo()"
+                >
+                  Next Ladder
+                </button>
+                <button
+                  *ngIf="donebtn"
+                  class="ladderLBL"
+                  style="
+                    background-color: #00b250;
+                    border-radius: 20px;
+                    font-size: xx-large;
+                    font-weight: 400;
+                    width: 100%;
+                  "
+                  (click)="wedoner4m3()"
+                >
+                  FINISHED
+                </button>
+              </div>
+              <ion-icon
+                name="pause"
+                *ngIf="isPaused"
+                style="
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  font-size: 110px;
+                  color: white;
+                  cursor: pointer;
+                  opacity: 0.5;
+                "
+              >
+              </ion-icon>
+            </div>
+          </div>
+        </ion-row>
+        <br />
+        <ion-row class="ion-justify-content-center">
+          <!-- Countdown timer -->
+
+          <button
+            [disabled]="buttonDisabled"
+            (click)="lstrt5SecTimer(ladder)"
+            *ngIf="srtbtnShow"
+            style="
+              height: 70px;
+              margin-top: 20px;
+              width: 85%;
+              font-size: xx-large;
+              font-weight: 600;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #00b250;
+              background: linear-gradient(45deg, #ffffff, #00b250);
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2);
+              transition: box-shadow 0.3s ease;
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            {{ buttonText }}
+            <!-- Bind buttonText variable for dynamic text -->
+          </button>
+
+          <ion-row
+            *ngIf="cdr1m1Timer !== undefined"
+            class="ion-justify-content-center"
+            style="padding-top: 2%; min-height: 8px"
+          >
+            <!-- Display the timer -->
+            <div
+              *ngIf="cdr1m1Show"
+              class="ion-justify-content-center timer-container"
+              (click)="togglePauseResume()"
+            >
+              <div class="timer-circle" [ngClass]="warningcircle"></div>
+              <span
+                class="timer-text"
+                [ngClass]="warningttext"
+                *ngIf="!isPaused "
+              >
+                {{ formatTimer(cdr1m1Timer) }}</span
+              >
+
+              <div *ngIf="isPaused" class="timer-text" [ngClass]="warningttext">
+                <ion-icon
+                  name="play"
+                  style="width: 60px; height: 60px; padding-left: 3%"
+                ></ion-icon>
+              </div>
+            </div>
+          </ion-row>
+        </ion-row>
+      </ion-card>
+    </ion-card>
+  </div>
+  <!--l2-->
+  <div class="daBack" *ngIf="r2m1Show">
+    <ion-card class="wodbod" *ngFor="let ladder of sladders ">
+      <h2
+        class="cardttl"
+        style="
+          color: black;
+          font-size: large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+      >
+        LADDER 2
+      </h2>
+      <ion-card
+        class="card"
+        style="
+          --ion-background-color: white;
+          border-bottom-width: 1px;
+          height: 500px;
+          padding-bottom: 0%;
+        "
+      >
+        <ion-row class="ion-justify-content-center">
+          <div *ngIf="carobtn" class="carousel">
+            <div
+              class="carousel-wrapper"
+              [style.transform]="'translateX(-' + (lcurrentindex * 100) + '%)'"
+            >
+              <div
+                class="carousel-item"
+                *ngIf="ladder.l2m1"
+                (click)="ofvl2m1(ladder.exel2m1!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ ladder.l2m1 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="ladder.l2m2 && !intervallbls"
+                (click)="ofvl2m2(ladder.exel2m2!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ ladder.l2m2 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="ladder.l2m3 && !intervallbls"
+                (click)="ofvl2m3(ladder.exel2m3!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ ladder.l2m3 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="ladder.l2m4 && !intervallbls"
+                (click)="ofvl2m4(ladder.exel2m4!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ ladder.l2m4 }}</ion-label>
+              </div>
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <div *ngIf="carobtn" class="carousel-controls">
+            <button
+              class="caro-button"
+              (click)="lprevSlide()"
+              [disabled]="lcurrentindex  === 0"
+            >
+              Prev
+            </button>
+            <button
+              class="caro-button"
+              (click)="lnextSlide()"
+              [disabled]="lcurrentindex  === lmaxindex  || lmaxindex  === -1"
+            >
+              Next
+            </button>
+          </div>
+          <ion-label
+            *ngIf="!carobtn"
+            [ngStyle]="{'visibility': isLadderlblHidden ? 'hidden' : 'visible'}"
+            style="
+              text-align: center;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: large;
+              padding: 4%;
+              padding-bottom: 10%;
+              margin: 3%;
+              color: aliceblue;
+            "
+          >
+            Do 1 of each, then 2,then 3,etc.
+          </ion-label></ion-row
+        >
+
+        <ion-row class="ion-justify-content-center" *ngIf="ladder.exe">
+          <div
+            *ngIf="prepimg"
+            style="
+              position: relative;
+              background-color: white;
+              height: 260px;
+              width: 99%;
+            "
+          >
+            <ion-img
+              src="/assets/imgs/stopwatch.png"
+              style="
+                padding-top: 0%;
+                margin-top: 0%;
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            ></ion-img>
+            <div class="countdown-wrapper" *ngIf="r2cd5Sec !== undefined">
+              <ion-row class="countdown-row">
+                <!-- Display the 5-second timer -->
+                <ion-label *ngIf="r2cd5SecShow" style="font-weight: 600"
+                  >{{ r2cd5Sec }}</ion-label
+                >
+              </ion-row>
+            </div>
+          </div>
+          <div
+            *ngIf="wvid"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 260px;
+            "
+          >
+            <div style="border-radius: 20px; text-align: center">
+              <div
+                *ngIf="ladderlbls && ladder.l2m1!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofvl2m1(ladder.exel2m1?.videoUrl || '')"
+                  >{{ ladder.l2m1 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && ladder.l2m2!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofvl2m2(ladder.exel2m2?.videoUrl || '')"
+                  >{{ ladder.l2m2 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && ladder.l2m3!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofvl2m3(ladder.exel2m3?.videoUrl || '')"
+                >
+                  {{ ladder.l2m3 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && ladder.l2m4!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofvl2m4(ladder.exel2m4?.videoUrl|| '')"
+                  >{{ ladder.l2m4 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="l3btn || donebtn"
+                class="amrapLBLcon"
+                style="width: 100%; margin-top: 60%"
+              >
+                <button
+                  *ngIf="l3btn"
+                  class="amrapLBL"
+                  style="
+                    border-radius: 30px;
+                    color: black;
+                    border: 2px solid #00b250;
+                    background: linear-gradient(45deg, #ffffff, #00b250);
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                      sans-serif;
+                    font-weight: 400;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                      0 3px 5px rgba(0, 0, 0, 0.2);
+                    transition: box-shadow 0.3s ease;
+                    border-radius: 20px;
+                    font-size: xx-large;
+                    width: 100%;
+
+                    text-align: center;
+                    padding: 10px;
+                  "
+                  (click)="tolnothree()"
+                >
+                  Next Ladder
+                </button>
+                <button
+                  *ngIf="donebtn"
+                  class="ladderLBL"
+                  style="
+                    background-color: #00b250;
+                    border-radius: 20px;
+                    font-size: xx-large;
+                    font-weight: 400;
+                    width: 100%;
+                  "
+                  (click)="wedoner4m3()"
+                >
+                  FINISHED
+                </button>
+              </div>
+              <ion-icon
+                name="pause"
+                *ngIf="isPaused"
+                style="
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  font-size: 110px;
+                  color: white;
+                  cursor: pointer;
+                  opacity: 0.5;
+                "
+              >
+              </ion-icon>
+            </div>
+          </div>
+        </ion-row>
+        <br />
+        <ion-row
+          *ngIf="ladder.l2move !== undefined"
+          class="ion-justify-content-center"
+        >
+          <!-- Countdown timer -->
+
+          <button
+            [disabled]="buttonDisabled"
+            (click)="l2strt5SecTimer(ladder)"
+            *ngIf="r2srtbtnShow"
+            style="
+              height: 70px;
+              margin-top: 20px;
+              width: 85%;
+              font-size: xx-large;
+              font-weight: 600;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #00b250;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #00b250
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            {{buttonText}}
+          </button>
+
+          <ion-row
+            *ngIf="cdr2m1Timer !== undefined"
+            class="ion-justify-content-center"
+            style="padding-top: 2%; min-height: 8px"
+          >
+            <!-- Display the 5-second timer -->
+            <div
+              *ngIf="cdr2m1Show"
+              class="ion-justify-content-center timer-container"
+              (click)="togglePauseResume()"
+            >
+              <div class="timer-circle"></div>
+              <span *ngIf="!isPaused" class="timer-text"
+                >{{ formatTimer(cdr2m1Timer) }}</span
+              >
+              <div *ngIf="isPaused" class="timer-text" [ngClass]="warningttext">
+                <ion-icon
+                  name="play"
+                  style="width: 60px; height: 60px; padding-left: 3%"
+                ></ion-icon>
+              </div>
+            </div>
+          </ion-row>
+        </ion-row>
+      </ion-card>
+    </ion-card>
+  </div>
+  <!--l3-->
+  <div class="daBack" *ngIf="r3m1Show">
+    <ion-card class="wodbod" *ngFor="let ladder of sladders ">
+      <h2
+        class="cardttl"
+        style="
+          color: black;
+          font-size: large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+      >
+        LADDER 3
+      </h2>
+      <ion-card
+        class="card"
+        style="
+          --ion-background-color: white;
+          border-bottom-width: 1px;
+          height: 500px;
+          padding-bottom: 0%;
+        "
+      >
+        <ion-row class="ion-justify-content-center">
+          <div *ngIf="carobtn" class="carousel">
+            <div
+              class="carousel-wrapper"
+              [style.transform]="'translateX(-' + (lcurrentindex * 100) + '%)'"
+            >
+              <div
+                class="carousel-item"
+                *ngIf="ladder.l3m1"
+                (click)="ofvl3m1(ladder.exel3m1!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ ladder.l3m1 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="ladder.l3m2 && !intervallbls"
+                (click)="ofvl3m2(ladder.exel3m2!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ ladder.l3m2 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="ladder.l3m3 && !intervallbls"
+                (click)="ofvl3m3(ladder.exel3m3!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ ladder.l3m3 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="ladder.l3m4 && !intervallbls"
+                (click)="ofvl3m4(ladder.exel3m4!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ ladder.l3m4 }}</ion-label>
+              </div>
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <div *ngIf="carobtn" class="carousel-controls">
+            <button
+              class="caro-button"
+              (click)="lprevSlide()"
+              [disabled]="lcurrentindex  === 0"
+            >
+              Prev
+            </button>
+            <button
+              class="caro-button"
+              (click)="lnextSlide()"
+              [disabled]="lcurrentindex  === lmaxindex  || lmaxindex  === -1"
+            >
+              Next
+            </button>
+          </div>
+          <ion-label
+            *ngIf="!carobtn"
+            [ngStyle]="{'visibility': isLadderlblHidden ? 'hidden' : 'visible'}"
+            style="
+              text-align: center;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: large;
+              padding: 4%;
+              padding-bottom: 10%;
+              margin: 3%;
+              color: aliceblue;
+            "
+          >
+            Do 1 of each, then 2,then 3,etc.
+          </ion-label></ion-row
+        >
+
+        <ion-row class="ion-justify-content-center" *ngIf="ladder.exe">
+          <div
+            *ngIf="prepimg"
+            style="
+              position: relative;
+              background-color: white;
+              height: 260px;
+              width: 99%;
+            "
+          >
+            <ion-img
+              src="/assets/imgs/stopwatch.png"
+              style="
+                padding-top: 0%;
+                margin-top: 0%;
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            ></ion-img>
+            <div class="countdown-wrapper" *ngIf="r3cd5Sec !== undefined">
+              <ion-row class="countdown-row">
+                <!-- Display the 5-second timer -->
+                <ion-label *ngIf="r3cd5SecShow" style="font-weight: 600"
+                  >{{ r3cd5Sec }}</ion-label
+                >
+              </ion-row>
+            </div>
+          </div>
+          <div
+            *ngIf="wvid"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 260px;
+            "
+          >
+            <div style="border-radius: 20px; text-align: center">
+              <div
+                *ngIf="ladderlbls && ladder.l3m1!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofvl3m1(ladder.exel3m1?.videoUrl || '')"
+                  >{{ ladder.l3m1 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && ladder.l3m2!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofvl3m2(ladder.exel3m2?.videoUrl || '')"
+                  >{{ ladder.l3m2 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && ladder.l3m3!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofvl3m3(ladder.exel3m3?.videoUrl || '')"
+                >
+                  {{ ladder.l3m3 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && ladder.l3m4!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofvl3m4(ladder.exel3m4?.videoUrl|| '')"
+                  >{{ ladder.l3m4 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="l2btn || donebtn"
+                class="amrapLBLcon"
+                style="width: 100%; margin-top: 80%"
+              >
+                <button
+                  *ngIf="l2btn"
+                  class="amrapLBL"
+                  style="
+                    border-radius: 30px;
+                    color: black;
+                    border: 2px solid #00b250;
+                    background: linear-gradient(45deg, #ffffff, #00b250);
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                      sans-serif;
+                    font-weight: 400;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                      0 3px 5px rgba(0, 0, 0, 0.2);
+                    transition: box-shadow 0.3s ease;
+                    border-radius: 20px;
+                    font-size: xx-large;
+                    width: 100%;
+
+                    text-align: center;
+                    padding: 10px;
+                  "
+                  (click)="tolnotwo()"
+                >
+                  Next Ladder
+                </button>
+                <button
+                  *ngIf="donebtn"
+                  class="ladderLBL"
+                  style="
+                    background-color: #00b250;
+                    border-radius: 20px;
+                    font-size: xx-large;
+                    font-weight: 400;
+                    width: 100%;
+                  "
+                  (click)="wedoner4m3()"
+                >
+                  FINISHED
+                </button>
+              </div>
+              <ion-icon
+                name="pause"
+                *ngIf="isPaused"
+                style="
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  font-size: 110px;
+                  color: white;
+                  cursor: pointer;
+                  opacity: 0.5;
+                "
+              >
+              </ion-icon>
+            </div>
+          </div>
+        </ion-row>
+        <br />
+        <ion-row
+          *ngIf="ladder.l3move !== undefined"
+          class="ion-justify-content-center"
+        >
+          <!-- Countdown timer -->
+
+          <button
+            [disabled]="buttonDisabled"
+            (click)="l3strt5SecTimer(ladder)"
+            *ngIf="r3srtbtnShow"
+            style="
+              height: 70px;
+              margin-top: 20px;
+              width: 85%;
+              font-size: xx-large;
+              font-weight: 600;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #00b250;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #00b250
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            {{buttonText}}
+          </button>
+
+          <ion-row
+            *ngIf="cdr3m1Timer !== undefined"
+            class="ion-justify-content-center"
+            style="padding-top: 2%; min-height: 8px"
+          >
+            <!-- Display the 5-second timer -->
+            <div
+              *ngIf="cdr3m1Show"
+              class="ion-justify-content-center timer-container"
+              (click)="togglePauseResume()"
+            >
+              <div class="timer-circle"></div>
+              <span *ngIf="!isPaused" class="timer-text"
+                >{{ formatTimer(cdr3m1Timer) }}</span
+              >
+              <div *ngIf="isPaused" class="timer-text" [ngClass]="warningttext">
+                <ion-icon
+                  name="play"
+                  style="width: 60px; height: 60px; padding-left: 3%"
+                ></ion-icon>
+              </div>
+            </div>
+          </ion-row>
+        </ion-row>
+      </ion-card>
+    </ion-card>
+  </div>
+  <!--________emoms______________________________________________________________-->
+  <!--e1-->
+  <div class="daBack" *ngIf="cdr1m1Show">
+    <ion-card
+      class="wodbod"
+      [ngClass]="wodbodClass"
+      *ngFor="let emom of semoms "
+    >
+      <h2
+        class="cardttl"
+        style="
+          color: black;
+          font-size: large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+      >
+        EMOM 1
+      </h2>
+      <ion-card
+        class="card"
+        style="
+          --ion-background-color: white;
+          border-bottom-width: 1px;
+          height: 500px;
+        "
+      >
+        <ion-row class="ion-justify-content-center">
+          <div *ngIf="carobtn" class="carousel">
+            <div
+              class="carousel-wrapper"
+              [style.transform]="'translateX(-' + (currentIndex * 100) + '%)'"
+            >
+              <div
+                class="carousel-item"
+                *ngIf="emom.e1m1"
+                (click)="ofve1m1(emom.exe!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ emom.e1m1 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="emom.e1m2 && !intervallbls"
+                (click)="ofve1m2(emom.exee1m2!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ emom.e1m2 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="emom.e1m3 && !intervallbls"
+                (click)="ofve1m3(emom.exee1m3!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ emom.e1m3 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="emom.e1m4 && !intervallbls"
+                (click)="ofve1m4(emom.exee1m4!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ emom.e1m4 }}</ion-label>
+              </div>
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <div *ngIf="carobtn" class="carousel-controls">
+              <button
+              class="caro-button"
+              (click)="prevSlide()"
+              [disabled]="currentIndex === 0"
+            >
+              Prev
+            </button>
+            <button
+              class="caro-button"
+              (click)="nextSlide()"
+              [disabled]="currentIndex === maxIndex || maxIndex === -1"
+            >
+              Next
+            </button>
+          </div>
+          <ion-label
+            *ngIf="!carobtn"
+            style="
+              text-align: center;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: large;
+              padding: 4%;
+              margin: 2%;
+              color: aliceblue;
+              overflow: hidden;
+            "
+          >
+            Complete all movements in order within each minute.
+          </ion-label>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center" *ngIf="emom.exe">
+          <div
+            *ngIf="prepimg"
+            style="
+              position: relative;
+              background-color: white;
+              height: 260px;
+              width: 99%;
+            "
+          >
+            <ion-img
+              src="/assets/imgs/stopwatch.png"
+              style="
+                padding-top: 0%;
+                margin-top: 0%;
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            ></ion-img>
+
+            <div class="countdown-wrapper" *ngIf="cd5Sec !== undefined">
+              <ion-row class="countdown-row">
+                <!-- Display the 5-second timer -->
+                <ion-label *ngIf="cd5SecShow" style="font-weight: 600"
+                  >{{ cd5Sec }}</ion-label
+                >
+              </ion-row>
+            </div>
+          </div>
+          <div
+            *ngIf="wvid"
+            style="justify-content: center; align-items: center; height: 260px"
+          >
+            <div style="border-radius: 20px; text-align: center">
+              <div
+                *ngIf="ladderlbls && emom.e1m1!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label class="amrapLBL" (click)="ofve1m1(emom.exe.videoUrl)"
+                  >{{ emom.e1m1rep}}x {{ emom.e1m1 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && emom.e1m2!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofve1m2(emom.exee1m2?.videoUrl || '')"
+                  >{{ emom.e1m2rep}}x {{ emom.e1m2 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && emom.e1m3!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofve1m3(emom.exee1m3?.videoUrl || '')"
+                  >{{ emom.e1m3rep }}x {{ emom.e1m3 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && emom.e1m4!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofve1m4(emom.exee1m4?.videoUrl|| '')"
+                  >{{ emom.e1m4rep }}x {{ emom.e1m4 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="e2btn || donebtn"
+                class="amrapLBLcon"
+                style="width: 100%; margin-top: 80%"
+              >
+                <button
+                  *ngIf="e2btn"
+                  class="amrapLBL"
+                  style="
+                    border-radius: 30px;
+                    color: black;
+                    border: 2px solid #00b250;
+                    background: linear-gradient(45deg, #ffffff, #00b250);
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                      sans-serif;
+                    font-weight: 400;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                      0 3px 5px rgba(0, 0, 0, 0.2);
+                    transition: box-shadow 0.3s ease;
+                    border-radius: 20px;
+                    font-size: xx-large;
+                    width: 100%;
+
+                    text-align: center;
+                    padding: 10px;
+                  "
+                  (click)="tolnotwoemom()"
+                >
+                  Next EMOM
+                </button>
+                <button
+                  *ngIf="donebtn"
+                  class="ladderLBL"
+                  style="
+                    background-color: #00b250;
+                    border-radius: 20px;
+                    font-size: xx-large;
+                    font-weight: 400;
+                    width: 100%;
+                  "
+                  (click)="wedoner4m3()"
+                >
+                  FINISHED
+                </button>
+              </div>
+              <ion-icon
+                name="pause"
+                *ngIf="isPaused"
+                style="
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  font-size: 110px;
+                  color: white;
+                  cursor: pointer;
+                  opacity: 0.5;
+                "
+              >
+              </ion-icon>
+            </div>
+          </div>
+        </ion-row>
+        <br />
+        <ion-row class="ion-justify-content-center">
+          <!-- Countdown timer -->
+
+          <button
+            [disabled]="buttonDisabled"
+            (click)="estrt5SecTimer(emom)"
+            *ngIf="srtbtnShow"
+            style="
+              height: 70px;
+              margin-top: 20px;
+              width: 85%;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #00b250;
+              background: linear-gradient(45deg, #ffffff, #00b250);
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-weight: 600;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2);
+              transition: box-shadow 0.3s ease;
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            {{ buttonText }}
+            <!-- Bind buttonText variable for dynamic text -->
+          </button>
+
+          <ion-row
+            *ngIf="cdr1m1Timer !== undefined"
+            class="ion-justify-content-center"
+            style="padding-top: 3%; min-height: 8px"
+          >
+            <!-- Display the 5-second timer -->
+            <div
+              *ngIf="cdr1m1Show"
+              class="ion-justify-content-center timer-container"
+              (click)="togglePauseResume()"
+            >
+              <div
+                class="timer-circle"
+                style="width: 150px; height: 100px"
+                [ngClass]="warningcircle"
+              ></div>
+              <span
+                class="timer-text"
+                style="font-size: 5dvh"
+                [ngClass]="warningttext"
+                *ngIf="!isPaused"
+                >{{ formatTimer(cdr1m1Timer) }}</span
+              >
+              <div *ngIf="isPaused" class="timer-text" [ngClass]="warningttext">
+                <ion-icon
+                  name="play"
+                  style="width: 60px; height: 60px; padding-left: 3%"
+                ></ion-icon>
+              </div>
+              <div
+                class="tb1-counter"
+                style="font-size: 3dvh; left: calc(100% + 35px)"
+              >
+                <span style="color: #ffac05; font-size: medium">Min</span
+                ><br />{{ esets }}/{{emom.sets}}
+              </div>
+            </div>
+          </ion-row>
+        </ion-row>
+      </ion-card>
+    </ion-card>
+  </div>
+  <!--e2-->
+  <div class="daBack" *ngIf="r2m1Show">
+    <ion-card
+      class="wodbod"
+      [ngClass]="wodbodClass"
+      *ngFor="let emom of semoms "
+    >
+      <h2
+        class="cardttl"
+        style="
+          color: black;
+          font-size: large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+      >
+        EMOM 2
+      </h2>
+      <ion-card
+        class="card"
+        style="
+          --ion-background-color: white;
+          border-bottom-width: 1px;
+          height: 500px;
+        "
+      >
+        <ion-row class="ion-justify-content-center">
+          <div *ngIf="carobtn" class="carousel">
+            <div
+              class="carousel-wrapper"
+              [style.transform]="'translateX(-' + (currentIndex * 100) + '%)'"
+            >
+              <div
+                class="carousel-item"
+                *ngIf="emom.e2m1"
+                (click)="ofve2m1(emom.exee2m1!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ emom.e2m1 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="emom.e2m2 && !intervallbls"
+                (click)="ofve2m2(emom.exee2m2!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ emom.e2m2 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="emom.e2m3 && !intervallbls"
+                (click)="ofve2m3(emom.exee2m3!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ emom.e2m3 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="emom.e2m4 && !intervallbls"
+                (click)="ofve2m4(emom.exee2m4!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ emom.e2m4 }}</ion-label>
+              </div>
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <div *ngIf="carobtn" class="carousel-controls">
+             <button
+              class="caro-button"
+              (click)="prevSlide()"
+              [disabled]="currentIndex === 0"
+            >
+              Prev
+            </button>
+            <button
+              class="caro-button"
+              (click)="nextSlide()"
+              [disabled]="currentIndex === maxIndex || maxIndex === -1"
+            >
+              Next
+            </button>
+          </div>
+          <ion-label
+            *ngIf="!carobtn"
+            style="
+              text-align: center;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: large;
+              padding: 4%;
+              margin: 2%;
+              color: aliceblue;
+            "
+          >
+            Complete all movements in order within each minute.
+          </ion-label>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center" *ngIf="emom.exe">
+          <div
+            *ngIf="prepimg"
+            style="
+              position: relative;
+              background-color: white;
+              height: 260px;
+              width: 99%;
+            "
+          >
+            <ion-img
+              src="/assets/imgs/stopwatch.png"
+              style="
+                padding-top: 0%;
+                margin-top: 0%;
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            ></ion-img>
+            <div class="countdown-wrapper" *ngIf="r2cd5Sec !== undefined">
+              <ion-row class="countdown-row">
+                <!-- Display the 5-second timer -->
+                <ion-label *ngIf="r2cd5SecShow" style="font-weight: 600"
+                  >{{ r2cd5Sec }}</ion-label
+                >
+              </ion-row>
+            </div>
+          </div>
+          <div
+            *ngIf="wvid"
+            style="justify-content: center; align-items: center; height: 255px"
+          >
+            <div style="border-radius: 20px; text-align: center">
+              <div
+                *ngIf="ladderlbls && emom.e2m1!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofve2m1(emom.exee2m1?.videoUrl || '')"
+                  >{{ emom.e2m1rep}}x {{ emom.e2m1 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && emom.e2m2!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofve2m2(emom.exee2m2?.videoUrl || '')"
+                  >{{ emom.e2m2rep}}x {{ emom.e2m2 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && emom.e2m3!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofve2m3(emom.exee2m3?.videoUrl || '')"
+                  >{{ emom.e2m3rep }}x {{ emom.e2m3 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && emom.e2m4!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofve2m4(emom.exee2m4?.videoUrl|| '')"
+                  >{{ emom.e2m4rep }}x {{ emom.e2m4 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="e3btn || donebtn"
+                class="amrapLBLcon"
+                style="width: 100%; margin-top: 80%"
+              >
+                <button
+                  *ngIf="e3btn"
+                  class="amrapLBL"
+                  style="
+                    border-radius: 30px;
+                    color: black;
+                    border: 2px solid #00b250;
+                    background: linear-gradient(45deg, #ffffff, #00b250);
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                      sans-serif;
+                    font-weight: 400;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                      0 3px 5px rgba(0, 0, 0, 0.2);
+                    transition: box-shadow 0.3s ease;
+                    border-radius: 20px;
+                    font-size: xx-large;
+                    width: 100%;
+
+                    text-align: center;
+                    padding: 10px;
+                  "
+                  (click)="tolnothreeemom()"
+                >
+                  Next EMOM
+                </button>
+                <button
+                  *ngIf="donebtn"
+                  class="ladderLBL"
+                  style="
+                    background-color: #00b250;
+                    border-radius: 20px;
+                    font-size: xxx-large;
+                    font-weight: 400;
+                    width: 100%;
+                  "
+                  (click)="wedoner4m3()"
+                >
+                  FINISHED
+                </button>
+              </div>
+              <ion-icon
+                name="pause"
+                *ngIf="isPaused"
+                style="
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  font-size: 110px;
+                  color: white;
+                  cursor: pointer;
+                  opacity: 0.5;
+                "
+              >
+              </ion-icon>
+            </div>
+          </div>
+        </ion-row>
+        <br />
+        <ion-row class="ion-justify-content-center">
+          <!-- Countdown timer -->
+
+          <button
+            [disabled]="buttonDisabled"
+            (click)="e2strt5SecTimer(emom)"
+            *ngIf="r2srtbtnShow"
+            style="
+              height: 70px;
+              margin-top: 20px;
+              width: 85%;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #00b250;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #00b250
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-weight: 600;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            {{buttonText}}
+          </button>
+
+          <ion-row
+            *ngIf="cdr2m1Timer !== undefined"
+            class="ion-justify-content-center"
+            style="padding-top: 3%; min-height: 8px"
+          >
+            <!-- Display the 5-second timer -->
+            <div
+              *ngIf="cdr2m1Show"
+              class="ion-justify-content-center timer-container"
+              (click)="togglePauseResume()"
+            >
+              <div
+                class="timer-circle"
+                style="width: 150px; height: 100px"
+                [ngClass]="warningcircle"
+              ></div>
+              <span
+                class="timer-text"
+                style="font-size: 5dvh"
+                [ngClass]="warningttext"
+                *ngIf="!isPaused"
+                >{{ formatTimer(cdr2m1Timer) }}</span
+              >
+              <div *ngIf="isPaused" class="timer-text" [ngClass]="warningttext">
+                <ion-icon
+                  name="play"
+                  style="width: 60px; height: 60px; padding-left: 3%"
+                ></ion-icon>
+              </div>
+              <div
+                class="tb1-counter"
+                style="font-size: 3dvh; left: calc(100% + 35px)"
+              >
+                <span style="color: #ffac05; font-size: medium">Min</span
+                ><br />{{ esets }}/{{emom.sets}}
+              </div>
+            </div>
+          </ion-row>
+        </ion-row>
+      </ion-card>
+    </ion-card>
+  </div>
+  <!--e3-->
+  <div class="daBack" *ngIf="r3m1Show">
+    <ion-card
+      class="wodbod"
+      [ngClass]="wodbodClass"
+      *ngFor="let emom of semoms "
+    >
+      <h2
+        class="cardttl"
+        style="
+          color: black;
+          font-size: large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+      >
+        EMOM 3
+      </h2>
+      <ion-card
+        class="card"
+        style="
+          --ion-background-color: white;
+          border-bottom-width: 1px;
+          height: 500px;
+          padding-bottom: 0%;
+        "
+      >
+        <ion-row class="ion-justify-content-center">
+          <div *ngIf="carobtn" class="carousel">
+            <div
+              class="carousel-wrapper"
+              [style.transform]="'translateX(-' + (currentIndex * 100) + '%)'"
+            >
+              <div
+                class="carousel-item"
+                *ngIf="emom.e3m1"
+                (click)="ofve3m1(emom.exee3m1!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ emom.e3m1 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="emom.e3m2 && !intervallbls"
+                (click)="ofve3m2(emom.exee3m2!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ emom.e3m2 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="emom.e3m3 && !intervallbls"
+                (click)="ofve3m3(emom.exee3m3!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ emom.e3m3 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="emom.e3m4 && !intervallbls"
+                (click)="ofve3m4(emom.exee3m4!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ emom.e3m4 }}</ion-label>
+              </div>
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <div *ngIf="carobtn" class="carousel-controls">
+             <button
+              class="caro-button"
+              (click)="prevSlide()"
+              [disabled]="currentIndex === 0"
+            >
+              Prev
+            </button>
+            <button
+              class="caro-button"
+              (click)="nextSlide()"
+              [disabled]="currentIndex === maxIndex || maxIndex === -1"
+            >
+              Next
+            </button>
+          </div>
+          <ion-label
+            *ngIf="!carobtn"
+            style="
+              text-align: center;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: large;
+              padding: 4%;
+              margin: 2%;
+              color: aliceblue;
+            "
+          >
+            Complete all movements in order within each minute.
+          </ion-label></ion-row
+        >
+
+        <ion-row class="ion-justify-content-center" *ngIf="emom.exe">
+          <div
+            *ngIf="prepimg"
+            style="
+              position: relative;
+              background-color: white;
+              height: 260px;
+              width: 99%;
+            "
+          >
+            <ion-img
+              src="/assets/imgs/stopwatch.png"
+              style="
+                padding-top: 0%;
+                margin-top: 0%;
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            ></ion-img>
+            <div class="countdown-wrapper" *ngIf="r3cd5Sec !== undefined">
+              <ion-row class="countdown-row">
+                <!-- Display the 5-second timer -->
+                <ion-label *ngIf="r3cd5SecShow" style="font-weight: 600"
+                  >{{ r3cd5Sec }}</ion-label
+                >
+              </ion-row>
+            </div>
+          </div>
+          <div
+            *ngIf="wvid"
+            style="justify-content: center; align-items: center; height: 255px"
+          >
+            <div style="border-radius: 20px; text-align: center">
+              <div
+                *ngIf="ladderlbls && emom.e3m1!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label class="amrapLBL" (click)="ofve3m1(emom.exe.videoUrl)"
+                  >{{ emom.e3m1rep}}x {{ emom.e3m1 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && emom.e3m2!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofve3m2(emom.exee3m2?.videoUrl || '')"
+                  >{{ emom.e3m2rep}}x {{ emom.e3m2 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && emom.e3m3!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofve3m3(emom.exee3m3?.videoUrl || '')"
+                  >{{ emom.e3m3rep }}x {{ emom.e3m3 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="ladderlbls && emom.e3m4!==''"
+                class="amrapLBLcon"
+                [ngClass]="labelClass"
+              >
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofve3m4(emom.exee3m4?.videoUrl|| '')"
+                  >{{ emom.e3m4rep }}x {{ emom.e3m4 }}</ion-label
+                >
+              </div>
+              <div *ngIf=" donebtn" class="ladderLBLcon" style="width: 100%">
+                <button
+                  *ngIf="donebtn"
+                  class="ladderLBL"
+                  style="
+                    background-color: #00b250;
+                    border-radius: 20px;
+                    font-size: xx-large;
+                    font-weight: 400;
+                    width: 100%;
+                  "
+                  (click)="wedoner4m3()"
+                >
+                  FINISHED
+                </button>
+              </div>
+              <ion-icon
+                name="pause"
+                *ngIf="isPaused"
+                style="
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  font-size: 110px;
+                  color: white;
+                  cursor: pointer;
+                  opacity: 0.5;
+                "
+              >
+              </ion-icon>
+            </div>
+          </div>
+        </ion-row>
+        <br />
+        <ion-row class="ion-justify-content-center">
+          <!-- Countdown timer -->
+
+          <button
+            [disabled]="buttonDisabled"
+            (click)="e3strt5SecTimer(emom)"
+            *ngIf="r3srtbtnShow"
+            style="
+              height: 70px;
+              margin-top: 20px;
+              width: 85%;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #00b250;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #00b250
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              font-weight: 600;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            {{buttonText}}
+          </button>
+
+          <ion-row
+            *ngIf="cdr3m1Timer !== undefined"
+            class="ion-justify-content-center"
+            style="padding-top: 3%; min-height: 8px"
+          >
+            <!-- Display the 5-second timer -->
+            <div
+              *ngIf="cdr3m1Show"
+              class="ion-justify-content-center timer-container"
+              (click)="togglePauseResume()"
+            >
+              <div
+                class="timer-circle"
+                style="width: 150px; height: 100px"
+                [ngClass]="warningcircle"
+              ></div>
+              <span
+                class="timer-text"
+                style="font-size: 5dvh"
+                [ngClass]="warningttext"
+                *ngIf="!isPaused"
+                >{{ formatTimer(cdr3m1Timer) }}</span
+              >
+              <div *ngIf="isPaused" class="timer-text" [ngClass]="warningttext">
+                <ion-icon
+                  name="play"
+                  style="width: 60px; height: 60px; padding-left: 3%"
+                ></ion-icon>
+              </div>
+              <div
+                class="tb1-counter"
+                style="font-size: 3dvh; left: calc(100% + 35px)"
+              >
+                <span style="color: #ffac05; font-size: medium">Min</span
+                ><br />{{ esets }}/{{emom.sets}}
+              </div>
+            </div>
+          </ion-row>
+        </ion-row>
+      </ion-card>
+    </ion-card>
+  </div>
+  <!--________amraps______________________________________________________________-->
+  <!--a1-->
+  <div class="daBack" *ngIf="cdr1m1Show">
+    <ion-card class="wodbod" *ngFor="let amrap of samraps ">
+      <h2
+        class="cardttl"
+        style="
+          color: black;
+          font-size: large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+      >
+        AMRAP 1
+      </h2>
+      <ion-card
+        class="card"
+        style="
+          --ion-background-color: white;
+          border-bottom-width: 1px;
+          height: 500px;
+        "
+      >
+        <ion-row class="ion-justify-content-center">
+          <div *ngIf="carobtn" class="carousel">
+            <div
+              class="carousel-wrapper"
+              [style.transform]="'translateX(-' + (acurrentIndex * 100) + '%)'"
+            >
+              <div
+                class="carousel-item"
+                *ngIf="amrap.a1m1"
+                (click)="ofva1m1(amrap.exe!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ amrap.a1m1 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="amrap.a1m2 && !intervallbls"
+                (click)="ofva1m2(amrap.exea1m2!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ amrap.a1m2 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="amrap.a1m3 && !intervallbls"
+                (click)="ofva1m3(amrap.exea1m3!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ amrap.a1m3 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="amrap.a1m4 && !intervallbls"
+                (click)="ofva1m4(amrap.exea1m4!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ amrap.a1m4 }}</ion-label>
+              </div>
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <div *ngIf="carobtn" class="carousel-controls">
+            <button
+              class="caro-button"
+              (click)="aprevSlide()"
+              [disabled]="acurrentIndex === 0"
+            >
+              Prev
+            </button>
+            <button
+              class="caro-button"
+              (click)="anextSlide()"
+              [disabled]="acurrentIndex === amaxIndex || amaxIndex === -1"
+            >
+              Next
+            </button>
+          </div>
+          <ion-label
+            *ngIf="!carobtn"
+            style="
+              text-align: center;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: large;
+              padding: 4%;
+              margin: 2%;
+              color: aliceblue;
+              overflow: hidden;
+            "
+          >
+            Repeat all exercises until time runs out.
+          </ion-label>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center" *ngIf="amrap.exe">
+          <div
+            *ngIf="prepimg"
+            style="
+              position: relative;
+              background-color: white;
+              height: 260px;
+              width: 99%;
+            "
+          >
+            <ion-img
+              src="/assets/imgs/stopwatch.png"
+              style="
+                padding-top: 0%;
+                margin-top: 0%;
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            ></ion-img>
+            <div class="countdown-wrapper" *ngIf="cd5Sec !== undefined">
+              <ion-row class="countdown-row">
+                <!-- Display the 5-second timer -->
+                <ion-label *ngIf="cd5SecShow" style="font-weight: 600"
+                  >{{ cd5Sec }}</ion-label
+                >
+              </ion-row>
+            </div>
+          </div>
+          <div
+            *ngIf="wvid"
+            style="justify-content: center; align-items: center; height: 260px"
+          >
+            <div style="border-radius: 20px; text-align: center">
+              <div *ngIf="ladderlbls && amrap.a1m1!==''" class="amrapLBLcon">
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofva1m1(amrap.exe.videoUrl)"
+                  >{{ amrap.a1m1rep}}x {{ amrap.a1m1 }}</ion-label
+                >
+              </div>
+              <div *ngIf="ladderlbls && amrap.a1m2!==''" class="amrapLBLcon">
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofva1m2(amrap.exea1m2?.videoUrl || '')"
+                  >{{ amrap.a1m2rep}}x {{ amrap.a1m2 }}</ion-label
+                >
+              </div>
+              <div *ngIf="ladderlbls && amrap.a1m3!==''" class="amrapLBLcon">
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofva1m3(amrap.exea1m3?.videoUrl || '')"
+                  >{{ amrap.a1m3rep }}x {{ amrap.a1m3 }}</ion-label
+                >
+              </div>
+              <div *ngIf="ladderlbls && amrap.a1m4!==''" class="amrapLBLcon">
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofva1m4(amrap.exea1m4?.videoUrl|| '')"
+                  >{{ amrap.a1m4rep }}x {{ amrap.a1m4 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="a2btn || donebtn"
+                class="amrapLBLcon"
+                style="width: 100%; margin-top: 80%"
+              >
+                <button
+                  *ngIf="a2btn"
+                  class="amrapLBL"
+                  style="
+                    border-radius: 30px;
+                    color: black;
+                    border: 2px solid #00b250;
+                    background: linear-gradient(45deg, #ffffff, #00b250);
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                      sans-serif;
+                    font-weight: 400;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                      0 3px 5px rgba(0, 0, 0, 0.2);
+                    transition: box-shadow 0.3s ease;
+                    border-radius: 20px;
+                    font-size: xx-large;
+                    width: 100%;
+
+                    text-align: center;
+                    padding: 10px;
+                  "
+                  (click)="tolnotwoamrap()"
+                >
+                  Next AMRAP
+                </button>
+                <button
+                  *ngIf="donebtn"
+                  class="ladderLBL"
+                  style="
+                    background-color: #00b250;
+                    border-radius: 20px;
+                    font-size: xxx-large;
+                    width: 100%;
+                  "
+                  (click)="wedoner4m3()"
+                >
+                  FINISHED
+                </button>
+              </div>
+              <ion-icon
+                name="pause"
+                *ngIf="isPaused"
+                style="
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  font-size: 110px;
+                  color: white;
+                  cursor: pointer;
+                  opacity: 0.5;
+                "
+              >
+              </ion-icon>
+            </div>
+          </div>
+        </ion-row>
+        <br />
+        <ion-row class="ion-justify-content-center">
+          <!-- Countdown timer -->
+
+          <button
+            [disabled]="buttonDisabled"
+            (click)="astrt5SecTimer(amrap)"
+            *ngIf="srtbtnShow"
+            style="
+              height: 70px;
+              margin-top: 20px;
+              width: 85%;
+              font-size: xx-large;
+              border-radius: 30px;
+              color: black;
+              font-weight: 600;
+              border: 2px solid #00b250;
+              background: linear-gradient(45deg, #ffffff, #00b250);
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2);
+              transition: box-shadow 0.3s ease;
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            {{ buttonText }}
+            <!-- Bind buttonText variable for dynamic text -->
+          </button>
+
+          <ion-row
+            *ngIf="cdr1m1Timer !== undefined"
+            class="ion-justify-content-center"
+            style="padding-top: 2%; min-height: 8px"
+          >
+            <!-- Display the 5-second timer -->
+            <div
+              *ngIf="cdr1m1Show"
+              class="ion-justify-content-center timer-container"
+              (click)="togglePauseResume()"
+            >
+              <div class="timer-circle"></div>
+              <span class="timer-text" *ngIf="!isPaused"
+                >{{ formatTimer(cdr1m1Timer) }}</span
+              >
+              <div *ngIf="isPaused" class="timer-text">
+                <ion-icon
+                  name="play"
+                  style="width: 60px; height: 60px; padding-left: 3%"
+                ></ion-icon>
+              </div>
+            </div>
+          </ion-row>
+        </ion-row>
+      </ion-card>
+    </ion-card>
+  </div>
+  <!--a2-->
+  <div class="daBack" *ngIf="r2m1Show">
+    <ion-card class="wodbod" *ngFor="let amrap of samraps ">
+      <h2
+        class="cardttl"
+        style="
+          color: black;
+          font-size: large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+      >
+        AMRAP 2
+      </h2>
+      <ion-card
+        class="card"
+        style="
+          --ion-background-color: white;
+          border-bottom-width: 1px;
+          height: 500px;
+        "
+      >
+        <ion-row class="ion-justify-content-center">
+          <div *ngIf="carobtn" class="carousel">
+            <div
+              class="carousel-wrapper"
+              [style.transform]="'translateX(-' + (acurrentIndex * 100) + '%)'"
+            >
+              <div
+                class="carousel-item"
+                *ngIf="amrap.a2m1"
+                (click)="ofva2m1(amrap.exea2m1!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ amrap.a2m1 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="amrap.a2m2 && !intervallbls"
+                (click)="ofva2m2(amrap.exea2m2!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ amrap.a2m2 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="amrap.a2m3 && !intervallbls"
+                (click)="ofva2m3(amrap.exea2m3!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ amrap.a2m3 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="amrap.a2m4 && !intervallbls"
+                (click)="ofva2m4(amrap.exea2m4!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ amrap.a2m4 }}</ion-label>
+              </div>
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <div *ngIf="carobtn" class="carousel-controls">
+            <button
+              class="caro-button"
+              (click)="aprevSlide()"
+              [disabled]="acurrentIndex === 0"
+            >
+              Prev
+            </button>
+            <button
+              class="caro-button"
+              (click)="anextSlide()"
+              [disabled]="acurrentIndex === amaxIndex || amaxIndex === -1"
+            >
+              Next
+            </button>
+          </div>
+          <ion-label
+            *ngIf="!carobtn"
+            style="
+              text-align: center;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: large;
+              padding: 4%;
+              margin: 2%;
+              color: aliceblue;
+              overflow: hidden;
+            "
+          >
+            Repeat all exercises until time runs out.
+          </ion-label>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center" *ngIf="amrap.exe">
+          <div
+            *ngIf="prepimg"
+            style="
+              position: relative;
+              background-color: white;
+              height: 260px;
+              width: 99%;
+            "
+          >
+            <ion-img
+              src="/assets/imgs/stopwatch.png"
+              style="
+                padding-top: 0%;
+                margin-top: 0%;
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            ></ion-img>
+
+            <div class="countdown-wrapper" *ngIf="r2cd5Sec !== undefined">
+              <ion-row class="countdown-row">
+                <!-- Display the 5-second timer -->
+                <ion-label *ngIf="r2cd5SecShow" style="font-weight: 600"
+                  >{{ r2cd5Sec }}</ion-label
+                >
+              </ion-row>
+            </div>
+          </div>
+          <div
+            *ngIf="wvid"
+            style="justify-content: center; align-items: center; height: 260px"
+          >
+            <div style="border-radius: 20px; text-align: center">
+              <div *ngIf="ladderlbls && amrap.a2m1!==''" class="amrapLBLcon">
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofva2m1(amrap.exea2m1?.videoUrl|| '')"
+                  >{{ amrap.a2m1rep}}x {{ amrap.a2m1 }}</ion-label
+                >
+              </div>
+              <div *ngIf="ladderlbls && amrap.a2m2!==''" class="amrapLBLcon">
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofva2m2(amrap.exea2m2?.videoUrl|| '')"
+                  >{{ amrap.a2m2rep}}x {{ amrap.a2m2 }}</ion-label
+                >
+              </div>
+              <div *ngIf="ladderlbls && amrap.a2m3!==''" class="amrapLBLcon">
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofva2m3(amrap.exea2m3?.videoUrl|| '')"
+                  >{{ amrap.a2m3rep }}x {{ amrap.a2m3 }}</ion-label
+                >
+              </div>
+              <div *ngIf="ladderlbls && amrap.a2m4!==''" class="amrapLBLcon">
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofva2m4(amrap.exea2m4?.videoUrl|| '')"
+                  >{{ amrap.a2m4rep }}x {{ amrap.a2m4 }}</ion-label
+                >
+              </div>
+              <div
+                *ngIf="a3btn || donebtn"
+                class="amrapLBLcon"
+                style="width: 100%; margin-top: 80%"
+              >
+                <button
+                  *ngIf="a3btn"
+                  class="amrapLBL"
+                  style="
+                    border-radius: 30px;
+                    color: black;
+                    border: 2px solid #00b250;
+                    background: linear-gradient(45deg, #ffffff, #00b250);
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                      sans-serif;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                      0 3px 5px rgba(0, 0, 0, 0.2);
+                    transition: box-shadow 0.3s ease;
+                    border-radius: 20px;
+                    font-size: xx-large;
+                    width: 100%;
+                    font-weight: 400;
+                    text-align: center;
+                    padding: 10px;
+                  "
+                  (click)="tolnothreeamrap()"
+                >
+                  Next AMRAP
+                </button>
+                <button
+                  *ngIf="donebtn"
+                  class="ladderLBL"
+                  style="
+                    background-color: #00b250;
+                    border-radius: 20px;
+                    font-size: xxx-large;
+                    width: 100%;
+                  "
+                  (click)="wedoner4m3()"
+                >
+                  FINISHED
+                </button>
+              </div>
+              <ion-icon
+                name="pause"
+                *ngIf="isPaused"
+                style="
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  font-size: 110px;
+                  color: white;
+                  cursor: pointer;
+                  opacity: 0.5;
+                "
+              >
+              </ion-icon>
+            </div>
+          </div>
+        </ion-row>
+        <br />
+        <ion-row class="ion-justify-content-center">
+          <!-- Countdown timer -->
+
+          <button
+            [disabled]="buttonDisabled"
+            (click)="a2strt5SecTimer(amrap)"
+            *ngIf="r2srtbtnShow"
+            style="
+              height: 70px;
+              margin-top: 20px;
+              width: 85%;
+              font-size: xx-large;
+              font-weight: 600;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #00b250;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #00b250
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            {{buttonText}}
+          </button>
+
+          <ion-row
+            *ngIf="cdr2m1Timer !== undefined"
+            class="ion-justify-content-center"
+            style="padding-top: 2%; min-height: 8px"
+          >
+            <!-- Display the 5-second timer -->
+            <div
+              *ngIf="cdr2m1Show"
+              class="ion-justify-content-center timer-container"
+              (click)="togglePauseResume()"
+            >
+              <div class="timer-circle"></div>
+              <span class="timer-text" *ngIf="!isPaused"
+                >{{ formatTimer(cdr2m1Timer) }}</span
+              >
+              <div *ngIf="isPaused" class="timer-text">
+                <ion-icon
+                  name="play"
+                  style="width: 60px; height: 60px; padding-left: 3%"
+                ></ion-icon>
+              </div>
+            </div>
+          </ion-row>
+        </ion-row>
+      </ion-card>
+    </ion-card>
+  </div>
+  <!--a3-->
+  <div class="daBack" *ngIf="r3m1Show">
+    <ion-card class="wodbod" *ngFor="let amrap of samraps ">
+      <h2
+        class="cardttl"
+        style="
+          color: black;
+          font-size: large;
+          font-weight: 700;
+          vertical-align: middle;
+        "
+      >
+        AMRAP 3
+      </h2>
+      <ion-card
+        class="card"
+        style="
+          --ion-background-color: white;
+          border-bottom-width: 1px;
+          height: 500px;
+        "
+      >
+        <ion-row class="ion-justify-content-center">
+          <div *ngIf="carobtn" class="carousel">
+            <div
+              class="carousel-wrapper"
+              [style.transform]="'translateX(-' + (acurrentIndex * 100) + '%)'"
+            >
+              <div
+                class="carousel-item"
+                *ngIf="amrap.a3m1"
+                (click)="ofva3m1(amrap.exea3m1!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ amrap.a3m1 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="amrap.a3m2 && !intervallbls"
+                (click)="ofva3m2(amrap.exea3m2!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ amrap.a3m2 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="amrap.a3m3 && !intervallbls"
+                (click)="ofva3m3(amrap.exea3m3!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ amrap.a3m3 }}</ion-label>
+              </div>
+              <div
+                class="carousel-item"
+                *ngIf="amrap.a3m4 && !intervallbls"
+                (click)="ofva3m4(amrap.exea3m4!.videoUrl)"
+              >
+                <ion-label class="emomlbls">{{ amrap.a3m4 }}</ion-label>
+              </div>
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <div *ngIf="carobtn" class="carousel-controls">
+            <button
+              class="caro-button"
+              (click)="aprevSlide()"
+              [disabled]="acurrentIndex === 0"
+            >
+              Prev
+            </button>
+            <button
+              class="caro-button"
+              (click)="anextSlide()"
+              [disabled]="acurrentIndex === amaxIndex || amaxIndex === -1"
+            >
+              Next
+            </button>
+          </div>
+          <ion-label
+            *ngIf="!carobtn"
+            style="
+              text-align: center;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: large;
+              padding: 4%;
+              margin: 2%;
+              color: aliceblue;
+              overflow: hidden;
+            "
+          >
+            Repeat all exercises until time runs out.
+          </ion-label>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center" *ngIf="amrap.exe">
+          <div
+            *ngIf="prepimg"
+            style="
+              position: relative;
+              background-color: white;
+              height: 260px;
+              width: 99%;
+            "
+          >
+            <ion-img
+              src="/assets/imgs/stopwatch.png"
+              style="
+                padding-top: 0%;
+                margin-top: 0%;
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            ></ion-img>
+            <div class="countdown-wrapper" *ngIf="r3cd5Sec !== undefined">
+              <ion-row class="countdown-row">
+                <!-- Display the 5-second timer -->
+                <ion-label *ngIf="r3cd5SecShow" style="font-weight: 600"
+                  >{{ r3cd5Sec }}</ion-label
+                >
+              </ion-row>
+            </div>
+          </div>
+          <div
+            *ngIf="wvid"
+            style="justify-content: center; align-items: center; height: 260px"
+          >
+            <div style="border-radius: 20px; text-align: center">
+              <div *ngIf="ladderlbls && amrap.a3m1!==''" class="amrapLBLcon">
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofva3m1(amrap.exea3m1?.videoUrl|| '')"
+                  >{{ amrap.a3m1rep}}x {{ amrap.a3m1 }}</ion-label
+                >
+              </div>
+              <div *ngIf="ladderlbls && amrap.a3m2!==''" class="amrapLBLcon">
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofva3m2(amrap.exea3m2?.videoUrl|| '')"
+                  >{{ amrap.a3m2rep}}x {{ amrap.a3m2 }}</ion-label
+                >
+              </div>
+              <div *ngIf="ladderlbls && amrap.a3m3!==''" class="amrapLBLcon">
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofva3m3(amrap.exea3m3?.videoUrl|| '')"
+                  >{{ amrap.a3m3rep }}x {{ amrap.a3m3 }}</ion-label
+                >
+              </div>
+              <div *ngIf="ladderlbls && amrap.a3m4!==''" class="amrapLBLcon">
+                <ion-label
+                  class="amrapLBL"
+                  (click)="ofva3m4(amrap.exea3m4?.videoUrl|| '')"
+                  >{{ amrap.a3m4rep }}x {{ amrap.a3m4 }}</ion-label
+                >
+              </div>
+              <ion-icon
+                name="pause"
+                *ngIf="isPaused"
+                style="
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  font-size: 110px;
+                  color: white;
+                  cursor: pointer;
+                  opacity: 0.5;
+                "
+              >
+              </ion-icon>
+            </div>
+          </div>
+        </ion-row>
+        <br />
+        <ion-row class="ion-justify-content-center">
+          <!-- Countdown timer -->
+
+          <button
+            [disabled]="buttonDisabled"
+            (click)="a3strt5SecTimer(amrap)"
+            *ngIf="r3srtbtnShow"
+            style="
+              height: 70px;
+              margin-top: 20px;
+              width: 85%;
+              font-size: xx-large;
+              font-weight: 600;
+              border-radius: 30px;
+              color: black;
+              border: 2px solid #00b250;
+              background: linear-gradient(
+                45deg,
+                #ffffff,
+                #00b250
+              ); /* Gradient background for a more vibrant look */
+              font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+              transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+            "
+            id="srtbtnr1m1"
+            color="#00b250"
+          >
+            {{buttonText}}
+          </button>
+
+          <ion-row
+            *ngIf="cdr3m1Timer !== undefined"
+            class="ion-justify-content-center"
+            style="padding-top: 2%; min-height: 8px"
+          >
+            <!-- Display the 5-second timer -->
+            <div
+              *ngIf="cdr3m1Show"
+              class="ion-justify-content-center timer-container"
+              (click)="togglePauseResume()"
+            >
+              <div class="timer-circle"></div>
+              <span class="timer-text" *ngIf="!isPaused"
+                >{{ formatTimer(cdr3m1Timer) }}</span
+              >
+              <div *ngIf="isPaused" class="timer-text">
+                <ion-icon
+                  name="play"
+                  style="width: 60px; height: 60px; padding-left: 3%"
+                ></ion-icon>
+              </div>
+            </div>
+          </ion-row>
+        </ion-row>
+      </ion-card>
+    </ion-card>
+  </div>
+  
+    <div class="daBackb" *ngIf="lFinishShow">
+      <ion-card class="wodbodb" >
+        <h1
+          class="cardttl"
+          style="
+            color: white;
+            font-size: xx-large;
+            font-weight: 700;
+            vertical-align: middle;
+          "
+        >
+          Finished
+        </h1>
+        <ion-card
+          class="card"
+          style="
+           --ion-background-color: white;
+            border-bottom-width: 1px;
+            height: 480px;
+            padding-bottom: 0%;
+            padding-top: 5%;"
+        >
+          <ion-row class="ion-justify-content-center" style="padding-top: 15%" >
+            <ion-img
+              src="/assets/imgs/flag.jpg"
+              style="   margin-top: 0%;
+              background-color: white;
+              height: 260px;
+              padding: 5%;"
+              class="flagimg"
+            ></ion-img>
+          </ion-row>
+  
+          <ion-row class="ion-justify-content-center" style="padding-top: 5.5%">
+            <!-- Countdown timer -->
+  
+            <div id="r4m3restfinbtn" style="padding-top: 3%">
+              <button
+                (click)="wedoner4m3()"
+                style="
+                  height: 70px;
+                  width: 270px;
+                  margin-top: 20px;
+                  font-size: xx-large;
+                  font-weight: 600;
+                  border-radius: 30px;
+                  color: black;
+                  border: 2px solid #22b9e9;
+                  background: linear-gradient(
+                    45deg,
+                    #ffffff,
+                    #1b7d9b
+                  ); /* Gradient background for a more vibrant look */
+                  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                    sans-serif;
+                  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                    0 3px 5px rgba(0, 0, 0, 0.2); /* Larger and more distinct box-shadow */
+                  transition: box-shadow 0.3s ease; /* Add transition for smooth effect on hover */
+                "
+                id="srtbtnr1m1"
+                color="#00b250"
+              >
+                Finish
+              </button>
+              <br />
+            </div>
+          </ion-row>
+        </ion-card>
+      </ion-card>
+    </div>
+    <!--donescrnShow-->
+    <div class="daBackd" *ngIf="donescrnShow">
+      <ion-card
+        class="wodbodc"
+        style="background-color: #b27600; padding-bottom: 10px"
+      >
+        <h2
+          class="cardttl"
+          style="
+            color: aliceblue;
+            font-size: large;
+            font-weight: 700;
+            vertical-align: middle;
+          "
+        >
+          WELL DONE!
+        </h2>
+        <ion-card
+          class="card"
+          style="
+            --ion-background-color: white;
+            height: 500px;
+            padding-bottom: 0%;
+            padding-top: 10%;
+          "
+        >
+          <ion-row class="ion-justify-content-center">
+            <video
+              autoplay
+              loop
+              muted
+              style="border-radius: 20px"
+              height="260px"
+              width="100%"
+            >
+              <source [src]="selectedVideoSource" type="video/mp4" />
+              <!-- Add more <source> elements for different video formats if needed -->
+              Your browser does not support the video tag.
+            </video>
+          </ion-row>
+          <br />
+          <ion-row class="ion-justify-content-center"
+            ><button
+              style="
+                height: 60px;
+                width: 300px;
+                font-size: xx-large;
+                font-weight: 600;
+                border-radius: 30px;
+                color: black;
+                border: 2px solid #b27600;
+                background: linear-gradient(45deg, #ffffff, #926201);
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                  0 3px 5px rgba(0, 0, 0, 0.2);
+                transition: box-shadow 0.3s ease;
+              "
+              id="open-modal"
+              color="#00b250"
+            >
+              Motivate Friends
+            </button>
+          </ion-row>
+  
+          <ion-row class="ion-justify-content-center" style="padding-top: 7%">
+            <button
+              (click)="redirectToHome()"
+              style="
+                height: 60px;
+                width: 300px;
+                font-size: xx-large;
+                font-weight: 600;
+                border-radius: 30px;
+                color: black;
+                border: 2px solid #b27600;
+                background: linear-gradient(45deg, #ffffff, #926201);
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                  sans-serif;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                  0 3px 5px rgba(0, 0, 0, 0.2);
+                transition: box-shadow 0.3s ease;
+              "
+              id="open-modal"
+              color="#00b250"
+              color="#00b250"
+            >
+              Home
+            </button>
+          </ion-row>
+        </ion-card>
+      </ion-card>
+      <ion-modal
+        #modal
+        trigger="open-modal"
+        [initialBreakpoint]="0.25"
+        [breakpoints]="[0, 0.25, 0.5, 0.75]"
+      >
+        <ng-template>
+          <ion-content class="home-content">
+            <ion-searchbar
+              placeholder="Search"
+              (click)="modal.setCurrentBreakpoint(0.75)"
+              (ionInput)="searchUsers($event)"
+            ></ion-searchbar>
+            <br />
+            <ion-label>
+              <h1 style="padding-left: 2%; color: #ffffff">Friends</h1>
+            </ion-label>
+            <ion-list>
+              <ion-item class="home-content" *ngFor="let user of users | async">
+                <ion-avatar slot="start">
+                  <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+                </ion-avatar>
+                <ion-label color="warning"> {{ user.email }} </ion-label>
+              </ion-item>
+            </ion-list>
+        
+            <ion-row class="ion-justify-content-center">
+              <ion-card class="frndsearch" *ngIf="invfrmview">
+                <ion-item style="--ion-background-color: black">
+                  <ion-input
+                    color="warning"
+                    style="color: #b27600"
+                    placeholder="Enter email address"
+                    [(ngModel)]="targetUserUid"
+                  ></ion-input>
+                  
+                  <ion-button color="white" (click)="closeinvfrm()">
+                    <ion-label>Cancel</ion-label>
+                  </ion-button>
+                </ion-item>
+              </ion-card>
+            </ion-row>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    </div>
+  </ion-content>
+  

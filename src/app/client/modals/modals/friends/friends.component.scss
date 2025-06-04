@@ -1,16 +1,44 @@
 /* friends.component.scss */
 
-.modal-content {
-    background-color: transparent; /* Set the background color to transparent */
-    height: 50vh; /* Set the height of the modal to 50% of the viewport height */
-    width: 50vw; /* Set the width of the modal to 50% of the viewport width */
-    top: 50%; /* Position the top edge of the modal halfway down the viewport */
-    left: 50%; /* Position the left edge of the modal halfway across the viewport */
-    transform: translate(-50%, -50%); /* Center the modal horizontally and vertically */
-    border-radius: 20px; /* Optional: Set border radius */
-  }
+ion-content{
+  --ion-padding-start: 0;
+  --ion-padding-end: 0;
+  --ion-safe-area-top: 0;
+  --ion-safe-area-bottom: 0;
+  border-style: solid;
+  border-color: #b27600;
+  --ion-background-color: linear-gradient(
+      to bottom,
+      black 0%,
+      black 50%,                                                                 
+      black 50%,       
+      #b27600 100%
+  );
+}
+.wodbod{
+  background-color: #b27600;
+  border-radius: 80px;
+  --ion-background-color: #b27600;
+  box-shadow: 0 0 20px 5px black;
+}
+.custom-searchbar {
+  border-radius: 20px;
+  color: #FFCC00;
+}
+ion-button{
   
-  ion-header {
-    --border-radius: 20px 20px 0 0; /* Optional: Adjust border-radius for header */
-  }
-  
+  --border-radius: 20px;
+}
+.frlbl {
+  width: 100%;
+  color: #FFFFFF;
+  font-size: small;
+  white-space: nowrap; /* Prevents text from wrapping */
+  //overflow: hidden; /* Prevents content from overflowing */
+ // text-overflow: ellipsis; /* Adds "..." if text is too long */
+}
+
+.frbtn{
+  font-size: xx-small;
+  width: auto;
+}

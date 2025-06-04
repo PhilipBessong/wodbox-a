@@ -16,7 +16,7 @@
 
 <br>
     <ion-row class="ion-align-items-center" >
-      <ion-col size-md="6" style="text-align: center;"><ion-button color="warning" shape="round" (click)="logout()">logout</ion-button></ion-col>
+      <ion-col size-md="6" style="text-align: center;"><ion-button color="warning" shape="round" (click)="onLogout()">logout</ion-button></ion-col>
       <ion-col size-md="6" style="text-align: center;"><ion-button color="warning" shape="round" (click)="todaAdduser()">+User</ion-button></ion-col>
       <ion-col size-md="6" style="text-align: center;"><ion-button color="warning" shape="round" (click)="todaAddwod()">+WOD</ion-button></ion-col>
     </ion-row>
@@ -27,129 +27,29 @@
       <ion-col></ion-col>
     </ion-row>
     <pre></pre>
-    <ion-row *ngIf="workouts.length > 0">
-      <ion-label style="text-align: center; color:#b27600; font-size: xx-large;">INTERVAL</ion-label>
+    <ion-row *ngIf="combinedWorkouts.length > 0">
       <ion-card 
-      *ngFor="let workout of workouts"
-      [style.background-color]="intervalCard(workout.daDate)"
-
-      (click)="onCardClick(workout?.id)"
-      style="margin-left: auto; margin-right: auto; width: 100%; color: black; font-size: x-large;" >
-        <ion-card-header >
-          <ion-card-subtitle style="color: black;font-size:medium;">{{workout.daDate}}</ion-card-subtitle>
+        *ngFor="let item of combinedWorkouts"
+        [style.background-color]="getCardBackground(item)"
+        (click)="onCardClick(item)"
+        style="margin-left: auto; margin-right: auto; width: 100%; color: black; font-size: x-large;" >
+        <ion-card-header>
+          <ion-card-subtitle style="text-align: left; color:black; font-size: x-large;">{{item.daDate}}</ion-card-subtitle>
         </ion-card-header>
-      
         <ion-card-content>
-          <ion-label style="font-size:x-large;">{{workout.wodCat}}</ion-label><br>
-          <ion-label style="font-size:large;">Style {{workout.wodStyle}} </ion-label><br>
-          <ion-label style="font-size:large;">Rounds {{workout.rounds}} </ion-label><br>
-          <ion-label style="font-size:large;">MPR {{workout.mpr}} </ion-label><br>
-
+          <ion-label style="font-size:x-large;">{{item.wodCat}}</ion-label><br>
+          <ion-label style="font-size:large;">Style {{item.wodStyle}}</ion-label><br>
+          <ion-label style="font-size:large;">Rounds {{item.rounds || item.tabataNum || item.ladderNum || item.emomNum || item.amrapNum}}</ion-label><br>
+          <ion-label style="font-size:large;">MPR {{item.mpr || item.mpt || item.mpl || item.mpe || item.mpa}}</ion-label><br>
         </ion-card-content>
-        <button class="dltbtn" (click)="deleteWorkout(workout.id)" style="text-align: end;background-color: #b27600; color:black ; "><ion-icon name="trash-outline" size="large" style="background-color: #b27600;border-radius: 10px;"></ion-icon></button>
+        <button class="dltbtn" (click)="deleteItem(item, $event)" style="text-align: end; background-color: #b27600; color:black;">
+          <ion-icon name="trash-outline" size="large" style="background-color: #b27600; border-radius: 10px;"></ion-icon>
+        </button>
       </ion-card>
-      
     </ion-row>
-    <pre></pre>
-    <!--tabata-->
-    <ion-row *ngIf="tabatas.length > 0">
-      <ion-label style="text-align: center; color:#b27600; font-size: xx-large;">TABATA</ion-label>
-      <ion-card 
-      *ngFor="let tabata of tabatas"
-      [style.background-color]="tabataCard(tabata.daDate)"
-      (click)="tabataClick(tabata.id)"
-      style="margin-left: auto; margin-right: auto; width: 100%; color: black; font-size: x-large;" >
-        <ion-card-header >
-       
-          <ion-card-subtitle style="color: black;font-size:medium;">{{tabata.daDate}}</ion-card-subtitle>
-        </ion-card-header>
-      
-        <ion-card-content>
-          <ion-label style="font-size:x-large;">{{tabata.wodCat}}</ion-label><br>
-          <ion-label style="font-size:large;">Style {{tabata.wodStyle}} </ion-label><br>
-          <ion-label style="font-size:large;">Number {{tabata.tabataNum}} </ion-label><br>
-          <ion-label style="font-size:large;">MPR {{tabata.mpt}} </ion-label><br>
+    
 
-        </ion-card-content>
-        <button class="dltbtn" (click)="deleteTabata(tabata.id)" style="text-align: end;background-color: #b27600; color:black ; "><ion-icon name="trash-outline" size="large" style="background-color: #b27600;border-radius: 10px;"></ion-icon></button>
-      </ion-card>
-      
-    </ion-row>
-    <pre></pre>
-     <!--ladder-->
-     <ion-row *ngIf="ladders.length > 0">
-      <ion-label style="text-align: center; color:#b27600; font-size: xx-large;">LADDER</ion-label>
-      <ion-card 
-      *ngFor="let ladder of ladders"
-      [style.background-color]="ladderCard(ladder.daDate)"
-      (click)="ladderClick(ladder.id)"
-      style="margin-left: auto; margin-right: auto; width: 100%; color: black; font-size: x-large;" >
-        <ion-card-header >
-       
-          <ion-card-subtitle style="color: black;font-size:medium;">{{ladder.daDate}}</ion-card-subtitle>
-        </ion-card-header>
-      
-        <ion-card-content>
-          <ion-label style="font-size:x-large;">{{ladder.wodCat}}</ion-label><br>
-          <ion-label style="font-size:large;">Style {{ladder.wodStyle}} </ion-label><br>
-          <ion-label style="font-size:large;">Number {{ladder.ladderNum}} </ion-label><br>
-          <ion-label style="font-size:large;">MPR {{ladder.mpl}} </ion-label><br>
-
-        </ion-card-content>
-        <button class="dltbtn" (click)="deleteLadder(ladder.id)" style="text-align: end;background-color: #b27600; color:black ; "><ion-icon name="trash-outline" size="large" style="background-color: #b27600;border-radius: 10px;"></ion-icon></button>
-      </ion-card>
-      
-    </ion-row>
-    <pre></pre>
-     <!--emoms-->
-     <ion-row *ngIf="emoms.length > 0">
-      <ion-label style="text-align: center; color:#b27600; font-size: xx-large;">EMOM</ion-label>
-      <ion-card 
-      *ngFor="let emom of emoms"
-      [style.background-color]="emomCard(emom.daDate)"
-      (click)="emomClick(emom.id)"
-      style="margin-left: auto; margin-right: auto; width: 100%; color: black; font-size: x-large;" >
-        <ion-card-header >
-       
-          <ion-card-subtitle style="color: black;font-size:medium;">{{emom.daDate}}</ion-card-subtitle>
-        </ion-card-header>
-      
-        <ion-card-content>
-          <ion-label style="font-size:x-large;">{{emom.wodCat}}</ion-label><br>
-          <ion-label style="font-size:large;">Style {{emom.wodStyle}} </ion-label><br>
-          <ion-label style="font-size:large;">Number {{emom.emomNum}} </ion-label><br>
-          <ion-label style="font-size:large;">MPR {{emom.mpe}} </ion-label><br>
-
-        </ion-card-content>
-        <button class="dltbtn" (click)="deleteEmom(emom.id)" style="text-align: end;background-color: #b27600; color:black ; "><ion-icon name="trash-outline" size="large" style="background-color: #b27600;border-radius: 10px;"></ion-icon></button>
-      </ion-card>
-      
-    </ion-row>
-    <pre></pre>
-     <!--emoms-->
-     <ion-row *ngIf="amraps.length > 0">
-      <ion-label style="text-align: center; color:#b27600; font-size: xx-large;">AMRAP</ion-label>
-      <ion-card 
-      *ngFor="let amrap of amraps"
-      [style.background-color]="amrapCard(amrap.daDate)"
-      (click)="amrapClick(amrap.id)"
-      style="margin-left: auto; margin-right: auto; width: 100%; color: black; font-size: x-large;" >
-        <ion-card-header >
-       
-          <ion-card-subtitle style="color: black;font-size:medium;">{{amrap.daDate}}</ion-card-subtitle>
-        </ion-card-header>
-      
-        <ion-card-content>
-          <ion-label style="font-size:x-large;">{{amrap.wodCat}}</ion-label><br>
-          <ion-label style="font-size:large;">Style {{amrap.wodStyle}} </ion-label><br>
-          <ion-label style="font-size:large;">Number {{amrap.amrapNum}} </ion-label><br>
-          <ion-label style="font-size:large;">MPA {{amrap.mpa}} </ion-label><br>
-
-        </ion-card-content>
-        <button class="dltbtn" (click)="deleteAmrap(amrap.id)" style="text-align: end;background-color: #b27600; color:black ; "><ion-icon name="trash-outline" size="large" style="background-color: #b27600;border-radius: 10px;"></ion-icon></button>
-      </ion-card>
-      
-    </ion-row>
+    
   </ion-grid>
  
 </ion-content>

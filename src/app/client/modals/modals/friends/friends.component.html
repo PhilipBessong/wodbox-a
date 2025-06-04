@@ -1,15 +1,92 @@
+<ion-header style="--ion-background-color: black;">
+  <ion-toolbar>
+    <ion-title color="warning">
+      Notifications
+    </ion-title>
+    <ion-buttons (click)="dismissModal()" slot="end">
+      <ion-button ><ion-icon name="close-outline" color="warning"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content>
+  <!--  modal content  -->
+<ion-row class="ion-justify-content-center">
+  <ion-searchbar
+  placeholder="Search"
+  style="color: white;"
+  (ionInput)="searchUsers($event)"></ion-searchbar>
+    <!--  search content  -->
+<ion-list>
+  <ion-item class="home-content" *ngFor="let user of users | async">
+    <ion-avatar slot="start">
+      <!--<ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>-->
+      <ion-icon
+      class="default-icon"
+      name="person-circle-outline"
+    ></ion-icon>
+    </ion-avatar>
+    <ion-label color="warning"> {{ user.email }} </ion-label>
+    <ion-button
+    slot="end"
+    color="primary"
+    (click)="sendFriendRequest(user.id, user.email)"
+  >
+    Add Friend
+  </ion-button>
+  </ion-item>
+</ion-list>
 
-<ion-content class="ion-padding modal-content">
-  <!-- Your modal content goes here -->
-  <ion-card>
+  <!--  friends content  -->
+  <ion-card style="width: 90%;">
     <ion-card-header>
-      <ion-button (click)="closeModal()">
-        <ion-icon name="close"></ion-icon>
-      </ion-button>
+      <ion-card-title style="color: aliceblue; font-size: large;">Friends</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      This is your modal content. You can customize it as needed.
+      <ion-list>
+        <ion-item *ngFor="let friend of friends">
+          <ion-avatar slot="start">
+            <ion-img *ngIf="friend.dpImage; else defaultIcon" [src]="friend.dpImage"></ion-img>
+            <ng-template #defaultIcon>
+              <ion-icon class="default-icon" name="person-circle-outline"></ion-icon>
+            </ng-template>
+          </ion-avatar>
+          <ion-label color="warning">{{ friend.fName }} {{ friend.lName }}</ion-label>
+          <ion-button class="frbtn" (click)="unFriend(friend.Id)">Unfriend</ion-button>
+
+        </ion-item>
+      </ion-list>
     </ion-card-content>
   </ion-card>
+  <!--  invites content  -->
+  <ion-card style="width: 90%;">
+    <ion-card-header>
+      <ion-card-title style="color: aliceblue; font-size: large;">Invites</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngIf="friendRequests$ | async as friendRequests; else noRequests">
+        <ion-item style="width: 100%;" *ngFor="let request of friendRequests">
+          <ion-avatar slot="start" style="margin: 2%;">
+            <img [src]="request.senderDp| safeUrl" alt="Sender Image" />
+          </ion-avatar>
+          <ion-label class="frlbl">
+           {{ request.senderFname }} {{ request.senderLname }}
+          </ion-label>
+          <ion-button class="frbtn" (click)="acceptRequest(request.id, request.senderId)">Accept</ion-button>
+          <ion-button class="frbtn" color="danger" (click)="declineRequest(request.id)">Decline</ion-button>
+        </ion-item>
+      </ion-list>
+      
+      <ng-template #noRequests>
+        <p>No friend requests</p>
+      </ng-template>
+    </ion-card-content>
+  </ion-card>
+
+  
+  
+  
+
+</ion-row>
+
 </ion-content>

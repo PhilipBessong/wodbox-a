@@ -3,10 +3,11 @@
     <ion-row class="ion-justify-content-center" *ngIf="workout.exeR1M2">
       <video
         class="full-screen-video"
-        controls
+     
         *ngIf="workout.exeR1M2.videoUrl"
         autoplay
         loop
+        muted
       >
         <source [src]="workout.exeR1M2.videoUrl" type="video/mp4" />
         <!-- Add more <source> elements for different video formats if needed -->

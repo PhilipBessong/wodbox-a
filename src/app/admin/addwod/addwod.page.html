@@ -91,11 +91,11 @@
                     border-radius: 10px;
                   "
                   placeholder="Select Rounds"
-                  [(ngModel)]="initForm.rounds"
-                  id="rounds"
                   [(ngModel)]="selectedNumber"
+                  (ngModelChange)="onNumberChange($event)"
                   max="4"
                   min="1"
+                  [value]="selectedNumber === null ? '' : selectedNumber"
                 >
                 </ion-input>
               </ion-row>
@@ -134,14 +134,15 @@
                 ></ion-input>
               </ion-row>
               <pre></pre>
-              <ion-row *ngIf="selectedNumber > 0">
+              <!--Round 1-->
+              <ion-row *ngIf="selectedNumber !== null && selectedNumber > 0">
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
                   >Round 1</ion-label
                 >
-                <ion-row style="width: 100%">
-                  <ion-col *ngIf="mprs > 0" style="padding-left: 15%; width: 30%;">
-                    <ion-select
+                <ion-row class="ion-justify-content-center" style="width: 100%">
+                  <ion-col *ngIf="mprs > 0" style="width: 30%;">
+                    <ion-input
                       placeholder="M1"
                       name="r1m1"
                       id="r1m1"
@@ -150,58 +151,57 @@
                         text-align: center;
                         width: 100%;
                         color: #b27600;
+                        border-color: #b27600;
+                        border-style: solid;
+                        border-radius: 10px;
                       "
-                       [(ngModel)]="initForm.r1m1"
-                      id="r1m1"
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
+                      [(ngModel)]="initForm.r1m1"
+                      (click)="openMoveSelection('r1m1')"
+                      readonly
+                    ></ion-input>
                   </ion-col>
+                
                   <ion-col *ngIf="mprs > 1" style="width: 30%;">
-                    <ion-select
-                      style="
-                        font-size: x-large;
-                        text-align: center;
-                        width: 100%;
-                        color: #b27600;
-                      "
+                    <ion-input
                       placeholder="M2"
                       name="r1m2"
                       id="r1m2"
-                      [(ngModel)]="initForm.r1m2"
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
-                  </ion-col>
-                  <ion-col *ngIf="mprs > 2" style="width: 30%;">
-                    <ion-select
                       style="
                         font-size: x-large;
                         text-align: center;
                         width: 100%;
                         color: #b27600;
+                        border-color: #b27600;
+                        border-style: solid;
+                        border-radius: 10px;
                       "
+                      [(ngModel)]="initForm.r1m2"
+                      (click)="openMoveSelection('r1m2')"
+                      readonly
+                    ></ion-input>
+                  </ion-col>
+                
+                  <ion-col *ngIf="mprs > 2" style="width: 30%;">
+                    <ion-input
                       placeholder="M3"
                       name="r1m3"
                       id="r1m3"
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                        color: #b27600;
+                        border-color: #b27600;
+                        border-style: solid;
+                        border-radius: 10px;
+                      "
                       [(ngModel)]="initForm.r1m3"
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      ></ion-select
-                    >
+                      (click)="openMoveSelection('r1m3')"
+                      readonly
+                    ></ion-input>
                   </ion-col>
                 </ion-row>
+                
                 <pre></pre>
                 <ion-row style="width: 100%">
                   <ion-col style="text-align: center">
@@ -217,7 +217,7 @@
                       type="number"
                       name="r1sets"
                       id="r1sets"
-                      placeholder="Sets"
+                      placeholder="sets"
                       style="
                         font-size: x-large;
                         text-align: center;
@@ -243,6 +243,7 @@
                       type="number"
                       name="r1move"
                       id="r1move"
+                      placeholder="move"
                       style="
                         font-size: x-large;
                         text-align: center;
@@ -264,6 +265,7 @@
                     <ion-input
                       type="number"
                       name="r1rest"
+                      placeholder="rest"
                       id="r1rest"
                       style="
                         font-size: x-large;
@@ -278,14 +280,14 @@
               </ion-row>
               <pre></pre>
               <!--Round 2-->
-              <ion-row *ngIf="selectedNumber > 1">
+              <ion-row *ngIf="selectedNumber !== null && selectedNumber > 1">
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
                   >Round 2</ion-label
                 >
-                <ion-row style="width: 100%">
-                  <ion-col *ngIf="mprs>0" style="padding-left: 15%; width: 30%;">
-                    <ion-select
+                <ion-row class="ion-justify-content-center" style="width: 100%">
+                  <ion-col *ngIf="mprs > 0" style="width: 30%;">
+                    <ion-input
                       placeholder="M1"
                       name="r2m1"
                       id="r2m1"
@@ -294,55 +296,54 @@
                         text-align: center;
                         width: 100%;
                         color: #b27600;
+                        border-color: #b27600;
+                        border-style: solid;
+                        border-radius: 10px;
                       "
                       [(ngModel)]="initForm.r2m1"
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
+                      (click)="openMoveSelection('r2m1')"
+                      readonly
+                    ></ion-input>
                   </ion-col>
+                
                   <ion-col *ngIf="mprs > 1" style="width: 30%;">
-                    <ion-select
-                      style="
-                        font-size: x-large;
-                        text-align: center;
-                        width: 100%;
-                        color: #b27600;
-                      "
+                    <ion-input
                       placeholder="M2"
                       name="r2m2"
                       id="r2m2"
-                      [(ngModel)]="initForm.r2m2"
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      ></ion-select
-                    >
-                  </ion-col>
-                  <ion-col *ngIf="mprs > 2" style="width: 30%;">
-                    <ion-select
                       style="
                         font-size: x-large;
                         text-align: center;
                         width: 100%;
                         color: #b27600;
+                        border-color: #b27600;
+                        border-style: solid;
+                        border-radius: 10px;
                       "
+                      [(ngModel)]="initForm.r2m2"
+                      (click)="openMoveSelection('r2m2')"
+                      readonly
+                    ></ion-input>
+                  </ion-col>
+                
+                  <ion-col *ngIf="mprs > 2" style="width: 30%;">
+                    <ion-input
                       placeholder="M3"
                       name="r2m3"
                       id="r2m3"
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                        color: #b27600;
+                        border-color: #b27600;
+                        border-style: solid;
+                        border-radius: 10px;
+                      "
                       [(ngModel)]="initForm.r2m3"
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      ></ion-select
-                    >
+                      (click)="openMoveSelection('r2m3')"
+                      readonly
+                    ></ion-input>
                   </ion-col>
                 </ion-row>
                 <pre></pre>
@@ -360,7 +361,7 @@
                       type="number"
                       name="r2sets"
                       id="r2sets"
-                      placeholder="Sets"
+                      placeholder="sets"
                       style="
                         font-size: x-large;
                         text-align: center;
@@ -386,6 +387,7 @@
                     [(ngModel)]="initForm.r2move"
                       type="number"
                       name="r2move"
+                      placeholder="move"
                       id="r2move"
                       style="
                         font-size: x-large;
@@ -408,6 +410,7 @@
                     [(ngModel)]="initForm.r2rest"
                       type="number"
                       name="r2rest"
+                      placeholder="rest"
                       id="r2rest"
                       style="
                         font-size: x-large;
@@ -421,14 +424,14 @@
               </ion-row>
               <pre></pre>
               <!--Round 3-->
-              <ion-row *ngIf="selectedNumber > 2">
+              <ion-row *ngIf="selectedNumber !== null && selectedNumber > 2">
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
                   >Round 3</ion-label
                 >
-                <ion-row style="width: 100%">
-                  <ion-col *ngIf="mprs > 0" style="padding-left: 15%; width: 30%;">
-                    <ion-select
+                <ion-row class="ion-justify-content-center" style="width: 100%">
+                  <ion-col *ngIf="mprs > 0" style="width: 30%;">
+                    <ion-input
                       placeholder="M1"
                       name="r3m1"
                       id="r3m1"
@@ -437,55 +440,54 @@
                         text-align: center;
                         width: 100%;
                         color: #b27600;
+                        border-color: #b27600;
+                        border-style: solid;
+                        border-radius: 10px;
                       "
-                [(ngModel)]="initForm.r3m1"
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
+                      [(ngModel)]="initForm.r3m1"
+                      (click)="openMoveSelection('r3m1')"
+                      readonly
+                    ></ion-input>
                   </ion-col>
+                
                   <ion-col *ngIf="mprs > 1" style="width: 30%;">
-                    <ion-select
-                      style="
-                        font-size: x-large;
-                        text-align: center;
-                        width: 100%;
-                        color: #b27600;
-                      "
+                    <ion-input
                       placeholder="M2"
                       name="r3m2"
                       id="r3m2"
-                      [(ngModel)]="initForm.r3m2"
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      ></ion-select
-                    >
-                  </ion-col>
-                  <ion-col *ngIf="mprs > 2" style="width: 30%;">
-                    <ion-select
                       style="
                         font-size: x-large;
                         text-align: center;
                         width: 100%;
                         color: #b27600;
+                        border-color: #b27600;
+                        border-style: solid;
+                        border-radius: 10px;
                       "
+                      [(ngModel)]="initForm.r3m2"
+                      (click)="openMoveSelection('r3m2')"
+                      readonly
+                    ></ion-input>
+                  </ion-col>
+                
+                  <ion-col *ngIf="mprs > 2" style="width: 30%;">
+                    <ion-input
                       placeholder="M3"
                       name="r3m3"
                       id="r3m3"
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                        color: #b27600;
+                        border-color: #b27600;
+                        border-style: solid;
+                        border-radius: 10px;
+                      "
                       [(ngModel)]="initForm.r3m3"
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      ></ion-select
-                    >
+                      (click)="openMoveSelection('r3m3')"
+                      readonly
+                    ></ion-input>
                   </ion-col>
                 </ion-row>
                 <pre></pre>
@@ -503,7 +505,7 @@
                       type="number"
                       name="r3sets"
                       id="r3sets"
-                      placeholder="Sets"
+                      placeholder="sets"
                       style="
                         font-size: x-large;
                         text-align: center;
@@ -528,6 +530,7 @@
                     <ion-input
                     [(ngModel)]="initForm.r3move"
                       type="number"
+                      placeholder="move"
                       name="r3move"
                       id="r3move"
                       style="
@@ -552,6 +555,7 @@
                       type="number"
                       name="r3rest"
                       id="r3rest"
+                      placeholder="rest"
                       style="
                         font-size: x-large;
                         text-align: center;
@@ -564,14 +568,14 @@
               </ion-row>
               <pre></pre>
               <!--round 4-->
-              <ion-row *ngIf="selectedNumber > 3">
+              <ion-row *ngIf="selectedNumber !== null && selectedNumber > 3">
                 <ion-label
                   style="font-size: x-large; text-align: center; width: 100%"
                   >Round 4</ion-label
                 >
-                <ion-row style="width: 100%">
-                  <ion-col *ngIf="mprs>0" style="padding-left: 15%; width: 30%;">
-                    <ion-select
+                <ion-row class="ion-justify-content-center" style="width: 100%">
+                  <ion-col *ngIf="mprs > 0" style="width: 30%;">
+                    <ion-input
                       placeholder="M1"
                       name="r4m1"
                       id="r4m1"
@@ -580,58 +584,54 @@
                         text-align: center;
                         width: 100%;
                         color: #b27600;
+                        border-color: #b27600;
+                        border-style: solid;
+                        border-radius: 10px;
                       "
                       [(ngModel)]="initForm.r4m1"
-                      id="r4m1"
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      >
-                    </ion-select>
+                      (click)="openMoveSelection('r4m1')"
+                      readonly
+                    ></ion-input>
                   </ion-col>
+                
                   <ion-col *ngIf="mprs > 1" style="width: 30%;">
-                    <ion-select
-                      style="
-                        font-size: x-large;
-                        text-align: center;
-                        width: 100%;
-                        color: #b27600;
-                      "
+                    <ion-input
                       placeholder="M2"
                       name="r4m2"
                       id="r4m2"
-                      [(ngModel)]="initForm.r4m2"
-                      id="r4m2"
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      ></ion-select
-                    >
-                  </ion-col>
-                  <ion-col *ngIf="mprs > 2" style="width: 30%;">
-                    <ion-select
                       style="
                         font-size: x-large;
                         text-align: center;
                         width: 100%;
                         color: #b27600;
+                        border-color: #b27600;
+                        border-style: solid;
+                        border-radius: 10px;
                       "
+                      [(ngModel)]="initForm.r4m2"
+                      (click)="openMoveSelection('r4m2')"
+                      readonly
+                    ></ion-input>
+                  </ion-col>
+                
+                  <ion-col *ngIf="mprs > 2" style="width: 30%;">
+                    <ion-input
                       placeholder="M3"
                       name="r4m3"
                       id="r4m3"
+                      style="
+                        font-size: x-large;
+                        text-align: center;
+                        width: 100%;
+                        color: #b27600;
+                        border-color: #b27600;
+                        border-style: solid;
+                        border-radius: 10px;
+                      "
                       [(ngModel)]="initForm.r4m3"
-                      id="r4m3"
-                    >
-                      <ion-select-option
-                        *ngFor="let move of moves"
-                        [value]="move.exeName"
-                        >{{move.exeName}}</ion-select-option
-                      ></ion-select
-                    >
+                      (click)="openMoveSelection('r4m3')"
+                      readonly
+                    ></ion-input>
                   </ion-col>
                 </ion-row>
                 <pre></pre>
@@ -649,7 +649,7 @@
                       type="number"
                       name="r4sets"
                       id="r4sets"
-                      placeholder="Sets"
+                      placeholder="sets"
                       style="
                         font-size: x-large;
                         text-align: center;
@@ -676,6 +676,7 @@
                     [(ngModel)]="initForm.r4move"
                       id="r4move"
                       type="number"
+                      placeholder="move"
                       name="r4move"
                       id="r4move"
                       style="
@@ -699,6 +700,7 @@
                     [(ngModel)]="initForm.r4rest"
                       id="r4rest"
                       type="number"
+                      placeholder="rest"
                       name="r4rest"
                       id="r4rest"
                       style="
@@ -706,13 +708,13 @@
                         text-align: center;
                         color: #b27600;
                       "
-                      placeholder="rest sec"
+                 
                       min="1"
                     />
                   </ion-col>
                 </ion-row>
               </ion-row>
-              <pre></pre>
+              
               <div *ngIf="showErrorCard" class="error-card">
                 <div class="error-message">
                   A Wod with the same date and category already exists.
@@ -720,32 +722,28 @@
                 <button (click)="hideErrorCard()" class="close-btn">Close</button>
               </div>
               
-              <ion-row>
-                <ion-label
-                  style="font-size: x-large; text-align: center; width: 100%"
-                  >Select a Date:</ion-label
-                >
-                <ion-input
-                  style="font-size: x-large; text-align: center; color: #b27600"
-                  type="Date"
-                  name="daDate"
-                  id="daDate"
-                  [(ngModel)]="initForm.daDate"
-                  id="daDate"
-                ></ion-input>
-              </ion-row>
-              <pre></pre>
-              <ion-row>
-                <div style="text-align: center">
-                  <pre></pre>
-                </div>
+              <ion-row class="ion-justify-content-center ion-align-items-center">
+                <ion-row class="ion-justify-content-center" style="width: 100%;">
+                  <ion-label style="font-size: x-large; display: block;">Select a Date:</ion-label>
+                </ion-row>
+                <ion-row>
+                  <div style="margin-left: auto;margin-right: auto;">
+                    <ion-input
+                    style="font-size: x-large; text-align: center; color: #b27600;"
+                    type="date"
+                    name="daDate"
+                    id="daDate"
+                    [(ngModel)]="initForm.daDate"
+                  ></ion-input>
+                  </div>
+                </ion-row>
               </ion-row>
             </ion-grid>
           </div>
           <div style="text-align: center">
             <ion-button
               style="
-                font-size: xxx-large;
+                font-size: xx-large;
                 margin-left: auto;
                 margin-right: auto;
                 border-radius: 10%;

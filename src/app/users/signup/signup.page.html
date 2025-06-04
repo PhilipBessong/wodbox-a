@@ -1,16 +1,14 @@
 
 
-<ion-content [fullscreen]="true"  style="--ion-background-color: black">
-  <ion-grid style="height: 100%">
-    <ion-row justify-content-center align-items-center style="height: 100%">
-      <ion-card style="width: 100%">
-        <form (ngSubmit)="signUp()" #userForm="ngForm">
+<ion-content [fullscreen]="true"  style="--ion-background-color: black; width: 100%;">
+  <ion-grid style="height: 100%;">
+    <ion-row justify-content-center align-items-center style="height: 100%;">
+      <ion-card style="width: 100%;background-color: black;">
+        <form (ngSubmit)="signUp()" #userForm="ngForm" >
           <div class="container">
-            <pre></pre>
             <div class="row">
-              <div class="logocon">
-                <ion-img src="assets/imgs/wodboxlogo2.0.png" id="logo"></ion-img>
-
+              <div class="logocon" style="text-align: center; margin-bottom: 20px;">
+                <ion-img src="assets/imgs/wodboxlogo2.0.png" id="logo" style="width: 150px;"></ion-img>
               </div>
             </div>
             <div class="row">
@@ -18,10 +16,21 @@
               style="text-align: center; color: #b27600; font-size: xxx-large"
             >
               <b style="font-size:xxx-large ;color: #b25900;">W</b>OD<b style="font-size:xxx-large ; color: #b25900;">B</b>OX
-            </h1>            </div>
-            <pre></pre>
+            </h1>            
+            </div>
             <div class="row">
               <h1 style="text-align: center; color: #b27600;">Sign Up</h1>
+            </div>
+            <pre></pre>
+            <div class="row">
+              <div class="profile-container" style="text-align: center;">
+               
+                  <img (click)="selectImage()" class="profile-picture" *ngIf="profileImage" [src]="profileImage" alt="Profile Image" />
+                  <ion-icon (click)="selectImage()" *ngIf="!profileImage" name="camera" style="font-size: 50px; color: #b27600;"></ion-icon>
+
+              </div>
+              <input type="file" (change)="onFileSelected($event)" hidden #fileInput>
+              
             </div>
             <pre></pre>
             <div class="row">
@@ -61,18 +70,42 @@
             </div>
             <pre></pre>
             <div>
-              <ion-input
-                type="password"
-                name="password"
-                style="font-size: x-large; text-align: center; border: #b27600; border-style: solid;border-radius: 10px; width: 100%; height: 52px;font-size: x-large; text-align: center; color: #b27600; margin-left: auto;
-                margin-right: auto; width: 90%;"
-                placeholder="Password"
-                [(ngModel)]="password"
-                required
-              ></ion-input>
+              <ion-item style="border: #b27600; border-style: solid;border-radius: 10px; width: 90%; margin: 0 auto;">
+                <ion-input
+                  [type]="showPassword ? 'text' : 'password'"
+                  name="password"
+                  style="font-size: x-large; text-align: center; color: #b27600;"
+                  placeholder="Password"
+                  [(ngModel)]="password"
+                  required
+                ></ion-input>
+                <ion-icon
+                  [name]="showPassword ? 'eye-off' : 'eye'"
+                  slot="end"
+                  style="cursor: pointer; color: #b27600;"
+                  (click)="togglePasswordVisibility()"
+                ></ion-icon>
+              </ion-item>
             </div>
             <pre></pre>
-            
+            <div>
+              <ion-item style="border: #b27600; border-style: solid;border-radius: 10px; width: 90%; margin: 0 auto;">
+                <ion-input
+                  [type]="showConfirmPassword ? 'text' : 'password'"
+                  name="confirmPassword"
+                  style="font-size: x-large; text-align: center; color: #b27600;"
+                  placeholder="Confirm Password"
+                  [(ngModel)]="confirmPassword"
+                  required
+                ></ion-input>
+                <ion-icon
+                  [name]="showConfirmPassword ? 'eye-off' : 'eye'"
+                  slot="end"
+                  style="cursor: pointer; color: #b27600;"
+                  (click)="toggleConfirmPasswordVisibility()"
+                ></ion-icon>
+              </ion-item>
+            </div>
             <pre></pre>
             <div style="text-align: center">
               <ion-button color="#b27600"
