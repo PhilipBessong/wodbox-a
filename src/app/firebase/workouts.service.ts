@@ -258,11 +258,19 @@ export class WorkoutsService {
   private amrapCollection: AngularFirestoreCollection<Amrap>;
   private readonly acollectionName = 'amrap';
   constructor(private firestore: AngularFirestore) {
-    this.workoutCollection = this.firestore.collection<Workout>(this.collectionName);
-    this.tabataCollection = this.firestore.collection<Tabata>(this.tcollectionName );
-    this.ladderCollection = this.firestore.collection<Ladder>(this.lcollectionName);
+    this.workoutCollection = this.firestore.collection<Workout>(
+      this.collectionName
+    );
+    this.tabataCollection = this.firestore.collection<Tabata>(
+      this.tcollectionName
+    );
+    this.ladderCollection = this.firestore.collection<Ladder>(
+      this.lcollectionName
+    );
     this.emomCollection = this.firestore.collection<Emom>(this.ecollectionName);
-    this.amrapCollection = this.firestore.collection<Amrap>(this.acollectionName);
+    this.amrapCollection = this.firestore.collection<Amrap>(
+      this.acollectionName
+    );
   }
 
   // Create a new workout
@@ -299,8 +307,8 @@ export class WorkoutsService {
   getLadderById(id: string): Observable<Ladder | undefined> {
     return this.ladderCollection.doc<Ladder>(id).valueChanges();
   }
-   // Get a specific tabata by ID
-   getEmomById(id: string): Observable<Emom | undefined> {
+  // Get a specific tabata by ID
+  getEmomById(id: string): Observable<Emom | undefined> {
     return this.emomCollection.doc<Emom>(id).valueChanges();
   }
   getAmrapById(id: string): Observable<Amrap | undefined> {
@@ -308,7 +316,10 @@ export class WorkoutsService {
   }
 
   // Update a workout
-  updateWorkout(id: string | undefined, updatedWorkout: Partial<Workout>): Promise<void> {
+  updateWorkout(
+    id: string | undefined,
+    updatedWorkout: Partial<Workout>
+  ): Promise<void> {
     const intervalRef = this.workoutCollection.doc(id);
     return intervalRef.update(updatedWorkout);
   }
@@ -323,16 +334,16 @@ export class WorkoutsService {
     const ladderRef = this.ladderCollection.doc(id); // Ensure tabataId is not empty
     return ladderRef.update(updatedLadder);
   }
-    // Update a emoms
-    updateEmom(id: string, updatedEmom: Partial<Emom>): Promise<void> {
-      const emomeRef = this.emomCollection.doc(id); // Ensure tabataId is not empty
-      return emomeRef.update(updatedEmom);
-    }
-      // Update a emoms
-      updateAmrap(id: string, updatedAmrap: Partial<Amrap>): Promise<void> {
-        const amrapRef = this.amrapCollection.doc(id); // Ensure tabataId is not empty
-        return amrapRef.update(updatedAmrap);
-      }
+  // Update a emoms
+  updateEmom(id: string, updatedEmom: Partial<Emom>): Promise<void> {
+    const emomeRef = this.emomCollection.doc(id); // Ensure tabataId is not empty
+    return emomeRef.update(updatedEmom);
+  }
+  // Update a emoms
+  updateAmrap(id: string, updatedAmrap: Partial<Amrap>): Promise<void> {
+    const amrapRef = this.amrapCollection.doc(id); // Ensure tabataId is not empty
+    return amrapRef.update(updatedAmrap);
+  }
 
   // Delete a workout
   deleteWorkout(id: string | undefined): Promise<void> {
@@ -520,14 +531,13 @@ export class WorkoutsService {
       date1.getDate() === date2.getDate()
     );
   }
-  
 
   ///////////////wodstyle/////////////////
   private wodStyles: Style[] = [
     new Style(
       'EMOM',
-      'Complete all movements in order within each minute, resting for the remaining time. If you can\'t finish within 45 seconds, rest for the remainder of the minute.'
-    ),    
+      "Complete all movements in order within each minute, resting for the remaining time. If you can't finish within 45 seconds, rest for the remainder of the minute."
+    ),
     new Style(
       'TABATA',
       'It consists of performing an exercise at maximum effort for 20 seconds, followed by a 10-second rest and repeating this cycle for a total of eight rounds.'
@@ -817,7 +827,7 @@ export class WorkoutsService {
     return of(exercise);
   }
 
-  async  enableKeepAwake() {
+  async enableKeepAwake() {
     try {
       await KeepAwake.keepAwake();
       console.log('Screen will stay awake.');
@@ -825,16 +835,13 @@ export class WorkoutsService {
       console.error('Failed to keep the screen awake:', error);
     }
   }
-  
-  async  disableKeepAwake() {
+
+  async disableKeepAwake() {
     try {
       await KeepAwake.allowSleep();
       console.log('Screen can now sleep.');
     } catch (error) {
       console.error('Failed to allow sleep:', error);
     }
-  } 
-  
-  
-  
+  }
 }

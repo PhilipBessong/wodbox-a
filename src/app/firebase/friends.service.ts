@@ -15,12 +15,13 @@ export class FriendsService {
 
   constructor(private afs: AngularFirestore, private auth: FirebaseAuthService) {}
 
-   sendMotivation(senderId: string, receiverId: string, fName: string, lName: string, dpImage: string) {
+   sendMotivation(senderId: string,   friendId: string, fName: string, lName: string, dpImage: string) {
   return this.afs
     .collection('motivations')
     .add({
       message: `${fName} ${lName} wants you motivated!`,
       senderId,
+      friendId,
       timestamp: new Date(),
       dpImage
     });

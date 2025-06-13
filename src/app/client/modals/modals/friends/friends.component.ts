@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
-import { Observable, BehaviorSubject, of,firstValueFrom } from 'rxjs';
+import { Observable, BehaviorSubject, of,firstValueFrom, forkJoin } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { switchMap, map, take  } from 'rxjs/operators';
 import firebase from 'firebase/compat/app';
@@ -18,6 +18,7 @@ export class FriendsComponent implements OnInit {
   users: Observable<any[]>;
   friends: any[] = [];
   motives: any[] = [];
+motivations$: Observable<any[]> = of([]);
 
   constructor(
     private authService: FirebaseAuthService,
@@ -31,7 +32,7 @@ export class FriendsComponent implements OnInit {
   ngOnInit() {
     this.friendRequests$ = this.getFriendRequests();
     this.loadFriends();
-    this.loadMotives
+    //this.loadMotives();
     this.users = this.searchTermSubject.pipe(
       switchMap((searchTerm) => {
         if (searchTerm && searchTerm.trim() !== '') {
@@ -56,7 +57,16 @@ export class FriendsComponent implements OnInit {
         }
       })
     );
-   
+   this.authService.getCurrentUser().pipe(take(1)).subscribe(currentUser => {
+    if (currentUser?.uid) {
+      this.motivations$ = this.firestore
+        .collection('motivations', ref => ref
+          .where('friendId', '==', currentUser.uid)
+          .orderBy('timestamp', 'desc')
+        )
+        .valueChanges();
+    }
+  });
   }
   getFriendRequests(): Observable<any[]> {
     return this.authService.getCurrentUser().pipe(
@@ -86,30 +96,38 @@ export class FriendsComponent implements OnInit {
     );
   }
   loadFriends() {
-    this.authService.getCurrentUser().pipe(take(1)).subscribe((currentUser) => {
-      if (currentUser?.uid) {
-        this.firestore
-          .doc(`users/${currentUser.uid}`)
-          .valueChanges()
-          .pipe(take(1))
-          .subscribe((userData: any) => {
-            const friendUIDs: string[] = userData?.friends || [];
-            if (friendUIDs.length > 0) {
+  this.authService.getCurrentUser().pipe(take(1)).subscribe((currentUser) => {
+    if (currentUser?.uid) {
+      this.firestore
+        .doc(`users/${currentUser.uid}`)
+        .valueChanges()
+        .pipe(take(1))
+        .subscribe((userData: any) => {
+          const friendUIDs: string[] = userData?.friends || [];
+
+          if (friendUIDs.length > 0) {
+            const friendChunks = this.chunkArray(friendUIDs, 10); // Max 10 per Firestore query
+            const observables = friendChunks.map(chunk =>
               this.firestore
-                .collection('users', (ref) => ref.where(
-                  firebase.firestore.FieldPath.documentId(), 'in', friendUIDs.slice(0, 10) // Firestore allows max 10 items for 'in'
-                ))
+                .collection('users', ref =>
+                  ref.where(firebase.firestore.FieldPath.documentId(), 'in', chunk)
+                )
                 .valueChanges({ idField: 'id' })
-                .subscribe((friendList: any[]) => {
-                  this.friends = friendList;
-                });
-            } else {
-              this.friends = [];
-            }
-          });
-      }
-    });
-  }
+                .pipe(take(1))
+            );
+
+            // Combine all chunk results into one array
+            forkJoin(observables).subscribe((chunkedResults: any[][]) => {
+              this.friends = chunkedResults.reduce((acc, curr) => acc.concat(curr), []);
+            });
+          } else {
+            this.friends = [];
+          }
+        });
+    }
+  });
+}
+
    loadMotives() {
     this.authService.getCurrentUser().pipe(take(1)).subscribe((currentUser) => {
       if (currentUser?.uid) {
@@ -135,6 +153,43 @@ export class FriendsComponent implements OnInit {
       }
     });
   }
+  motivateAllFriends() {
+  this.authService.getCurrentUser().pipe(take(1)).subscribe(async (currentUser: User | null) => {
+    if (!currentUser || !currentUser.uid) return;
+
+    const senderId = currentUser.uid;
+    const fName = currentUser.fName || '';
+    const lName = currentUser.lName || '';
+    const dpImage = currentUser.dpImage || '';
+
+    // Loop through the friends list
+    const sendPromises = this.friends.map(friend => {
+      return this.friendsService.sendMotivation(
+        senderId,
+        friend.id,
+        fName,
+        lName,
+        dpImage
+      );
+    });
+
+    try {
+      await Promise.all(sendPromises);
+      this.showToast('Motivations sent to all friends!');
+    } catch (error) {
+      console.error('Error sending motivations:', error);
+      this.showToast('Failed to send some motivations.');
+    }
+  });
+}
+chunkArray<T>(arr: T[], chunkSize: number): T[][] {
+  const results: T[][] = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    results.push(arr.slice(i, i + chunkSize));
+  }
+  return results;
+}
+
   
   searchUsers(event: any) {
     const searchTerm: string = event.target.value.toLowerCase();
