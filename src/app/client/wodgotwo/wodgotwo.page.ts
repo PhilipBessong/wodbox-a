@@ -9,11 +9,11 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { App } from '@capacitor/app';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { Observable, BehaviorSubject, firstValueFrom} from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ModalController } from '@ionic/angular';
-import { FirebaseAuthService } from 'src/app/firebase/auth/firebase-auth.service';
+import { ModalController, ToastController } from '@ionic/angular';
+import { FirebaseAuthService, User } from 'src/app/firebase/auth/firebase-auth.service';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { FriendsComponent } from '../modals/modals/friends/friends.component';
 import {
@@ -25,6 +25,8 @@ import {
   Amrap,
   WorkoutsService,
 } from 'src/app/firebase/workouts.service';
+import firebase from 'firebase/compat/app';
+import { FriendsService } from 'src/app/firebase/friends.service';
 import { ScreenOrientation } from '@capacitor/screen-orientation';
 import { A1m1Component } from 'src/app/vidmods/a1m1/a1m1.component';
 import { A1m2Component } from 'src/app/vidmods/a1m2/a1m2.component';
@@ -167,8 +169,10 @@ export class WodgotwoPage implements OnInit {
     private sanitizer: DomSanitizer,
     private router: Router,
     @Inject(ModalController) private modalController: ModalController,
+    private toastController: ToastController,
     private workoutsService: WorkoutsService,
     private firestore: AngularFirestore,
+        private friendsService: FriendsService,
     private authService: FirebaseAuthService
   ) {
     this.audio = new Audio('assets/go.mp3');
@@ -215,7 +219,7 @@ export class WodgotwoPage implements OnInit {
   this.beepmp3 = new Audio('assets/beep.mp3');
   this.beepmp3.preload = 'auto';
   this.beepmp3.load();
-  
+  this.loadFriends();
     this.getSpecificWorkout();
     this.getSpecificTabataWod();
     this.getIonContentClass();
@@ -6523,6 +6527,62 @@ toggleLadderlblVisibility() {
     }
     this.cdr4m3Rest = undefined;
   }
+
+  showConfetti = false;
+   friends: any[] = [];
+  motivateAllFriends() {
+      this.authService
+        .getCurrentUser()
+        .pipe(take(1))
+        .subscribe(async (currentUser: User | null) => {
+          if (!currentUser?.uid) return;
+  
+          const senderId = currentUser.uid;
+  
+          // 🔥 Fetch full user profile from Firestore
+          const userDoc = await firstValueFrom(
+            this.firestore.doc(`users/${senderId}`).valueChanges()
+          );
+  
+          const fName = (userDoc as any)?.fName || '';
+          const lName = (userDoc as any)?.lName || '';
+          const dpImage = (userDoc as any)?.dpImage || '';
+  
+          const sendPromises = this.friends.map((friend) => {
+            return this.friendsService.sendMotivation(
+              senderId,
+              friend.id,
+              fName,
+              lName,
+              dpImage
+            );
+          });
+  
+          try {
+            await Promise.all(sendPromises);
+             this.showMotivatedConfetti();
+          } catch (error) {
+            console.error('Error sending motivations:', error);
+            this.showToast('Failed to send some motivations.');
+          }
+        });
+    }
+  
+  showMotivatedConfetti() {
+    this.showConfetti = true;
+    setTimeout(() => {
+      this.showConfetti = false;
+    }, 2000);
+  }
+
+  async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      position: 'bottom',
+    });
+    toast.present();
+  }
   async ofvl1m1(videoUrl: string) {
     // Lock screen orientation to landscape
     await ScreenOrientation.lock({
@@ -7516,4 +7576,29 @@ toggleLadderlblVisibility() {
     // Handle any errors related to the video loading here
     console.error('Video failed to load');
   }
+  loadFriends() {
+      this.authService.getCurrentUser().pipe(take(1)).subscribe((currentUser) => {
+        if (currentUser?.uid) {
+          this.firestore
+            .doc(`users/${currentUser.uid}`)
+            .valueChanges()
+            .pipe(take(1))
+            .subscribe((userData: any) => {
+              const friendUIDs: string[] = userData?.friends || [];
+              if (friendUIDs.length > 0) {
+                this.firestore
+                  .collection('users', (ref) => ref.where(
+                    firebase.firestore.FieldPath.documentId(), 'in', friendUIDs.slice(0, 10) // Firestore allows max 10 items for 'in'
+                  ))
+                  .valueChanges({ idField: 'id' })
+                  .subscribe((friendList: any[]) => {
+                    this.friends = friendList;
+                  });
+              } else {
+                this.friends = [];
+              }
+            });
+        }
+      });
+    }
 }

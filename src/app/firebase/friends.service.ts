@@ -20,12 +20,38 @@ export class FriendsService {
     .collection('motivations')
     .add({
       message: `${fName} ${lName} wants you motivated!`,
+      fName,
+      lName,
       senderId,
       friendId,
       timestamp: new Date(),
       dpImage
     });
 }
+async deleteOldMotivations() {
+  const now = new Date();
+  const cutoff = new Date(now.getTime() - 24 * 60 * 60 * 1000); // 24 hours ago
+
+  const oldMotivationsSnapshot = await this.afs
+    .collection('motivations', ref => ref.where('timestamp', '<=', cutoff))
+    .get()
+    .toPromise();
+
+  if (!oldMotivationsSnapshot || oldMotivationsSnapshot.empty) {
+    console.log('No old motivations to delete');
+    return;
+  }
+
+  const batch = this.afs.firestore.batch();
+
+  oldMotivationsSnapshot.forEach(doc => {
+    batch.delete(doc.ref);
+  });
+
+  await batch.commit();
+  console.log(`Deleted ${oldMotivationsSnapshot.size} old motivations`);
+}
+
 
 
   sendFriendRequest(senderId: string, receiverId: string, senderfName: string | null | undefined, senderlName: string | null | undefined,senderDp: string | null | undefined) {

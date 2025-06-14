@@ -4,7 +4,7 @@ import { App } from '@capacitor/app';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { map, switchMap, take } from 'rxjs/operators';
-import { FirebaseAuthService } from 'src/app/firebase/auth/firebase-auth.service';
+import { FirebaseAuthService, User } from 'src/app/firebase/auth/firebase-auth.service';
 import { Observable, BehaviorSubject, firstValueFrom  } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
@@ -208,7 +208,7 @@ export class WodonPage implements OnInit {
   this.beepmp3 = new Audio('assets/beep.mp3');
   this.beepmp3.preload = 'auto';
   this.beepmp3.load();
-  
+  this.loadFriends();
     this.getSpecificWOD();
     this.getIonContentClass();
     this.getSpecificTabata();
@@ -6363,6 +6363,8 @@ cdr8m1Show = true;
    }
    this.cdr4m3Rest = undefined;
  }
+
+ 
  async openFullscreenVideo(videoUrl: string) {
   // Lock screen orientation to landscape
   await ScreenOrientation.lock({
@@ -7184,6 +7186,43 @@ const modal = await this.modalController.create({
     });
   }
   
+  motivateAllFriends() {
+      this.authService
+        .getCurrentUser()
+        .pipe(take(1))
+        .subscribe(async (currentUser: User | null) => {
+          if (!currentUser?.uid) return;
+  
+          const senderId = currentUser.uid;
+  
+          // 🔥 Fetch full user profile from Firestore
+          const userDoc = await firstValueFrom(
+            this.firestore.doc(`users/${senderId}`).valueChanges()
+          );
+  
+          const fName = (userDoc as any)?.fName || '';
+          const lName = (userDoc as any)?.lName || '';
+          const dpImage = (userDoc as any)?.dpImage || '';
+  
+          const sendPromises = this.friends.map((friend) => {
+            return this.friendsService.sendMotivation(
+              senderId,
+              friend.id,
+              fName,
+              lName,
+              dpImage
+            );
+          });
+  
+          try {
+            await Promise.all(sendPromises);
+             this.showMotivatedConfetti();
+          } catch (error) {
+            console.error('Error sending motivations:', error);
+            this.showToast('Failed to send some motivations.');
+          }
+        });
+    }
   
   showMotivatedConfetti() {
     this.showConfetti = true;

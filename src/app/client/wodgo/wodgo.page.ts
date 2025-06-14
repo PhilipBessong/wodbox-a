@@ -8,7 +8,7 @@ import { map, switchMap, take } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import 'firebase/compat/firestore';
 import { ModalController, ToastController } from '@ionic/angular';
-import { FirebaseAuthService } from 'src/app/firebase/auth/firebase-auth.service';
+import { FirebaseAuthService, User } from 'src/app/firebase/auth/firebase-auth.service';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { FriendsComponent } from '../modals/modals/friends/friends.component';
 import {
@@ -7213,7 +7213,43 @@ motivateFriends() {
     }
   });
 }
+motivateAllFriends() {
+    this.authService
+      .getCurrentUser()
+      .pipe(take(1))
+      .subscribe(async (currentUser: User | null) => {
+        if (!currentUser?.uid) return;
 
+        const senderId = currentUser.uid;
+
+        // 🔥 Fetch full user profile from Firestore
+        const userDoc = await firstValueFrom(
+          this.firestore.doc(`users/${senderId}`).valueChanges()
+        );
+
+        const fName = (userDoc as any)?.fName || '';
+        const lName = (userDoc as any)?.lName || '';
+        const dpImage = (userDoc as any)?.dpImage || '';
+
+        const sendPromises = this.friends.map((friend) => {
+          return this.friendsService.sendMotivation(
+            senderId,
+            friend.id,
+            fName,
+            lName,
+            dpImage
+          );
+        });
+
+        try {
+          await Promise.all(sendPromises);
+           this.showMotivatedConfetti();
+        } catch (error) {
+          console.error('Error sending motivations:', error);
+          this.showToast('Failed to send some motivations.');
+        }
+      });
+  }
 
 showMotivatedConfetti() {
   this.showConfetti = true;

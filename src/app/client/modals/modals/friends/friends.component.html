@@ -77,7 +77,7 @@
             <ion-avatar slot="start">
               <img [src]="motive.dpImage || 'assets/default-avatar.png'" />
             </ion-avatar>
-            <ion-label>
+            <ion-label color="warning">
               <h3>{{ motive.message }}</h3>
               <p>{{ motive.timestamp?.toDate() | date : "short" }}</p>
             </ion-label>

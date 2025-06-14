@@ -1,71 +1,112 @@
-<ion-content id="main-content" [fullscreen]="true" >
+<ion-content id="main-content" [fullscreen]="true">
   <!-- Top Bar with Buttons -->
   <ion-row>
-    <ion-col style="width: fit-content; position: relative;">
+    <ion-col style="width: fit-content; position: relative">
       <!-- Profile button -->
-      <ion-button aria-label="Profile" style=" --background: black;" (click)="openProfileModal()">
-        <ion-icon name="person-outline" aria-hidden="true" color="warning"></ion-icon>
+      <ion-button
+        aria-label="Profile"
+        style="--background: black"
+        (click)="openProfileModal()"
+      >
+        <ion-icon
+          name="person-outline"
+          aria-hidden="true"
+          color="warning"
+        ></ion-icon>
       </ion-button>
-  
+
       <!-- Notifications button with dot -->
-      <div style="display: inline-block; position: relative;">
-        <ion-button aria-label="Notifications" style=" --background: black;" (click)="openFriendsModal()">
-          <ion-icon name="notifications-outline" aria-hidden="true" color="warning"></ion-icon>
+      <div style="display: inline-block; position: relative">
+        <ion-button
+          aria-label="Notifications"
+          style="--background: black"
+          (click)="openFriendsModal()"
+        >
+          <ion-icon
+            name="notifications-outline"
+            aria-hidden="true"
+            color="warning"
+          ></ion-icon>
         </ion-button>
-  
+
         <!-- Red dot -->
-        <div *ngIf="hasFriendRequests"
-             style="
-               position: absolute;
-               top: 6px;
-               right: 6px;
-               width: 10px;
-               height: 10px;
-               background-color: red;
-               border-radius: 50%;
-               z-index: 100;">
-        </div>
+        <div
+          *ngIf="hasFriendRequests"
+          style="
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            z-index: 100;
+          "
+        ></div>
+        <!-- Red dot for motivation -->
+  <div *ngIf="hasMotivations"
+       style="
+         position: absolute;
+         top: 6px;
+         right: 6px;
+         width: 10px;
+         height: 10px;
+         background-color: red;
+         border-radius: 50%;
+       ">
+  </div>
+
       </div>
     </ion-col>
-  
-    <ion-col style="text-align: right;">
+
+    <ion-col style="text-align: right">
       <!-- Logout button -->
-      <ion-button aria-label="Logout" style=" --background: black;" (click)="onLogout()">
-        <ion-icon name="log-out-outline" aria-hidden="true" color="warning"></ion-icon>
+      <ion-button
+        aria-label="Logout"
+        style="--background: black"
+        (click)="onLogout()"
+      >
+        <ion-icon
+          name="log-out-outline"
+          aria-hidden="true"
+          color="warning"
+        ></ion-icon>
       </ion-button>
     </ion-col>
   </ion-row>
-  
 
   <!-- Logo -->
-  <ion-row class="ion-justify-content-center" >
+  <ion-row class="ion-justify-content-center">
     <div class="logocon">
       <ion-img src="assets/imgs/WODBOX ICON@2x.png" id="logo"></ion-img>
     </div>
   </ion-row>
 
   <!-- Headline -->
-  <ion-row class="ion-justify-content-center" >
-    <ion-title class="wodhead" style="color: white; text-align: center;">
+  <ion-row class="ion-justify-content-center">
+    <ion-title class="wodhead" style="color: white; text-align: center">
       Get <span style="color: #b25900">Your</span> Heart Rate
       <span style="color: #b25900">Racing</span>
     </ion-title>
   </ion-row>
 
   <!-- Cards Section -->
-  <ion-row class="ion-justify-content-center" >
-    <ion-card class="ion-justify-content-center  wodbod" >
-      <ion-card class="card"  (click)="toWarmup()">
+  <ion-row class="ion-justify-content-center">
+    <ion-card class="ion-justify-content-center wodbod">
+      <ion-card class="card" (click)="toWarmup()">
         <div class="cardimg">
-          <ion-img src="assets/icon/warming.png" class="wodicon" ></ion-img>
+          <ion-img src="assets/icon/warming.png" class="wodicon"></ion-img>
         </div>
         <h2 class="cardttl">Warm-Up</h2>
       </ion-card>
-      <ion-card class="card"  (click)="toWOD()">
+      <ion-card class="card" (click)="toWOD()">
         <div class="cardimg">
-          <ion-img src="assets/icon/CARDIO ICON@2x.png" class="wodicon" ></ion-img>
+          <ion-img
+            src="assets/icon/CARDIO ICON@2x.png"
+            class="wodicon"
+          ></ion-img>
         </div>
-        <h2 class="cardttl" >WOD</h2>
+        <h2 class="cardttl">WOD</h2>
       </ion-card>
     </ion-card>
   </ion-row>

@@ -9,11 +9,12 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { App } from '@capacitor/app';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import firebase from 'firebase/compat/app';
+import { Observable, BehaviorSubject, firstValueFrom } from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ModalController } from '@ionic/angular';
-import { FirebaseAuthService } from 'src/app/firebase/auth/firebase-auth.service';
+import { ModalController, ToastController } from '@ionic/angular';
+import { FirebaseAuthService, User } from 'src/app/firebase/auth/firebase-auth.service';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { FriendsComponent } from '../modals/modals/friends/friends.component';
 import {
@@ -62,7 +63,7 @@ import { A3m1wComponent } from 'src/app/vidmods/a3m1w/a3m1w.component';
 import { A3m2wComponent } from 'src/app/vidmods/a3m2w/a3m2w.component';
 import { A3m3wComponent } from 'src/app/vidmods/a3m3w/a3m3w.component';
 import { A3m4wComponent } from 'src/app/vidmods/a3m4w/a3m4w.component';
-
+import { FriendsService } from 'src/app/firebase/friends.service';
 @Component({
   selector: 'app-wodontwo',
   templateUrl: './wodontwo.page.html',
@@ -182,6 +183,8 @@ export class WodontwoPage implements OnInit {
     @Inject(ModalController) private modalController: ModalController,
     private workoutsService: WorkoutsService,
     private location: Location,
+     private toastController: ToastController,
+private friendsService: FriendsService,
     private firestore: AngularFirestore,
     private authService: FirebaseAuthService
   ) {
@@ -280,7 +283,7 @@ export class WodontwoPage implements OnInit {
     this.beepmp3 = new Audio('assets/beep.mp3');
     this.beepmp3.preload = 'auto';
     this.beepmp3.load();
-
+    this.loadFriends();
     this.getIonContentClass();
     this.getSLadderWOD();
     this.geteWarning();
@@ -5043,4 +5046,84 @@ export class WodontwoPage implements OnInit {
     // Handle any errors related to the video loading here
     console.error('Video failed to load');
   }
+   showConfetti = false;
+     friends: any[] = [];
+    motivateAllFriends() {
+        this.authService
+          .getCurrentUser()
+          .pipe(take(1))
+          .subscribe(async (currentUser: User | null) => {
+            if (!currentUser?.uid) return;
+    
+            const senderId = currentUser.uid;
+    
+            // 🔥 Fetch full user profile from Firestore
+            const userDoc = await firstValueFrom(
+              this.firestore.doc(`users/${senderId}`).valueChanges()
+            );
+    
+            const fName = (userDoc as any)?.fName || '';
+            const lName = (userDoc as any)?.lName || '';
+            const dpImage = (userDoc as any)?.dpImage || '';
+    
+            const sendPromises = this.friends.map((friend) => {
+              return this.friendsService.sendMotivation(
+                senderId,
+                friend.id,
+                fName,
+                lName,
+                dpImage
+              );
+            });
+    
+            try {
+              await Promise.all(sendPromises);
+               this.showMotivatedConfetti();
+            } catch (error) {
+              console.error('Error sending motivations:', error);
+              this.showToast('Failed to send some motivations.');
+            }
+          });
+      }
+    
+    showMotivatedConfetti() {
+      this.showConfetti = true;
+      setTimeout(() => {
+        this.showConfetti = false;
+      }, 2000);
+    }
+  
+    async showToast(message: string) {
+      const toast = await this.toastController.create({
+        message,
+        duration: 2000,
+        position: 'bottom',
+      });
+      toast.present();
+    }
+       loadFriends() {
+            this.authService.getCurrentUser().pipe(take(1)).subscribe((currentUser) => {
+              if (currentUser?.uid) {
+                this.firestore
+                  .doc(`users/${currentUser.uid}`)
+                  .valueChanges()
+                  .pipe(take(1))
+                  .subscribe((userData: any) => {
+                    const friendUIDs: string[] = userData?.friends || [];
+                    if (friendUIDs.length > 0) {
+                      this.firestore
+                        .collection('users', (ref) => ref.where(
+                          firebase.firestore.FieldPath.documentId(), 'in', friendUIDs.slice(0, 10) // Firestore allows max 10 items for 'in'
+                        ))
+                        .valueChanges({ idField: 'id' })
+                        .subscribe((friendList: any[]) => {
+                          this.friends = friendList;
+                        });
+                    } else {
+                      this.friends = [];
+                    }
+                  });
+              }
+            });
+          }
 }

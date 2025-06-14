@@ -5,7 +5,7 @@ import { NavController, MenuController, ModalController } from '@ionic/angular';
 import { FriendsComponent } from 'src/app/client/modals/modals/friends/friends.component';
 import { ProfileComponent } from 'src/app/client/modals/profile/profile.component';
 import { AlertController } from '@ionic/angular';
-import { map, Observable, of, switchMap } from 'rxjs';
+import { map, Observable, of, switchMap, take } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Component({
   selector: 'app-chome',
@@ -26,11 +26,25 @@ export class ChomePage implements OnInit {
   errorMessage: string = '';
   friendRequests$: Observable<any[]> | undefined;
   hasFriendRequests: boolean = false;
+  hasMotivations: boolean = false;
   ngOnInit() {
     this.friendRequests$ = this.getFriendRequests();
     this.friendRequests$.subscribe((requests) => {
       this.hasFriendRequests = requests && requests.length > 0;
     });
+
+    this.authService.getCurrentUser().pipe(take(1)).subscribe((user) => {
+    if (user?.uid) {
+      this.firestore
+        .collection('motivations', (ref) =>
+          ref.where('friendId', '==', user.uid)
+        )
+        .valueChanges()
+        .subscribe((motivations: any[]) => {
+          this.hasMotivations = motivations.length > 0;
+        });
+    }
+  });
   }
   
   // Logout Method with Confirmation Popup
@@ -85,6 +99,10 @@ export class ChomePage implements OnInit {
     const modal = await this.modalController.create({
       component: FriendsComponent,
     });
+     modal.onDidDismiss().then(() => {
+    this.hasFriendRequests = false; // Remove red dot after dismiss
+    this.hasMotivations = false; // Remove red dot after dismiss
+  });
     return await modal.present();
   }
   async openProfileModal() {
@@ -121,4 +139,6 @@ export class ChomePage implements OnInit {
         })
       );
     }
+
+    
 }

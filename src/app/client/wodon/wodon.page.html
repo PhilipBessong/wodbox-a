@@ -3947,7 +3947,7 @@
         </ion-row>
         <br />
         <ion-row class="ion-justify-content-center"
-          ><button  (click)="motivateFriends()"
+          ><button  (click)="motivateAllFriends()"
             style="
               height: 60px;
               width: 300px;
@@ -3963,13 +3963,16 @@
                 0 3px 5px rgba(0, 0, 0, 0.2);
               transition: box-shadow 0.3s ease;
             "
-            id="open-modal"
+            
             color="#00b250"
           >
             Motivate Friends
           </button>
         </ion-row>
-
+ <!-- Orange Confetti Animation Container -->
+        <div *ngIf="showConfetti" class="confetti-container">
+        <div class="motivated-banner"> Motivated!🎉</div>
+        </div>
         <ion-row class="ion-justify-content-center" style="padding-top: 7%">
           <button
             (click)="redirectToHome()"
@@ -3988,7 +3991,7 @@
                 0 3px 5px rgba(0, 0, 0, 0.2);
               transition: box-shadow 0.3s ease;
             "
-            id="open-modal"
+         
             color="#00b250"
             color="#00b250"
           >
@@ -3997,51 +4000,7 @@
         </ion-row>
       </ion-card>
     </ion-card>
-    <ion-modal
-      #modal
-      trigger="open-modal"
-      [initialBreakpoint]="0.25"
-      [breakpoints]="[0, 0.25, 0.5, 0.75]"
-    >
-      <ng-template>
-        <ion-content class="home-content">
-          <ion-searchbar
-            placeholder="Search"
-            (click)="modal.setCurrentBreakpoint(0.75)"
-            (ionInput)="searchUsers($event)"
-          ></ion-searchbar>
-          <br />
-          <ion-label>
-            <h1 style="padding-left: 2%; color: #ffffff">Friends</h1>
-          </ion-label>
-          <ion-list>
-            <ion-item class="home-content" *ngFor="let user of users | async">
-              <ion-avatar slot="start">
-                <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
-              </ion-avatar>
-              <ion-label color="warning"> {{ user.email }} </ion-label>
-            </ion-item>
-          </ion-list>
-         
-          <ion-row class="ion-justify-content-center">
-            <ion-card class="frndsearch" *ngIf="invfrmview">
-              <ion-item style="--ion-background-color: black">
-                <ion-input
-                  color="warning"
-                  style="color: #b27600"
-                  placeholder="Enter email address"
-                  [(ngModel)]="targetUserUid"
-                ></ion-input>
-               
-                <ion-button color="white" (click)="closeinvfrm()">
-                  <ion-label>Cancel</ion-label>
-                </ion-button>
-              </ion-item>
-            </ion-card>
-          </ion-row>
-        </ion-content>
-      </ng-template>
-    </ion-modal>
+   
   </div>
   <!--________tabatas______________________________________________________________-->
   <!--t1m1-->
